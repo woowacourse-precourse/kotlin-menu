@@ -11,10 +11,10 @@ class CategoryRecommandService(
     fun recommandCategory(): FoodCategory = FoodCategory.categoryOf(numberGenerator.generate())
 
     fun generateWeekCategory(): WeeklyCategory {
-        var weeklyCategory = setWeeklyCategory()
-        while (weeklyCategory.hasDuplicatedCategory()) {
+        var weeklyCategory: WeeklyCategory
+        do {
             weeklyCategory = setWeeklyCategory()
-        }
+        } while (weeklyCategory.hasDuplicatedCategory())
         return weeklyCategory
     }
 
