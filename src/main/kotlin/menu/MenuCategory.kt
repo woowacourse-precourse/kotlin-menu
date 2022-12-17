@@ -10,6 +10,14 @@ enum class MenuCategory(private val value: String, private val menu: List<String
     fun getMenus() = this.menu
 
     companion object {
+        fun getCategories(): MutableList<String> {
+            val categories = mutableListOf<String>()
+            for (category in MenuCategory.values()) {
+                categories.add(category.value)
+            }
+            return categories
+        }
+
         fun isValidateMenu(input: String): Boolean {
            for(value in MenuCategory.values()) {
                if (input in value.menu) {

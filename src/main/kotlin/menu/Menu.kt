@@ -13,5 +13,6 @@ class Menu {
         }
         view.getCoachesBias(coaches)
         RandomMenu().getRecommendResult(coaches)
+        view.printResultRecommend(coaches)
     }
 }

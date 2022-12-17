@@ -32,4 +32,10 @@ class View {
             getCoachBias(coach)
         }
     }
+
+    fun printResultRecommend(coaches: MutableList<Coach>) {
+        outputView.printResultMessage()
+        outputView.printRecommendResult(coaches)
+        outputView.printEndMessage()
+    }
 }
