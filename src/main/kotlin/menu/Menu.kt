@@ -4,8 +4,12 @@ import menu.view.View
 
 class Menu {
     private val view = View()
+    private val coaches = mutableListOf<Coach>()
 
     fun recommend() {
-        view.getCoachName()
+        val coachNames = view.getCoachName()
+        for (name in coachNames) {
+            coaches.add(Coach(name))
+        }
     }
 }
