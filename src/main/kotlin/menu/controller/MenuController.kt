@@ -9,6 +9,10 @@ class MenuController {
     private val outputView = OutputView()
     private val menuRecommender = MenuRecommender()
     fun startRecommend() {
+        inputCoachName()
+    }
+
+    private fun inputCoachName() {
         print("점심 메뉴 추천을 시작합니다.\n")
         println("코치의 이름을 입력해 주세요. (, 로 구분")
         setCoachName()
