@@ -3,13 +3,26 @@ package menu.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class MenuRecommend {
-    fun recommendToCoach(coach: Coach): List<Int> {
-        var oneWeekCategories = recommendCategory()
-        return oneWeekCategories
-        // 메뉴 겹치지 않게
+    fun recommendMenusToCoach(categories: List<Int>, coach: Coach) {
+        // categories[0] == 월요일
+        val menus = mutableListOf<String>()
+        for (category in categories) {
+            menus.add(recommendCategoryMenu(category, menus, coach))
+        }
+        coach.setRecommendedMenus(menus)
     }
 
-    private fun recommendCategory(): List<Int> {
+    private fun recommendCategoryMenu(category: Int, recommendMenus: List<String>, coach: Coach): String {
+        val menu = Menu()
+        while (true) {
+            val recommendMenu = Randoms.shuffle(menu.getCategoryMenus(category))[0]
+            if (coach.getCantEatMenus().contains(recommendMenu)) continue
+            if (!recommendMenus.contains(recommendMenu)) return recommendMenu
+        }
+
+    }
+
+    fun recommendCategory(): List<Int> {
         // 같은 카테고리는 최대 2회
         val categories = mutableListOf<Int>()
         while (categories.size < 5) {

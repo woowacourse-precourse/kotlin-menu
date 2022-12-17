@@ -19,8 +19,10 @@ class Controller {
     fun operate() {
         val coaches = readCoaches()
         readCantEatMenu(coaches)
+        val categories = menuRecommend.recommendCategory()
         coaches.forEach { coach ->
-            recommendMenuToCoach(coach)
+            menuRecommend.recommendMenusToCoach(categories, coach)
+            println(coach.getRecommendedMenus())
         }
     }
 
@@ -39,9 +41,5 @@ class Controller {
             outputView.printInputCantEatMenuMent(it.name)
             it.setCantEatMenus(RepeatInputProcess.repeat { inputView.readCantEatMenus() } as List<String>)
         }
-    }
-
-    private fun recommendMenuToCoach(coach: Coach) {
-        println(menuRecommend.recommendToCoach(coach))
     }
 }
