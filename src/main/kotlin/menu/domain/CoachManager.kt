@@ -51,11 +51,11 @@ class CoachManager(
 
     fun getCategoriesDetails(): String {
         return Message.PrintMessage.CATEGORY.msg.format(
-            categories[0],
-            categories[1],
-            categories[2],
-            categories[3],
-            categories[4],
+            Message.Country.valueOf(categories[0]).value,
+            Message.Country.valueOf(categories[1]).value,
+            Message.Country.valueOf(categories[2]).value,
+            Message.Country.valueOf(categories[3]).value,
+            Message.Country.valueOf(categories[4]).value,
         )
     }
 
