@@ -16,6 +16,17 @@ class LaunchMenuService {
         return true
     }
 
+    fun getMenu(category: Category,impossibleMenus:List<String>,menuGenerator: MenuGenerator):String{
+        val menu = menuGenerator.generate(category.food)
+        if(isValidMenu(impossibleMenus,menu)) return menu
+        return getMenu(category,impossibleMenus,menuGenerator)
+    }
+
+    fun isValidMenu(impossibleMenus: List<String>,menu:String):Boolean{
+        if(impossibleMenus.contains(menu)) return false
+        return true
+    }
+
     companion object{
         const val MAX_DUPLICATED_CATEGORY_NUMBER = 2
     }
