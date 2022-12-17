@@ -1,17 +1,15 @@
 package menu.domain
 
-class Categories(private val categories: MutableList<Category> = mutableListOf()) {
+import menu.WEEK_NUMBER
 
-    init {
-        require(categories.size <= MAX_LENGTH)
-        require(categories.all {
-            categories.count { it in categories }  <= MAX_DUPLICATED
-        })
-    }
+class Categories {
+    private val categories: MutableList<Category> = mutableListOf()
 
-    fun add(category: Category): Boolean {
-        if (count(category) >= MAX_DUPLICATED || categories.size >= MAX_LENGTH) return false
-        return categories.add(category)
+    fun add(): Category {
+        check (categories.size <= WEEK_NUMBER) { "카테고리는 최대 ${WEEK_NUMBER}개 만큼만 더할 수 있다." }
+        val category = selectCategory()
+        categories.add(category)
+        return category
     }
 
     fun joinToString(separator: String): String {
@@ -20,8 +18,15 @@ class Categories(private val categories: MutableList<Category> = mutableListOf()
 
     private fun count(category: Category) = categories.count { it == category }
 
+    private fun selectCategory(): Category {
+        var category = Category.makeRandomCategory()
+        while (count(category) > MAX_DUPLICATED) {
+            category = Category.makeRandomCategory()
+        }
+        return category
+    }
+
     companion object {
-        private const val MAX_LENGTH = 5
         private const val MAX_DUPLICATED = 2
     }
 }

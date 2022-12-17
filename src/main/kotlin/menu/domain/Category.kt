@@ -10,9 +10,7 @@ enum class Category(private val number: Int, private val text: String) {
     ASIAN(ASIAN_NUMBER, ASIAN_TEXT),
     WESTERN(WESTERN_NUMBER, WESTERN_TEXT);
 
-    override fun toString(): String {
-        return text
-    }
+    override fun toString() = text
 
     companion object {
         private const val ERROR_NOT_CATEGORY = "%s 일치하는 카테고리가 없습니다."

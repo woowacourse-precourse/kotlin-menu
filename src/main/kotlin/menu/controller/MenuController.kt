@@ -1,5 +1,6 @@
 package menu.controller
 
+import menu.WEEK_NUMBER
 import menu.domain.*
 import menu.view.InputView
 import menu.view.OutputView
@@ -48,9 +49,5 @@ class MenuController {
             outputView.printException(e)
             readUntilValid { method() }
         }
-    }
-
-    companion object {
-        private const val WEEK_NUMBER = 5
     }
 }

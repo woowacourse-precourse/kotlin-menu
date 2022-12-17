@@ -11,3 +11,5 @@ const val KOREAN_NUMBER = 2
 const val CHINESE_NUMBER = 3
 const val ASIAN_NUMBER = 4
 const val WESTERN_NUMBER = 5
+
+const val WEEK_NUMBER = 5
