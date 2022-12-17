@@ -32,8 +32,28 @@ class Recommender {
         return category[index]
     }
 
+    /**
+     * 코치가 메뉴를 이미 추천 받았거나 먹지 못하는 상태인 경우
+     */
+    private fun eatOrUnavailable(menu: String, coach: Coach): Boolean{
+        if(coach.getEatenFoods().contains(menu)){
+            return true
+        }
+        if(coach.getUnavailableFoods().contains(menu)){
+            return true
+        }
+        return false
+    }
+
+    /**
+     * 추천 받지 않았고 못 먹는 음식을 제외한 메뉴 추천
+     */
     fun pickMenu(category : String, coach: Coach): String {
-        
-        return ""
+        var menu = Randoms.shuffle(menus[category])[0]
+
+        while(eatOrUnavailable(menu, coach)){
+            menu = Randoms.shuffle(menus[category])[0]
+        }
+        return menu
     }
 }
