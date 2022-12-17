@@ -13,9 +13,7 @@ class OutputView {
         coaches.forEach { coach ->
             println(coach)
         }
+        println("\n추천을 완료했습니다.")
     }
 
-    fun endRecommend() {
-        println("추천을 완료했습니다.")
-    }
 }
