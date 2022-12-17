@@ -10,8 +10,8 @@ class Controller {
         outputView.menuSuggestionStart()
         val coaches = inputView.coachNameInput()
         inputView.coachHateMenuInput(coaches)
-        suggestion
-        outputView.menuSuggestionResult(coaches)
+        val category = suggestion.suggestionMenus(coaches)
+        outputView.menuSuggestionResult(coaches, category)
     }
 
 
