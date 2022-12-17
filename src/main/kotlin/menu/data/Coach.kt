@@ -6,6 +6,8 @@ class Coach(private val name: String) {
 
     fun getName() = this.name
 
+    fun getBias() = bias
+
     fun getRecommendedMenu() = menus
 
     fun saveBias(input: List<String>) {

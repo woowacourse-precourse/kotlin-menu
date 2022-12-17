@@ -31,7 +31,7 @@ class RandomMenu {
 
     private fun getRecommendMenu(coach: Coach, categoryMenus: List<String>) {
         val menu: String = shuffle(categoryMenus)[FIRST_VALUE]
-        if (menu in coach.getRecommendedMenu()) {
+        if (menu in coach.getRecommendedMenu() || menu in coach.getBias()) {
             return getRecommendMenu(coach, categoryMenus)
         }
         coach.saveRecommendMenus(menu)
