@@ -12,5 +12,6 @@ class Menu {
             coaches.add(Coach(name))
         }
         view.getCoachesBias(coaches)
+        RandomMenu().getRecommendResult(coaches)
     }
 }

@@ -7,6 +7,8 @@ enum class MenuCategory(private val value: String, private val menu: List<String
     ASIAN("아시안", listOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")),
     WESTERN("양식", listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"));
 
+    fun getMenus() = this.menu
+
     companion object {
         fun isValidateMenu(input: String): Boolean {
            for(value in MenuCategory.values()) {
@@ -17,7 +19,5 @@ enum class MenuCategory(private val value: String, private val menu: List<String
             return false
         }
     }
-
-
 }
 
