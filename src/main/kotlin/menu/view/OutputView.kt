@@ -31,7 +31,7 @@ class OutputView {
         println(coach + INEDIBLE_FOOD_INPUT_REQUEST)
     }
 
-    fun showResult(categories: List<Category>, coaches: List<Coach>) {
+    fun showResult(categories: List<Category>, coaches: Set<Coach>) {
         println(MENU_SUGGEST_RESULT)
         println(transformType(getDayOfTheWeek()))
         println(transformType(getCategories(categories)))
@@ -49,7 +49,7 @@ class OutputView {
         return shownCategories.apply { add(0, CATEGORY) }
     }
 
-    private fun showCoachSuggestion(coaches: List<Coach>) {
+    private fun showCoachSuggestion(coaches: Set<Coach>) {
         coaches.forEach {
             val result: MutableList<String> = it.menus.toMutableList()
             println(transformType(result.apply { add(0, it.name) }))
