@@ -11,6 +11,9 @@ class Exceptions {
     }
 
     fun validateCoachBias(input: String) {
+        if (input.isEmpty()) {
+            return
+        }
         val inputs = input.split(",")
         require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(WRONG_DUPLICATE_FOOD_INPUT) }
         require(inputs.size in 0..2) { throw IllegalArgumentException(WRONG_SIZE_FOOD_INPUT) }
