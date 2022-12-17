@@ -38,6 +38,7 @@ class menuRecommend {
             if (menuCollect.size==5) break
             menu = MN.menuRecommend(categoryNameCollect[ctidx])
             if ((coachNotEat[i]).contains(menu)) continue
+            if (menuCollect.contains(menu)) continue
             menuCollect.add(menu)
             ctidx+=1
         }
