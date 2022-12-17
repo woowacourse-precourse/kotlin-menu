@@ -20,7 +20,7 @@ class Coach(
         inedible.add(food)
     }
 
-    fun containsName(checkingName: String): Boolean {
+    fun equalName(checkingName: String): Boolean {
         return name == checkingName
     }
 }
