@@ -32,7 +32,7 @@ class MenuController {
         for (i in coachName.indices) {
             val recommendationMenu = mutableListOf<String>(coachName[i])
             for (j in 0 until 5) {
-                recommendationMenu.add(Recommendation().menuRecommendation(randomCategory[j], coachUneatableMenu[i]))
+                recommendationMenu.add(Recommendation().menuRecommendation(randomCategory[j], coachUneatableMenu[i], recommendationMenu))
             }
             OutputView().menuRecommendationResultMenuPrint(recommendationMenu)
         }

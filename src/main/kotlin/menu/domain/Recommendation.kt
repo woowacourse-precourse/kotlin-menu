@@ -13,11 +13,15 @@ class Recommendation : RecommendationImpl {
         }
     }
 
-    override fun menuRecommendation(category: Category, uneatableMenu: List<String>): String {
+    override fun menuRecommendation(
+        category: Category,
+        uneatableMenu: List<String>,
+        recommendationMenu: MutableList<String>
+    ): String {
         val menus: List<String> = categoryMenuSelect(category)
         while (true) {
             val menu: String = Randoms.shuffle(menus)[0]
-            if (menu !in uneatableMenu) {
+            if (menu !in uneatableMenu && menu !in recommendationMenu) {
                 return menu
             }
         }
