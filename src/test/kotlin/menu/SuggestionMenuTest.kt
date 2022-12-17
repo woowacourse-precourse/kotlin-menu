@@ -16,6 +16,23 @@ class SuggestionMenuTest {
         assertThat(coach.menus).isEqualTo(expected) // 포비 코치님은 라멘 빼고 일식 다 싫어하므로 라멘이 나와야 함.
     }
 
+    @Test
+    fun `같은 카테고리를 세 번 이상 포함하지 않는지 검사`() {
+        val suggestionMenu = SuggestionMenu()
+        val category = mutableListOf<Category>(Category.JAPANESE_FOOD,
+            Category.KOREAN_FOOD,
+            Category.CHINESE_FOOD,
+            Category.ASIAN_FOOD,
+            Category.WESTERN_FOOD,
+            Category.JAPANESE_FOOD,
+            Category.CHINESE_FOOD,
+            Category.ASIAN_FOOD,
+            Category.WESTERN_FOOD)
+        val result = suggestionMenu.suggestionCategory(category)
+        val expected = Category.KOREAN_FOOD // 마지막에는 결국 두번이상 나오지 않은 한국음식을 추천해줘야 함.
+        assertThat(result).isEqualTo(expected)
+    }
+
     private fun SuggestionMenu.suggestionEachMenu(choiceCategory: Category, coach: Coach) {
         while (true) {
             val menu: String = Randoms.shuffle(this.getAllMenus()[choiceCategory.index])[0]
@@ -25,5 +42,18 @@ class SuggestionMenuTest {
             coach.menus.add(menu)
             break
         }
+    }
+
+    private fun SuggestionMenu.suggestionCategory(choiceCategory: List<Category>): Category {
+        val randomCategory = Randoms.pickNumberInRange(SuggestionMenu.LOW_CATEGORY, SuggestionMenu.HIGH_CATEGORY)
+        val category = FindCategoryByValue.fromValue(randomCategory)
+        var count = 0
+        choiceCategory.forEach { // 중복 카테고리는 최대 두 개만 허용한다.
+            if (category == it) count++
+        }
+        return if (count >= 2)
+            suggestionCategory(choiceCategory)
+        else
+            return category!!
     }
 }
