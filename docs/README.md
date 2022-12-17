@@ -24,9 +24,9 @@ Progress & MileStones
 
 ## Controller
 - UIController
-  - Get coach name (with error handling)
-  - Get coach's hate menu (with error handling)
-  - Print Result
+  - ~~Get coach name (with error handling)~~
+  - ~~Get coach's hate menu (with error handling)~~
+  - ~~Print Result~~
   - Test error handling
 
 - RecommendController
