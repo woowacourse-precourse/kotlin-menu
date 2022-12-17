@@ -10,7 +10,7 @@ class RandomMenu {
     private var categoryNames = mutableListOf<String>()
 
     fun getRecommendMenus(coaches: MutableList<Coach>): MutableList<String> {
-        for (i in 1..5) {
+        for (i in RANGE_START..RANGE_END) {
             val categoryMenus = getCategory()
             for (coach in coaches) {
                 getRecommendMenu(coach, categoryMenus)
@@ -20,8 +20,8 @@ class RandomMenu {
     }
 
     private fun getCategory(): List<String> {
-        val randomNumber = pickNumberInRange(1, 5)
-        if (categories[randomNumber - 1] >= 2) {
+        val randomNumber = pickNumberInRange(RANGE_START, RANGE_END)
+        if (categories[randomNumber - 1] >= DUPLICATE_COUNT) {
             return getCategory()
         }
         categories[randomNumber - 1]++
@@ -37,10 +37,17 @@ class RandomMenu {
     }
 
     private fun getRecommendMenu(coach: Coach, categoryMenus: List<String>) {
-        val menu: String = shuffle(categoryMenus)[0]
+        val menu: String = shuffle(categoryMenus)[FIRST_VALUE]
         if (menu in coach.getRecommendedMenu()) {
             return getRecommendMenu(coach, categoryMenus)
         }
         coach.saveRecommendMenus(menu)
+    }
+
+    companion object {
+        const val RANGE_START = 1
+        const val RANGE_END = 5
+        const val DUPLICATE_COUNT = 2
+        const val FIRST_VALUE = 0
     }
 }
