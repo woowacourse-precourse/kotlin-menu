@@ -17,6 +17,8 @@ fun main() {
 
     val recommendedMenuTable = MenuRecommender.recommendMenuTable(foodTable, cantEatMenu)
     OutputView.printRecommendedMenuTable(foodTable, recommendedMenuTable)
+
+    OutputView.printMessage("\n" + RECOMMENDED_COMPLETE_MESSAGE)
 }
 
 private fun setCategoryByDayOfWeek(): Map<DayOfWeek, Category> {
