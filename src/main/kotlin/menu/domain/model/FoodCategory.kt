@@ -14,8 +14,8 @@ enum class FoodCategory(
     ASIAN("아시안", ASIAN_FOODS),
     WESTERN("양식", WESTERN_FOODS);
 
-    fun recommand(): String {
-        return Randoms.shuffle(menus)[0]
+    fun recommand(): Food {
+        return Food(this, Randoms.shuffle(menus)[0])
     }
 
     fun getCategoryName() = categoryName
