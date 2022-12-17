@@ -34,8 +34,6 @@ class World {
     }
 
     private fun processRecommendation(coaches: List<Coach>) {
-        outputView.print(Message.MSG_MENU_RESULT)
-
         val menuRecommender = MenuRecommender()
         val categories = menuRecommender.generateWeekCategory()
         val recommendedMenus = getRecommendation(menuRecommender, categories, coaches)
