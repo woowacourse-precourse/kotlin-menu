@@ -11,17 +11,14 @@ class MenuRecommender {
     private val food = Food()
     val weekMenu = mutableListOf<MutableList<String>>()
 
-    init {
-        initAteFoodList()
-    }
-
     fun setCoachNameList(input: String) {
         val inputSplit = Util().convertCommaStringToList(input)
         coachNameList.addAll(inputSplit)
+        initAteFoodList(coachNameList.size)
     }
 
-    private fun initAteFoodList() {
-        for (xIndex in 0..2) {
+    private fun initAteFoodList(coachListSize : Int) {
+        for (xIndex in 0 until coachListSize) {
             val list = mutableListOf<String>()
             for (yIndex in 0..4) {
                 list.add("")
