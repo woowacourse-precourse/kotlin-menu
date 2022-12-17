@@ -49,3 +49,13 @@ fun printRecommendMenu(menus: List<List<String>>, coaches: List<String>) {
         println("[ ${coaches[coachIndex]} | ${coachMenu[0]} | ${coachMenu[1]} | ${coachMenu[2]} | ${coachMenu[3]} | ${coachMenu[4]} ]")
     }
 }
+
+fun addMenu(menus: List<String>, menu: String): List<String> {
+    val editedMenus = mutableListOf<String>()
+    for (menuIndex in menus.indices) {
+        editedMenus.add(menus[menuIndex])
+    }
+    editedMenus.add(menu)
+
+    return editedMenus
+}
