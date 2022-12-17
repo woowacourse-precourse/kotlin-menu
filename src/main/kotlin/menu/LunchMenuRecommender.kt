@@ -25,11 +25,11 @@ class LunchMenuRecommender(
 
     private fun chooseOneDayMenu() {
         val categoryIndex = chooseCategory()
-        chooseMenuForEachCoach(totalMenus[categoryIndex])
+        chooseMenuForEachCoach(totalMenus[categoryIndex - 1])
     }
 
     private fun chooseCategory(): Int {
-        val randomNumber = Randoms.pickNumberInRange(0, Category.values().size - 1)
+        val randomNumber = Randoms.pickNumberInRange(0, Category.values().size)
         if (categoryChosen.count { it == randomNumber } == MAX_NUMBER_OF_DUPLICATE_CATEGORY) {
             chooseCategory()
         }
