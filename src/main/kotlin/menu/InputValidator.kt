@@ -1,5 +1,8 @@
 package menu
 
+import menu.CategoryAndMenu.isInMenus
+import menu.CategoryAndMenu.menus
+
 class InputValidator {
 
     fun validateCoaches(coachesName: String){
@@ -11,6 +14,13 @@ class InputValidator {
     fun validateHatingMenu(hatingMenus: String){
         hatingMenus.validateHasEmptyChar()
         hatingMenus.validateNumberOfHatingMenu()
+        hatingMenus.validateIsInMenu()
+    }
+
+    private fun String.validateIsInMenu(){
+        require(isInMenus(this)){
+            "[ERROR] 존재하지 않는 메뉴입니다."
+        }
     }
 
     private fun String.validateHasEmptyChar(){
