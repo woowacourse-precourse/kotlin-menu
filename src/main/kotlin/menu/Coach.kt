@@ -2,6 +2,6 @@ package menu
 
 data class Coach(
     val name: String,
-    var canNotEats: MutableList<String>,
-    var menu: MutableList<String>,
+    var hateEatMenus: MutableList<String>,
+    var menus: MutableList<String>,
 )

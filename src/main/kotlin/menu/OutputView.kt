@@ -15,7 +15,7 @@ class OutputView {
     private fun printCoachMenu(coach: Coach) {
         val resultMenu = StringBuilder("[ ${coach.name} |")
         for (i in 0 until 5) {
-            resultMenu.append(" ${coach.menu[i]} ")
+            resultMenu.append(" ${coach.menus[i]} ")
             if (i != 4) resultMenu.append("|")
             else resultMenu.append("]")
         }

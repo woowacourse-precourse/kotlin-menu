@@ -19,7 +19,7 @@ class SuggestionMenu {
 
     fun suggestionMenus(coaches: List<Coach>): List<String> {
         val choiceCategories = mutableListOf<String>()
-        for (nowDay in 0 until 5) {
+        for (nowDay in 0 until HIGH_DAY) {
             val nowDayCategory = suggestionCategory(choiceCategories)
             choiceCategories.add(convertIntToMenu(nowDayCategory))
             coaches.forEach { suggestionEachMenu(nowDayCategory, coaches, it) }
@@ -28,13 +28,13 @@ class SuggestionMenu {
     }
 
     private fun suggestionCategory(choiceCategory: List<String>): Int {
-        val randomCategory = Randoms.pickNumberInRange(1, 5)
+        val randomCategory = Randoms.pickNumberInRange(LOW_CATEGORY, HIGH_CATEGORY)
         val categoryName = convertIntToMenu(randomCategory)
         var count = 0
         choiceCategory.forEach { // 중복 카테고리는 최대 두 개만 허용한다.
             if (categoryName == it) count++
         }
-        return if (count > 2)
+        return if (count > MAX_DUPLICATE_CATEGORY)
             suggestionCategory(choiceCategory)
         else
             randomCategory
@@ -43,10 +43,10 @@ class SuggestionMenu {
     private fun suggestionEachMenu(choiceCategory: Int, coaches: List<Coach>, coach: Coach) {
         while (true) {
             val menu: String = Randoms.shuffle(allMenus[choiceCategory])[0]
-            if (coach.menu.find { it == menu } != null || menu in coach.canNotEats) {
+            if (coach.menus.find { it == menu } != null || menu in coach.hateEatMenus) {
                 continue
             }
-            coach.menu.add(menu)
+            coach.menus.add(menu)
             break
         }
     }
@@ -69,5 +69,10 @@ class SuggestionMenu {
         private const val chineseMenus = "깐풍기, 볶음면, 동파육, 짜장면, 짬뽕, 마파두부, 탕수육, 토마토 달걀볶음, 고추잡채"
         private const val asianMenus = "팟타이, 카오 팟, 나시고렝, 파인애플 볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜"
         private const val westernMenus = "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니"
+
+        private const val LOW_CATEGORY = 1
+        private const val HIGH_CATEGORY = 5
+        private const val HIGH_DAY = 5
+        private const val MAX_DUPLICATE_CATEGORY = 2
     }
 }

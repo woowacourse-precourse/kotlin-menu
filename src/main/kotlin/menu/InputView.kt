@@ -23,7 +23,7 @@ class InputView {
     fun coachHateMenuInput(coaches: List<Coach>) {  // 코치 먹지 못하는 메뉴 입력받기.
         coaches.forEach {
             val hateMenus = personHateMenus(it)
-            it.canNotEats = hateMenus.toMutableList()
+            it.hateEatMenus = hateMenus.toMutableList()
         }
     }
 

@@ -1,7 +1,6 @@
 package menu
 
 class Controller {
-
     private val outputView = OutputView()
     private val inputView = InputView()
     private val suggestion = SuggestionMenu()
@@ -13,6 +12,4 @@ class Controller {
         val category = suggestion.suggestionMenus(coaches)
         outputView.menuSuggestionResult(coaches, category)
     }
-
-
 }
