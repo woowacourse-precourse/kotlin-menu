@@ -14,6 +14,9 @@ fun main() {
     val coaches = askCoaches()
 
     val cantEatMenu = setCantEatMenu(coaches)
+
+    val recommendedMenuTable = MenuRecommender.recommendMenuTable(foodTable, cantEatMenu)
+    println(recommendedMenuTable)
 }
 
 private fun setCategoryByDayOfWeek(): Map<DayOfWeek, Category> {
