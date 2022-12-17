@@ -2,7 +2,6 @@ package menu.domain
 
 class Coach(val name: String) {
     private lateinit var cantEatMenus: List<String>
-
     private val recommendedMenus = mutableListOf<String>()
 
     fun setCantEatMenus(menus: List<String>) {

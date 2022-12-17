@@ -5,6 +5,7 @@ import java.lang.IllegalArgumentException
 
 object RepeatInputProcess {
     private val outputView = OutputView()
+
     fun repeat(inputProcess: () -> Any): Any {
         while (true) {
             try {
