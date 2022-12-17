@@ -1,18 +1,15 @@
-package menu.Service
+package menu.service
 
 import camp.nextstep.edu.missionutils.Randoms
 import menu.view.OutputView
 
 class Service {
-    fun startService(cantEatMenu: Map<String, List<String>>, category: List<String>) {
+    fun startService(cantEatMenu: Map<String, List<String>>, category: List<String>, index: Int): MutableList<String> {
         val coachName = cantEatMenu.keys.toList()
         val menus = cantEatMenu.values.toList()
         var result: MutableList<String>
-        for(i in coachName.indices) {
-            result = menuRecommandService(coachName[i], menus[i], category, i)
-            OutputView().printCoachMenu(result)
-        }
-
+        result = menuRecommandService(coachName[index], menus[index], category, index)
+        return result
     }
     fun menuRecommandService(coachName: String, menus: List<String>, category: List<String>, index: Int): MutableList<String> {
         var result = mutableListOf<String>()
