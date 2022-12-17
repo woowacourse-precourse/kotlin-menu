@@ -1,6 +1,9 @@
 package menu.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.data.Category
+import menu.data.Coach
+import menu.data.Menu
 import menu.data.MenuList
 
 class MenuRecommender {

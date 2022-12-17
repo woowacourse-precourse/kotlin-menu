@@ -1,8 +1,8 @@
 package menu.view
 
-import menu.model.Category
-import menu.model.Coach
-import menu.model.Menu
+import menu.data.Category
+import menu.data.Coach
+import menu.data.Menu
 import menu.data.Message
 
 class OutputView {

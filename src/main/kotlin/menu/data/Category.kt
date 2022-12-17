@@ -1,4 +1,4 @@
-package menu.model
+package menu.data
 
 enum class Category(private val korean: String) {
     JAPANESE("일식"),

@@ -1,9 +1,9 @@
 package menu.controller
 
 import menu.data.Message
-import menu.model.Category
-import menu.model.Coach
-import menu.model.Menu
+import menu.data.Category
+import menu.data.Coach
+import menu.data.Menu
 import menu.model.MenuRecommender
 import menu.view.InputView
 import menu.view.OutputView
