@@ -6,12 +6,12 @@ import menu.data.Coach
 import menu.data.MenuCategory
 
 class RandomMenu {
-    private var categories = mutableListOf(0, 0, 0, 0, 0)
+    private var categoryCount = mutableListOf(0, 0, 0, 0, 0)
     private var categoryNames = mutableListOf<String>()
 
     fun getRecommendMenus(coaches: MutableList<Coach>): MutableList<String> {
         for (i in RANGE_START..RANGE_END) {
-            val categoryMenus = getCategory()
+            val categoryMenus = getCategoryMenus()
             for (coach in coaches) {
                 getRecommendMenu(coach, categoryMenus)
             }
@@ -19,12 +19,12 @@ class RandomMenu {
         return categoryNames
     }
 
-    private fun getCategory(): List<String> {
+    private fun getCategoryMenus(): List<String> {
         val randomNumber = pickNumberInRange(RANGE_START, RANGE_END)
-        if (categories[randomNumber - 1] >= DUPLICATE_COUNT) {
-            return getCategory()
+        if (categoryCount[randomNumber - 1] >= DUPLICATE_COUNT) {
+            return getCategoryMenus()
         }
-        categories[randomNumber - 1]++
+        categoryCount[randomNumber - 1] += 1
         categoryNames.add(MenuCategory.getCategoryName(randomNumber))
         return when (randomNumber) {
             1 -> MenuCategory.JAPANESE.getMenus()
