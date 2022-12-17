@@ -7,7 +7,7 @@ class CategoryPicker(private val categoryNumberGenerator: CategoryNumberGenerato
     val categorys = mutableListOf<AvaliableMenu>()
 
     fun genrateCategorys(): MutableList<AvaliableMenu> {
-        while (categorys.size < 6) {
+        while (categorys.size < 5) {
             val randomNumber = categoryNumberGenerator.generate()
             if (categorys.count { it == AvaliableMenu.convertPickerNumberToValue(randomNumber) } < 2) {
                 categorys.add(AvaliableMenu.convertPickerNumberToValue(randomNumber))
