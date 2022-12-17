@@ -59,7 +59,7 @@ class LogicManager(
         )
     }
 
-    fun getCoachesDetails(): String{
+    fun getCoachesDetails(): String {
         var result = ""
         for (coach in coaches) {
             result += matchCoachFormat(coach)

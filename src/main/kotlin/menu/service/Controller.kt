@@ -7,7 +7,7 @@ import menu.view.OutputView
 class Controller {
     private val inputView = InputView()
     private val outputView = OutputView()
-    private lateinit var logicManager : LogicManager
+    private lateinit var logicManager: LogicManager
 
     fun start() {
         outputView.printStart()

@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class Recommender {
     private val category = listOf("구분", "JAPAN", "KOREAN", "CHINA", "ASIAN", "WESTERN")
+
     // 카테고리에 해당하는 메뉴를 리스트에 저장하여 해시맵 형태로 저장
     private val menus = HashMap<String, List<String>>()
 
@@ -29,11 +30,11 @@ class Recommender {
     /**
      * 코치가 메뉴를 이미 추천 받았거나 먹지 못하는 상태인 경우
      */
-    private fun eatOrUnavailable(menu: String, coach: Coach): Boolean{
-        if(coach.getEatenFoods().contains(menu)){
+    private fun eatOrUnavailable(menu: String, coach: Coach): Boolean {
+        if (coach.getEatenFoods().contains(menu)) {
             return true
         }
-        if(coach.getUnavailableFoods().contains(menu)){
+        if (coach.getUnavailableFoods().contains(menu)) {
             return true
         }
         return false
@@ -42,10 +43,10 @@ class Recommender {
     /**
      * 추천 받지 않았고 못 먹는 음식을 제외한 메뉴 추천
      */
-    fun pickMenu(category : String, coach: Coach): String {
+    fun pickMenu(category: String, coach: Coach): String {
         var menu = Randoms.shuffle(menus[category])[0]
 
-        while(eatOrUnavailable(menu, coach)){
+        while (eatOrUnavailable(menu, coach)) {
             menu = Randoms.shuffle(menus[category])[0]
         }
         return menu

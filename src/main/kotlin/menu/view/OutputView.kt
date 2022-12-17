@@ -11,11 +11,11 @@ class OutputView {
         println(Message.PrintMessage.GET_COACH_NAME.msg)
     }
 
-    fun printGetUnavailableFood(coachName : String) {
+    fun printGetUnavailableFood(coachName: String) {
         println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg.format(coachName))
     }
 
-    fun printResult(categoryString:String, coachesString: String) {
+    fun printResult(categoryString: String, coachesString: String) {
         println(Message.PrintMessage.PRINT_RESULT.msg)
         println(Message.PrintMessage.DAYS.msg)
         println(categoryString)

@@ -12,7 +12,7 @@ object Message {
         PRINT_END("추천을 완료했습니다.")
     }
 
-    enum class Country(val value: String){
+    enum class Country(val value: String) {
         JAPAN("일식"),
         KOREAN("한식"),
         CHINA("중식"),

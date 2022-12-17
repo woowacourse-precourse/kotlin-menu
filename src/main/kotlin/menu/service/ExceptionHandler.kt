@@ -1,7 +1,6 @@
 package menu.service
 
 import menu.strings.ErrorMessage
-import menu.strings.Message
 
 object ExceptionHandler {
     fun isValidNameLength(coachName: String): Boolean {
