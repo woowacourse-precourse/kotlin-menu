@@ -66,7 +66,13 @@ class MenuRecommendation(
     }
 
     fun isAlreadyHad(coach: String, menu: String): Boolean {
+        val eatMenu = menusGonnaEat[coach] ?: mutableListOf()
 
+        if (eatMenu.contains(menu)) {
+            return true
+        }
+
+        return false
     }
 
     fun addMenu(coach: String, menu: String) {
