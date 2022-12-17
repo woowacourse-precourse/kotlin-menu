@@ -28,6 +28,7 @@ object Exceptions {
 
 
     fun checkCoachNotToEatInput(menus: List<String>) {
+        checkNotToEatMenuSize(menus)
         menus.forEach { menu ->
             checkMenuInCategory(menu)
         }
@@ -42,6 +43,12 @@ object Exceptions {
             && !MenuMachine(AMERICA_MENUS).convertToList().contains(menu)
         ) {
             throw IllegalArgumentException(ERROR_HEADER + ERROR_INVALID_MENU)
+        }
+    }
+
+    private fun checkNotToEatMenuSize(menus: List<String>) {
+        if (menus.size !in MIN_NOT_EAT..MAX_NOT_EAT) {
+            throw IllegalArgumentException(ERROR_HEADER + ERROR_NOT_EAT_SIZE)
         }
     }
 }
