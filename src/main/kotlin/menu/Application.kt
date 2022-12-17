@@ -7,9 +7,8 @@ fun main() {
         RecommendService().run()
     } catch (e: Exception) {
         when (e) {
-            is IllegalArgumentException -> throw IllegalStateException(e.message)
+            is IllegalArgumentException -> throw IllegalArgumentException(e.message)
             is IllegalStateException -> throw IllegalStateException(e.message)
         }
     }
-
 }
