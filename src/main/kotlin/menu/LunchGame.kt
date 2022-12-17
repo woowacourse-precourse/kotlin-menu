@@ -1,6 +1,11 @@
 package menu
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.FoodData.categories
+import menu.OutputView.Companion.CATEGORY
+import menu.OutputView.Companion.FINISHED
+import menu.OutputView.Companion.MONDAY_TO_FRIDAY
+import menu.OutputView.Companion.RESULT_OF_RECOMMENDATION
 
 class LunchGame(
     private val recommendationMachine: RecommendationMachine = RecommendationMachine(),
@@ -18,12 +23,15 @@ class LunchGame(
     }
 
     private fun showResult() {
-        view.outputView.printResultRecommendation()
-        view.outputView.printThisWeekCategories(recommendationMachine.thisWeekCategories.toList())
+        view.outputView.printMessage(RESULT_OF_RECOMMENDATION)
+        view.outputView.printMessage(MONDAY_TO_FRIDAY)
+        view.outputView.printResults(CATEGORY, recommendationMachine.thisWeekCategories.toList().map { categoryNum ->
+            categories[categoryNum]!!
+        })
         coaches.forEach { eachCoach ->
-            view.outputView.printCoachMenus(eachCoach)
+            view.outputView.printResults(eachCoach.name, eachCoach.thisWeekMenus)
         }
-        view.outputView.printGameEnd()
+        view.outputView.printMessage(FINISHED)
     }
 
     private fun initCoaches() {
