@@ -28,6 +28,11 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
         require(weeklyCategory.size == NUMBER_OF_WEEKDAY) {
             WRONG_NUMBER_WEEKDAY
         }
+        weeklyCategory.forEach { weekday ->
+            require(weeklyCategory.count { it::class.java == weekday::class.java } == 1) {
+                "똑같은 요일이 2번 입력됬습니다."
+            }
+        }
     }
 
     /**
