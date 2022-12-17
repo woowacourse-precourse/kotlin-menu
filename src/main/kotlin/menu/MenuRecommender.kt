@@ -16,7 +16,7 @@ class MenuRecommender {
             3->Category.중식
             4->Category.아시안
             5->Category.양식
-            else -> {Category.무소속}
+            else -> {Category.전부}
         }
     }
 
@@ -31,11 +31,11 @@ class MenuRecommender {
     }
 
     private fun getEatableMenu(recommendation: List<String>, category: Category, coach: Coach): String {
-        var number: Int
+        var menu: String
         do{
-            number = Randoms.pickNumberInRange(0, 8)
-        } while(coach.isUneatable(category.menus[number]) || recommendation.contains(category.menus[number]))
-        return category.menus[number]
+            menu = Randoms.shuffle(category.menus)[0]
+        } while(coach.isUneatable(menu) || recommendation.contains(menu))
+        return menu
     }
 
     private fun makeRecommendations(categories: List<Category>, coaches: List<Coach>): Map<String, List<String>> {
