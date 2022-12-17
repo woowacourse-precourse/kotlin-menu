@@ -1,6 +1,8 @@
 package menu.domain
 
 import menu.domain.model.FoodCategory
+import menu.domain.model.Weekday
+import menu.domain.model.WeeklyCategory
 
 class CategoryRecommandService(
     private val numberGenerator: GenerateNumber
@@ -8,5 +10,22 @@ class CategoryRecommandService(
 
     fun recommandCategory(): FoodCategory = FoodCategory.categoryOf(numberGenerator.generate())
 
+    fun generateWeekCategory(): WeeklyCategory {
+        var weeklyCategory = setWeeklyCategory()
+        while (weeklyCategory.hasDuplicatedCategory()) {
+            weeklyCategory = setWeeklyCategory()
+        }
+        return weeklyCategory
+    }
+
+    private fun setWeeklyCategory() = WeeklyCategory(
+        listOf(
+            Weekday.MONDAY(recommandCategory()),
+            Weekday.TUESDAY(recommandCategory()),
+            Weekday.WEDNESDAY(recommandCategory()),
+            Weekday.THURSDAY(recommandCategory()),
+            Weekday.FRIDAY(recommandCategory()),
+        )
+    )
 
 }
