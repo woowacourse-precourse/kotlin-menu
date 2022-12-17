@@ -4,7 +4,7 @@ import menu.data.MenuCategory
 
 class Exceptions {
     fun validateCoachNames(input: String) {
-        require (input.isNotEmpty()) {throw IllegalArgumentException(ERROR_MESSAGE + WRONG_NUMBER_COACH_INPUT)}
+        require(input.isNotEmpty()) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_NUMBER_COACH_INPUT) }
         val inputs = input.split(",")
         require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_DUPLICATE_COACH_INPUT) }
         require(inputs.all { it.length in 2..4 }) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_NAME_LENGTH_COACH_INPUT) }
@@ -16,9 +16,9 @@ class Exceptions {
             return
         }
         val inputs = input.split(",")
-        require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_DUPLICATE_FOOD_INPUT) }
-        require(inputs.size in 0..2) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_SIZE_FOOD_INPUT) }
-        require(inputs.all { MenuCategory.isValidateMenu(it) }) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_EXIST_FOOD_INPUT) }
+        require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_DUPLICATE_FOOD_INPUT + REQUEST_INPUT_AGAIN) }
+        require(inputs.size in 0..2) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_SIZE_FOOD_INPUT + REQUEST_INPUT_AGAIN) }
+        require(inputs.all { MenuCategory.isValidateMenu(it) }) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_EXIST_FOOD_INPUT + REQUEST_INPUT_AGAIN) }
     }
 
     companion object {
@@ -29,5 +29,6 @@ class Exceptions {
         const val WRONG_DUPLICATE_FOOD_INPUT = "음식 이름은 중복 없이 입력해야합니다."
         const val WRONG_SIZE_FOOD_INPUT = "못먹는 음식은 최소 0개에서 2개까지 입력 가능합니다."
         const val WRONG_EXIST_FOOD_INPUT = "존재하지 않는 메뉴입니다."
+        const val REQUEST_INPUT_AGAIN = "다시 입력해주세요"
     }
 }
