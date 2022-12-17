@@ -1,4 +1,9 @@
-package menu
+package menu.view
+
+import menu.model.Category
+import menu.model.Coach
+import menu.model.Menu
+import menu.data.Message
 
 class OutputView {
     fun print(string: String, vararg args: Pair<String, String>) {

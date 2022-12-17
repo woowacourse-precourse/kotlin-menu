@@ -1,4 +1,7 @@
-package menu
+package menu.data
+
+import menu.model.Category
+import menu.model.Menu
 
 class MenuList {
     private val menus = mapOf(

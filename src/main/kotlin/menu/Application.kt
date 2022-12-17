@@ -1,5 +1,7 @@
 package menu
 
+import menu.controller.World
+
 fun main() {
     try {
         World()

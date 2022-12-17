@@ -1,6 +1,7 @@
-package menu
+package menu.model
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.data.MenuList
 
 class MenuRecommender {
     private val menuList = MenuList()
@@ -23,7 +24,7 @@ class MenuRecommender {
         return false
     }
 
-    fun generateMenuByCoach(coach: Coach, menus: List<Menu>,categories: List<Category>, dayOfWeek: Int): Menu {
+    fun generateMenuByCoach(coach: Coach, menus: List<Menu>, categories: List<Category>, dayOfWeek: Int): Menu {
         while (true) {
             val menusByCategory = menuList.getMenus()[categories[dayOfWeek]]
             val menuNamesByCategory = menusByCategory!!.map { it.toString() }

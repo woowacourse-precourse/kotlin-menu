@@ -1,6 +1,7 @@
-package menu
+package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.data.Message
 
 class InputView {
     fun getCoachName(): List<String> {

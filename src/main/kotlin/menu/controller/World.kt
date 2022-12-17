@@ -1,4 +1,12 @@
-package menu
+package menu.controller
+
+import menu.data.Message
+import menu.model.Category
+import menu.model.Coach
+import menu.model.Menu
+import menu.model.MenuRecommender
+import menu.view.InputView
+import menu.view.OutputView
 
 class World {
     private val outputView = OutputView()
