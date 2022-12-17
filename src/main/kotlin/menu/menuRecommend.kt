@@ -6,6 +6,7 @@ class menuRecommend {
     val MN = Menu()
     var coachNameCollect= listOf<String>()
     var coachMenuCollect= mutableListOf<String>()
+    var coachsMenuCollection= mutableListOf<List<String>>()
     var categoryNameCollect = listOf<String>()
 
 
@@ -27,18 +28,26 @@ class menuRecommend {
 
     fun categoryMenuSelect(){
         categoryNameCollect=MN.categorySelect()
-//        println(duringMenuSelect())
-//        duringMenuSelect()
+        eachCoach()
     }
 
     fun duringMenuSelect(): List<String>{
         var idx=0
+        var menu = mutableListOf<String>()
         while (true){
-            if (coachMenuCollect.size==5) break
-            coachMenuCollect.add(MN.menuRecommend(categoryNameCollect[idx]))
+            if (menu.size==5) break
+            menu.add(MN.menuRecommend(categoryNameCollect[idx]))
             idx+=1
         }
-        return coachMenuCollect
+        return menu
+    }
+
+    fun eachCoach(){
+        var coachMenuCollect= listOf<String>()
+        for (i in 0 until coachNameCollect.size){
+            coachMenuCollect=duringMenuSelect()
+            coachsMenuCollection.add(coachMenuCollect)
+        }
     }
 
     fun final(){
@@ -46,8 +55,8 @@ class menuRecommend {
         OV.day()
         OV.category(categoryNameCollect)
         for(i in 0 until coachNameCollect.size){
-            duringMenuSelect()
-            OV.coachNameMenu(coachNameCollect[i],coachMenuCollect)
+            // 얘때문에 코치별 이름, 메뉴 뜨는거
+            OV.coachNameMenu(coachNameCollect[i],coachsMenuCollection[i])
         }
         OV.endService()
     }
