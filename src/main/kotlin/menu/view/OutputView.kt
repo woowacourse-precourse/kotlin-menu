@@ -25,20 +25,33 @@ class OutputView {
     }
 
     fun printRecommendResult(coaches: MutableList<Coach>) {
+        println(getResultHeader())
+        println(getResultMain(coaches))
+
+    }
+
+    private fun getResultHeader(): Any? {
         val stringBuilder = StringBuilder()
         stringBuilder.append(DAYS_MESSAGE + LINE_BREAKER)
-        stringBuilder.append(
-            LEFT_BRACKET + CATEGORY + VERTICAL_LINE + MenuCategory.getCategories()
-                .joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
-        stringBuilder.append(LINE_BREAKER)
-        for (coach in coaches) {
-            stringBuilder.append(
-                LEFT_BRACKET + coach.getName() + VERTICAL_LINE + coach.getRecommendedMenu()
-                    .joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
-            stringBuilder.append(LINE_BREAKER)
-        }
-        println(stringBuilder)
+        stringBuilder.append(LEFT_BRACKET + CATEGORY + VERTICAL_LINE)
+        MenuCategory.getCategories().forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
+        stringBuilder.setLength(stringBuilder.length -3)
+        stringBuilder.append(RIGHT_BRACKET + LINE_BREAKER)
+        return stringBuilder.toString()
     }
+
+    private fun getResultMain(coaches: MutableList<Coach>): Any? {
+        val stringBuilder = StringBuilder()
+        for (coach in coaches) {
+            stringBuilder.append(LEFT_BRACKET + coach.getName() + VERTICAL_LINE)
+            coach.getRecommendedMenu().forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
+            stringBuilder.setLength(stringBuilder.length -3)
+            stringBuilder.append(RIGHT_BRACKET + LINE_BREAKER)
+        }
+        return stringBuilder.toString()
+
+    }
+
 
     companion object {
         const val START_MESSAGE = "점심 메뉴 추천을 시작합니다."
