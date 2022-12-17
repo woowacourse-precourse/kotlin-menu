@@ -2,13 +2,11 @@ package menu.domain
 
 import menu.data.*
 
-class MenuCreator {
-    private val randomCategoryGenerator = RandomCategoryGenerator()
+class MenuCreator(private val categoryContainer: MutableList<String>) {
     private val randomFoodGenerator = RandomFoodGenerator()
     private val foodContainer = mutableListOf<String>()
 
     fun readCategory(): MutableList<String> {
-        val categoryContainer = randomCategoryGenerator.createRandomCategory()
         for (category in categoryContainer.indices) {
             when (categoryContainer[category]) {
                 JAPANESE_FOOD -> foodContainer.add(randomFoodGenerator.recommendJapaneseFood())
