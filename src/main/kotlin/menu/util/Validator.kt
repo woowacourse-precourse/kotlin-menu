@@ -1,5 +1,7 @@
 package menu.util
 
+import com.sun.tools.jconsole.JConsoleContext.ConnectionState
+
 class Validator {
 
     fun checkCoachesInput(input : String) {
@@ -22,5 +24,9 @@ class Validator {
         require(input.split(",").size in Constants.COACHES_MIN_SIZE..Constants.COACHES_MAX_SIZE) {
             Constants.COACHES_SIZE_ERROR
         }
+    }
+
+    fun checkFoodsSizeValid(input : String) {
+        require(input.split(",").size in Constants.FOODS_MIN_SIZE..Constants.FOODS_MAX_SIZE) { Constants.FOODS_SIZE_ERROR }
     }
 }
