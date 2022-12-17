@@ -1,5 +1,15 @@
 package menu
 
+import menu.controller.World
+
 fun main() {
-    // TODO: 프로그램 구현
+    try {
+        World()
+    } catch (e: Exception) {
+        when (e) {
+            is IllegalArgumentException, is IllegalStateException -> {
+                println("[ERROR] ${e.message}")
+            }
+        }
+    }
 }
