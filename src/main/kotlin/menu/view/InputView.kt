@@ -11,4 +11,10 @@ class InputView {
         exceptions.validateCoachNames(input)
         return input.split(",")
     }
+
+    fun getCoachBias(): List<String> {
+        val input = readLine()
+        exceptions.validateCoachBias(input)
+        return input.split(",")
+    }
 }

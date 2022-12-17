@@ -11,5 +11,6 @@ class Menu {
         for (name in coachNames) {
             coaches.add(Coach(name))
         }
+        view.getCoachesBias(coaches)
     }
 }
