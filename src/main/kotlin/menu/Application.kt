@@ -11,6 +11,22 @@ fun main() {
     var asian = mutableListOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")
     var west = mutableListOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
 
+    //시작문구
     OutputView().serviceStart()
+
+    //코치 생성
     var coachNames = InputView().coachName()
+    var coach = mutableListOf<Coach>()
+    for (i in coachNames){
+        var person = Coach()
+        person.setName(i)
+        coach.add(person)
+    }
+
+    //코치 싫어하는 음식
+    for (i in coach){
+        var hateFoods = InputView().hateFood(i)
+        i.hateFood = hateFoods.toMutableList()
+    }
+
 }
