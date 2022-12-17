@@ -19,7 +19,6 @@ class RandomCategoryGenerator {
             val category = categories[Randoms.pickNumberInRange(ZERO, FOUR)]
             categoryContainer.add(category)
         }
-
         return categoryContainer
     }
 

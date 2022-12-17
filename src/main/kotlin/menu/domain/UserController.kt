@@ -27,9 +27,10 @@ class UserController {
         outputView.printNoticeResult()
         outputView.printCategoryContainer(categoryList)
         for (coachName in coachNameContainer.indices) {
-            val menuList = MenuCreator(categoryList).readCategory()
+            val menuList = MenuCreator(categoryList).createRandomMenu()
             outputView.printFoodContainer(menuList, coachNameContainer[coachName])
         }
         outputView.printFinishNotice()
     }
+
 }
