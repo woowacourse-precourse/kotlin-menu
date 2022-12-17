@@ -2,6 +2,7 @@ package menu.view
 
 import camp.nextstep.edu.missionutils.Console
 import menu.utils.Exception.coachNameInputException
+import menu.utils.Exception.coachPersonnelInputException
 
 
 class InputView {
@@ -9,6 +10,7 @@ class InputView {
         while (true) {
             val coachName = Console.readLine()!!
             kotlin.runCatching {
+                coachName.coachPersonnelInputException()
                 coachName.coachNameInputException()
             }.onSuccess { return coachName.trim().split(",") }.onFailure { println(it.message) }
         }
