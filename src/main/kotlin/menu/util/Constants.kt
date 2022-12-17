@@ -1,5 +1,6 @@
 package menu.util
 
+const val MAX_DAY = 5
 const val MIN_NOT_EAT = 0
 const val MAX_NOT_EAT = 2
 const val MIN_COACH_SIZE = 2
@@ -24,3 +25,4 @@ const val ERROR_COACH_NAME_LENGTH = "코치의 이름은 최소 2글자, 최대 
 const val ERROR_COACH_SIZE = "코치는 최소 2명 이상 5명 이하로 입력해야 합니다."
 const val ERROR_INVALID_MENU = "카테고리에 없는 메뉴입니다."
 const val ERROR_NOT_EAT_SIZE = "못먹는 음식은 0개에서 2개이하로 입력해야 합니다."
+const val ERROR_CATEGORY_NUMBER = "잘못된 카테고리 번호입니다."
