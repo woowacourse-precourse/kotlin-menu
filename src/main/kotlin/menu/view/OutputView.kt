@@ -23,6 +23,10 @@ class OutputView {
         printRecommendDone()
     }
 
+    fun printInterval() {
+        println()
+    }
+
     private fun printFormedDescription(elements: List<String>) {
         val description = elements.joinToString { DESCRIPTION_FORM }
         println("[ $description ]")
@@ -45,10 +49,6 @@ class OutputView {
 
     private fun printRecommendDone() {
         println(FINISH_ANNOUNCEMENT)
-    }
-
-    private fun printInterval() {
-        println()
     }
 
     companion object {
