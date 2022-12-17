@@ -1,6 +1,8 @@
 package menu.utils
 
 object Constant {
+    const val DAYS = 5
+
     const val JAPANESE_NUMBER = 1
     const val KOREAN_NUMBER = 2
     const val CHINESE_NUMBER = 3
