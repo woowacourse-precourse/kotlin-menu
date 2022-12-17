@@ -45,7 +45,7 @@ class OutputView {
     private fun printMenu(recommender: Recommender, result: MutableList<List<String>>) {
         for (index in result[0].indices) {
             var startString = STRING_START_SYMBOL
-            startString += recommender.getCoach(index) + " | "
+            startString += recommender.getCoach(index) + STRING_DIVIDER
             var resultString = addMenuString(startString, index, result)
             resultString += STRING_END_SYMBOL
             println(resultString)
