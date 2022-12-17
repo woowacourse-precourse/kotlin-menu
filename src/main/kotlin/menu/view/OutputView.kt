@@ -31,10 +31,15 @@ class OutputView {
         printFormedDescription(recommendResult)
     }
 
+    private fun printRecommendDone() {
+        println(FINISH_ANNOUNCEMENT)
+    }
+
     companion object {
         const val CATEGORY_HEADER = "카테고리"
         const val DESCRIPTION_FORM = " | "
         const val DIVISION_HEADER = "구분"
+        const val FINISH_ANNOUNCEMENT = "추천을 완료했습니다."
         const val START_ANNOUNCEMENT = "점심 메뉴 추천을 시작합니다."
     }
 }
