@@ -2,7 +2,7 @@ package menu
 
 import camp.nextstep.edu.missionutils.Console
 
-class InputView(val checker:ValidChecker) {
+class InputView(val checker:ValidChecker =ValidChecker()) {
 
     fun inputCoachName():List<String>{
         val coachNames:String

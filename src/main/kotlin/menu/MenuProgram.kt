@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class MenuProgram(val input:InputView, val output:OutputView) {
 
-    private lateinit var coachs:MutableList<Coach>
+    private val coachs:MutableList<Coach>
     private val categories:Categories
-    private val categoryOfDay= mutableListOf<String>()
+    private val categoryOfDay=Categories(mutableListOf())
 
 
     init{
@@ -16,14 +16,16 @@ class MenuProgram(val input:InputView, val output:OutputView) {
         var china= Category(3,"중식", listOf("깐풍기", "볶음면", "동파육", "짜장면", "짬뽕", "마파두부", "탕수육", "토마토 달걀볶음", "고추잡채"))
         var asia=Category(4,"아시안", listOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜"))
         var west= Category(5,"양식", listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"))
-        categories=Categories(listOf(japan,korea,china,asia,west))
+        categories=Categories(mutableListOf(japan,korea,china,asia,west))
+        coachs= mutableListOf()
     }
 
     fun runProgram(){
         output.printStart()
         makeCoachs()
         findHateFood()
-        makeFiveCategory()
+        setMenu()
+        output.printResult(categoryOfDay.getCategories(),coachs)
     }
 
     fun makeCoachs(){
@@ -41,24 +43,37 @@ class MenuProgram(val input:InputView, val output:OutputView) {
         }
     }
 
-    fun pickCategory():String{
+    fun pickCategory():Category{
         var pick:Int
         while(true){
             pick= Randoms.pickNumberInRange(1,5)
             if(categories.checkCount(pick)) break
         }
-        return categories.get(pick)
+        return categories.get(pick) //해당 카테고리의 이름 반환
 
     }
 
     fun makeFiveCategory(){
         for (day in 0 until 5){
-            categoryOfDay.add(pickCategory())
+            //categoryOfDay.add(pickCategory())
         }
     }
 
-    fun makeFiveMenu(){
+    fun makeMenu(menus:List<String>, coach: Coach){
+        var menu:String= Randoms.shuffle(menus)[0]
+        while(coach.checkCantEat(menu)){
+            menu = Randoms.shuffle(menus)[0]
+        }
+        coach.foodList.add(menu)
+    }
 
+    fun setMenu(){
+        for(day in 0 until 5){
+            categoryOfDay.add(pickCategory())
+            for(coach in coachs){
+                makeMenu(categoryOfDay.getLastCategoryMenus(day),coach)
+            }
+        }
     }
 
 
