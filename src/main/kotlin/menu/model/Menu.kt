@@ -17,10 +17,11 @@ object Menu {
         val tempMenuDB = MENUS.split("\n")
         for (splitMenuDB in tempMenuDB){
             val miniMenuDB = splitMenuDB.split(":")
-            menuDB[miniMenuDB[CATEGORY_NAME]] = miniMenuDB[MENU_NAMES].replace(" ","").split(",")
+            menuDB[miniMenuDB[CATEGORY_NAME].replace(" ","")] = miniMenuDB[MENU_NAMES].replace(" ","").split(",")
         }
     }
 
+    // 카테고리가 정해진 메뉴들중에 하나 뽑음
     fun getRandomPickedMenu(categoryMenus : List<String>) : String{
         return Randoms.shuffle(categoryMenus)[0]
     }

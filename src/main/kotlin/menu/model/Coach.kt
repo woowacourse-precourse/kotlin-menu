@@ -17,7 +17,9 @@ class Coach(coachName: String) {
         while (recommendedMenus.size < 5) {
             val pickedMenu = Menu.getRandomPickedMenu(Menu.getPickedCategoryMenus(pickedCategory)!!)
             if (cantEat.contains(pickedMenu)) continue
+            if (recommendedMenus.contains(pickedMenu)) continue
             recommendedMenus.add(pickedMenu)
+            break
         }
     }
 

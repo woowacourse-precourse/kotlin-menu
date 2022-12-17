@@ -28,7 +28,7 @@ object Category {
         return recommendedCategories.toList()
     }
 
-    fun getCategories(): List<String> {
+    private fun getCategories(): List<String> {
         val tempMenus = MENUS.split("\n")
         val categories = mutableListOf<String>()
 
