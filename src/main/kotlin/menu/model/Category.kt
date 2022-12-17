@@ -7,11 +7,15 @@ enum class Category(private val number: Int, private val foods : List<String>) {
     아시안(4, listOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")),
     양식(5, listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"));
 
-    fun getFoods() = foods
+
 
     companion object {
         fun of( number: Int) : Category {
             return Category.values().find {it.number == number}!!
+        }
+
+        fun getFoods(category: Category) : List<String> {
+            return Category.values().find { it == category }!!.foods
         }
         fun getCategories() = Category.values().map { it }
     }
