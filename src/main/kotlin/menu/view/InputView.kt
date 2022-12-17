@@ -12,9 +12,9 @@ class InputView (private val outputView:OutputView){
         return input.split(',')
     }
 
-    fun readHateMenu():List<String>{
-        outputView.printMessage(GameMessage.REQUEST_HATE_MENU)
-       val input = Console.readLine()
+    fun readHateMenu(name:String):List<String>{
+        outputView.printMessage(GameMessage.REQUEST_HATE_MENU.format(name))
+        val input = Console.readLine()
         validator.validateHateMenu(input)
         return input.split(',')
     }
