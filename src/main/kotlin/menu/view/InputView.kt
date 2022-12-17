@@ -1,6 +1,8 @@
-package menu
+package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.data.Category
+import menu.data.Coach
 
 class InputView {
 

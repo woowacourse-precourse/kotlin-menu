@@ -1,4 +1,4 @@
-package menu
+package menu.data
 
 class Coach(val name: String) {
     private val uneatableMenus = mutableListOf<String>()

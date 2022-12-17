@@ -1,6 +1,9 @@
-package menu
+package menu.maker
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.data.Category
+import menu.data.Coach
+import menu.data.MenuResult
 
 class MenuRecommender {
     fun makeMenus(coaches: List<Coach>): MenuResult {
