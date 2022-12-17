@@ -5,7 +5,8 @@ class InputValidator(private val userInput: String) {
         LENGTH_ERROR("[ERROR] 이름은 최소 2글자 이상 최대 4글자까지 입력할 수 있습니다."),
         NAME_SIZE_ERROR("[ERROR] 최소 2명, 최대 5명까지 입력할 수 있습니다."),
         MENU_SIZE_ERROR("[ERROR] 먹지 못하는 메뉴는 최대 2개 까지 입력할 수 있습니다."),
-        OVERLAP_ERROR("[ERROR] 코치 이름은 중복될 수 없습니다.")
+        OVERLAP_ERROR("[ERROR] 코치 이름은 중복될 수 없습니다."),
+        OVERLAP_MENU_ERROR("[ERROR] 메뉴 이름은 중복될 수 없습니다.")
     }
 
     fun checkCoachNamesException(): Boolean {
@@ -27,7 +28,7 @@ class InputValidator(private val userInput: String) {
     fun checkMenuException(): Boolean {
         val menus = userInput.split(',')
         if(menus.size!=menus.distinct().size){
-            throw IllegalArgumentException(ErrorMessage.OVERLAP_ERROR.sentence)
+            throw IllegalArgumentException(ErrorMessage.OVERLAP_MENU_ERROR.sentence)
         }
         if (menus.size > 2) {
             throw IllegalArgumentException(ErrorMessage.MENU_SIZE_ERROR.sentence)
