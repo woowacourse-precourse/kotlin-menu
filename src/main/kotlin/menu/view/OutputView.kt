@@ -34,7 +34,7 @@ class OutputView {
         stringBuilder.append(DAYS_MESSAGE + LINE_BREAKER)
         stringBuilder.append(LEFT_BRACKET + CATEGORY + VERTICAL_LINE)
         categories.forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
-        stringBuilder.setLength(stringBuilder.length -3)
+        stringBuilder.setLength(stringBuilder.length - 3)
         stringBuilder.append(RIGHT_BRACKET)
         return stringBuilder.toString()
     }
@@ -44,12 +44,11 @@ class OutputView {
         for (coach in coaches) {
             stringBuilder.append(LEFT_BRACKET + coach.getName() + VERTICAL_LINE)
             coach.getRecommendedMenu().forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
-            stringBuilder.setLength(stringBuilder.length -3)
+            stringBuilder.setLength(stringBuilder.length - 3)
             stringBuilder.append(RIGHT_BRACKET + LINE_BREAKER)
         }
         return stringBuilder.toString()
     }
-
 
     companion object {
         const val START_MESSAGE = "점심 메뉴 추천을 시작합니다."
@@ -63,6 +62,5 @@ class OutputView {
         const val CATEGORY = "카테고리"
         const val LINE_BREAKER = "\n"
         const val DAYS_MESSAGE = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
-
     }
 }

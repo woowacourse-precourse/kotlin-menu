@@ -22,7 +22,7 @@ class RandomMenu {
 
     private fun getCategory(): List<String> {
         val randomNumber = pickNumberInRange(1, 5)
-        if (categories[randomNumber-1] >= 2) {
+        if (categories[randomNumber - 1] >= 2) {
             return getCategory()
         }
         categoryNames.add(MenuCategory.getCategoryName(randomNumber))
