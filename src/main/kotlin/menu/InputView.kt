@@ -8,7 +8,6 @@ class InputView {
         val input = Console.readLine()
         val splitResult = input.split(",")
         val coaches = mutableListOf<Coach>()
-        // 코치 이름 길이 확인
         try {
             if(splitResult.size < 2 || splitResult.size > 5) throw IllegalArgumentException("coach-numbers")
             for (name in splitResult) {
@@ -36,6 +35,7 @@ class InputView {
         for (coach in coaches) {
             println("${coach.name}(이)가 못 먹는 메뉴를 입력해주세요.")
             coach.addUneatableMenus(readMenu())
+            println()
         }
     }
 
