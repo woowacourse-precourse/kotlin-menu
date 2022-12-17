@@ -8,4 +8,9 @@ class InputView {
         val coachesName = Console.readLine().split(",")
         return coachesName
     }
+
+    fun readCoachCantEatMenu(): List<String> {
+        val coachCantEat = Console.readLine().split(",")
+        return coachCantEat
+    }
 }
