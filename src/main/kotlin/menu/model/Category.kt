@@ -10,10 +10,14 @@ object Category {
     아시안: 팟타이, 카오 팟, 나시고렝, 파인애플 볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜
     양식: 라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니"""
     private const val MAX_RECOMMEND_COUNT = 2
-    private const val MAX_RECOMMENDED_CATEGORIES_SIZE = 6
+    private const val MAX_RECOMMENDED_CATEGORIES_SIZE = 5
 
-    fun getRecommendCategories(): List<String> {
-        val recommendedCategories = mutableListOf("카테고리")
+    private val recommendedCategories = mutableListOf<String>()
+
+    // 추천 카테고리를 반환 ex) 한식,양식,일식,중식,중식
+    fun getRecommendCategories() = recommendedCategories
+
+    fun initRecommendCategories(): List<String> {
         while (recommendedCategories.size < MAX_RECOMMENDED_CATEGORIES_SIZE) {
             val pickedCategory = getRandomPickedRecommendCategory(getCategories())
             if (recommendedCategories.count { it == pickedCategory } == MAX_RECOMMEND_COUNT) {
@@ -29,7 +33,8 @@ object Category {
         val categories = mutableListOf<String>()
 
         for (menu in tempMenus) {
-            categories.add(menu.split(":")[0])
+            val category = menu.split(":")
+            categories.add(category[0].trimIndent())
         }
         return categories
     }

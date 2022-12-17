@@ -13,6 +13,14 @@ class Coach(coachName: String) {
         name = coachName
     }
 
+    fun initRecommendedMenus(pickedCategory: String) {
+        while (recommendedMenus.size < 5) {
+            val pickedMenu = Menu.getRandomPickedMenu(Menu.getPickedCategoryMenus(pickedCategory)!!)
+            if (cantEat.contains(pickedMenu)) continue
+            recommendedMenus.add(pickedMenu)
+        }
+    }
+
     fun getName() = name
 
     fun setCantEat(cantEat: List<String>) {
