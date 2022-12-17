@@ -26,6 +26,9 @@ class RecommendController(
         outputView.printInterval()
 
         setUpCoaches()
+
+        selectCategories()
+        recommendMenus()
     }
 
     private fun setUpCoaches() {
@@ -68,5 +71,10 @@ class RecommendController(
 
     private fun selectCategories() {
         categoriesDTO = categoryMaker.make()
+    }
+
+    private fun recommendMenus() {
+        val coaches = coachesDTO.getCoaches()
+        coaches.map { coach -> coach.recommendMenus(categoriesDTO) }
     }
 }
