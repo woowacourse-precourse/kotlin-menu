@@ -1,5 +1,9 @@
 package menu
 
 fun main() {
-    // TODO: 프로그램 구현
+    val user=menuRecommend()
+    user.categoryMenuSelect()
+    user.final()
+
+
 }
