@@ -20,6 +20,8 @@ class NotEatMenuException(menus: String) {
         val menu = menus.split(',')
 
         menu.forEach {
+            if(it.isNullOrEmpty())
+                return@forEach
             if(!Menus.allMenu.contains(it))
                 throw IllegalArgumentException(ExceptionMessage.notAvailableMenu)
         }

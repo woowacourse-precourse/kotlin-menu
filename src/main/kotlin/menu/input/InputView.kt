@@ -21,11 +21,15 @@ class InputView {
         }
     }
 
-    fun inputNotEatMenu(): List<String> {
-        val menus = Console.readLine()!!
-
-        NotEatMenuException(menus)
-
-        return menus.split(',')
+    fun inputNotEatMenu(coachName: String): List<String> {
+        while(true) {
+            try {
+                val menus = Console.readLine()!!
+                NotEatMenuException(menus)
+                return menus.split(',')
+            } catch (e: IllegalArgumentException) {
+                OutputView().outputException(InputType.MENU, e.message!!, coachName)
+            }
+        }
     }
 }

@@ -40,7 +40,7 @@ class MenuController {
     private fun notEatMenu() {
         coaches.forEach {
             outputView.inputNotEatMenu(it)
-            notEatMenus.add(inputView.inputNotEatMenu())
+            notEatMenus.add(inputView.inputNotEatMenu(it))
         }
     }
 
