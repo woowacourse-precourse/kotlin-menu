@@ -24,7 +24,7 @@ object InputValidator {
         val separatedMenus = menus.split(",").map { it.trim() }
 
         require(separatedMenus.size in 0..2) {
-            ERROR_MESSAGE_FORMAT.format("각 코치는 최소 0개, 최대 2개의 못 먹는 메뉴가 있습니다.")
+            ERROR_MESSAGE_FORMAT.format("각 코치의 못 먹는 메뉴의 개수는 0개 이상 2개 이하여야 합니다.")
         }
         require(separatedMenus.all { menu -> Category.values().any { it.containMenu(Menu(menu)) } }) {
             ERROR_MESSAGE_FORMAT.format("못 먹는 메뉴는 존재하는 메뉴여야 합니다.")
