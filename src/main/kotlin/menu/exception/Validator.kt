@@ -7,15 +7,23 @@ class Validator {
         val inputSplit = input.split(",")
         val names = mutableListOf<String>()
         inputSplit.forEach { names.add(it.replace(" ", "")) }
-        if ((names.size < MINIMUM_NAME_SIZE) or (names.size > MAXIMUM_NAME_SIZE)) throw IllegalArgumentException(
+        checkCoachCount(names)
+        checkNameLength(names)
+        return names
+    }
+
+    private fun checkCoachCount(names: List<String>) {
+        if ((names.size < MINIMUM_COACH_COUNT) or (names.size > MAXIMUM_COACH_COUNT)) throw IllegalArgumentException(
             ERROR_NAMES_SIZE
         )
+    }
+
+    private fun checkNameLength(names: List<String>) {
         names.forEach {
             if ((it.length < MINIMUM_NAME_LENGTH) or (it.length > MAXIMUM_NAME_LENGTH)) throw IllegalArgumentException(
                 ERROR_NAMES_LENGTH
             )
         }
-        return names
     }
 
     fun checkCantEatMenu(input: String): List<String> {

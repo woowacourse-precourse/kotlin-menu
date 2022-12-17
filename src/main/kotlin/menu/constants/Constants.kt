@@ -1,8 +1,8 @@
 package menu.constants
 
 // 기준 숫자
-const val MINIMUM_NAME_SIZE = 2
-const val MAXIMUM_NAME_SIZE = 5
+const val MINIMUM_COACH_COUNT = 2
+const val MAXIMUM_COACH_COUNT = 5
 
 const val MINIMUM_NAME_LENGTH = 2
 const val MAXIMUM_NAME_LENGTH = 4
