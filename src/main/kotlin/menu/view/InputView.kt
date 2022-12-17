@@ -10,4 +10,8 @@ class InputView {
         return Console.readLine()
     }
 
+    fun inputFoodsName() : String {
+        return Console.readLine()
+    }
+
 }
