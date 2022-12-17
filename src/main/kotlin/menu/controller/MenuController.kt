@@ -30,6 +30,7 @@ class MenuController {
     }
 
     private fun init(): Recommender {
+        outputView.printStart()
         val coachNames = inputView.readCoachName()
         val banFood = mutableListOf<List<String>>()
         for (name in coachNames) {
