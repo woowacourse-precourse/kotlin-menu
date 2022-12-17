@@ -1,5 +1,7 @@
 package menu
 
+import menu.service.RecommendService
+
 fun main() {
     try {
         RecommendService().run()
