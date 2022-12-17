@@ -14,7 +14,17 @@ class InputValidator {
         return names
     }
 
-    fun validateDislikeMenus() {
-
+    fun validateDislikeMenus(dislikeMenus: String, totalMenu: Menu): List<String> {
+        val dislikeMenuList = dislikeMenus.split(',')
+        dislikeMenuList.forEach {
+            if (!totalMenu.contains(it)) {
+                throw IllegalArgumentException("[ERROR] 존재하지 않는 메뉴입니다.")
+            }
+            if (dislikeMenuList.size > 2) {
+                throw IllegalArgumentException("[ERROR] 못 먹는 메뉴는 최소 0개 최대 2개입니다.")
+            }
+        }
+        return dislikeMenuList
     }
+
 }
