@@ -20,3 +20,5 @@ const val MAX_COACH_COUNT = 5
 
 const val MIN_MENUS_SIZE = 0
 const val MAX_MENUS_SIZE = 2
+
+const val OUTPUT_MENU_RESULT = "메뉴 추천 결과입니다."
