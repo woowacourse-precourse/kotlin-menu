@@ -1,4 +1,4 @@
 package menu.model
 
-class Food {
+class Food(private val food: List<String>) {
 }

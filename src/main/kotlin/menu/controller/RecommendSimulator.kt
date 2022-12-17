@@ -17,7 +17,7 @@ class RecommendSimulator(
 
     private fun getCoach(): Coach {
         try {
-            output.printInputName()
+            output.printRequestName()
             return input.getValidatedCoach()
 
         } catch (e: IllegalArgumentException) {

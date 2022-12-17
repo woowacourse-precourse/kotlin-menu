@@ -9,4 +9,7 @@ class Validator {
             name -> require(name.length in 2..4) { ERROR_INPUT_COACH }
         }
     }
+
+    fun checkValidateFood(food: List<String>) {
+    }
 }
