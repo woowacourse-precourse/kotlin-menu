@@ -1,5 +1,6 @@
 package menu.output
 
+import menu.data.InputType
 import menu.message.PrintMessage
 
 class OutputView {
@@ -44,6 +45,15 @@ class OutputView {
                 print(" ${recommendMenus[day][coachIndex]} ")
                 compareLastIndex(recommendMenus, day)
             }
+        }
+    }
+
+    fun outputException(inputType: InputType, exceptionMessage: String, coachName: String = "") {
+        println(exceptionMessage)
+
+        when(inputType) {
+            InputType.COACH_NAME -> inputCoachName()
+            InputType.MENU -> inputNotEatMenu(coachName)
         }
     }
 
