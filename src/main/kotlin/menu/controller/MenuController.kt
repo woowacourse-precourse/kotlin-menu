@@ -36,6 +36,6 @@ class MenuController(
     }
 
     private fun recommendMenu(inEdibleFoodsAboutCoaches: Map<String, List<String>>) {
-        menuService.recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches)
+        println(menuService.recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches))
     }
 }
