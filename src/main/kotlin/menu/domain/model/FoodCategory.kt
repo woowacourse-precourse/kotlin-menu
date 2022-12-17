@@ -20,10 +20,6 @@ enum class FoodCategory(
 
     fun getCategoryName() = categoryName
 
-    fun containsFood(foodName: String): Boolean {
-        return menus.contains(foodName)
-    }
-
     companion object {
         fun categoryOf(category: Int): FoodCategory {
             return when (category) {
