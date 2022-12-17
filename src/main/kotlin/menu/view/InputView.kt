@@ -28,7 +28,6 @@ class InputView {
         println(coach + INPUT_COACH_NOT_EAT)
         return try {
             val menus = Console.readLine().split(',')
-            println(menus)
             Exceptions.checkCoachNotToEatInput(menus)
             println()
             return menus
