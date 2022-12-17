@@ -22,6 +22,7 @@ const val CHINESE_MENUS = "깐풍기,볶음면,동파육,짜장면,짬뽕,마파
 const val ASIAN_MENUS = "팟타이,카오 팟,나시고렝,파인애플 볶음밥,쌀국수,똠얌꿍,반미,월남쌈,분짜"
 const val AMERICA_MENUS = "라자냐,그라탱,뇨끼,끼슈,프렌치 토스트,바게트,스파게티,피자,파니니"
 
+const val START_RECOMMEND_MENU = "점심 메뉴 추천을 시작합니다.\n"
 const val INPUT_COACH_NAME = "코치의 이름을 입력해 주세요. (, 로 구분)"
 const val INPUT_COACH_NOT_EAT = "(이)가 못 먹는 메뉴를 입력해 주세요."
 const val RESULT_MESSAGE = "메뉴 추천 결과입니다."

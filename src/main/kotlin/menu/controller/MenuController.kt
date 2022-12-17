@@ -21,6 +21,7 @@ class MenuController(
      * 코치들의 이름과 못먹는 음식 initialize
      */
     fun inputCoachInfo() {
+        println(START_RECOMMEND_MENU)
         coaches = inputView.readCoachName()
         coaches.forEach { coach ->
             notEatMenus.add(inputView.readCoachNotEat(coach))
