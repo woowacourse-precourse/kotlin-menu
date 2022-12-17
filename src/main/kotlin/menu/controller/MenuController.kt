@@ -17,7 +17,7 @@ class MenuController {
 
         for (cantEat in cannotEatFood)
             result.add(determineMenu(determinedCategory,cantEat))
-
+        OutputView().printResult(names, determinedCategory, result)
     }
 
     private fun startMenuRecommend(): List<String> {
@@ -60,15 +60,14 @@ class MenuController {
 
     private fun determineMenu(determinedCategory: List<String>, cantEat: List<String>): List<String> {
         val determinedMenu = mutableListOf<String>()
-        while (determinedMenu.size <= 5) {
-            for (category in determinedCategory) {
-                val menus = Food.valueOf(category).menu
-                val menu: String = Randoms.shuffle(menus)[0]
-                if(checkDuplicateMenu(determinedMenu, menu) && checkCantEatFood(menu, cantEat))
-                    continue
-
-                determinedMenu.add(menu)
-            }
+        var category = 0
+        while (determinedMenu.size < 5) {
+            val menus = Food.valueOf(determinedCategory[category]).menu
+            val menu: String = Randoms.shuffle(menus)[0]
+            if(checkDuplicateMenu(determinedMenu, menu) || checkCantEatFood(menu, cantEat))
+                continue
+            determinedMenu.add(menu)
+            category++
         }
         return determinedMenu
     }

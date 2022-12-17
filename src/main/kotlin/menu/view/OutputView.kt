@@ -15,10 +15,14 @@ class OutputView {
         println("[ERROR] $msg")
     }
 
-    fun printResult() {
+    fun printResult(names: List<String>, determinedCategory: List<String>, result: List<List<String>>) {
         println(PRINT_RESULT)
         printDay()
-
+        printCategory(determinedCategory)
+        for(coach in names.indices)
+            printCoachMenu(names[coach],result[coach])
+        println()
+        print(END)
     }
 
     private fun printDay() {
@@ -26,6 +30,20 @@ class OutputView {
         print("${PRINT_RESULT_START}구분")
         for (day in days)
             print(PRINT_RESULT_MID+day)
+        println(PRINT_RESULT_END)
+    }
+
+    private fun printCategory(categories: List<String>) {
+        print("${PRINT_RESULT_START}카테고리")
+        for (category in categories)
+            print(PRINT_RESULT_MID+category)
+        println(PRINT_RESULT_END)
+    }
+
+    private fun printCoachMenu(name: String, menu: List<String>) {
+        print(PRINT_RESULT_START+name)
+        for (food in menu)
+            print(PRINT_RESULT_MID+food)
         println(PRINT_RESULT_END)
     }
 }
