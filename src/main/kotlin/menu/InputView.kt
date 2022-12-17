@@ -33,7 +33,7 @@ class InputView {
     }
 
     private fun validateDeclineMenu(input: String) {
-        val pattern = Regex("(.+,?)+")
+        val pattern = Regex("(.+,?)*")
         if (!pattern.matches(input))
             throw IllegalArgumentException(Message.ERR_DECLINE_MENU_COMMA)
     }
