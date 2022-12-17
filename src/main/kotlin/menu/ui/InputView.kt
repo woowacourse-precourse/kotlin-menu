@@ -6,6 +6,7 @@ import menu.data.*
 class InputView {
     private val outputView = OutputView()
 
+
     fun enterCoachName(): List<String> {
         while (true) {
             val coachName = Console.readLine()
@@ -16,16 +17,33 @@ class InputView {
     }
 
 
-    fun enterNoEating() {
-        val noEating = Console.readLine()
+    fun enterNoEating(): List<String> {
+        while (true) {
+            val noEating = Console.readLine() ?: ""
+            kotlin.runCatching { checkNoEating(noEating) }
+                .onSuccess { return noEating.split(",") }
+                .onFailure { outputView.printErrorMessage(ERROR_RETRY) }
+        }
+    }
+
+    private fun checkNoEating(noEating: String) {
+        exceptNoEatingCount(noEating)
+
     }
 
     private fun checkCoachName(coachName: String) {
-        exceptInputRule(coachName)
-        exceptCountCoach(coachName)
         exceptNameBlank(coachName)
+        exceptCountCoach(coachName)
+        exceptInputRule(coachName)
         exceptNameRule(coachName)
     }
+
+    private fun exceptNoEatingCount(noEating: String) {
+        val foodContainer = noEating.split(",")
+        if (foodContainer.size > 2)
+            throw IllegalArgumentException("${outputView.printErrorMessage(ERROR_NO_EATING_MAX)}")
+    }
+
 
     private fun exceptNameRule(coachNameInput: String) {
         val coachContainer = coachNameInput.split(",")
@@ -42,15 +60,15 @@ class InputView {
     }
 
     private fun exceptCountCoach(coachNameInput: String) {
-        if (coachNameInput.length !in 5..14) {
+        if (coachNameInput.length !in 4..14) {
             throw IllegalArgumentException("${outputView.printErrorMessage(ERROR_COACH_COUNT)}")
         }
     }
 
-    private fun exceptInputRule(coachNameInput: String) {
-        if (!coachNameInput.contains(","))
+    private fun exceptInputRule(input: String) {
+        if ((input.isNotEmpty()) and (!input.contains(",")))
             throw IllegalArgumentException("${outputView.printErrorMessage(ERROR_INPUT_RULE)}")
-        if (coachNameInput.contains(' '))
+        if (input.contains(' '))
             throw IllegalArgumentException("${outputView.printErrorMessage(ERROR_INPUT_RULE_BLANK)}")
     }
 }
