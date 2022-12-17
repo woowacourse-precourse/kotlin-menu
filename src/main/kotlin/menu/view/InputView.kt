@@ -17,8 +17,9 @@ class InputView(
 
     fun inputInedibleFoods(): List<String> {
         val inedibleFoods = input().trim().split(",")
+        val nonDuplicatedInedibleFoods = DuplicationRemover.removeDuplication(inedibleFoods)
         printEnter()
-        return inputValidator.validateInedibleFoods(inedibleFoods)
+        return inputValidator.validateInedibleFoods(nonDuplicatedInedibleFoods)
     }
 
     private fun input(): String = Console.readLine()
