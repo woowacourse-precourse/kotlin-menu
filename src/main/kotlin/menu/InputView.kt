@@ -14,4 +14,16 @@ class InputView {
         if (!pattern.matches(input))
             throw IllegalArgumentException(Message.ERR_COACH_COMMA)
     }
+
+    fun getDeclineMenu(): List<String> {
+        val input = Console.readLine()
+        validateDeclineMenu(input)
+        return input.split(",")
+    }
+
+    private fun validateDeclineMenu(input: String) {
+        val pattern = Regex("(.+,?)+")
+        if (!pattern.matches(input))
+            throw IllegalArgumentException(Message.ERR_DECLINE_MENU_COMMA)
+    }
 }
