@@ -11,26 +11,24 @@ class OutputView {
 
     fun printFinish() {}
 
-    private fun getFormedDescription(elements: List<String>): String {
-        return elements.joinToString { DESCRIPTION_FORM }
+    private fun printFormedDescription(elements: List<String>) {
+        val description = elements.joinToString { DESCRIPTION_FORM }
+        println("[ $description ]")
     }
 
     private fun printDivision() {
         val days = listOf(DIVISION_HEADER) + Day.values().map { day -> day.byKorean() }
-        val description = getFormedDescription(days)
-        println("[ $description ]")
+        printFormedDescription(days)
     }
 
     private fun printCategory(categories: List<Category>) {
         val daysByKorean = listOf(CATEGORY_HEADER) + categories.map { category -> category.byKorean() }
-        val description = getFormedDescription(daysByKorean)
-        println("[ $description ]")
+        printFormedDescription(daysByKorean)
     }
 
     private fun printMenus(coach: Coach) {
         val recommendResult = coach.getRecommendResult()
-        val description = getFormedDescription(recommendResult)
-        println("[ $description ]")
+        printFormedDescription(recommendResult)
     }
 
     companion object {
