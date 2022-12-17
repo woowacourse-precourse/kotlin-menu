@@ -1,5 +1,6 @@
 package menu.controller
 
+import menu.domain.MenuGenerator
 import menu.model.Coach
 import menu.model.Food
 import menu.view.OutputView
@@ -15,7 +16,7 @@ class RecommendSimulator(
         val coachList = getCoach()
         coachList.getCoach().forEach {
             coach -> val food = getFood(coach)
-            println(food)
+            MenuGenerator(food)
         }
 
     }

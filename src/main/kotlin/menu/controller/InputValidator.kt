@@ -10,26 +10,15 @@ class InputValidator {
     private val validator: Validator = Validator()
 
     fun getValidatedCoach(): Coach {
-        try {
-            val input = inputView.readCoach().split(',')
-
-            validator.checkValidateCoach(input)
-            return Coach(input)
-
-        } catch (e: IllegalArgumentException) {
-            throw e
-        }
+        val input = inputView.readCoach().trim().replace(" ", "").split(',')
+        validator.checkValidateCoach(input)
+        return Coach(input)
     }
 
     fun getValidatedFood(): Food {
-        try {
-            val input = inputView.readFood().split(',')
+        val input = inputView.readFood().trim().split(',')
 
-            validator.checkValidateFood(input)
-            return Food(input)
-
-        } catch (e: IllegalArgumentException) {
-            throw e
-        }
+        validator.checkValidateFood(input)
+        return Food(input)
     }
 }
