@@ -1,6 +1,7 @@
 package menu.view
 
 import menu.domain.Coach
+import menu.domain.CoachManager
 import menu.strings.Message
 
 class OutputView {
@@ -16,11 +17,6 @@ class OutputView {
         println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg.format(coachName))
     }
 
-    fun printResult() {
-        println(Message.PrintMessage.PRINT_RESULT.msg)
-        println(Message.PrintMessage.DAYS.msg)
-    }
-
     fun printCategory(category: List<String>) {
         println(Message.PrintMessage.CATEGORY.msg.format(
             category[0],
@@ -30,10 +26,10 @@ class OutputView {
             category[4]))
     }
 
-    // TODO : 코치가 먹을 음식 출력 기능 구현 필요
-    fun printCoach(coach: Coach) {
-        println(Message.PrintMessage.RECOMMEND_FOOD.msg.format(
-
-        ))
+    fun printResult(categoryString:String, coachesString: String) {
+        println(Message.PrintMessage.PRINT_RESULT.msg)
+        println(Message.PrintMessage.DAYS.msg)
+        println(categoryString)
+        println(coachesString)
     }
 }
