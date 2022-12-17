@@ -6,10 +6,10 @@ class InputView {
     private val inputValidation = InputValidation()
 
     fun readCoaches():List<String>{
+        println(INPUT_COACH_NAME_MESSAGE)
         return try {
             val input = Console.readLine()
-            inputValidation.checkNumberOfCoach(input)
-            val coaches = input.split(",")
+            val coaches = inputValidation.checkNumberOfCoach(input)
             inputValidation.checkCoachNameLength(coaches)
             coaches
         }catch (e:IllegalArgumentException){
@@ -18,17 +18,22 @@ class InputView {
         }
     }
 
-    fun readImpossibleFood():List<String>{
+    fun readImpossibleFood(coach:String):List<String>{
+        println("${coach}"+INPUT_FOOD_NAME_MESSAGE)
         return try{
             val input = Console.readLine()
-            inputValidation.checkNumberOfImpossibleFood(input)
-            val foods = input.split(",")
+            val foods = inputValidation.checkNumberOfImpossibleFood(input)
             inputValidation.checkInvalidImpossibleFood(foods, listOf())
             foods
         }catch (e :IllegalArgumentException){
             println(e.message)
-            readImpossibleFood()
+            readImpossibleFood(coach)
         }
+    }
+
+    companion object{
+        const val INPUT_COACH_NAME_MESSAGE = "코치의 이름을 입력해 주세요. (, 로 구분)"
+        const val INPUT_FOOD_NAME_MESSAGE = "(이)가 못 먹는 메뉴를 입력해 주세요."
     }
 
 }

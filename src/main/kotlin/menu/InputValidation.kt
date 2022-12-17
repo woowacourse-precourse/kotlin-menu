@@ -2,9 +2,10 @@ package menu
 
 class InputValidation {
 
-    fun checkNumberOfCoach(input: String){
+    fun checkNumberOfCoach(input: String):List<String>{
         val coaches = input.split(",")
         if(coaches.size < MIN_COACH_NUMBER || coaches.size> MAX_COACH_NUMBER ) throw IllegalArgumentException()
+        return coaches
     }
 
     fun checkCoachNameLength(coaches:List<String>){
@@ -13,9 +14,10 @@ class InputValidation {
         }) throw IllegalArgumentException()
     }
 
-    fun checkNumberOfImpossibleFood(input: String){
+    fun checkNumberOfImpossibleFood(input: String):List<String>{
         val foods = input.split(",")
         if(foods.size> MAX_IMPOSSIBLE_FOOD_NUMBER ) throw IllegalArgumentException()
+        return foods
     }
 
     fun checkInvalidImpossibleFood(foods: List<String>,menu:List<String>){
