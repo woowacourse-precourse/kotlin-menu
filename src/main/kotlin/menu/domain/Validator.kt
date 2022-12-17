@@ -17,7 +17,7 @@ class Validator {
     }
 
     fun checkValidateFood(food: List<String>) {
-        require(food.size == food.distinct().size && food.size >= MIN_RANGE_FOOD_NUMBER && food.size <= MAX_RANGE_FOOD_NUMBER)
+        require(food.size == food.distinct().size && food.size >= MIN_RANGE_FOOD_NUMBER && food.size <= MAX_RANGE_FOOD_NUMBER) { ERROR_INPUT_FOOD}
         food.forEach { it ->
             require(FOOD_ALL.contains(it) || it.length == MIN_RANGE_FOOD_NUMBER) { ERROR_INPUT_FOOD }
         }
