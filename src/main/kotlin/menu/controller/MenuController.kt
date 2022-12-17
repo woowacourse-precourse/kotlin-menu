@@ -12,11 +12,16 @@ class MenuController {
     private val recommend = MenuRecommend()
 
     fun run() {
-        output.printStartMessage()
-        addCoach()
-        addDislikedFood()
-        chooseMenu()
-        output.printMenuRecommendResult(recommend.categoryRecord, recommend.coaches)
+        // catch
+        try {
+            output.printStartMessage()
+            addCoach()
+            addDislikedFood()
+            chooseMenu()
+            output.printMenuRecommendResult(recommend.categoryRecord, recommend.coaches)
+        } catch (e: Exception) {
+            println(e.message)
+        }
     }
 
     private fun addCoach() {
