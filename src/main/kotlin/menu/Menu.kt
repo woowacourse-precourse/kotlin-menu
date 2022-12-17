@@ -3,6 +3,7 @@ package menu
 import camp.nextstep.edu.missionutils.Randoms
 
 class Menu {
+    var CT=categories()
 
     fun categorySelect(): List<String>{
         var categoryCollect= mutableListOf<String>()
@@ -21,8 +22,14 @@ class Menu {
         return categoryCollect
     }
 
-    fun menuRecommend(){ // 카테고리 내 못먹는 음식과 비교하여 랜덤으로 아무거나 추천
-
+    fun menuRecommend(categorieName: String): String{ // 카테고리 내 못먹는 음식과 비교하여 랜덤으로 아무거나 추천
+        var menu=""
+        if (categorieName=="일식") menu=Randoms.shuffle(CT.Japanese)[0]
+        if (categorieName=="한식") menu=Randoms.shuffle(CT.Korean)[0]
+        if (categorieName=="중식") menu=Randoms.shuffle(CT.Chinese)[0]
+        if (categorieName=="아시안") menu=Randoms.shuffle(CT.Asian)[0]
+        if (categorieName=="양식") menu=Randoms.shuffle(CT.Western)[0]
+        return menu
     }
 
 }

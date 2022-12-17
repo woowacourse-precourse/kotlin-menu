@@ -17,10 +17,6 @@ class outputView {
 
     fun menuResult(){
         println("메뉴 추천 결과입니다.")
-        day()
-
-        //코치별 리스트 메뉴 들어오면 됨
-        endService()
     }
 
     fun endService(){
@@ -29,6 +25,10 @@ class outputView {
 
     fun day(){
         println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
+    }
+
+    fun coachNameMenu(coachName: String, menuCollect: List<String>) {
+        println("[$coachName] | ${menuCollect[0]}| ${menuCollect[1]} | ${menuCollect[2]} | ${menuCollect[3]} | ${menuCollect[4]} ]")
     }
 
     fun category(categoryName: List<String>){
