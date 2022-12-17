@@ -41,24 +41,28 @@ class LunchMenuRecommender(
         coaches.forEach {
             while (true) {
                 val randomMenu = chooseMenu(categoryMenus)
-                val dislike = dislikeMenus[it]?.let { dislikeMenuOfThisCoach ->
-                    isDislikeMenu(
-                        dislikeMenuOfThisCoach,
-                        randomMenu
-                    )
-                } ?: false
-                val duplicateMenu = recommendedMenu[it]?.let { recommendedMenuOfThisCoach ->
-                    isAlreadyRecommended(
-                        recommendedMenuOfThisCoach,
-                        randomMenu
-                    )
-                } ?: false
-                if (!dislike && !duplicateMenu) {
+                if (isValidMenu(it, randomMenu)) {
                     recommendedMenu[it]?.add(randomMenu)
                     break
                 }
             }
         }
+    }
+
+    private fun isValidMenu(coachName: String, menuChosen: String): Boolean {
+        val dislike = dislikeMenus[coachName]?.let { dislikeMenuOfThisCoach ->
+            isDislikeMenu(
+                dislikeMenuOfThisCoach,
+                menuChosen
+            )
+        } ?: false
+        val duplicateMenu = recommendedMenu[coachName]?.let { recommendedMenuOfThisCoach ->
+            isAlreadyRecommended(
+                recommendedMenuOfThisCoach,
+                menuChosen
+            )
+        } ?: false
+        return (!dislike && !duplicateMenu)
     }
 
     private fun isDislikeMenu(dislikeMenus: List<String>, menuChosen: String): Boolean {
