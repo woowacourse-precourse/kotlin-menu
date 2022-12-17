@@ -1,8 +1,7 @@
 package menu
 
 import camp.nextstep.edu.missionutils.Randoms
-import menu.CategoryAndMenu.menus
-import java.awt.Menu
+import menu.FoodData.categoryToMenus
 
 class RecommendationMachine {
     //TODO : private
@@ -25,7 +24,7 @@ class RecommendationMachine {
             var isRecommended = false
 
             while (!isRecommended) {
-                val randomMenu = Randoms.shuffle(menus[categoryNum])[0]
+                val randomMenu = Randoms.shuffle(categoryNum.categoryToMenus())[0]
                 isRecommended = eachCoach.selectMyMenu(randomMenu)
             }
         }

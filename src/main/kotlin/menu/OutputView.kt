@@ -4,7 +4,7 @@ import menu.FoodData.categories
 
 class OutputView {
 
-    fun printResults(messageCategory: String, results : List<String>) {
+    fun printResults(messageCategory: String, results: List<String>) {
         print("[ $messageCategory ")
         results.forEach { eachResult ->
             print("| $eachResult ")
@@ -12,11 +12,11 @@ class OutputView {
         print("]\n")
     }
 
-    fun printMessage(msg: String){
+    fun printMessage(msg: String) {
         println(msg)
     }
 
-    companion object{
+    companion object {
         const val CATEGORY = "카테고리"
         const val MONDAY_TO_FRIDAY = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
         const val RESULT_OF_RECOMMENDATION = "메뉴 추천 결과입니다."
