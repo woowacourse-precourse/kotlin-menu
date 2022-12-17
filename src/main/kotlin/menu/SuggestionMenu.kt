@@ -34,7 +34,7 @@ class SuggestionMenu {
         choiceCategory.forEach { // 중복 카테고리는 최대 두 개만 허용한다.
             if (category == it) count++
         }
-        return if (count > MAX_DUPLICATE_CATEGORY)
+        return if (count >= MAX_DUPLICATE_CATEGORY)
             suggestionCategory(choiceCategory)
         else
             return category!!
