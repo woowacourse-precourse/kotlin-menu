@@ -41,7 +41,7 @@ class InputValidator {
         require(checkCoachMenuBanSize(processedUserInput)) { COACH_MENU_BAN_SIZE_ERROR }
         require(checkMenuBanInExistMenu(processedUserInput)) { COACH_MENU_BAN_NOT_IN_EXIST_MENU }
         coachWithMenuBan.addAll(processedUserInput)
-        return processedUserInput
+        return coachWithMenuBan
     }
 
     private fun checkCoachMenuBanSize(banMenus: List<String>): Boolean =

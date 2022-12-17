@@ -37,4 +37,28 @@ class InputValidatorTest {
             assertThrows<IllegalArgumentException> { validator.getValidateCoachNames("포코,조던,   ,박남춘,장인성,말리빈") }
         }
     }
+
+    @Nested
+    inner class CoachBanMenuTest {
+//        현재 메뉴에 없는 입력 들어가는 예외처리 처리안됨(추후 처리)
+//        @Test
+//        fun `메뉴에 없는 입력 들어갔을시`() {
+//            assertThrows<IllegalArgumentException> { validator.getCoachMenuBan("열라뽕따이,팟타이", "포비") }
+//        }
+
+        @Test
+        fun `메뉴2가지 이상일때`() {
+            assertThrows<IllegalArgumentException> { validator.getCoachMenuBan("팟타이,그라탱,뇨끼", "포코") }
+        }
+
+        @Test
+        fun `메뉴 아무 입력 없을때`() {
+            assertThat(validator.getCoachMenuBan("", "포코")).isEqualTo(listOf("포코"))
+        }
+
+        @Test
+        fun `정상 입력시`() {
+            assertThat(validator.getCoachMenuBan("팟타이,뇨끼", "포코")).isEqualTo(listOf("포코", "팟타이", "뇨끼"))
+        }
+    }
 }
