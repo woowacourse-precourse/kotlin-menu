@@ -22,4 +22,16 @@ object ErrorCheck {
             makeError(ErrorType.LENGTH_OF_NAME)
         }
     }
+
+    fun checkValidMenu(value: String) {
+        val menus = value.split(SEPARATOR)
+
+        checkNumberOfMenu(menus)
+    }
+
+    fun checkNumberOfMenu(value: List<String>) {
+        if(value.size < MIN_MENU_CANT_EAT || value.size > MAX_MENU_CANT_EAT) {
+            makeError(ErrorType.NUMBER_OF_MENU)
+        }
+    }
 }

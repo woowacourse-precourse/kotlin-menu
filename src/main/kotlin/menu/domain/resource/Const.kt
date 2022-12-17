@@ -6,7 +6,7 @@ const val MAX_COACH_NUM = 5
 const val MIN_COACH_NAME = 2
 const val MAX_COACH_NAME = 4
 
-const val MIN_CANT_EAT = 0
-const val MAX_CANT_EAT = 2
+const val MIN_MENU_CANT_EAT = 0
+const val MAX_MENU_CANT_EAT = 2
 
 const val SEPARATOR = ","
