@@ -1,16 +1,15 @@
 package menu
 
-import menu.domain.MenuController
 import menu.domain.validator.InputValidator
 import menu.view.InputView
 import menu.view.OutputView
 
 private val inputView = InputView(InputValidator())
 private val outputView = OutputView()
-private val menuController = MenuController()
+
 fun main() {
     progressStart()
-    progressCoachNameStage()
+    val coachNames = progressCoachNameStage()
 }
 
 private fun progressStart() {
@@ -18,8 +17,12 @@ private fun progressStart() {
     println()
 }
 
-private fun progressCoachNameStage() {
+private fun progressCoachNameStage(): List<String> {
     outputView.printRequestCoachNamesPhrase()
-    menuController.updateCoachs(inputView.readCoachNames())
+    val coachNames = inputView.readCoachNames()
     println()
+    return coachNames
+}
+
+private fun progressGetBanMenu() {
 }
