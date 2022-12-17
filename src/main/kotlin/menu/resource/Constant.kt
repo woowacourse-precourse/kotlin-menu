@@ -24,7 +24,9 @@ const val MIN_RANGE_COACH_NAME_LENGTH = 2
 const val MAX_RANGE_COACH_NAME_LENGTH = 4
 const val MIN_RANGE_FOOD_NUMBER = 0
 const val MAX_RANGE_FOOD_NUMBER = 2
-
+const val MIN_RANGE_FOOD_KIND = 1
+const val MAX_RANGE_FOOD_KIND = 5
+const val MAX_DUPLE = 2
 
 // FOR ERROR HANDLING
 private const val ERROR_MESSAGE_PREFIX = "[ERROR] "
