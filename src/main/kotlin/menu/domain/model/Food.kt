@@ -7,4 +7,10 @@ data class Food(
 
     fun getName() = name
 
+    companion object {
+        fun of(foodName: String): Food {
+            return Food(FoodCategory.categoryOfFoodName(foodName), foodName)
+        }
+    }
+
 }
