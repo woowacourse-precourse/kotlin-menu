@@ -36,7 +36,7 @@ class InputView {
         try {
             if (!Category.전부.menus.contains(menu)) throw IllegalArgumentException()
         } catch (e: IllegalArgumentException) {
-            println("[ERROR] 카테고리의 메뉴 리스트에 없는 메뉴입니다.")
+            println("[ERROR] 카테고리의 메뉴 리스트에 없는 메뉴가 있습니다.")
             return false
         }
         return true
