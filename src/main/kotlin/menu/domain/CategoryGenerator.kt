@@ -6,9 +6,9 @@ import java.util.*
 
 class CategoryGenerator() {
 
-    private val categories =  mutableListOf<Category>()
+    private val categories = mutableListOf<Category>()
 
-    fun generate():List<Category>{
+    fun generate(): List<Category> {
         while (categories.size < 5) {
             val randomNumber = Randoms.pickNumberInRange(1, 5)
             addCategories(randomNumber)
@@ -25,7 +25,7 @@ class CategoryGenerator() {
             Category.ASH.number -> category = Category.ASH
             Category.WES.number -> category = Category.WES
         }
-        if(Collections.frequency(categories,category)<2){
+        if (Collections.frequency(categories, category) < 2) {
             categories.add(category)
         }
     }
