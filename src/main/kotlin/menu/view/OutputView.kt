@@ -44,26 +44,22 @@ class OutputView {
 
     private fun printCoachesMenus(coachName: String, menus: List<String>) {
         print("$OPEN_BRACKET $coachName ")
-        menus.forEach { menu ->
-            print("$SEPARATOR $menu ")
-        }
-        println(CLOSE_BRACKET)
+        printItems(menus)
     }
 
     private fun printCategory(categories: List<String>) {
         print("$OPEN_BRACKET $CATEGORY ")
-        categories.forEach { category ->
-            print("$SEPARATOR $category ")
-        }
-        println(CLOSE_BRACKET)
+        printItems(categories)
     }
 
     private fun printDayOfWeek() {
         val days = listOf(MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY)
         print("$OPEN_BRACKET $DIVISION ")
-        days.forEach { day ->
-            print("$SEPARATOR $day ")
-        }
+        printItems(days)
+    }
+
+    private fun printItems(items: List<String>) {
+        items.forEach { item -> print("$SEPARATOR $item ") }
         println(CLOSE_BRACKET)
     }
 
