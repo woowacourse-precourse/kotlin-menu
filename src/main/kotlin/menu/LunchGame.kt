@@ -3,22 +3,30 @@ package menu
 import camp.nextstep.edu.missionutils.Randoms
 
 class LunchGame(
-    //TODO : PRIVATE 멤버로 바꾸기
-    val recommendationMachine: RecommendationMachine = RecommendationMachine(),
+    private val recommendationMachine: RecommendationMachine = RecommendationMachine(),
     private val inputValidator: InputValidator = InputValidator(),
     private val view: View = View(),
 ) {
 
-    //TODO : PRIVATE 멤버로 바꾸기
-    lateinit var coaches: List<Coach>
+    private lateinit var coaches: List<Coach>
 
     fun play() {
         initCoaches()
         initHatingMenusToEachCoach()
         recommendMenus()
+        showResult()
     }
 
-    fun initCoaches() {
+    private fun showResult() {
+        view.outputView.printResultRecommendation()
+        view.outputView.printThisWeekCategories(recommendationMachine.thisWeekCategories.toList())
+        coaches.forEach { eachCoach ->
+            view.outputView.printCoachMenus(eachCoach)
+        }
+        view.outputView.printGameEnd()
+    }
+
+    private fun initCoaches() {
         coaches = getCoachesName().map { eachCoachName -> Coach(eachCoachName) }
     }
 
@@ -35,7 +43,7 @@ class LunchGame(
         }
     }
 
-    fun initHatingMenusToEachCoach() {
+    private fun initHatingMenusToEachCoach() {
         coaches.forEach { eachCoach ->
             val hatingMenus = getHatingMenusName(eachCoach.name)
                 .map { eachMenuName -> eachMenuName }
@@ -57,7 +65,7 @@ class LunchGame(
         }
     }
 
-    fun recommendMenus() {
+    private fun recommendMenus() {
         recommendationMachine.initThisWeekCategories()
 
         coaches.forEach { eachCoach ->
