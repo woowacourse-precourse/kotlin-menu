@@ -1,6 +1,8 @@
 package menu.controller
 
+import menu.domain.Generator
 import menu.model.Coach
+import menu.values.NOTICE_RECOMMEND_SUCCESS_MESSAGE
 import menu.values.NOTICE_SERVICE_END_MESSAGE
 import menu.values.NOTICE_SERVICE_START_MESSAGE
 import menu.values.REQUIRE_COACHES_MESSAGE
@@ -9,15 +11,36 @@ import menu.view.OutputView
 
 class ServiceController(
     private val inputView: InputView,
-    private val outputView: OutputView
+    private val outputView: OutputView,
+    private val generator: Generator
 ) {
 
     fun run() {
         noticeStart()
+        
         val coaches: List<Coach> = getCoaches()
+        setCoachRecommendations(coaches)
 
+        printRecommendations(coaches)
         noticeEnd()
     }
+
+    private fun printRecommendations(coaches: List<Coach>) {
+        outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
+
+
+    }
+
+    private fun setCoachRecommendations(coaches: List<Coach>) {
+        repeat(coaches.size) { coachIndex ->
+            // todo 상수화
+            repeat(5) { dayWeeksIndex ->
+                val recommendation = generator.makeRecommendation(coaches[coachIndex])
+                coaches[coachIndex].addRecommendation(recommendation)
+            }
+        }
+    }
+
 
     private fun noticeStart() {
         outputView.printMessage(NOTICE_SERVICE_START_MESSAGE)
@@ -25,8 +48,7 @@ class ServiceController(
     }
 
     private fun noticeEnd() {
-        outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
-        println()
+        outputView.printMessage(NOTICE_RECOMMEND_SUCCESS_MESSAGE)
     }
 
     private fun getCoaches(): List<Coach> {

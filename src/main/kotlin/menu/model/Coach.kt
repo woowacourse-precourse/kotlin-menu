@@ -5,9 +5,9 @@ class Coach(
     private val cantEatMenus: List<String>
 ) {
 
-    private val recommendations: MutableList<DayWeekRecommendation> = mutableListOf()
+    private val recommendations: MutableList<String> = mutableListOf()
 
-    fun containsMenu(menu: String): Boolean {
+    fun containsCantEatMenu(menu: String): Boolean {
         repeat(cantEatMenus.size) { index ->
             if(cantEatMenus[index] == menu) {
                 return true
@@ -17,8 +17,18 @@ class Coach(
         return false
     }
 
-    fun addRecommendation(dayWeekRecommendation: DayWeekRecommendation) {
-        recommendations.add(dayWeekRecommendation)
+    fun containsRecommends(menus: List<String>): Boolean {
+        repeat(recommendations.size) { index ->
+            if(menus.contains(recommendations[index])) {
+                return true
+            }
+        }
+
+        return false
+    }
+
+    fun addRecommendation(recommendation: String) {
+        recommendations.add(recommendation)
     }
 
 }
