@@ -4,7 +4,7 @@
 -[ ] 코치의 이름을 입력해주세요. - coachNamePrint()#OutputView
 -[ ] 코치의 이름을 입력 받는다. - getCoachName()#InputView
 -[ ] 각 코치가 못 먹는 메뉴를 입력해주세요. - coachUneatableMenuPrint()#OutputView
--[ ] 각 코치가 못 먹는 메뉴를 입력 받는다. - getCoachNotMenu()#InputView
+-[ ] 각 코치가 못 먹는 메뉴를 입력 받는다. - getCoachUneatableMenu()#InputView
 -[ ] 메뉴 추천 결과입니다. - menuRecommendationResultPrint()#OutputView
 -[ ] 예외 처리 함수 #Exception
   - [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시킨다.
