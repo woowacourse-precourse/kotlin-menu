@@ -5,7 +5,6 @@ import menu.domain.categorynumbergenerator.StubCategotyNumberGenerator
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 
 class CategoryPickerTest {
 
@@ -38,9 +37,16 @@ class CategoryPickerTest {
     }
 
     @Test
-    fun `공백처리 확인 테스트`() {
-        val categoryPicker = CategoryPicker(StubCategotyNumberGenerator(mutableListOf(1, 2, 2, 2, 5)))
-        assertThrows<IllegalArgumentException> { categoryPicker.genrateCategorys() }
+    fun `함수 정상작동 테스트3`() {
+        val categoryPicker = CategoryPicker(StubCategotyNumberGenerator(mutableListOf(1, 2, 2, 2, 4, 5)))
+        Assertions.assertThat(categoryPicker.genrateCategorys()).isEqualTo(
+            listOf(
+                JAPAN,
+                KOREA,
+                KOREA,
+                ASIA,
+                EURO
+            )
+        )
     }
 }
-
