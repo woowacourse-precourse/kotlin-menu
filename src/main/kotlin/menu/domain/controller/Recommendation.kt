@@ -20,16 +20,9 @@ class Recommendation(
     override fun run() {
         init()
 
-        // 로깅
-        println(categories)
-
         processCoachName()
         processInedibleFoods()
         processRecommendation()
-
-        // 로깅
-        println(coachNames)
-        println(inedibleFoods)
 
         end()
     }
