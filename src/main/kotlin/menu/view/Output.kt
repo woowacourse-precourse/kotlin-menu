@@ -40,4 +40,8 @@ class Output {
 
         return sb.toString()
     }
+
+    fun printEnd(){
+        println(Strings.COMPLETE.message)
+    }
 }

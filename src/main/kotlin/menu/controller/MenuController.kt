@@ -2,6 +2,7 @@ package menu.controller
 
 import menu.CategoryService
 import menu.domain.Food
+import menu.utils.Validator
 import menu.values.MenuGroup
 import menu.view.Input
 import menu.view.Output
@@ -18,37 +19,36 @@ class MenuController {
 
     fun run() {
         Output().printStart()
-        val coachName = Input().InputName()
+        val coachName = Input().printSize()
 
         coachHateFood(coachName)
 
-
         Output().printResultPhrases()
         Output().printStandard()
-
 
         val a = changeCategory(CategoryService().makeFoodCategory())
         println(a)
 
         println(Output().printFoodCategory(a))
 
-        for (i in 0 until coachName.size){
-            println(Output().printFoodGroup(makeMenu(a),coachName[i]))
+        for (i in 0 until coachName.size) {
+            println(Output().printFoodGroup(makeMenu(a), coachName[i]))
         }
 
+        Output().printEnd()
     }
 
-    fun coachHateFood(coachGroup : List<String>){
-        for (i in 0 until coachGroup.size){
+    fun coachHateFood(coachGroup: List<String>) {
+        for (i in 0 until coachGroup.size) {
             hateFood.add(Input().InputHateFood(coachGroup[i]))
             println()
         }
     }
 
-    fun changeCategory(foodCategory: ArrayList<String>) : ArrayList<String>{
+    fun changeCategory(foodCategory: ArrayList<String>): ArrayList<String> {
         var foodTypeCategory = ArrayList<String>()
-        for (foodNum in 0 until foodCategory.size){
-            when (foodCategory[foodNum]){
+        for (foodNum in 0 until foodCategory.size) {
+            when (foodCategory[foodNum]) {
                 "1" -> foodTypeCategory.add(foodType[0])
                 "2" -> foodTypeCategory.add(foodType[1])
                 "3" -> foodTypeCategory.add(foodType[2])
@@ -60,26 +60,25 @@ class MenuController {
         return foodTypeCategory
     }
 
-    fun changeCategoryName(category: ArrayList<String>, index: Int) : List<String>{
-            when (category[index].toString()) {
-                "일식" ->return japanFood
-                "한식" ->return koreanFood
-                "중식" -> return chinaFood
-                "아시안" -> return asianFood
-                "양식"-> return westernFood
-            }
+    fun changeCategoryName(category: ArrayList<String>, index: Int): List<String> {
+        when (category[index].toString()) {
+            "일식" -> return japanFood
+            "한식" -> return koreanFood
+            "중식" -> return chinaFood
+            "아시안" -> return asianFood
+            "양식" -> return westernFood
+        }
 
         return japanFood
     }
 
-    fun makeMenu(category: ArrayList<String>,) : ArrayList<String>{
+    fun makeMenu(category: ArrayList<String>): ArrayList<String> {
         var arr = ArrayList<String>()
-        for(i in 0 until 5){
-            arr.add(Food().choiceFood(changeCategoryName(category,i) as ArrayList<String>))
+        for (i in 0 until 5) {
+            arr.add(Food().choiceFood(changeCategoryName(category, i) as ArrayList<String>))
         }
         return arr
     }
 
 
-   
 }
