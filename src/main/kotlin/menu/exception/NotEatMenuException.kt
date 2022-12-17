@@ -1,6 +1,6 @@
 package menu.exception
 
-import menu.message.Message
+import menu.message.ExceptionMessage
 
 class NotEatMenuException(menus: String) {
     init {
@@ -11,6 +11,6 @@ class NotEatMenuException(menus: String) {
         val menu = menus.split(',')
 
         if(menu.size > 2)
-            throw IllegalArgumentException(Message.notEatMenuIsMoreThanThree)
+            throw IllegalArgumentException(ExceptionMessage.notEatMenuIsMoreThanThree)
     }
 }

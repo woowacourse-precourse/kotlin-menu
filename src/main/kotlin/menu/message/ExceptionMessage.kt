@@ -1,6 +1,6 @@
 package menu.message
 
-class Message {
+class ExceptionMessage {
     companion object {
         const val isNotMoreThanTwo = "[ERROR] 입력된 코치가 두명 미만입니다."
         const val isMoreThanSix = "[ERROR] 입력된 코치가 여섯명 이상입니다."
