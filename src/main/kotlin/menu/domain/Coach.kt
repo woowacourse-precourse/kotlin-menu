@@ -14,14 +14,18 @@ class Coach(
         val categories = categoriesDTO.getCategories()
         categories.map { category ->
             val menu = recommendMenu(category)
+            menus.add(menu)
         }
     }
 
     private fun recommendMenu(category: Category): String {
         var menu = ""
-        val success = false
+        var success = false
         do {
             menu = generator.generate(category.getMenus())
+            if (!isDislikeMenu(menu) && !isAlreadyRecommended(menu)) {
+                success = true
+            }
         } while (!success)
         return menu
     }
