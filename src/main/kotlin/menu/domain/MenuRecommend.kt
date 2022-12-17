@@ -3,8 +3,7 @@ package menu.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class MenuRecommend {
-    fun recommendMenusToCoach(categories: List<Int>, coach: Coach) {
-        // categories[0] == 월요일
+    fun recommendMenusToCoach(categories: List<String>, coach: Coach) {
         val menus = mutableListOf<String>()
         for (category in categories) {
             menus.add(recommendCategoryMenu(category, menus, coach))
@@ -12,30 +11,30 @@ class MenuRecommend {
         coach.setRecommendedMenus(menus)
     }
 
-    private fun recommendCategoryMenu(category: Int, recommendMenus: List<String>, coach: Coach): String {
-        val menu = Menu()
+    private fun recommendCategoryMenu(category: String, recommendMenus: List<String>, coach: Coach): String {
         while (true) {
-            val recommendMenu = Randoms.shuffle(menu.getCategoryMenus(category))[0]
-            if (coach.getCantEatMenus().contains(recommendMenu)) continue
-            if (!recommendMenus.contains(recommendMenu)) return recommendMenu
+            val menus = Menus.getCategoryMenus(category)
+            val menu = Randoms.shuffle(menus)[0]
+            println(menu)
+            if (coach.getCantEatMenus().contains(menu)) continue
+            if (!recommendMenus.contains(menu)) return menu
         }
 
     }
 
-    fun recommendCategory(): List<Int> {
-        // 같은 카테고리는 최대 2회
-        val categories = mutableListOf<Int>()
+    fun recommendCategory(): List<String> {
+        val categories = mutableListOf<String>()
         while (categories.size < 5) {
-            var category: Int
+            var category: String
             do {
-                category = Randoms.pickNumberInRange(1, 5)
+                category = Menus.getCategories(Randoms.pickNumberInRange(1, 5))
             } while (!checkCategoryAvailable(categories, category))
             categories.add(category)
         }
         return categories
     }
 
-    private fun checkCategoryAvailable(categories: List<Int>, category: Int): Boolean {
+    private fun checkCategoryAvailable(categories: List<String>, category: String): Boolean {
         var count = 1
         categories.forEach {
             if (it == category) count += 1
