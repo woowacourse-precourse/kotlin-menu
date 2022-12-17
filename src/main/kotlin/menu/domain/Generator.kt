@@ -46,9 +46,8 @@ class Generator {
 
         while (true) {
             val randomMenu = Randoms.shuffle(menus)[0]
-
+            if (isAvailableMenu(coach, randomMenu)) return randomMenu
             return randomMenu
-            //todo if (isAvailableMenu(coach, randomMenuName)) return randomMenuName
         }
     }
 
@@ -71,12 +70,12 @@ class Generator {
 //        // todo 상수화
 //    }
 
-//    private fun isAvailableMenu(coach: Coach, menu: String): Boolean {
-//        if (coach.containsCantEatMenu(menu)) return false
-//        if (coach.containsRecommend(menu)) return false
-//
-//        return true
-//    }
+    private fun isAvailableMenu(coach: Coach, menu: String): Boolean {
+        if (coach.containsCantEatMenu(menu)) return false
+        //if (coach.containsRecommend(menu)) return false
+
+        return true
+    }
 
     private fun getCategoryName(categoryNumber: Int): String {
         return when (categoryNumber) {
