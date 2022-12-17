@@ -13,12 +13,11 @@ object InputValidator {
 
     fun hateMenu(input: String) {
         val menus = input.split(",").map { it.trim() }
-        if(menus.isEmpty()) return
-        if(menus.size>2) throwError(Error.ERROR_HATE_MENU_MAX_TWO)
+        if (menus.isEmpty()) return // 빈 것은 괜찮음. 못 먹는 음식이 없다는 의미.
+        if (menus.size > 2) throwError(Error.ERROR_HATE_MENU_MAX_TWO)
     }
 
     private fun throwError(error: Error) {
         throw IllegalArgumentException(error.message)
     }
-
 }

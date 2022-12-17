@@ -3,9 +3,9 @@ package menu
 import camp.nextstep.edu.missionutils.Console
 
 class InputView {
-    fun input(): String = Console.readLine().trim()
+    private fun input(): String = Console.readLine().trim()
 
-    fun coachNameInput(): List<Coach> {
+    fun coachNameInput(): List<Coach> { // 코치 이름 입력받기
         while (true) {
             println(COACH_NAME_INPUT_PLEASE)
             val input = input()
@@ -20,7 +20,7 @@ class InputView {
         return names.map { Coach(it, mutableListOf(), mutableListOf()) }
     }
 
-    fun coachHateMenuInput(coaches: List<Coach>) {
+    fun coachHateMenuInput(coaches: List<Coach>) {  // 코치 먹지 못하는 메뉴 입력받기.
         coaches.forEach {
             val hateMenus = personHateMenus(it)
             it.canNotEats = hateMenus.toMutableList()
@@ -38,9 +38,8 @@ class InputView {
     }
 
 
-
     companion object {
         private const val COACH_NAME_INPUT_PLEASE = "코치의 이름을 입력해 주세요. (, 로 구분)"
-        private const val HATE_MENU_INPUT_PLEASE = "\n%s(이)가 못 먹는 메뉴를 입력해주세요."
+        private const val HATE_MENU_INPUT_PLEASE = "\n%s(이)가 못 먹는 메뉴를 입력해 주세요."
     }
 }
