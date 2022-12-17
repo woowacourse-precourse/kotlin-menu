@@ -3,13 +3,18 @@ package menu
 import camp.nextstep.edu.missionutils.Randoms
 
 class LunchGame(
+    //TODO : PRIVATE 멤버로 바꾸기
+    val recommendationMachine: RecommendationMachine = RecommendationMachine(),
     private val inputValidator: InputValidator = InputValidator(),
     private val view: View = View(),
 ) {
 
     //TODO : PRIVATE 멤버로 바꾸기
     lateinit var coaches: List<Coach>
-    var thisWeekCategories = arrayListOf<Int>()
+
+    fun play(){
+        initCoaches()
+    }
 
     fun initCoaches() {
         coaches = getCoachesName().map { eachCoachName -> Coach(eachCoachName) }
@@ -40,19 +45,11 @@ class LunchGame(
         return hatingMenus.split(",")
     }
 
-    fun initThisWeekCategories() {
-        val categoriesRecord = IntArray(6) { 0 }
-        var categoryCnt = 0
+    fun recommendMenus() {
+        recommendationMachine.initThisWeekCategories()
 
-        while (categoryCnt < 7) {
-            val chosenCategory = Randoms.pickNumberInRange(1, 5)
-
-            if (categoriesRecord[chosenCategory] != 2) {
-                categoryCnt++
-                categoriesRecord[chosenCategory]++
-                thisWeekCategories.add(chosenCategory)
-            }
+        coaches.forEach { eachCoach ->
+            recommendationMachine.recommendMenu(eachCoach)
         }
     }
-
 }
