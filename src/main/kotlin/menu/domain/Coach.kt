@@ -1,8 +1,8 @@
 package menu.domain
 
-class Coach(val name: String, private val hateMenus: List<Menu>) {
+class Coach(val name: String, private val hateMenus: MutableList<Menu> = mutableListOf()) {
 
-    private val selectedMenus = mutableListOf<Menu>()
+    val selectedMenus = mutableListOf<Menu>()
 
     init {
         require(name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH)
@@ -12,6 +12,12 @@ class Coach(val name: String, private val hateMenus: List<Menu>) {
     fun selectMenu(menu: Menu): Boolean {
         if (isHateMenu(menu)) return false
         return selectedMenus.add(menu)
+    }
+
+    fun addHateMenu(menu: Menu) {
+        require(menu !in hateMenus)
+        require(hateMenus.size < MAX_HATE_LENGTH)
+        hateMenus.add(menu)
     }
 
     private fun isHateMenu(menu: Menu) = menu in hateMenus

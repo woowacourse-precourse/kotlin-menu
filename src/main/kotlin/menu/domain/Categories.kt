@@ -14,6 +14,10 @@ class Categories(private val categories: MutableList<Category> = mutableListOf()
         return categories.add(category)
     }
 
+    fun joinToString(separator: String): String {
+        return categories.joinToString(separator)
+    }
+
     private fun count(category: Category) = categories.count { it == category }
 
     companion object {

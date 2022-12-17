@@ -15,8 +15,11 @@ class InputView {
     }
 
     private fun readWithSeparator(): List<String> {
-        return Console.readLine()
-            .trimIndent()
+        val line = Console.readLine()
+
+        if (!line.contains(SEPARATOR)) return listOf(line)
+
+        return line.trim()
             .split(SEPARATOR)
     }
 

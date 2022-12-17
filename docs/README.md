@@ -8,15 +8,15 @@
 - [x] 임의로 카테고리를 선택할 수 있다.
 
 ### 코치
-- [ ] 메뉴 추천을 받을 코치를 입력 받을 수 있다. #Coach
-  - 최소 2명, 최대 5명이다. #Coaches
+- [x] 메뉴 추천을 받을 코치를 입력 받을 수 있다. #Coach
+  - 최소 2명, 최대 5명이다. #Coaches //중복체크 필요!!!!
   - 코치의 이름은 최소 2글자, 최대 4글자이다.
 - [x] 각 코치가 못 먹는 메뉴를 입력 받을 수 있다.
   - 최소 0개, 최대 2개이다.
 - [ ] 각 코치는 매일 다른 메뉴를 추천 받아야 한다. #MenuRecommender
 
 ### 메뉴
-- [ ] 특정 카테고리 내에서 임의의 메뉴를 추천할 수 있다. (shuffle -> first) #Menu <- Application:setAvailableMenus
+- [x] 특정 카테고리 내에서 임의의 메뉴를 추천할ㅊ (shuffle -> first) #Menu <- Application:setAvailableMenus
     - 추천할 수 없는 경우 다시 선택한다. (shuffle -> first) #MenuRecommender
 
 메뉴 선정 후 카테고리 다시 선정할까!
