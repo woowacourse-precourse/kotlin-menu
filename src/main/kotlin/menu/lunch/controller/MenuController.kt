@@ -7,11 +7,13 @@ import menu.lunch.view.OutputView
 
 class MenuController {
     private val input by lazy { InputView() }
+    private val category by lazy { RandomCategory() }
     private val recommend = MenuRecommend()
 
     fun run() {
         addCoach()
         addDislikedFood()
+        chooseMenu()
     }
 
     private fun addCoach() {
@@ -22,5 +24,9 @@ class MenuController {
         recommend.coaches.forEach { coach ->
             recommend.addDislikedFood(coach.name, input.readDislikeMenu(coach.name))
         }
+    }
+
+    private fun chooseMenu() {
+        val category = category.getRandomCategory()
     }
 }
