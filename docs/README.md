@@ -10,7 +10,7 @@ Progress & MileStones
 
 ## View
 - InputView
-  - Get coach name
+  - ~~Get coach name~~
   - Get coach's hate menu
   
 - OutputView
