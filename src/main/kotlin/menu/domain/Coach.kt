@@ -13,10 +13,14 @@ class Coach(
             val menu = Randoms.shuffle(Category.getMenus(category))[0]
 
             if (canEatMenu(menu) && !isAlreadyHad(menu)) {
-                menusGonnaEat.add(menu)
+                addMenu(menu)
                 break
             }
         }
+    }
+
+    fun addMenu(menu: String) {
+        menusGonnaEat.add(menu)
     }
 
     fun canEatMenu(menu: String): Boolean {
