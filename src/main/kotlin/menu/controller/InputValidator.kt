@@ -11,14 +11,12 @@ class InputValidator {
 
     fun getValidatedCoach(): Coach {
         val input = inputView.readCoach().split(',')
-        println(input)
         validator.checkValidateCoach(input)
         return Coach(input)
     }
 
     fun getValidatedFood(): Food {
         val input = inputView.readFood().split(',')
-        println(input)
         validator.checkValidateFood(input)
         return Food(input)
     }

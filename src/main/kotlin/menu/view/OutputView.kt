@@ -17,6 +17,7 @@ class OutputView {
     fun printRequestFood(name: String) {
         println(INPUT_FOOD.format(name))
     }
+
     fun printResult(categories: List<String>) {
         println(RECOMMEND_RESULT)
         println(RECOMMEND_PART)
@@ -24,8 +25,8 @@ class OutputView {
     }
 
     fun printMenu(menu: List<Menu>) {
-        menu.forEach {
-            it -> println(it.getMenu().joinToString(SEPARATOR, START_BRACKET, END_BRACKET))
+        menu.forEach { it ->
+            println(it.getMenu().joinToString(SEPARATOR, START_BRACKET, END_BRACKET))
         }
         print(RECOMMEND_END)
     }
