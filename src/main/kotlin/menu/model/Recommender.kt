@@ -45,6 +45,7 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
                 val flag2 = validateBan(todayMenu, index)
             } while (flag1 == Flag.FAIL || flag2 == Flag.FAIL)
             menuList.add(todayMenu)
+            eatingMenu[index].add(todayMenu)
         }
         return menuList.toList()
     }
