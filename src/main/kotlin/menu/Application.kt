@@ -17,6 +17,11 @@ fun main() {
         dislikeMenus.add(dislike)
     }
 
+
+    for (coachIndex in coaches.indices) {
+        recommendedMenu.add(listOf())
+    }
+
     for(date in 0..4){ //요일별로 추천해줄 메뉴 카테고리 선정
         val todayCategory = menuRecommend.pickCategory(recommendedCategory)
         recommendedCategory.add(todayCategory)
