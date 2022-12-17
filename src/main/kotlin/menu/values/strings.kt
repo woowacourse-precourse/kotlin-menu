@@ -7,7 +7,7 @@ const val NOTICE_RECOMMEND_SUCCESS_MESSAGE = "추천을 완료했습니다."
 
 // require
 const val REQUIRE_COACHES_MESSAGE = "코치의 이름을 입력해 주세요. (, 로 구분)"
-const val REQUIRE_COACH_CANT_EAT_MENUS_MESSAGE = "%s(이)가 못 먹는 메뉴를 입력해 주세요."
+const val REQUIRE_COACH_CANT_EAT_MENUS_MESSAGE_FORMAT = "%s(이)가 못 먹는 메뉴를 입력해 주세요."
 
 // value condition
 const val RECOMMEND_COACHES_CONDITION_MESSAGE = "코치는 ${MIN_COACHES_NUMBER}명 이상, ${MAX_COACHES_NUMBER}명 이하로 입력해야 합니다."
