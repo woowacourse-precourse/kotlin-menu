@@ -3,13 +3,25 @@ package menu.view
 import menu.Category
 import menu.Day
 import menu.domain.Coach
+import menu.dto.CategoriesDTO
+import menu.dto.CoachesDTO
 
 class OutputView {
     fun printStart() {
         println(START_ANNOUNCEMENT)
     }
 
-    fun printFinish() {}
+    fun printFinish(categoriesDTO: CategoriesDTO, coachesDTO: CoachesDTO) {
+        printDivision()
+
+        printCategory(categoriesDTO.getCategories())
+
+        val coaches = coachesDTO.getCoaches()
+        coaches.map { coach ->  printMenus(coach) }
+        printInterval()
+
+        printRecommendDone()
+    }
 
     private fun printFormedDescription(elements: List<String>) {
         val description = elements.joinToString { DESCRIPTION_FORM }
@@ -33,6 +45,10 @@ class OutputView {
 
     private fun printRecommendDone() {
         println(FINISH_ANNOUNCEMENT)
+    }
+
+    private fun printInterval() {
+        println()
     }
 
     companion object {
