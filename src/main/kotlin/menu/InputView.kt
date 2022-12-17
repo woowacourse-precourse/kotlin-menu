@@ -12,6 +12,6 @@ class InputView {
     private fun validateCoach(input: String) {
         val pattern = Regex("(.+,?)+")
         if (!pattern.matches(input))
-            throw IllegalArgumentException(OutputView.ERR_COACH_COMMA)
+            throw IllegalArgumentException(Message.ERR_COACH_COMMA)
     }
 }
