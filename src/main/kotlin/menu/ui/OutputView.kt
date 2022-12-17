@@ -1,16 +1,13 @@
 package menu.ui
 
-import menu.data.ENTER_COACH_NAME
-import menu.data.ENTER_NO_EATING
-import menu.data.ERROR_HEADER
-import menu.data.PROGRAM_START
+import menu.data.*
 
 class OutputView {
-    fun printInitNotice(){
+    fun printInitNotice() {
         println(PROGRAM_START)
     }
 
-    fun printNoticeEnterName(){
+    fun printNoticeEnterName() {
         println(ENTER_COACH_NAME)
     }
 
@@ -18,6 +15,13 @@ class OutputView {
         println("$coachName$ENTER_NO_EATING")
     }
 
+    fun printNoticeResult() {
+        println(RECOMMEND_MENU)
+    }
+
+    fun printFinishNotice(){
+        println(PROGRAM_END)
+    }
     fun printErrorMessage(errorContent: String) {
         println(ERROR_HEADER + errorContent)
     }
