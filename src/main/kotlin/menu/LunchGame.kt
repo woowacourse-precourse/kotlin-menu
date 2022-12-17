@@ -7,10 +7,8 @@ class LunchGame(
 
     lateinit var coaches: List<Coach>
 
-
-
-    fun generateCoaches(): List<Coach> {
-        return getCoachesName().map { eachCoachName -> Coach(eachCoachName) }
+    fun initCoaches() {
+        coaches = getCoachesName().map { eachCoachName -> Coach(eachCoachName) }
     }
 
     private fun getCoachesName(): List<String> {
@@ -19,6 +17,23 @@ class LunchGame(
         inputValidator.validateCoaches(coachesName)
 
         return coachesName.split(",")
+    }
+
+    fun initHatingMenusToEachCoach() {
+        coaches.forEach { eachCoach ->
+            val hatingMenus = getHatingMenusName(eachCoach.name)
+                .map { eachMenuName -> Menu(eachMenuName) }
+
+            eachCoach.setHatingMenus(hatingMenus)
+        }
+    }
+
+    private fun getHatingMenusName(coachName: String): List<String> {
+        val hatingMenus = view.inputView.requestHatingMenus(coachName)
+
+        inputValidator.validateHatingMenu(hatingMenus)
+
+        return hatingMenus.split(",")
     }
 
 

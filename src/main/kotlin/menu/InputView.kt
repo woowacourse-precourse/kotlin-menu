@@ -9,4 +9,10 @@ class InputView {
 
         return Console.readLine()
     }
+
+    fun requestHatingMenus(coachName:String): String {
+        println("%s(이)가 못 먹는 메뉴를 입력해 주세요.".format(coachName))
+
+        return Console.readLine()
+    }
 }

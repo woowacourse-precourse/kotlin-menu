@@ -7,6 +7,16 @@ class InputValidator {
         coachesName.validateNumberOfCoach()
     }
 
+    fun validateHatingMenu(hatingMenus: String){
+        hatingMenus.validateNumberOfHatingMenu()
+    }
+
+    private fun String.validateNumberOfHatingMenu(){
+        require(this=="" || this.split(",").size in 0..2){
+            "[ERROR] 싫어하는 메뉴의 개수는 0에서 2개만 유효합니다."
+        }
+    }
+
     private fun String.validateCoachesName() {
         this.split(",").forEach { eachCoachName ->
             require(eachCoachName.length in 2..4) {
@@ -14,7 +24,6 @@ class InputValidator {
             }
         }
     }
-
 
     private fun String.validateNumberOfCoach() {
         require(this.split(",").size in 2..5){
