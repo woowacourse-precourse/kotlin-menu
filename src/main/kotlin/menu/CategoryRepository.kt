@@ -11,16 +11,11 @@ class CategoryRepository {
     }
 
     fun getRecommendCategory(): String {
-        //val recommendCategory = mutableListOf<String>()
-        //for(i in 0..4) {
-            var recommend = getRandomCategory()
-            while(recommendedNumber[recommend] == 2) {
-                recommend = getRandomCategory()
-            }
-            recommendedNumber[recommend] = recommendedNumber[recommend]!! + 1
+        var recommend = getRandomCategory()
+        while(recommendedNumber[recommend] == 2) {
+            recommend = getRandomCategory()
+        }
+        recommendedNumber[recommend] = recommendedNumber[recommend]!! + 1
         return recommend
-        //    recommendCategory.add(recommend)
-        //}
-        //return recommendCategory
     }
 }
