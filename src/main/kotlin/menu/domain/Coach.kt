@@ -1,14 +1,16 @@
 package menu.domain
 
-class Coach(private val names: List<CoachName>) {
+import menu.utils.ERROR
+import menu.utils.ERROR_COACH_SIZE
+import menu.utils.MAX_COACH_COUNT
+import menu.utils.MIN_COACH_COUNT
 
-    fun isSize(): Boolean =
+class Coach(private val names: List<String>) {
 
-
-    companion object {
-        fun from(names: List<String>): Coach =
-            Coach(names.map { coach ->
-                CoachName(coach)
-            })
+    init {
+        require(isSize()) { ERROR.format(ERROR_COACH_SIZE) }
     }
+
+    private fun isSize(): Boolean =
+        names.size >= MIN_COACH_COUNT && names.size <= MAX_COACH_COUNT
 }
