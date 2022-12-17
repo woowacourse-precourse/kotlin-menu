@@ -20,3 +20,5 @@ const val KR_ASIAN = "아시안"
 const val KR_WESTERN = "양식"
 
 const val CATEGORY = "카테고리"
+
+const val COMMA = ","
