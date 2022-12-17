@@ -25,4 +25,8 @@ class Coach(
         } while (!success)
         return menu
     }
+
+    private fun isDislikeMenu(menu: String): Boolean {
+        return dislike.contains(menu)
+    }
 }
