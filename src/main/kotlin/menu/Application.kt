@@ -1,5 +1,14 @@
 package menu
 
+import menu.service.RecommendService
+
 fun main() {
-    // TODO: 프로그램 구현
+    try {
+        RecommendService().run()
+    } catch (e: Exception) {
+        when (e) {
+            is IllegalArgumentException -> throw IllegalArgumentException(e.message)
+            is IllegalStateException -> throw IllegalStateException(e.message)
+        }
+    }
 }
