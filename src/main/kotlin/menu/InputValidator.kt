@@ -11,6 +11,10 @@ class InputValidator {
                 throw IllegalArgumentException(NAME_LENGTH_ERROR.format(it))
             }
         }
+        val nonDuplicateNames = names.distinct()
+        if (names.size != nonDuplicateNames.size) {
+            throw IllegalArgumentException(DUPLICATE_NAMES_ERROR)
+        }
         return names
     }
 
@@ -32,6 +36,7 @@ class InputValidator {
         const val NAME_LENGTH_ERROR = "[ERROR] 이름의 길이는 최소 2글자 최대 4글지입니다. (잘못된 입력: %s)"
         const val MENU_NOT_EXIST_ERROR = "[ERROR] 존재하지 않는 메뉴입니다."
         const val NUMBER_OF_MENU_ERROR = "[ERROR] 못 먹는 메뉴는 최소 0개 최대 2개입니다."
+        const val DUPLICATE_NAMES_ERROR = "[ERROR] 중복되는 이름이 존재합니다."
         private const val MAX_NUMBER_OF_DISLIKE_MENU = 2
         private const val DELIMETER = ","
         private const val NAME_MIN_LENGTH = 2
