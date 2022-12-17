@@ -8,6 +8,7 @@ class OutputView {
 
     fun printStart() {
         println(START_MSG)
+        println()
     }
 
     fun printResult(category: List<String>, coachs: List<Coach>) {
@@ -15,6 +16,7 @@ class OutputView {
         println(DAY_OF_WEEK)
         printCategory(category)
         printCoach(coachs)
+        println()
         println(COMPLETE_MSG)
     }
 

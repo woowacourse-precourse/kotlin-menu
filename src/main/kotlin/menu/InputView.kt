@@ -16,6 +16,7 @@ class InputView(private val checker: ValidChecker = ValidChecker()) {
             println(e.message)
             return inputCoachName()
         }
+        println()
         return names
     }
 
@@ -30,6 +31,7 @@ class InputView(private val checker: ValidChecker = ValidChecker()) {
             println(e.message)
             return inputHateFood(name)
         }
+        println()
         return hateFoods
     }
 }
