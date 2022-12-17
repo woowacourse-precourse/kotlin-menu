@@ -17,7 +17,7 @@ class LunchMenuRecommender(
     }
 
     fun chooseOneWeekMenu(): MutableMap<String, MutableList<String>> {
-        for (day in 0 until 5) {
+        for (day in 0 until TOTAL_NUMBER_OF_DAYS) {
             chooseOneDayMenu()
         }
         return recommendedMenu
@@ -30,7 +30,7 @@ class LunchMenuRecommender(
 
     private fun chooseCategory(): Int {
         val randomNumber = Randoms.pickNumberInRange(0, Category.values().size - 1)
-        if (categoryChosen.count { it == randomNumber } == 2) {
+        if (categoryChosen.count { it == randomNumber } == MAX_NUMBER_OF_DUPLICATE_CATEGORY) {
             chooseCategory()
         }
         categoryChosen.add(randomNumber)
@@ -75,5 +75,10 @@ class LunchMenuRecommender(
 
     private fun chooseMenu(categoryMenus: List<String>): String {
         return Randoms.shuffle(categoryMenus)[0]
+    }
+
+    companion object {
+        private const val TOTAL_NUMBER_OF_DAYS = 5
+        private const val MAX_NUMBER_OF_DUPLICATE_CATEGORY = 2
     }
 }
