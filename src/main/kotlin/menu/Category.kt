@@ -14,4 +14,12 @@ enum class Category(private val korean: String, private val menus: List<String>)
     fun byKorean(): String {
         return korean
     }
+
+    companion object {
+        fun getAllMenu(): List<String> {
+            val menus = mutableListOf<String>()
+            values().map { category -> menus.addAll(category.menus) }
+            return menus
+        }
+    }
 }
