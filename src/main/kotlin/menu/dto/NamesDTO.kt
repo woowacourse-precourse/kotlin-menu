@@ -6,6 +6,10 @@ class NamesDTO(private val names: List<String>) {
         isSizeValid()
     }
 
+    fun getNames(): List<String> {
+        return names
+    }
+
     private fun isLengthValid() {
         names.map { name -> require(name.length in MIN_LENGTH..MAX_LENGTH) { LENGTH_ERROR_MESSAGE } }
     }

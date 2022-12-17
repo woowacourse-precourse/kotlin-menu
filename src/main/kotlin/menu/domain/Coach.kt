@@ -1,4 +1,4 @@
 package menu.domain
 
-class Coach {
+class Coach(private val name: String) {
 }
