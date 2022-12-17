@@ -13,6 +13,7 @@ class InputValidator {
     }
 
     fun validateHateMenu(input: String) {
+        require(input[0] != ',' && input[input.length-1] !=','){ErrorMessage.NOT_COMMA_FRONT_BACK}
         val menu = input.split(',')
         require(menu.size in 0..2) { ErrorMessage.MENU_RANGE_ERROR }
         require(menu.toSet().size == menu.size){ErrorMessage.NOT_REPEAT}
