@@ -10,4 +10,12 @@ object Message {
         CATEGORY("[ 카테고리 | %s | %s | %s | %s | %s ]"),
         RECOMMEND_FOOD("[ %s | %s | %s | %s | %s | %s ]")
     }
+
+    enum class Country(val value: String){
+        JAPAN("일식"),
+        KOREAN("한식"),
+        CHINA("중식"),
+        ASIAN("아시안"),
+        WESTERN("양식");
+    }
 }
