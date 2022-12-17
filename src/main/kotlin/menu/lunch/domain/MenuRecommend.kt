@@ -14,6 +14,8 @@ class MenuRecommend {
         }
     }
 
+    fun isEatSameCategoryMany(category: String) = categoryRecord.count { it == category } >= 2
+
     fun addCategoryRecord(category: FoodCategory) {
         categoryRecord.add(category.category)
         coaches.forEach { coach ->

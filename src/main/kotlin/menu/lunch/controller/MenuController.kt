@@ -29,7 +29,9 @@ class MenuController {
     private fun chooseMenu() {
         while (recommend.categoryRecord.size < 5) {
             val category = category.getRandomCategory()
-            recommend.addCategoryRecord(category)
+            if (recommend.isEatSameCategoryMany(category.category).not()) {
+                recommend.addCategoryRecord(category)
+            }
         }
     }
 }
