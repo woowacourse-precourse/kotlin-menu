@@ -4,9 +4,9 @@ import menu.util.Util
 
 class MenuRecommender {
     val coachNameList = mutableListOf<String>()
-    val hateFoodList = mutableListOf<List<String>>()
-    val category = Category()
-    val food = Food()
+    private val hateFoodList = mutableListOf<List<String>>()
+    private val category = Category()
+    private val food = Food()
     val weekMenu = mutableListOf<MutableList<String>>()
 
     fun setCoachNameList(input: String) {
