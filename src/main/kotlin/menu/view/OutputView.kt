@@ -19,7 +19,7 @@ import menu.utils.InfoMessage.START_MESSAGE
 
 class OutputView {
     fun printStartMessage() {
-        println(START_MESSAGE)
+        println("$START_MESSAGE\n")
     }
 
     fun printInputCoachNameMessage() {
