@@ -2,6 +2,7 @@ package menu.view.validator
 
 import menu.common.*
 import menu.model.Category
+import menu.model.Menu
 
 object InputValidator {
 
@@ -25,7 +26,7 @@ object InputValidator {
         require(separatedMenus.size in 0..2) {
             ERROR_MESSAGE_FORMAT.format("각 코치는 최소 0개, 최대 2개의 못 먹는 메뉴가 있습니다.")
         }
-        require(separatedMenus.all { menu -> Category.values().map { it.menes }.flatten().contains(menu) }) {
+        require(separatedMenus.all { menu -> Category.values().any { it.containMenu(Menu(menu)) } }) {
             ERROR_MESSAGE_FORMAT.format("못 먹는 메뉴는 존재하는 메뉴여야 합니다.")
         }
     }

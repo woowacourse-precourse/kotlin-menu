@@ -2,30 +2,26 @@ package menu.view
 
 import menu.common.RECOMMENDED_MENU_RESULT_HEADER
 import menu.model.Category
+import menu.model.Coach
 import menu.model.DayOfWeek
 
 object OutputView {
 
     fun printMessage(message: String) = println(message)
-    fun printRecommendedMenuTable(
-        foodTable: Map<DayOfWeek, Category>,
-        recommendedMenuTable: Map<String, Map<DayOfWeek, String>>
-    ) {
+
+    fun printRecommendedMenuTable(coaches: List<Coach>) {
         println("\n" + RECOMMENDED_MENU_RESULT_HEADER)
         println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
-        println(createCategoryLine(foodTable))
-        recommendedMenuTable.keys.forEach { coach -> println(createMenuLineOfCoach(coach, recommendedMenuTable[coach]!!)) }
+        println(createCategoryLine(coaches.first().recommendedCategories()))
+        coaches.forEach { coach -> println(createMenuLineOfCoach(coach)) }
     }
 
-    private fun createCategoryLine(foodTable: Map<DayOfWeek, Category>): String {
-        val days = foodTable.keys.sortedBy { day -> day.ordinal }
+    private fun createCategoryLine(categories: List<Category>): String =
+        "[ 카테고리 | " + categories.joinToString(" | ") { it.categoryName } + " ]"
 
-        return "[ 카테고리 | " + days.joinToString(" | ") { foodTable[it]!!.categoryName } + " ]"
-    }
+    private fun createMenuLineOfCoach(coach: Coach): String {
+        val recommendedMenus = DayOfWeek.values().map { coach.getRecommendedMenu(it) }
 
-    private fun createMenuLineOfCoach(coach: String, recommendedMenus: Map<DayOfWeek, String>): String {
-        val menus = recommendedMenus.entries.sortedBy { it.key.ordinal }.map { it.value }
-
-        return "[ " + coach + " | " + menus.joinToString(" | ") + " ]"
+        return  "[ " + coach.name() + " | " + recommendedMenus.joinToString(" | ") { it.name } + " ]"
     }
 }
