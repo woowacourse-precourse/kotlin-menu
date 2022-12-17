@@ -10,7 +10,17 @@ object InputView {
             val coaches = Console.readLine()
 
             kotlin.runCatching { InputValidator.validateCoaches(coaches) }
-                .onSuccess { return coaches.split(",") }
+                .onSuccess { return coaches.split(",").map { it.trim() } }
+                .onFailure { println(it.message) }
+        }
+    }
+
+    fun readMenus(): List<String> {
+        while (true) {
+            val menus = Console.readLine()
+
+            kotlin.runCatching { InputValidator.validateMenus(menus) }
+                .onSuccess { return menus.split(",").map { it.trim() } }
                 .onFailure { println(it.message) }
         }
     }

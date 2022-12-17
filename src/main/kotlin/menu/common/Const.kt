@@ -9,6 +9,7 @@ const val MAX_COACH_NAME_SIZE = 4
 // 메세지
 const val WELCOME_MESSAGE = "점심 메뉴 추천을 시작합니다."
 const val COACHES_INPUT_MESSAGE = "코치의 이름을 입력해 주세요. (, 로 구분)"
+const val CANT_EAT_MENU_INPUT_MESSAGE = "%s(이)가 못 먹는 메뉴를 입력해 주세요."
 
 // 예외 메세지
 const val ERROR_MESSAGE_FORMAT = "[ERROR] %s"
