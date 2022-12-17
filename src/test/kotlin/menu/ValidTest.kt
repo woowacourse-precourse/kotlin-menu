@@ -22,4 +22,12 @@ class ValidTest {
             Validator().checkNameSizeValid(input)
         }
     }
+
+    @ValueSource(strings=["제임스", "", "제임스, 미미, 가가, 나나, 다다, 라라"])
+    @ParameterizedTest
+    fun `코치의 수에 대한 예외 테스트`(input: String) {
+        assertThrows<IllegalArgumentException> {
+            Validator().checkCoachesSizeValid(input)
+        }
+    }
 }
