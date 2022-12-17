@@ -6,8 +6,11 @@ class View {
     private val inputView = InputView()
     private val outputView = OutputView()
 
-    fun getCoachName(): List<String> {
+    fun printStartMessage() {
         outputView.printStartMessage()
+    }
+
+    fun getCoachName(): List<String> {
         outputView.requestCoachNames()
         return try {
             inputView.getCoachNames()

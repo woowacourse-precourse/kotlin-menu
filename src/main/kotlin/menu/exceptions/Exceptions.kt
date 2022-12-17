@@ -4,6 +4,7 @@ import menu.data.MenuCategory
 
 class Exceptions {
     fun validateCoachNames(input: String) {
+        require (input.isNotEmpty()) {throw IllegalArgumentException(ERROR_MESSAGE + WRONG_NUMBER_COACH_INPUT)}
         val inputs = input.split(",")
         require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_DUPLICATE_COACH_INPUT) }
         require(inputs.all { it.length in 2..4 }) { throw IllegalArgumentException(ERROR_MESSAGE + WRONG_NAME_LENGTH_COACH_INPUT) }

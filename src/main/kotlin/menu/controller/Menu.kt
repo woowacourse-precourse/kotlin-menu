@@ -9,6 +9,7 @@ class Menu {
     private val coaches = mutableListOf<Coach>()
 
     fun recommend() {
+        view.printStartMessage()
         val coachNames = view.getCoachName()
         for (name in coachNames) {
             coaches.add(Coach(name))
