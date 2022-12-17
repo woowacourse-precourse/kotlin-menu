@@ -1,7 +1,17 @@
 ## 🚩 미션 개요
 우아한 테크코스의 최종 코딩테스트 미션이다.
 
-점심 메뉴 추천해주는 서비스를 작성하라.
+점심 메뉴 추천해주는 서비스를 다음과 같은 구조로 작성하였다.
+
+- 모든 제어는 controller인 **Menu**에서 진행된다.
+
+- **Coach** : 코치들의 이름, 먹지않는 음식, 추천 받은 음식을 저장한다. 
+
+- **Menu Category** : 음식의 카테고리와 해당 카테고리의 메뉴들을 저장한다.
+
+- **RandomMenu**에서 월요일부터 금요일까지의 메뉴 추천을 담당한다.
+
+- 입출력은 오로지 **View**에서만 발생한다.
 
 ## 🎯 기능 목록
 
@@ -25,6 +35,8 @@
     "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
 ```
 
+---
+
 ## 📃 미션 요구사항
 
 - 메뉴 추천 서비스에서 추천할 수 있는 카테고리와 각 카테고리의 메뉴는 아래와 같다.
@@ -47,12 +59,10 @@ val category: String = categories.get(Randoms.pickNumberInRange(1, 5))
 - 임의로 카테고리의 순서 또는 데이터를 변경하면 안 된다.
     - `Randoms.pickNumberInRange()`의 결과가 **1이면 일식, 2면 한식, 3이면 중식, 4면 아시안, 5면 양식**을 추천해야 한다.
 
-- 추천할 수 없는 카테고리인 경우 다시 `Randoms.pickNumberInRange()`를 통해 임의의 값을 생성해서 추천할 카테고리를 정해야 한다.
-
 - 메뉴
 
-- 추천할 메뉴는 정해진 카테고리에 있는 메뉴를 [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms.shuffle()`을 통해 임의의 순서로 섞은 후, 첫 번째 값을 사용해야 한다.
-    - 카테고리에 포함되는 메뉴 목록을 `List<String>` 형태로 준비한다.
+  - 추천할 메뉴는 정해진 카테고리에 있는 메뉴를 [`camp.nextstep.edu.missionutils`](https://github.com/woowacourse-projects/mission-utils)에서 제공하는 `Randoms.shuffle()`을 통해 임의의 순서로 섞은 후, 첫 번째 값을 사용해야 한다.
+      - 카테고리에 포함되는 메뉴 목록을 `List<String>` 형태로 준비한다.
 
 ```kotlin
 val menu: String = Randoms.shuffle(menus)[0]
