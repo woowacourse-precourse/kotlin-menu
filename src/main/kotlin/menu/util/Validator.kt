@@ -6,21 +6,23 @@ class Validator {
 
     fun checkCoachesInput(input : String) {
         checkCoachesSizeValid(input)
-        input.split(",").forEach {
-            checkNameValid(input)
-            checkNameSizeValid(input)
+        val coaches = input.split(",")
+        coaches.forEach {
+            checkNameValid(it)
+            checkNameSizeValid(it)
         }
     }
 
     fun checkFoodsInput(input : String) {
         checkFoodsSizeValid(input)
-        input.split(",").forEach {
+        val foods = input.split(",")
+        foods.forEach {
             checkNameValid(input)
         }
     }
 
     fun checkNameValid(input : String) {
-        require(input.matches("^[가-힣]*$".toRegex())) { Constants.NAME_VALUE_ERROR }
+        require(input.matches("^[가-힣\\s]*$".toRegex())) { Constants.NAME_VALUE_ERROR }
     }
 
     fun checkNameSizeValid(input: String) {
