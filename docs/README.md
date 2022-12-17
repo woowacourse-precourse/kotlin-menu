@@ -30,7 +30,7 @@ Progress & MileStones
   - Test error handling
 
 - RecommendController
-    - Run recommendation process
-    - Set input using UIController
-    - Recommend menu
+    - ~~Run recommendation process~~
+    - ~~Set input using UIController~~
+    - ~~Recommend menu~~
     - Test recommendation process
