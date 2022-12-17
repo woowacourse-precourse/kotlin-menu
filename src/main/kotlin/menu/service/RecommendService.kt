@@ -27,16 +27,12 @@ class RecommendService {
 
     private fun selectMenu(coach: Coach, category: String): String {
         val menus = Category.getMenuList(category)
-        var menu = generateRandomMenu(coach, menus)
-        while (coach.containMenu(menu)) {
-            menu = generateRandomMenu(coach, menus)
-        }
-        return menu
+        return generateRandomMenu(coach, menus)
     }
 
     private fun generateRandomMenu(coach: Coach, menus: List<String>): String {
         var menu = Randoms.shuffle(menus)[0]
-        while (coach.containHateMenus(menu)) {
+        while (coach.containHateMenus(menu) || coach.containMenu(menu)) {
             menu = Randoms.shuffle(menus)[0]
         }
         return menu
@@ -52,8 +48,8 @@ class RecommendService {
         while (true) {
             val categoryName = generateRandomCategory()
             var count = 0
-            categories.forEach {
-                if (it == categoryName) count++
+            categories.forEach { category ->
+                if (category == categoryName) count++
             }
             if (count < 2) {
                 return categoryName
