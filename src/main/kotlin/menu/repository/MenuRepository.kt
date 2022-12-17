@@ -33,7 +33,7 @@ class MenuRepository {
 
     fun putMenu(day: Int, coaches: List<String>, recommendedFoods: List<String>) {
         val foods = linkedMapOf<String, String>()
-        for (index in coaches.indices) {
+        for (index in recommendedFoods.indices) {
             foods[coaches[index]] = recommendedFoods[index]
         }
         coachesRecommendedFoods[day] = foods
