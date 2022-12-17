@@ -17,20 +17,9 @@ class CategoryChoice {
     fun randomCategory(): MutableList<Category> {
         val recommendationCategory = mutableListOf<Category>()
         while (recommendationCategory.size != 6) {
-            if (recommendationCategory.categoryDuplicateCheck()) {
-                val category = categories.get(Randoms.pickNumberInRange(1, 5))
-                recommendationCategory.add(category)
-            }
+            val category = categories.get(Randoms.pickNumberInRange(1, 5))
+            recommendationCategory.add(category)
         }
         return recommendationCategory
-    }
-
-    fun MutableList<Category>.categoryDuplicateCheck(): Boolean {
-        this.forEach {
-            return this.count { cnt ->
-                it == cnt
-            } <= 2
-        }
-        return true
     }
 }
