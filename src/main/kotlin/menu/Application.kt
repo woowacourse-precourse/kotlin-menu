@@ -4,25 +4,60 @@ import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 
 fun main() {
-//    printStartRecommand()
-//    var coachName = inputName()
-//    var cantEatMenu = mutableMapOf<String, List<String>>()
-//    coachName.forEachIndexed() { _, it ->
-//        printCantEat(it)
-//        cantEatMenu[it] = inputMenu()
-//    }
-//    menuRecommandService(cantEatMenu)
-    println(createRandomCategory())
+    printStartRecommand()
+    var coachName = inputName()
+    var cantEatMenu = mutableMapOf<String, List<String>>()
+    coachName.forEachIndexed() { _, it ->
+        printCantEat(it)
+        cantEatMenu[it] = inputMenu()
+    }
+    val category = createRandomCategory()
+    printRecommandResult(category)
+    startService(cantEatMenu, category)
 }
-fun menuRecommandService(cantEatMenu: Map<String, List<String>>) {
+fun startService(cantEatMenu: Map<String, List<String>>, category: List<String>) {
+    val coachName = cantEatMenu.keys.toList()
+    val menus = cantEatMenu.values.toList()
+    var result: MutableList<String>
+    for(i in coachName.indices) {
+        menuRecommandService(coachName[i], menus[i], category, i)
+    }
 
+}
+fun menuRecommandService(coachName: String, menus: List<String>, category: List<String>, index: Int): MutableList<String> {
+    var result = mutableListOf<String>()
+    result.add(0, coachName)
+    var menu: String
+    var count = 1
+    while(count < 6) {
+        menu = recommandMenu(category[count])
+        if(menus.contains(menu)){
+            continue
+        } else {
+            result.add(count, menu)
+            count++
+        }
+    }
+    println(result)
+    return result
+}
+//토미,제임스,포코
+//우동,스시
+//뇨끼,월남쌈
+//마파두부,고추잡채
+fun printRecommandResult(category: List<String>) {
+    println("메뉴 추천 결과입니다.")
+    val week: List<String> = listOf("구분","월요일","화요일","수요일","목요일","금요일")
+    println(week.joinToString(" | ","[ "," ]"))
+    println(category.joinToString(" | ","[ "," ]"))
+    println("추천을 완료했습니다.")
 }
 fun createRandomCategory(): MutableList<String> {
     val categories: List<String> = listOf("","일식", "한식", "중식", "아시안", "양식")
-    var result = mutableListOf<String>()
-    var count = 0
+    var result = mutableListOf<String>("카테고리")
+    var count = 1
     var category: String
-    while(count != 5) {
+    while(count < 6) {
         var randomNum = Randoms.pickNumberInRange(1, 5)
         if(randomNum == 0) {
             continue
@@ -34,8 +69,8 @@ fun createRandomCategory(): MutableList<String> {
     }
     return result
 }
-fun recommandMenu(category: String) {
-    var menus: List<String> = when(category) {
+fun recommandMenu(category: String): String {
+    var menus: List<String> = when (category) {
         "일식" -> listOf("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")
         "한식" -> listOf("김밥", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음")
         "중식" -> listOf("깐풍기", "볶음면", "동파육", "짜장면", "짬뽕", "마파두부", "탕수육", "토마토 달걀볶음", "고추잡채")
@@ -43,7 +78,7 @@ fun recommandMenu(category: String) {
         "양식" -> listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
         else -> throw IllegalArgumentException()
     }
-    val menu: String = Randoms.shuffle(menus)[0]
+    return Randoms.shuffle(menus)[0]
 }
 fun printStartRecommand() {
     println("점심 메뉴 추천을 시작합니다.")
@@ -59,8 +94,4 @@ fun printCantEat(name: String) {
 fun inputMenu(): List<String> {
     var menu = Console.readLine()
     return menu.split(",")
-}
-fun printRecommandResult() {
-    println("메뉴 추천 결과입니다.")
-    println("추천을 완료했습니다.")
 }
