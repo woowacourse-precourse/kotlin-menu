@@ -7,14 +7,12 @@ import java.lang.IllegalArgumentException
 
 class InputView {
     fun readNames(): List<String> {
-        val input = Console.readLine()
-        val names = input.split(",")
-        return names
-//        while (true) {
-//            val command = Console.readLine()
-//            if (catchException { Validator().validateRetryAndQuit(command) })
-//                return command
-//        }
+        while (true) {
+            val input = Console.readLine()
+            val names = input.split(",")
+            if (catchException { Validator().validateCoachName(names) })
+                return names
+        }
     }
 
     private fun catchException(validate: () -> Unit): Boolean {
