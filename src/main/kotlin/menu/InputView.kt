@@ -27,4 +27,17 @@ class InputView {
         }
         return coaches
     }
+
+    fun getDislikeMenu(coachName : String) : List<String>{
+        println("\n$coachName(이)가 못 먹는 메뉴를 입력해 주세요.")
+        val inputMenus = cs.readLine()
+        val dislikeMenus = inputMenus.split(",")
+        if (dislikeMenus.size > 3) {
+            throw IllegalArgumentException("[ERROR] 싫어하는 메뉴는 최대 2개 입력 가능합니다.")
+        }
+        if(dislikeMenus.isEmpty()){
+            return listOf("")
+        }
+        return dislikeMenus
+    }
 }
