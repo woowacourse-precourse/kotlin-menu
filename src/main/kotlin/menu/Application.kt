@@ -16,7 +16,7 @@ fun main() {
     val cantEatMenu = setCantEatMenu(coaches)
 
     val recommendedMenuTable = MenuRecommender.recommendMenuTable(foodTable, cantEatMenu)
-    println(recommendedMenuTable)
+    OutputView.printRecommendedMenuTable(foodTable, recommendedMenuTable)
 }
 
 private fun setCategoryByDayOfWeek(): Map<DayOfWeek, Category> {
@@ -36,7 +36,7 @@ private fun setCategoryByDayOfWeek(): Map<DayOfWeek, Category> {
 }
 
 private fun askCoaches(): List<String> {
-    OutputView.printMessage(COACHES_INPUT_MESSAGE)
+    OutputView.printMessage("\n" + COACHES_INPUT_MESSAGE)
     return InputView.readCoaches()
 }
 
@@ -44,7 +44,7 @@ private fun setCantEatMenu(coaches: List<String>): Map<String, List<String>> {
     val cantEatMenu = mutableMapOf<String, List<String>>()
 
     coaches.forEach { coach ->
-        OutputView.printMessage(CANT_EAT_MENU_INPUT_MESSAGE.format(coach))
+        OutputView.printMessage("\n" + CANT_EAT_MENU_INPUT_MESSAGE.format(coach))
         val menus = InputView.readMenus()
         cantEatMenu[coach] = menus
     }
