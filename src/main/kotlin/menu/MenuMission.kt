@@ -16,21 +16,44 @@ class MenuMission(private val inputView: InputView, private val outputView: Outp
         val coaches = coachCheck(inputView.getCoach())
         val coachesHateFoods = coachHateFood(coaches)
         val categories = recommendCategory()
-
-
+        outputView.printCategories(categories)
+        coaches.forEach {
+            recommendMenuCoach(it, coachesHateFoods[it], categories)
+        }
+        outputView.printEnd()
     }
 
     fun recommendCategory(): List<Int> {
         val categories = mutableListOf<Int>()
         while (categories.size != 5) {
             val category: Int = (Randoms.pickNumberInRange(1, 5))
-            
+
             if (categories.count { it == category } == 2)
                 continue
 
             categories.add(category)
         }
         return categories
+    }
+
+
+    fun recommendMenuCoach(coach: String, coachHateFood: List<String>?, categories: List<Int>) {
+        val coachFoods = mutableListOf<String>()
+        categories.forEach {
+            val menu: String = Randoms.shuffle(getFood(it))[0]
+            coachFoods.add(menu)
+        }
+        outputView.recommendMenu(coach, coachFoods)
+    }
+
+    fun getFood(pickNumberInRange: Int): List<String> {
+        return when (pickNumberInRange) {
+            1 -> JAPAN
+            2 -> KOREA
+            3 -> CHINA
+            4 -> ASIAN
+            else -> WEST
+        }
     }
 
 
