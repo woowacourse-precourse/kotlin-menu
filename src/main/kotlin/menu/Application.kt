@@ -1,5 +1,7 @@
 package menu
 
+import menu.service.Controller
+
 fun main() {
-    // TODO: 프로그램 구현
+    Controller().run()
 }
