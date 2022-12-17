@@ -14,12 +14,6 @@ class Recommender {
         val asianMenus = "팟타이,카오 팟,나시고렝,파인애플 볶음밥,쌀국수,똠얌꿍,반미,월남쌈,분짜".split(",")
         val westernMenus = "라자냐,그라탱,뇨끼,끼슈,프렌치 토스트,바게트,스파게티,피자,파니니".split(",")
 
-//        menus[Message.Country.JAPAN.value] = japanMenus
-//        menus[Message.Country.KOREAN.value] = koreanMenus
-//        menus[Message.Country.CHINA.value] = chinaMenus
-//        menus[Message.Country.ASIAN.value] = asianMenus
-//        menus[Message.Country.WESTERN.value] = westernMenus
-
         menus["JAPAN"] = japanMenus
         menus["KOREAN"] = koreanMenus
         menus["CHINA"] = chinaMenus
