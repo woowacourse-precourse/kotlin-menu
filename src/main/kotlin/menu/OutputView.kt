@@ -4,7 +4,7 @@ import java.lang.StringBuilder
 
 class OutputView {
     fun menuSuggestionStart() = println(MENU_SUGGESTION_START)
-    fun menuSuggestionResult(coaches: List<Coach>, category: List<String>) {
+    fun menuSuggestionResult(coaches: List<Coach>, category: List<Category>) {
         println(MENU_SUGGESTION_RESULT)
         println(DAY_OF_THE_WEEK)
         printCategory(category)
@@ -22,10 +22,10 @@ class OutputView {
         println(resultMenu)
     }
 
-    private fun printCategory(category: List<String>) {
+    private fun printCategory(category: List<Category>) {
         val resultCategory = StringBuilder("[ 카테고리 |")
         for (i in 0 until SuggestionMenu.HIGH_CATEGORY) {
-            resultCategory.append(" ${category[i]} ")
+            resultCategory.append(" ${category[i].categoryName} ")
             if (i != SuggestionMenu.HIGH_CATEGORY - 1) resultCategory.append("|")
             else resultCategory.append("]")
         }
