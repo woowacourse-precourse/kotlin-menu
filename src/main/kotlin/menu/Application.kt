@@ -4,6 +4,9 @@ fun main() {
     val outputView = OutputView()
     val inputView = InputView()
     outputView.printServiceStart()
-    inputView.inputCoach()
+    val coaches = inputView.inputCoaches()
+    val coachesNotEatFoods = inputView.inputCoachNotEat(coaches)
+    println("-------")
+    println(coachesNotEatFoods)
 
 }
