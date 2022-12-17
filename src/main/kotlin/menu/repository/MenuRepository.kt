@@ -3,7 +3,6 @@ package menu.repository
 import menu.domain.MenuCategory
 
 class MenuRepository {
-    private val foodCategories = arrayListOf<MenuCategory>()
     private val coachesRecommendedFoods = linkedMapOf<String, List<String>>()
 
     fun getAllCategoryAsString(): List<String> = MenuCategory.getAllCategoryAsString()

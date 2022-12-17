@@ -14,6 +14,7 @@ class MenuController(
         val coachesNames = inputCoaches()
         val inEdibleFoodsAboutCoaches = inputInedibleFoods(coachesNames)
         recommendMenu(inEdibleFoodsAboutCoaches)
+        printRecommendedMenu()
     }
 
     private fun printStartMessage() {
@@ -23,7 +24,7 @@ class MenuController(
     private fun inputCoaches(): List<String> = repeat(inputView::inputCoaches)
 
     private fun inputInedibleFoods(coachesNames: List<String>): Map<String, List<String>> {
-        val inedibleFoodsPerCoach = hashMapOf<String, List<String>>()
+        val inedibleFoodsPerCoach = linkedMapOf<String, List<String>>()
         coachesNames.forEach { coachName ->
             inedibleFoodsPerCoach[coachName] = inputInedibleFoodsPerCoach(coachName)
         }
@@ -36,6 +37,11 @@ class MenuController(
     }
 
     private fun recommendMenu(inEdibleFoodsAboutCoaches: Map<String, List<String>>) {
-        println(menuService.recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches))
+        menuService.recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches)
+    }
+
+    private fun printRecommendedMenu() {
+        val recommendedMenu = menuService.getRecommendedMenus()
+        outputView.printRecommendedResultMessage(recommendedMenu)
     }
 }
