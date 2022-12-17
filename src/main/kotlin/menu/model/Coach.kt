@@ -13,4 +13,15 @@ class Coach(coachName: String) {
         name = coachName
     }
 
+    fun getName() = name
+
+    fun setCantEat(cantEat: List<String>) {
+        ValidateBusinessLogic.validateCantEatCount(cantEat.size)
+        this.cantEat.addAll(cantEat)
+    }
+
+    fun getCantEat() = cantEat
+
+    fun getRecommendMenus() = recommendedMenus
+
 }

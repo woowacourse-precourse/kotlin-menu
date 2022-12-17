@@ -14,4 +14,8 @@ object ValidateBusinessLogic {
     fun validateCoachName(coachName: String) {
         require(coachName.length in MIN_COACH_NAME_SIZE..MAX_COACH_NAME_SIZE) { PREFIX + "코치의 이름은 최소 2글자, 최대 4글자로 입력해주세요." }
     }
+
+    fun validateCantEatCount(cantEatSize : Int){
+        require(cantEatSize in 0..2) { PREFIX + "못먹는 메뉴는 0개~2개 사이로 입력해주세요."}
+    }
 }
