@@ -1,5 +1,7 @@
 package menu
 
+import menu.domain.UserController
+
 fun main() {
-    // TODO: 프로그램 구현
+    UserController().programRun()
 }
