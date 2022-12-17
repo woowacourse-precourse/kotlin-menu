@@ -19,6 +19,6 @@ class OutputView {
     }
 
     fun printEnd() {
-        
+
     }
 }
