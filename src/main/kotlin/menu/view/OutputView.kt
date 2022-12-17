@@ -19,6 +19,7 @@ class OutputView {
     }
 
     fun printInputCantEatMenuMent(name: String) {
+        println()
         println(INPUT_CANT_EAT_MENU_MENT.format(name))
     }
 
