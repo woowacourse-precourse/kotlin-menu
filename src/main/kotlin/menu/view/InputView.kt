@@ -1,13 +1,17 @@
 package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.service.ExceptionHandler
 
 class InputView {
-    // TODO : 코치 이름 입력 받을 때 예외 처리 추가해야 함
     fun getCoachNames(): List<String> {
-        val names = Console.readLine()
-        val coachNames = names.split(",")
-        return coachNames
+        var names = ""
+        do{
+            names = Console.readLine().trim()
+        }while(!ExceptionHandler.isValidNameLength(names)
+            || !ExceptionHandler.isValidNumber(names.split(",").size))
+
+        return names.split(",")
     }
 
     // TODO : 음식 입력 받을 때 예외 처리 추가해야 함
