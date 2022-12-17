@@ -5,5 +5,5 @@ enum class Category {
     KOREAN,
     CHINESE,
     ASIAN,
-    WESTERN,
+    WESTERN;
 }
