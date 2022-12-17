@@ -1,8 +1,9 @@
 package menu.domain
 
+import menu.service.Recommender
 import menu.strings.Message
 
-class LogicManager(
+class CoachManager(
     coachNames: List<String>,
     unavailableFoods: List<List<String>>
 ) {
