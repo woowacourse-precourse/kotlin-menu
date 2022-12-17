@@ -14,6 +14,8 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
     override fun toString(): String {
         val stringbuilder = StringBuilder()
         stringbuilder.append(LEFT_BRACKET)
+        stringbuilder.append("카테고리")
+        stringbuilder.append(SEPERATOR)
         for (i in weeklyCategory.indices) {
             stringbuilder.append(weeklyCategory[i].getCategory().getCategoryName())
             if (i == weeklyCategory.size - 1) continue
