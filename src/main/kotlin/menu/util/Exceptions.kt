@@ -1,5 +1,7 @@
 package menu.util
 
+import menu.domain.MenuMachine
+
 object Exceptions {
 
     // 코치들 입력값에 대한 (,) 구분 예외 확인
@@ -21,6 +23,25 @@ object Exceptions {
     private fun checkCoachSize(coaches: List<String>) {
         if (coaches.size !in MIN_COACH_SIZE..MAX_COACH_SIZE) {
             throw IllegalArgumentException(ERROR_HEADER + ERROR_COACH_SIZE)
+        }
+    }
+
+
+    fun checkCoachNotToEatInput(menus: List<String>) {
+        menus.forEach { menu ->
+            checkMenuInCategory(menu)
+        }
+    }
+
+    // 음식 카테고리에 있는 메뉴인지 확인
+    private fun checkMenuInCategory(menu: String) {
+        if (!MenuMachine(JAPAN_MENUS).convertToList().contains(menu)
+            && !MenuMachine(KOREAN_MENUS).convertToList().contains(menu)
+            && !MenuMachine(CHINESE_MENUS).convertToList().contains(menu)
+            && !MenuMachine(ASIAN_MENUS).convertToList().contains(menu)
+            && !MenuMachine(AMERICA_MENUS).convertToList().contains(menu)
+        ) {
+            throw IllegalArgumentException(ERROR_HEADER + ERROR_INVALID_MENU)
         }
     }
 }
