@@ -16,7 +16,6 @@ class Category {
             var categories = mutableListOf("", "일식", "한식", "중식", "아시안", "양식")
             val category: String = categories.get(Randoms.pickNumberInRange(1, 5))
 
-            //3번 이상 같은 카테고리면 X
             val count = Collections.frequency(weekCategory, category)
             if (count != 2) weekCategory.add(category)
         }
@@ -26,76 +25,47 @@ class Category {
     fun coachJapanMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
             var menus = japan
-            while (true){
-                val menu: String = Randoms.shuffle(menus)[0]
-                //중복메뉴, 먹지 못하는 음식 추전 X
-                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
-                    i.menu.add(menu)
-                    break
-                }
-                if (i.hateFood.contains(menu) && i.menu.contains(menu)) continue
-            }
+            recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachKoreaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
             var menus = korea
-            while (true){
-                val menu: String = Randoms.shuffle(menus)[0]
-                //중복메뉴, 먹지 못하는 음식 추전 X
-                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
-                    i.menu.add(menu)
-                    break
-                }
-                if (i.hateFood.contains(menu) && i.menu.contains(menu))continue
-            }
+            recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachChinaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
             var menus = china
-            while (true){
-                val menu: String = Randoms.shuffle(menus)[0]
-                //중복메뉴, 먹지 못하는 음식 추전 X
-                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
-                    i.menu.add(menu)
-                    break
-                }
-                if (i.hateFood.contains(menu) && i.menu.contains(menu)) continue
-            }
+            recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachAsianMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
             var menus = asian
-            while (true){
-                val menu: String = Randoms.shuffle(menus)[0]
-                //중복메뉴, 먹지 못하는 음식 추전 X
-                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
-                    i.menu.add(menu)
-                    break
-                }
-                if (i.hateFood.contains(menu) && i.menu.contains(menu)) continue
-            }
+            recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachWestMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
             var menus = west
-            while (true){
-                val menu: String = Randoms.shuffle(menus)[0]
-                //중복메뉴, 먹지 못하는 음식 추전 X
-                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
-                    i.menu.add(menu)
-                    break
-                }
-                if (i.hateFood.contains(menu) && i.menu.contains(menu)) continue
-            }
+            recommendMenu(i, menus)
         }
         return coaches
+    }
+
+    private fun recommendMenu(i: Coach, menus: MutableList<String>){
+        while (true){
+            val menu: String = Randoms.shuffle(menus)[0]
+            if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                i.menu.add(menu)
+                break
+            }
+            if (i.hateFood.contains(menu) && i.menu.contains(menu)) continue
+        }
     }
 }
