@@ -13,4 +13,13 @@ class InputView {
             }.onSuccess { return coachName.trim().split(",") }.onFailure { println(it.message) }
         }
     }
+
+    fun getCoachUneatableMenu(coach: List<String>): Set<String> {
+        val uneatableMenu = mutableListOf<String>()
+        coach.forEach {
+            OutputView().coachUneatableMenuPrint(it)
+            uneatableMenu.addAll(Console.readLine()!!.trim().split(","))
+        }
+        return uneatableMenu.toSet()
+    }
 }
