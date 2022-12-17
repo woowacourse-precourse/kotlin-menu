@@ -1,8 +1,6 @@
 package menu
 
-import camp.nextstep.edu.missionutils.Randoms
-
-class Category(val number:Int,val country:String, val menus:List<String>,var count:Int=0) {
+class Category(val number:Int, val categoryName:String, val menus:List<String>, var count:Int=0) {
 
 
 
