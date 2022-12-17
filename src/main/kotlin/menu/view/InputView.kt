@@ -1,6 +1,7 @@
 package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.dto.MenusDTO
 import menu.dto.NamesDTO
 
 class InputView {
@@ -11,6 +12,20 @@ class InputView {
         val names = convertToList(input)
 
         return NamesDTO(names)
+    }
+
+    fun readMenus(namesDTO: NamesDTO): MenusDTO {
+        val menus = mutableMapOf<String, List<String>>()
+        val names = namesDTO.getNames()
+
+        names.map {name ->
+            println("$name$MENUS_GUIDE")
+            val input = readLine()
+            val menu = convertToList(input)
+            menus.put(name, menu)
+        }
+
+        return MenusDTO(menus)
     }
 
     private fun readLine(): String {
@@ -25,6 +40,7 @@ class InputView {
     }
 
     companion object {
+        const val MENUS_GUIDE = "(이)가 못 먹는 메뉴를 입력해 주세요."
         const val NAMES_GUIDE = "코치의 이름을 입력해 주세요. (, 로 구분)"
     }
 }
