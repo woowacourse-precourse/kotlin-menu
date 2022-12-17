@@ -1,13 +1,20 @@
 package menu.domain
 
-class Coach(private val name: String, private val hateMenus: List<Menu>) {
+class Coach(val name: String, private val hateMenus: List<Menu>) {
+
+    private val selectedMenus = mutableListOf<Menu>()
 
     init {
         require(name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH)
         require(hateMenus.size in MIN_HATE_LENGTH..MAX_HATE_LENGTH)
     }
 
-    fun isHateMenu(menu: Menu) = menu in hateMenus
+    fun selectMenu(menu: Menu): Boolean {
+        if (isHateMenu(menu)) return false
+        return selectedMenus.add(menu)
+    }
+
+    private fun isHateMenu(menu: Menu) = menu in hateMenus
 
     companion object {
         private const val MAX_NAME_LENGTH = 4
