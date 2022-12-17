@@ -2,12 +2,13 @@ package menu
 
 import camp.nextstep.edu.missionutils.Console
 
+const val ASK_COACH_NAMES="코치의 이름을 입력해 주세요. (, 로 구분)"
 class InputView(val checker: ValidChecker = ValidChecker()) {
 
     fun inputCoachName(): List<String> {
         val coachNames: String
         val names: List<String>
-        println("코치의 이름을 입력해 주세요. (, 로 구분)")
+        println(ASK_COACH_NAMES)
         try {
             coachNames = Console.readLine()
             names = checker.checkCoachNames(coachNames)

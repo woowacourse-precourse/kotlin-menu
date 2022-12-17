@@ -1,28 +1,31 @@
 package menu
 
+private const val START_MSG="점심 메뉴 추천을 시작합니다."
+private const val RESULT_MSG="메뉴 추천 결과입니다."
+private const val DAY_OF_WEEK="[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
+private const val COMPLETE_MSG="추천을 완료했습니다."
 class OutputView {
 
     fun printStart() {
-        println("점심 메뉴 추천을 시작합니다.")
+        println(START_MSG)
     }
 
     fun printResult(category: List<String>, coachs: List<Coach>) {
-        println("메뉴 추천 결과입니다.")
-        println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
+        println(RESULT_MSG)
+        println(DAY_OF_WEEK)
         printCategory(category)
         printCoach(coachs)
-        println("추천을 완료했습니다.")
+        println(COMPLETE_MSG)
     }
 
-    fun printCategory(category: List<String>) {
+    private fun printCategory(category: List<String>) {
         println("[ 카테고리 | " + category.joinToString(" | ") + " ]")
     }
 
-    fun printCoach(coachs: List<Coach>) {
+    private fun printCoach(coachs: List<Coach>) {
         for (coach in coachs) {
-            println("[ ${coach.name} |  ${coach.foodList.joinToString(" | ")}  ]")
+            println("[ ${coach.name} | ${coach.foodToEat.joinToString(" | ")} ]")
         }
     }
 
-//[ 카테고리 | 한식 | 한식 | 일식 | 중식 | 아시안 ]
 }

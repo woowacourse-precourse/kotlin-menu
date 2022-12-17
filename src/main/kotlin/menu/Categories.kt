@@ -3,13 +3,12 @@ package menu
 class Categories(private val categoriesMember: MutableList<Category>) {
 
 
-    fun get(num: Int): Category {
+    fun getCategoryByIndex(num: Int): Category {
         categoriesMember[num-1].count++
-        println(categoriesMember[num-1].categoryName+categoriesMember[num-1].count)
         return categoriesMember[num - 1]
     }
 
-    fun checkCount(num: Int): Boolean {
+    fun checkCategoryCount(num: Int): Boolean {
         if (categoriesMember[num - 1].count >=2) return false
 
         return true

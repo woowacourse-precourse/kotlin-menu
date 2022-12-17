@@ -27,14 +27,14 @@ class MenuProgram(val input: InputView, val output: OutputView) {
         output.printResult(categoryOfDay.getCategoryData(), coachs)
     }
 
-    fun makeCoachs() {
+    private fun makeCoachs() {
         val coach = input.inputCoachName()
         for (each in coach) {
             coachs.add(Coach(each, mutableListOf()))
         }
     }
 
-    fun findHateFood() {
+    private fun findHateFood() {
         var hateFood: List<String>
         for (coach in coachs) {
             hateFood = input.inputHateFood(coach.name).toMutableList()
@@ -42,25 +42,27 @@ class MenuProgram(val input: InputView, val output: OutputView) {
         }
     }
 
-    fun pickCategory(): Category {
+    private fun pickCategory(): Category {
         var pick: Int
         while (true) {
             pick = Randoms.pickNumberInRange(1, 5)
-            if (categories.checkCount(pick)) break
+            if (categories.checkCategoryCount(pick)) break
         }
-        return categories.get(pick) //해당 카테고리 반환
 
+        return categories.getCategoryByIndex(pick) //해당 카테고리 반환
     }
 
     fun makeMenu(menus: List<String>, coach: Coach) {
+
         var menu: String = Randoms.shuffle(menus)[0]
+
         while (coach.checkCantEat(menu)) {
             menu = Randoms.shuffle(menus)[0]
         }
-        coach.foodList.add(menu)
+        coach.foodToEat.add(menu)
     }
 
-    fun setMenu() {
+    private fun setMenu() {
         for (day in 0 until 5) {
             categoryOfDay.add(pickCategory())
             for (coach in coachs) {
