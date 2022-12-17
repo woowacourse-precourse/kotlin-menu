@@ -47,8 +47,8 @@ class Coach(
         diet.add(food)
     }
 
-    fun checkDiet(food: Food): Boolean {
-        if (diet.contains(food)) {
+    fun checkFood(food: Food): Boolean {
+        if (diet.contains(food) || inedible.contains(food)) {
             return true
         }
         return false

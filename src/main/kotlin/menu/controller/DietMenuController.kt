@@ -38,7 +38,7 @@ class DietMenuController(
             var randomFood: Food
             do {
                 randomFood = weekday.getRandomFood()
-            } while (coach.checkDiet(randomFood))
+            } while (coach.checkFood(randomFood))
             coach.addDiet(randomFood)
         }
     }
