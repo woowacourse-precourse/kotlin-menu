@@ -32,7 +32,7 @@ class inputView {
             if (notEating == "") return listOf(notEating)
             var notEatingCollect = notEating.split(',')
             for (i in 0 until notEatingCollect.size) {
-                if (notEatingCollect.size>3) throw IllegalArgumentException(error.wrongMenuNum)
+                if (notEatingCollect.size>2) throw IllegalArgumentException(error.wrongMenuNum)
             }
             return notEatingCollect
         } catch (e: IllegalArgumentException) {
