@@ -7,26 +7,29 @@ class RecommendationMachine {
     //TODO : private
     var thisWeekCategories = arrayListOf<Int>()
 
-    fun initThisWeekCategories() {
-        var categoryCnt = 0
+    fun recommendTodayMenu(coaches: List<Coach>) {
+        val todaysCategory = thisWeekCategories.last()
 
-        while (categoryCnt < 7) {
+        coaches.forEach { eachCoach ->
+            var isRecommended = false
+            while (!isRecommended) {
+                val randomMenu = Randoms.shuffle(todaysCategory.categoryToMenus())[0]
+                isRecommended = eachCoach.selectMyMenu(randomMenu)
+            }
+        }
+    }
+
+    fun selectTodayCategory() {
+        var isChosen = false
+
+        while (!isChosen) {
             val chosenCategory = Randoms.pickNumberInRange(1, 5)
+
             if (thisWeekCategories.count { category -> category == chosenCategory } < 2) {
-                categoryCnt++
+                isChosen = true
                 thisWeekCategories.add(chosenCategory)
             }
         }
     }
 
-    fun recommendMenu(eachCoach: Coach) {
-        thisWeekCategories.forEach { categoryNum ->
-            var isRecommended = false
-
-            while (!isRecommended) {
-                val randomMenu = Randoms.shuffle(categoryNum.categoryToMenus())[0]
-                isRecommended = eachCoach.selectMyMenu(randomMenu)
-            }
-        }
-    }
 }

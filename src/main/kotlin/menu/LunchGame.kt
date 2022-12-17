@@ -6,6 +6,7 @@ import menu.OutputView.Companion.CATEGORY
 import menu.OutputView.Companion.FINISHED
 import menu.OutputView.Companion.MONDAY_TO_FRIDAY
 import menu.OutputView.Companion.RESULT_OF_RECOMMENDATION
+import menu.OutputView.Companion.START_RECOMMENDATION
 
 class LunchGame(
     private val recommendationMachine: RecommendationMachine = RecommendationMachine(),
@@ -23,6 +24,7 @@ class LunchGame(
     }
 
     private fun showResult() {
+        view.outputView.printMessage(START_RECOMMENDATION)
         view.outputView.printMessage(RESULT_OF_RECOMMENDATION)
         view.outputView.printMessage(MONDAY_TO_FRIDAY)
         view.outputView.printResults(CATEGORY, recommendationMachine.thisWeekCategories.toList().map { categoryNum ->
@@ -74,10 +76,9 @@ class LunchGame(
     }
 
     private fun recommendMenus() {
-        recommendationMachine.initThisWeekCategories()
-
-        coaches.forEach { eachCoach ->
-            recommendationMachine.recommendMenu(eachCoach)
+        repeat(5){
+            recommendationMachine.selectTodayCategory()
+            recommendationMachine.recommendTodayMenu(coaches)
         }
     }
 }
