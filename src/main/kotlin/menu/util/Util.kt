@@ -1,7 +1,9 @@
-package menu
+package menu.util
+
+import menu.domain.Category
 
 class Util {
-    fun getAllFood():List<String>{
+    fun getAllFood(): List<String> {
         val allFood = mutableListOf<String>()
         allFood.addAll(Category.양식.food)
         allFood.addAll(Category.한식.food)

@@ -1,5 +1,5 @@
 package menu
 
 interface MenuGenerator {
-    fun generate(menus:List<String>):String
+    fun generate(menus: List<String>): String
 }

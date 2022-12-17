@@ -1,10 +1,13 @@
-package menu
+package menu.domain
+
+import menu.CategoriesGenerator
+import menu.MenuGenerator
 
 class LaunchMenuService {
 
     fun getCategories(categoriesGenerator: CategoriesGenerator): List<Category> {
         val categories = mutableListOf<Category>()
-        while (categories.size != 5) {
+        while (categories.size != CATEGORY_SIZE) {
             val category = categoriesGenerator.generate()
             if (isValidCategory(categories, category)) categories.add(category)
         }
@@ -19,9 +22,9 @@ class LaunchMenuService {
     fun getMenus(category: List<Category>, impossibleMenus: List<String>, menuGenerator: MenuGenerator): List<String> {
         val menus = mutableListOf<String>()
         var index = 0
-        while (menus.size != 5) {
+        while (menus.size != MENU_SIZE) {
             val menu = menuGenerator.generate(category[index].food)
-            if (isPossibleMenu(impossibleMenus, menu)&&isNonDuplicateMenu(menus,menu)) {
+            if (isPossibleMenu(impossibleMenus, menu) && isNonDuplicateMenu(menus, menu)) {
                 menus.add(menu)
                 index++
             }
@@ -34,8 +37,8 @@ class LaunchMenuService {
         return true
     }
 
-    fun isNonDuplicateMenu(menus:List<String>,menu:String):Boolean{
-        if(menus.contains(menu)) return false
+    fun isNonDuplicateMenu(menus: List<String>, menu: String): Boolean {
+        if (menus.contains(menu)) return false
         return true
     }
 
@@ -49,5 +52,7 @@ class LaunchMenuService {
 
     companion object {
         const val MAX_DUPLICATED_CATEGORY_NUMBER = 2
+        const val MENU_SIZE = 5
+        const val CATEGORY_SIZE = 5
     }
 }

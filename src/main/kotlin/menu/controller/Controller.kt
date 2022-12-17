@@ -1,4 +1,11 @@
-package menu
+package menu.controller
+
+import menu.*
+import menu.domain.Category
+import menu.domain.Coach
+import menu.domain.LaunchMenuService
+import menu.view.InputView
+import menu.view.OutputView
 
 class Controller {
 
@@ -8,7 +15,7 @@ class Controller {
     private lateinit var coach: Coach
     private lateinit var categories: List<Category>
 
-    fun run(){
+    fun run() {
         outputView.printServiceStart()
         getCoachInformation()
         outputView.printMenuResultInitialMessage()
@@ -18,29 +25,29 @@ class Controller {
         outputView.printServiceEnd()
     }
 
-    fun getCoachInformation(){
+    fun getCoachInformation() {
         val coachNames = inputView.readCoaches()
         val impossibleMenus = mutableListOf<List<String>>()
-        coachNames.forEach{coachName->
+        coachNames.forEach { coachName ->
             impossibleMenus.add(inputView.readImpossibleFood(coachName))
         }
-        coach = Coach(coachNames,impossibleMenus)
+        coach = Coach(coachNames, impossibleMenus)
     }
 
-    fun getCategories(){
+    fun getCategories() {
         categories = launchMenuService.getCategories(CategoriesRandomGenerator())
         outputView.printCategories(launchMenuService.categoryToString(categories))
     }
 
-    fun getCoachMenus(){
-        for(index in 0 until coach.name.size){
-           getCoachMenu(index)
+    fun getCoachMenus() {
+        for (index in 0 until coach.name.size) {
+            getCoachMenu(index)
         }
     }
 
-    fun getCoachMenu(index:Int){
-        val menus = launchMenuService.getMenus(categories,coach.impossibleMenus[index],MenuRandomGenerator())
-        outputView.printMenus(coach.name[index],menus)
+    fun getCoachMenu(index: Int) {
+        val menus = launchMenuService.getMenus(categories, coach.impossibleMenus[index], MenuRandomGenerator())
+        outputView.printMenus(coach.name[index], menus)
     }
 
 }
