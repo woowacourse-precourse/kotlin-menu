@@ -11,6 +11,12 @@ const val RECOMMEND_RESULT = "\n메뉴 추천 결과입니다."
 const val RECOMMEND_END = "\n추천을 완료했습니다."
 
 
+// FOR LOGIC
+const val MIN_RANGE_COACH_NUMBER = 2
+const val MAX_RANGE_COACH_NUMBER = 5
+const val MIN_RANGE_COACH_NAME_LENGTH = 2
+const val MAX_RANGE_COACH_NAME_LENGTH = 4
+
 // FOR ERROR HANDLING
 private const val ERROR_MESSAGE_PREFIX = "[ERROR] "
 const val ERROR_INPUT_COACH = ERROR_MESSAGE_PREFIX + "올바른 형태의 코치의 수와 코치의 이름을 입력해주세요."

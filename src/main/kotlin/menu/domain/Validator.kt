@@ -1,12 +1,12 @@
 package menu.domain
 
-import menu.resource.ERROR_INPUT_COACH
+import menu.resource.*
 
 class Validator {
     fun checkValidateCoach(coach: List<String>) {
-        require(coach.size == coach.distinct().size && coach.size >= 2 && coach.size <= 5) { ERROR_INPUT_COACH }
+        require(coach.size == coach.distinct().size && coach.size >= MIN_RANGE_COACH_NUMBER && coach.size <= MAX_RANGE_COACH_NUMBER) { ERROR_INPUT_COACH }
         coach.forEach {
-            name -> require(name.length in 2..4) { ERROR_INPUT_COACH }
+            name -> require(name.length in MIN_RANGE_COACH_NAME_LENGTH..MAX_RANGE_COACH_NAME_LENGTH) { ERROR_INPUT_COACH }
         }
     }
 
