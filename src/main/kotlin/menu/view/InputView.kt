@@ -19,7 +19,7 @@ class InputView {
         while (true) {
             val input = Console.readLine()
             val food = input.split(",")
-            if (catchException { Validator().validateCoachName(food) })
+            if (catchException { Validator().validateFood(food) })
                 return food
         }
     }

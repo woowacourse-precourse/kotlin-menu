@@ -23,4 +23,11 @@ class Validator {
         }
         return true
     }
+
+    fun validateFood(food: List<String>) {
+        if (food.size > 2) {
+            OutputView().printErrorMessage(ERROR_FOOD_NUM)
+            throw IllegalArgumentException()
+        }
+    }
 }
