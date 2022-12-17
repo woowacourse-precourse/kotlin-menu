@@ -1,16 +1,23 @@
 package menu
 
+import menu.domain.CategoryPicker
+import menu.domain.MenuPicker
+import menu.domain.categorynumbergenerator.RandomCategoryNumberGenerator
+import menu.domain.menugenerator.RandomMenuGenerator
 import menu.domain.validator.InputValidator
 import menu.view.InputView
 import menu.view.OutputView
 
 private val inputView = InputView(InputValidator())
 private val outputView = OutputView()
+private val categoryPicker = CategoryPicker(RandomCategoryNumberGenerator())
+private val menuPicker = MenuPicker(RandomMenuGenerator())
 
 fun main() {
     progressStart()
     val coachNames = progressCoachNameStage()
     val coachWithMenuBans = progressGetBanMenu(coachNames)
+    val recommendResult = progressRecommend(coachWithMenuBans)
 }
 
 private fun progressStart() {
@@ -33,4 +40,18 @@ private fun progressGetBanMenu(coachNames: List<String>): List<List<String>> {
         println()
     }
     return coachWithMenuBans
+}
+
+private fun progressRecommend(coachWithMenuBans: List<List<String>>): List<List<String>> {
+    outputView.printConclusionPhrase()
+    val categorys = categoryPicker.genrateCategorys()
+    val recommendResult = mutableListOf<List<String>>()
+    for (coachWithMenuBan in coachWithMenuBans) {
+        val printPurposeConclusion =
+            mutableListOf(coachWithMenuBan[0]) + menuPicker.generateMenus(coachWithMenuBan, categorys)
+        recommendResult.add(printPurposeConclusion)
+    }
+    outputView.printWeekOfTheDayPhrase()
+    println(categorys.joinToString(separator = " | ", prefix = "[ 카테고리", postfix = "]"))
+    return recommendResult
 }

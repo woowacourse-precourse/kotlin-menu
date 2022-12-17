@@ -4,7 +4,7 @@ import menu.domain.categorynumbergenerator.CategoryNumberGenerator
 
 class CategoryPicker(private val categoryNumberGenerator: CategoryNumberGenerator) {
 
-    val categorys = mutableListOf<AvaliableMenu>()
+    private val categorys = mutableListOf<AvaliableMenu>()
 
     fun genrateCategorys(): MutableList<AvaliableMenu> {
         while (categorys.size < 5) {
