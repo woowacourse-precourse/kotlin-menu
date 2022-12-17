@@ -1,5 +1,19 @@
 package menu
 
+import menu.maker.MenuRecommender
+import menu.view.InputView
+import menu.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    val inputView = InputView()
+    val outputView = OutputView()
+    val recommender = MenuRecommender()
+
+    println("점심 메뉴 추천을 시작합니다.")
+    println()
+    val coaches = inputView.readCoaches()
+    println()
+    inputView.readMenus(coaches)
+    val result = recommender.makeMenus(coaches)
+    outputView.printResult(result)
 }
