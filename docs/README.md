@@ -28,12 +28,15 @@
 ### Coach
 #### Field
 - name
-- cantEatMenus
+- uneatableMenus
+#### methos
+- addUneatableMenus
 
 ### InputView
 #### methods
-- inputCoachs()
-- inputMenus()
+- inputCoach
+- inputCoachs
+- inputMenus
 
 ### OutputView
 #### methos
