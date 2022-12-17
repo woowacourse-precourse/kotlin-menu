@@ -10,9 +10,7 @@ enum class MenuCategory(private val value: String, private val menu: List<String
     fun getMenus() = this.menu
 
     companion object {
-        fun getCategoryName(index: Int): String {
-            return MenuCategory.values()[index - 1].value
-        }
+        fun getCategoryName(index: Int): String = MenuCategory.values()[index - 1].value
 
         fun isValidateMenu(input: String): Boolean {
             for (value in MenuCategory.values()) {
