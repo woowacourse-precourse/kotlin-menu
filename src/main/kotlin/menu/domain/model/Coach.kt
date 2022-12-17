@@ -3,10 +3,12 @@ package menu.domain.model
 import menu.util.ERROR.COACH_MAX_INEDIBLE_LENGTH
 import menu.util.ERROR.COACH_NAME_LENGTH
 import menu.util.ERROR.DUPLICATED_FOOD
+import menu.util.ERROR.MAXIMUN_DIET_LENGTH
 import menu.util.LEFT_BRACKET
 import menu.util.ONE
 import menu.util.RIGHT_BRACKET
 import menu.util.SEPERATOR
+import java.lang.IllegalStateException
 import java.lang.StringBuilder
 
 class Coach(
@@ -48,6 +50,9 @@ class Coach(
     }
 
     fun addDiet(food: Food) {
+        if (diet.size >= 5) {
+            throw IllegalStateException(MAXIMUN_DIET_LENGTH)
+        }
         diet.add(food)
     }
 
