@@ -10,6 +10,7 @@ private val outputView = OutputView()
 fun main() {
     progressStart()
     val coachNames = progressCoachNameStage()
+    val coachWithMenuBans = progressGetBanMenu(coachNames)
 }
 
 private fun progressStart() {
@@ -24,5 +25,12 @@ private fun progressCoachNameStage(): List<String> {
     return coachNames
 }
 
-private fun progressGetBanMenu() {
+private fun progressGetBanMenu(coachNames: List<String>): List<List<String>> {
+    val coachWithMenuBans = mutableListOf<List<String>>()
+    for (coachName in coachNames) {
+        outputView.printRequestCoachBanMenusPhrase(coachName)
+        coachWithMenuBans.add(inputView.readCoachWithMenuBan(coachName))
+        println()
+    }
+    return coachWithMenuBans
 }

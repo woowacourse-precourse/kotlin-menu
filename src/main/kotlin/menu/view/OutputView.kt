@@ -17,8 +17,8 @@ class OutputView {
         println(REQUEST_COACH_NAMES_PHRASE)
     }
 
-    fun printRequestCoachBanMenusPhrase() {
-        println(REQUEST_COACH_BAN_MENUS_PHRASE)
+    fun printRequestCoachBanMenusPhrase(coachName: String) {
+        println(coachName+REQUEST_COACH_BAN_MENUS_PHRASE)
     }
 
     fun printConclusionPhrase() {
