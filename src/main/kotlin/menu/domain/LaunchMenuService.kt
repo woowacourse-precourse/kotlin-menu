@@ -14,7 +14,7 @@ class LaunchMenuService {
         return categories
     }
 
-    fun isValidCategory(categories: List<Category>, category: Category): Boolean {
+    private fun isValidCategory(categories: List<Category>, category: Category): Boolean {
         if (categories.count { presentCategory -> presentCategory == category } >= MAX_DUPLICATED_CATEGORY_NUMBER) return false
         return true
     }
@@ -32,12 +32,12 @@ class LaunchMenuService {
         return menus
     }
 
-    fun isPossibleMenu(impossibleMenus: List<String>, menu: String): Boolean {
+    private fun isPossibleMenu(impossibleMenus: List<String>, menu: String): Boolean {
         if (impossibleMenus.contains(menu)) return false
         return true
     }
 
-    fun isNonDuplicateMenu(menus: List<String>, menu: String): Boolean {
+    private fun isNonDuplicateMenu(menus: List<String>, menu: String): Boolean {
         if (menus.contains(menu)) return false
         return true
     }

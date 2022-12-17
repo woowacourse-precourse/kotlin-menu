@@ -24,7 +24,7 @@ class Controller {
         outputView.printServiceEnd()
     }
 
-    fun getCoachInformation() {
+    private fun getCoachInformation() {
         val coachNames = inputView.readCoaches()
         val impossibleMenus = mutableListOf<List<String>>()
         coachNames.forEach { coachName ->
@@ -33,18 +33,18 @@ class Controller {
         coach = Coach(coachNames, impossibleMenus)
     }
 
-    fun getCategories() {
+    private fun getCategories() {
         categories = launchMenuService.getCategories(CategoriesRandomGenerator())
         outputView.printCategories(launchMenuService.categoryToString(categories))
     }
 
-    fun getCoachMenus() {
+    private fun getCoachMenus() {
         for (index in 0 until coach.name.size) {
             getCoachMenu(index)
         }
     }
 
-    fun getCoachMenu(index: Int) {
+    private fun getCoachMenu(index: Int) {
         val menus = launchMenuService.getMenus(categories, coach.impossibleMenus[index], MenuRandomGenerator())
         outputView.printMenus(coach.name[index], menus)
     }
