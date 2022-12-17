@@ -219,14 +219,14 @@ val menu: String = Randoms.shuffle(menus)[0]
 - [x] 서비스 종료 문구 #endService()
 - [ ] 메뉴 추천 결과 #menuResult()
 - [Menu]
-- [ ] 랜덤메뉴 추천 
+- [ ] 랜덤메뉴 추천 #menuRecommend()
 - [ ] 메뉴
-- [ ] 카테고리 랜덤 선정 #categorySelect())
+- [ ] 카테고리 랜덤 선정 #categorySelect()
 
 - ### 예외처리(Exception)
 - 입출력관련IllegalArgumentException 발생(단, [ERROR] 로시작)
 1. [x] 코치 이름이 2~4글자가 아닐때
 2. [ ] 코치가 못먹는 음식이 3개 이상일 때
-3. [ ] 같은 카테고리가 2회 이상 나왔을 때
+3. [x] 같은 카테고리가 2회 이상 나오지 않게하기
 4. [ ] 입력한 메뉴가 존재하지 않을 때
 5. [x] 코치가 1명일 때
