@@ -6,10 +6,10 @@ fun main() {
     outputView.printServiceStart()
     val coaches = inputView.inputCoaches()
     val coachesNotEatFoods = inputView.inputCoachNotEat(coaches)
-    println("-------")
-    println(coachesNotEatFoods)
-
     val recommendMenu = RecommendMenu(coachesNotEatFoods)
-    recommendMenu.processRecommendMenu()
-
+    println()
+    val result = recommendMenu.processRecommendMenu()
+    outputView.printResult(recommendResult = result)
 }
+
+
