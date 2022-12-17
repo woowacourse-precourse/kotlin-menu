@@ -10,6 +10,9 @@ class CategoryRecommandService(
 
     fun recommandCategory(): FoodCategory = FoodCategory.categoryOf(numberGenerator.generate())
 
+    /**
+     * 중복되는 카테고리가 각각 2개 이하일 때 까지 식단을 재생성한다.
+     */
     fun generateWeekCategory(): WeeklyCategory {
         var weeklyCategory: WeeklyCategory
         do {
@@ -18,6 +21,9 @@ class CategoryRecommandService(
         return weeklyCategory
     }
 
+    /**
+     * 월요일부터 금요일까지의 식단을 작성한다.
+     */
     private fun setWeeklyCategory() = WeeklyCategory(
         listOf(
             Weekday.MONDAY(recommandCategory()),
