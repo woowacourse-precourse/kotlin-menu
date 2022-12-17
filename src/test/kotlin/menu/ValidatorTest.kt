@@ -9,7 +9,7 @@ class ValidatorTest {
 
     private val inputValidator = InputValidator()
 
-    @ValueSource(strings = ["토미", "토미,제이스,포코,제임스,하이,사랑"])
+    @ValueSource(strings = ["토미","토미,제이스,포코,",",토미,제이스,포코", "토미,제이스,포코,제임스,하이,사랑"])
     @ParameterizedTest
     fun `코치 입력 테스트`(input: String) {
         assertThrows<IllegalArgumentException> {
