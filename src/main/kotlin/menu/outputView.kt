@@ -20,6 +20,7 @@ class outputView {
     }
 
     fun endService(){
+        println()
         println("추천을 완료했습니다.")
     }
 
