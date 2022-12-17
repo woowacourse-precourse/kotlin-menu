@@ -12,5 +12,10 @@ object InputValidator {
         require(separatedCoaches.all { it.length in MIN_COACH_NAME_SIZE..MAX_COACH_NAME_SIZE }) {
             ERROR_MESSAGE_FORMAT.format("코치의 이름의 길이는 2 이상 4 이하로 입력해야 합니다.")
         }
+        require(separatedCoaches.isNotDuplicated()) {
+            ERROR_MESSAGE_FORMAT.format("코치의 이름은 모두 달라야 합니다.")
+        }
     }
+
+    private fun <E> List<E>.isNotDuplicated(): Boolean = this.size == this.toSet().size
 }
