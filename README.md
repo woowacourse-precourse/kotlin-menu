@@ -213,6 +213,8 @@ val menu: String = Randoms.shuffle(menus)[0]
 - [ ] 코치 이름을 입력받는다. #inputCoachName()
 - [ ] 각 코치가 못 먹는 메뉴를 입력받는다. #inputNotEating()
 - [Outputview]
+- [x] 코치 이름 입력안내 #inputCoach()
+- [x] 코치가 못먹는 음식 입력안내 #inputNotEat()
 - [ ] 서비스 시작 문구 #startService()
 - [ ] 서비스 종료 문구 #endService()
 - [ ] 메뉴 추천 결과 #menuResult()
