@@ -20,7 +20,7 @@ object InputView {
             val menus = Console.readLine()
 
             kotlin.runCatching { InputValidator.validateMenus(menus) }
-                .onSuccess { return menus.split(",").map { it.trim() } }
+                .onSuccess { return menus.split(",").map { it.trim() }.filter { it.isNotEmpty() } }
                 .onFailure { println(it.message) }
         }
     }
