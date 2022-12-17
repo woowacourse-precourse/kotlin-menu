@@ -18,7 +18,7 @@ object ErrorCheck {
     }
 
     fun checkLengthOfName(value: String) {
-        if(value.length < MIN_COACH_NAME || value.length > MAX_COACH_NAME) {
+        if(value.trim().length < MIN_COACH_NAME || value.trim().length > MAX_COACH_NAME) {
             makeError(ErrorType.LENGTH_OF_NAME)
         }
     }

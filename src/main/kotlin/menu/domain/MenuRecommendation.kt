@@ -19,8 +19,7 @@ class MenuRecommendation(
     fun start() {
         outputView.printStart()
 
-        // TODO: 코치 이름 및 메뉴 앞뒤 공백 처리
-        coachName = inputCoachName()
+        coachName = removeTrims(inputCoachName())
         println(coachName)
         coachName.forEach { name -> menusCantEat[name] = inputMenuCantEat(name) }
 
@@ -103,5 +102,13 @@ class MenuRecommendation(
                 continue
             }
         }
+    }
+
+    fun removeTrims(value: List<String>): MutableList<String> {
+        val result = mutableListOf<String>()
+        value.forEach {
+            result.add(it.trim())
+        }
+        return result
     }
 }
