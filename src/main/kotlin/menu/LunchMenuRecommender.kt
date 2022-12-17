@@ -16,13 +16,16 @@ class LunchMenuRecommender(
         }
     }
 
-    fun chooseOneWeekMenu() {
-        chooseOneDayMenu()
+    fun chooseOneWeekMenu(): MutableMap<String, MutableList<String>> {
+        for (day in 0 until 5) {
+            chooseOneDayMenu()
+        }
+        return recommendedMenu
     }
 
     private fun chooseOneDayMenu() {
         val categoryIndex = chooseCategory()
-        chooseMenuForEachCoach(totalMenus[categoryIndex])
+        chooseMenuForEachCoach(totalMenus[categoryIndex - 1])
     }
 
     private fun chooseCategory(): Int {
