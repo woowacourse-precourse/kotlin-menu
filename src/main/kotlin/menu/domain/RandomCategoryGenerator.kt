@@ -5,7 +5,7 @@ import menu.data.*
 
 class RandomCategoryGenerator {
     private val categories: List<String> = listOf(
-        "",
+        TEMP,
         JAPANESE_FOOD,
         KOREAN_FOOD,
         CHINESE_FOOD,

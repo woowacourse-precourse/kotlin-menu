@@ -10,6 +10,7 @@ const val PROGRAM_END = "\n추천을 완료했습니다."
 const val LEFT = "[ "
 const val RIGHT = " ]"
 const val BAR = " | "
+const val TEMP = ""
 
 const val KOREAN_FOOD = "한식"
 const val CHINESE_FOOD = "중식"
