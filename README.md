@@ -221,6 +221,7 @@ val menu: String = Randoms.shuffle(menus)[0]
 - [Menu]
 - [x] 랜덤메뉴 추천 #menuRecommend()
 - [ ] 먹은 메뉴가 있다면 제외하고 추천해주는 기능
+- [x] 못먹는 음식 제외 추천하는 기능
 - [x] 카테고리 랜덤 선정 #categorySelect()
 
 - ### 예외처리(Exception)
