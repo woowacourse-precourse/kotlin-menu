@@ -76,9 +76,13 @@ class LunchGame(
     }
 
     private fun recommendMenus() {
-        repeat(5){
+        repeat(NUMBER_OF_MONDAY_TO_FRIDAY){
             recommendationMachine.selectTodayCategory()
             recommendationMachine.recommendTodayMenu(coaches)
         }
+    }
+
+    companion object{
+        const val NUMBER_OF_MONDAY_TO_FRIDAY = 5
     }
 }
