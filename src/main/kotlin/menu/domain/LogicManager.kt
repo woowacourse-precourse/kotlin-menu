@@ -2,7 +2,7 @@ package menu.domain
 
 import menu.strings.Message
 
-class CoachManager(
+class LogicManager(
     coachNames: List<String>,
     unavailableFoods: List<List<String>>
 ) {
