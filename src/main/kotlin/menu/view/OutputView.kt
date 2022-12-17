@@ -11,10 +11,13 @@ object OutputView {
 
     fun printRecommendedMenuTable(coaches: List<Coach>) {
         println("\n" + RECOMMENDED_MENU_RESULT_HEADER)
-        println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
+        println(createDayLine())
         println(createCategoryLine(coaches.first().recommendedCategories()))
         coaches.forEach { coach -> println(createMenuLineOfCoach(coach)) }
     }
+
+    private fun createDayLine(): String =
+        "[ 구분 | " + DayOfWeek.values().joinToString(" | ") { it.dayName } + " ]"
 
     private fun createCategoryLine(categories: List<Category>): String =
         "[ 카테고리 | " + categories.joinToString(" | ") { it.categoryName } + " ]"
