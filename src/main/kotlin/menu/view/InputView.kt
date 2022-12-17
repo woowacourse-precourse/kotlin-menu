@@ -14,16 +14,10 @@ class InputView {
         return NamesDTO(names)
     }
 
-    fun readMenus(namesDTO: NamesDTO): MenusDTO {
-        val menus = mutableMapOf<String, List<String>>()
-        val names = namesDTO.getNames()
-
-        names.map {name ->
-            println("$name$MENUS_GUIDE")
-            val input = readLine()
-            val menu = convertToList(input)
-            menus.put(name, menu)
-        }
+    fun readMenus(name: String): MenusDTO {
+        println("$name$MENUS_GUIDE")
+        val input = readLine()
+        val menus = convertToList(input)
 
         return MenusDTO(menus)
     }

@@ -1,4 +1,4 @@
 package menu.dto
 
-class MenusDTO(private val menus: Map<String, List<String>>) {
+class MenusDTO(private val menus: List<String>) {
 }
