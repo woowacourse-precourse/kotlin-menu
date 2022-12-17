@@ -1,11 +1,12 @@
-package menu
+package menu.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.data.MenuCategory
 
 class MenuCategoryGenerator(coachName: List<String>, coachesCantEat: MutableList<List<String>>) {
     private val _menuCategory = getRandomMenuCategory()
     val menuCategory = _menuCategory
-    val coachesCannotEat = coachesCantEat
+    private val coachesCannotEat = coachesCantEat
 
     private val coachNames = coachName
 
@@ -23,20 +24,21 @@ class MenuCategoryGenerator(coachName: List<String>, coachesCantEat: MutableList
         }
         return randoMenuCategory
     }
+
     fun getMenuFromCategory(): List<List<String>> {
         val randomMenu = mutableListOf<MutableList<String>>()
-
         val randomEachMenu = mutableListOf<String>()
         repeat(coachNames.size) {
             var k = 0
             var j = 0
             while (randomEachMenu.size != coachNames.size * 5) {
                 val menu = Randoms.shuffle(menuCategory[0].menus)[0]
+                println(menu)
                 if (coachesCannotEat[0].all { it != menu }) {
                     randomEachMenu.add(menu)
                     k++
                 }
-                if (k == 5 || k == 10 || k == 15) {
+                if (k % 5 == 0) {
                     j++
                 }
             }

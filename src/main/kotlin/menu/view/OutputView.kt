@@ -1,4 +1,6 @@
-package menu
+package menu.view
+
+import menu.data.MenuCategory
 
 class OutputView {
 

@@ -1,4 +1,4 @@
-package menu
+package menu.data
 
 enum class MenuCategory(val koreanName: String, val menus: List<String>) {
     JAPANESE("일식", listOf("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")),

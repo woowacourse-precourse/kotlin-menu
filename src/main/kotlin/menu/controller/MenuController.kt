@@ -1,4 +1,8 @@
-package menu
+package menu.controller
+
+import menu.domain.MenuCategoryGenerator
+import menu.view.InputView
+import menu.view.OutputView
 
 class MenuController(
     private val inputView: InputView = InputView(),
