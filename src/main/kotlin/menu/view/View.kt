@@ -33,9 +33,9 @@ class View {
         }
     }
 
-    fun printResultRecommend(coaches: MutableList<Coach>) {
+    fun printResultRecommend(coaches: MutableList<Coach>, categories: List<String>) {
         outputView.printResultMessage()
-        outputView.printRecommendResult(coaches)
+        outputView.printRecommendResult(coaches, categories)
         outputView.printEndMessage()
     }
 }

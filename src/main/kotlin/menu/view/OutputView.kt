@@ -24,23 +24,23 @@ class OutputView {
         println(END_MESSAGE)
     }
 
-    fun printRecommendResult(coaches: MutableList<Coach>) {
-        println(getResultHeader())
+    fun printRecommendResult(coaches: MutableList<Coach>, categories: List<String>) {
+        println(getResultHeader(categories))
         println(getResultMain(coaches))
 
     }
 
-    private fun getResultHeader(): Any? {
+    private fun getResultHeader(categories: List<String>): String {
         val stringBuilder = StringBuilder()
         stringBuilder.append(DAYS_MESSAGE + LINE_BREAKER)
         stringBuilder.append(LEFT_BRACKET + CATEGORY + VERTICAL_LINE)
-        MenuCategory.getCategories().forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
+        categories.forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
         stringBuilder.setLength(stringBuilder.length -3)
-        stringBuilder.append(RIGHT_BRACKET + LINE_BREAKER)
+        stringBuilder.append(RIGHT_BRACKET)
         return stringBuilder.toString()
     }
 
-    private fun getResultMain(coaches: MutableList<Coach>): Any? {
+    private fun getResultMain(coaches: MutableList<Coach>): String {
         val stringBuilder = StringBuilder()
         for (coach in coaches) {
             stringBuilder.append(LEFT_BRACKET + coach.getName() + VERTICAL_LINE)
@@ -49,7 +49,6 @@ class OutputView {
             stringBuilder.append(RIGHT_BRACKET + LINE_BREAKER)
         }
         return stringBuilder.toString()
-
     }
 
 

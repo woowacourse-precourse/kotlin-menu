@@ -12,7 +12,7 @@ class Menu {
             coaches.add(Coach(name))
         }
         view.getCoachesBias(coaches)
-        RandomMenu().getRecommendResult(coaches)
-        view.printResultRecommend(coaches)
+        val categories = RandomMenu().getRecommendMenus(coaches)
+        view.printResultRecommend(coaches, categories)
     }
 }

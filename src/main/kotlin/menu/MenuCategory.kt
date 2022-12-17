@@ -10,6 +10,10 @@ enum class MenuCategory(private val value: String, private val menu: List<String
     fun getMenus() = this.menu
 
     companion object {
+        fun getCategoryName(index: Int): String {
+            return MenuCategory.values()[index-1].value
+        }
+
         fun getCategories(): MutableList<String> {
             val categories = mutableListOf<String>()
             for (category in MenuCategory.values()) {

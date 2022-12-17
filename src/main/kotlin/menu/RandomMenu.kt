@@ -4,25 +4,26 @@ import  camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import camp.nextstep.edu.missionutils.Randoms.shuffle
 
 class RandomMenu {
-    fun getRecommendResult(coaches: MutableList<Coach>) {
-        for (coach in coaches) {
-            getRecommendMenus(coach)
-        }
-    }
+    private var categories = mutableListOf(0, 0, 0, 0, 0)
+    private var categoryNames = mutableListOf<String>()
 
-    private fun getRecommendMenus(coach: Coach) {
+    fun getRecommendMenus(coaches: MutableList<Coach>): MutableList<String> {
         for (i in 1..5) {
-            val categoryMenus = getMenus(coach)
-            getRecommendMenu(coach, categoryMenus)
+            val categoryMenus = getCategory()
+            for (coach in coaches) {
+                getRecommendMenu(coach, categoryMenus)
+            }
         }
+        return categoryNames
 
     }
 
-    private fun getMenus(coach: Coach): List<String> {
+    private fun getCategory(): List<String> {
         val randomNumber = pickNumberInRange(1, 5)
-        if (coach.getCategoriesCount(randomNumber) >= 2) {
-            return getMenus(coach)
+        if (categories[randomNumber-1] >= 2) {
+            return getCategory()
         }
+        categoryNames.add(MenuCategory.getCategoryName(randomNumber))
         return when (randomNumber) {
             1 -> MenuCategory.JAPANESE.getMenus()
             2 -> MenuCategory.KOREAN.getMenus()
