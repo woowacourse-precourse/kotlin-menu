@@ -27,7 +27,7 @@ Progress & MileStones
   - ~~Get coach name (with error handling)~~
   - ~~Get coach's hate menu (with error handling)~~
   - ~~Print Result~~
-  - Test error handling
+  - ~~Test error handling~~
 
 - RecommendController
     - ~~Run recommendation process~~
