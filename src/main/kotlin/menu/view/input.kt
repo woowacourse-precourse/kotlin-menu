@@ -4,6 +4,7 @@ import menu.values.Strings
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import camp.nextstep.edu.missionutils.Console
+
 class input {
 
 
@@ -21,5 +22,9 @@ class input {
         return coachName
     }
 
-
+    fun InputHateFood(coach: String): List<String> {
+        println("${coach}" + Strings.INPUT_HATEFOOD.message)
+        val hateFood = Console.readLine().split(",").map { it } as ArrayList<String>
+        return hateFood
+    }
 }
