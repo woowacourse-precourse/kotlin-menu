@@ -63,7 +63,8 @@ class MenuRecommend {
         while (true) {
             val menu = Randoms.shuffle(menus)[0]
             val menuDuplicate = isMenuDuplicated(coachMenu, menu)
-            if(!menuDuplicate){
+            val menuDislike = checkDislikeMenu(dislikeMenu, menu)
+            if (!menuDuplicate && !menuDislike) {
                 return menu
             }
         }
@@ -71,6 +72,13 @@ class MenuRecommend {
 
     private fun isMenuDuplicated(coachMenu: List<String>, menu: String):Boolean{
         if(coachMenu.contains(menu)){
+            return true
+        }
+        return false
+    }
+
+    private fun checkDislikeMenu(dislikeMenu: List<String>, menu: String): Boolean {
+        if (dislikeMenu.contains(menu)) {
             return true
         }
         return false
