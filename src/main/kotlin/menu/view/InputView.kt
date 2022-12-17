@@ -3,7 +3,7 @@ package menu.view
 import camp.nextstep.edu.missionutils.Console
 import menu.domain.Coach
 import menu.utils.Validator.checkCoachesValid
-import menu.utils.Validator.checkHateMenusValid
+import menu.utils.Validator.checkHateMenusSize
 
 class InputView {
     fun getCoaches(): List<Coach> {
@@ -16,7 +16,7 @@ class InputView {
     private fun getHateMenus(coachName: String): List<String> {
         OutputView().printInputCoachHateMenusMessage(coachName)
         val input = Console.readLine()
-        checkHateMenusValid(input)
+        checkHateMenusSize(input)
         return input.split(',')
     }
 }

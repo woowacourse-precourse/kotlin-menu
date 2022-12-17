@@ -6,4 +6,5 @@ object ErrorMessage {
     const val COACH_NAME_LENGTH_ERROR_MESSAGE = "[ERROR] 코치의 이름은 2글자 이상 4글자 이하여야 합니다."
     const val HATE_MENUS_COUNT_ERROR_MESSAGE = "[ERROR] 못 먹는 메뉴는 0개 이상 2개 이하여야 합니다."
     const val HATE_MENUS_DUPLICATION_ERROR_MESSAGE = "[ERROR] 못 먹는 메뉴는 중복될 수 없습니다."
+    const val HATE_MENUS_EXIST_ERROR_MESSAGE = "[ERROR] 존재하지 않는 메뉴가 포함되어 있습니다."
 }
