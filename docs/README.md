@@ -1,0 +1,19 @@
+# 🗒️ 기능 목록
+- [X] 입력을 담당하는 `InputView` 클래스 구현
+- [X] 출력을 담당하는 `OutputView` 클래스 구현
+- [X] 입출력 담당 클래스들에 대한 의존성 주입을 간단하게 처리하기 위해 입출력 담당 클래스들을 하나로 묶어주는 역할을 하는 `Views` 데이터 클래스 구현
+- [X] 코치 이름 입력에 대한 예외처리를 하는 `ValidateCoachNameUseCase` 유즈케이스 클래스 구현
+- [X] 코치가 못 먹는 음식 입력에 대한 예외처리를 하는 `ValidateInedibleFoodUseCase` 유즈케이스 클래스 구현
+- [X] 코치의 음식들을 추천해주는 `RecommendFoodsUseCase` 클래스 구현
+- [X] 예외처리 클래스들에 대한 의존성 주입을 간단하게 처리하기 위해 예외처리 클래스들을 하나로 묶어주는 역할을 하는 `UseCases` 데이터 클래스 구현
+- [X] 점심 메뉴 추천 시스템을 관리하는 클래스의 컨트랙트를 정의하는 `RecommendService` 인터페이스 구현
+- [X] 점심 메뉴 추천 시스템을 관리하는 클래스인 `Recommendation` 클래스 구현
+- [X] 음식 랜덤 카테고리의 생성을 담당하는 `CategoryMaker`, `CategoryNumberGenerator`, `CategoryRandomNumberGenerator` 클래스들 구현
+- [X] 에러 코드 관련 예외 메세지들을 정의하는 클래스인 `Error` sealed 클래스 구현
+- [X] 에러 결과에 대한 상태를 관리하는 클래스인 `ErrorState` 데이터 클래스 구현
+- [X] 메뉴 관련 데이터들을 관리하는 역할을 하는 클래스인 `Menu` object 클래스 구현
+- [X] 메뉴 추천 시스템에 필요한 데이터들을 관리하는 클래스인 `State` object 클래스 구현
+- [X] `main` 함수 구현
+- [ ] `ValidateCoachNameUseCase`에 대한 테스트 코드 구현
+- [ ] `ValidateInedibleFoodUseCase`에 대한 테스트 코드 구현
+- [ ] `RecommendFoodsUseCase`에 대한 테스트 코드 구현
