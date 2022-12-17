@@ -20,10 +20,22 @@ class Category {
 
             //3번 이상 같은 카테고리면 X
             val count = Collections.frequency(weekCategory, category)
-            if (count != 2){
-                weekCategory.add(category)
-            }
+            if (count != 2) weekCategory.add(category)
         }
         return weekCategory
+    }
+
+    fun coachMenu(coach: Coach, weekCategory: MutableList<String>) : MutableList<String>{
+        for (i in weekCategory){
+            if (i == "일식"){
+                var menus = japan
+                val menu: String = Randoms.shuffle(menus)[0]
+
+                //중복 메뉴 불가
+                if (!coach.menu.contains(menu)){
+                    coach.menu.add(menu)
+                }
+            }
+        }
     }
 }

@@ -25,4 +25,10 @@ fun main() {
     //추천할 카테고리 정하기
     var category = Category()
     var weekCategory = category.recommandCategory()
+    println(weekCategory)
+
+    //코치 메뉴 추천
+    for(i in coach){
+        var coachMenu = category.coachMenu(i, weekCategory)
+    }
 }
