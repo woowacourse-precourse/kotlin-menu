@@ -14,7 +14,7 @@ class MenuRecommendation(
     private lateinit var coachName: List<String>
     private val menusCantEat = mutableMapOf<String, List<String>>()
     private val menusGonnaEat = mutableMapOf<String, MutableList<String>>()
-    private val categoriesGonnaEat = mutableListOf<Category>()
+    private val categories = mutableListOf<Category>()
 
     fun start() {
         outputView.printStart()
@@ -29,12 +29,12 @@ class MenuRecommendation(
     }
 
     fun getCategories() {
-        while (categoriesGonnaEat.size < NUM_OF_DAYS) {
+        while (categories.size < NUM_OF_DAYS) {
             val index = pickNumberInRange(1, 5)
             val category = Category.getCategoryByIndex(index)
 
-            if (categoriesGonnaEat.count { it == category } < MAX_DUPLICATE_CATEGORY) {
-                categoriesGonnaEat.add(category)
+            if (categories.count { it == category } < MAX_DUPLICATE_CATEGORY) {
+                categories.add(category)
             }
         }
     }
@@ -49,7 +49,7 @@ class MenuRecommendation(
 
     fun getMenu(day: Int, coach: String) {
         while (true) {
-            val menu = Randoms.shuffle(Category.getMenus(categoriesGonnaEat[day]))[0]
+            val menu = Randoms.shuffle(Category.getMenus(categories[day]))[0]
 
             if (canEatMenu(coach, menu) && !isAlreadyHad(coach, menu)) {
                 addMenu(coach, menu)
