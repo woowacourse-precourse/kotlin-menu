@@ -19,8 +19,8 @@ Progress & MileStones
 
 ## Service
 - ValidateService
-  - Validate coach name
-  - Validate coach's hate menu
+  - ~~Validate coach name~~
+  - ~~Validate coach's hate menu~~
 
 ## Controller
 - UIController
