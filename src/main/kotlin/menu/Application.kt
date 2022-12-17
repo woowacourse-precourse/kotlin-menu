@@ -33,4 +33,7 @@ fun main() {
         i.menu = coachMenu
         println(i.menu)
     }
+
+    //메뉴 추천표 출력
+    OutputView().menuResult(coach, weekCategory)
 }
