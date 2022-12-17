@@ -33,4 +33,11 @@ class Output {
 
         return sb.toString()
     }
+
+    fun printFoodGroup(food : ArrayList<String>,name : String) : String{
+        val sb = StringBuilder()
+        sb.append("[ ${name} | ").append(food.joinToString(" | ")).append("]")
+
+        return sb.toString()
+    }
 }

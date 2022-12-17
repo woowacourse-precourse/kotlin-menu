@@ -1,9 +1,8 @@
 package menu.controller
 
 import menu.CategoryService
-import menu.domain.Category
+import menu.domain.Food
 import menu.values.MenuGroup
-import menu.values.Strings
 import menu.view.Input
 import menu.view.Output
 
@@ -18,7 +17,6 @@ class MenuController {
     val westernFood = MenuGroup.WESTERN.menu.split(",").map { it }
 
     fun run() {
-
         Output().printStart()
         val coachName = Input().InputName()
 
@@ -27,9 +25,16 @@ class MenuController {
 
         Output().printResultPhrases()
         Output().printStandard()
-        val a = CategoryService().makeFoodCategory()
 
-        println(Output().printFoodCategory(changeCategory(a)))
+
+        val a = changeCategory(CategoryService().makeFoodCategory())
+        println(a)
+
+        println(Output().printFoodCategory(a))
+
+        for (i in 0 until coachName.size){
+            println(Output().printFoodGroup(makeMenu(a),coachName[i]))
+        }
 
     }
 
@@ -55,4 +60,26 @@ class MenuController {
         return foodTypeCategory
     }
 
+    fun changeCategoryName(category: ArrayList<String>, index: Int) : List<String>{
+            when (category[index].toString()) {
+                "일식" ->return japanFood
+                "한식" ->return koreanFood
+                "중식" -> return chinaFood
+                "아시안" -> return asianFood
+                "양식"-> return westernFood
+            }
+
+        return japanFood
+    }
+
+    fun makeMenu(category: ArrayList<String>,) : ArrayList<String>{
+        var arr = ArrayList<String>()
+        for(i in 0 until 5){
+            arr.add(Food().choiceFood(changeCategoryName(category,i) as ArrayList<String>))
+        }
+        return arr
+    }
+
+
+   
 }
