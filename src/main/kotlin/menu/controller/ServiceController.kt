@@ -1,6 +1,7 @@
 package menu.controller
 
 import menu.model.Coach
+import menu.values.NOTICE_SERVICE_END_MESSAGE
 import menu.values.NOTICE_SERVICE_START_MESSAGE
 import menu.values.REQUIRE_COACHES_MESSAGE
 import menu.view.InputView
@@ -12,10 +13,21 @@ class ServiceController(
 ) {
 
     fun run() {
-
+        noticeStart()
         val coaches: List<Coach> = getCoaches()
+
+        noticeEnd()
     }
 
+    private fun noticeStart() {
+        outputView.printMessage(NOTICE_SERVICE_START_MESSAGE)
+        println()
+    }
+
+    private fun noticeEnd() {
+        outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
+        println()
+    }
 
     private fun getCoaches(): List<Coach> {
         val coaches = mutableListOf<Coach>()
