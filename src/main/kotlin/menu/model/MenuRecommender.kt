@@ -1,10 +1,7 @@
 package menu.model
 
 import camp.nextstep.edu.missionutils.Randoms
-import menu.data.Category
-import menu.data.Coach
-import menu.data.Menu
-import menu.data.MenuList
+import menu.data.*
 
 class MenuRecommender {
     private val menuList = MenuList()
@@ -27,6 +24,8 @@ class MenuRecommender {
     }
 
     fun generateMenuByCoach(coach: Coach, menus: List<Menu>, categories: List<Category>, dayOfWeek: Int): Menu {
+        if (categories.size != 5 || dayOfWeek < 0 || dayOfWeek > 4)
+            throw IllegalStateException(Message.ERR_MENU_ARGUMENT)
         while (true) {
             val menusByCategory = menuList.getMenus()[categories[dayOfWeek]]
             val menuNamesByCategory = menusByCategory!!.map { it.toString() }

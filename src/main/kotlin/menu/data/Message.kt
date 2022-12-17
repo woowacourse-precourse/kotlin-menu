@@ -15,4 +15,5 @@ object Message {
     const val ERR_COACH_COMMA = "코치의 이름을 ,로 구별해 주세요."
     const val ERR_DECLINE_MENU_LESS_THAN_TWO = "못 먹는 메뉴는 최대 2개까지 입력가능합니다."
     const val ERR_DECLINE_MENU_COMMA = "못 먹는 메뉴를 ,로 구별해 주세요."
+    const val ERR_MENU_ARGUMENT = "메뉴 생성에 필요한 인자가 불충분합니다."
 }
