@@ -4,13 +4,12 @@ import camp.nextstep.edu.missionutils.Console as cs
 
 class InputView {
 
-    fun getCoachNames() {
-        var validNamesFlag = true
-        while (validNamesFlag) {
+    fun getCoachNames(): List<String> {
+        while (true) {
             println("코치의 이름을 입력해 주세요. (, 로 구분)")
             val coaches = readCoachNames()
             if (coaches.isNotEmpty()) {
-                validNamesFlag = false
+                return coaches
             }
         }
     }
