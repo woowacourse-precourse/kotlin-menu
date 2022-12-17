@@ -74,12 +74,20 @@ private fun getWeenkend(
     var tryNumber = 1
     while (tryNumber <= 5) {
         val category = categories.get(Randoms.pickNumberInRange(1, 5))
-        if (weekend.values.filter { it == category }.size >= 2) {
+        if (isWeendSize(category, weekend)) {
             continue
         }
         weekend[days[tryNumber]] = category
         tryNumber++
     }
     return weekend
+}
+
+private fun isWeendSize(category: String, weekend: MutableMap<String, String>): Boolean {
+    val size = weekend.values.filter { it == category }.size
+    if (size >= 2) {
+        return true
+    }
+    return false
 }
 
