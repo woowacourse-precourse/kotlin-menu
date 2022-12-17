@@ -59,5 +59,8 @@ class UIController {
         return coachHateMenu
     }
 
+    fun printResult(category: List<String>, recommendations: Map<String, List<String>>) {
+        outputView.printResult(category, recommendations)
+    }
 
 }
