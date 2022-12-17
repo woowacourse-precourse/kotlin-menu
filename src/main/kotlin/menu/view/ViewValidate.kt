@@ -13,7 +13,7 @@ class ViewValidate {
     fun excludedFoodsForm(input: String) {
         val foods = input.split(",")
         foods.forEach { food ->
-            require(allFood().contains(food) || food=="")
+            require(allFood().contains(food) || food=="") { println("[ERROR] 메뉴에 있는 음식만 입력해주세요.")}
         }
         require((0..2).contains(foods.size)) { println("[ERROR] 못먹는 음식은 2개 이하만 입력해주세요.") }
         require(foods.size==foods.distinct().size) { println("[ERROR] 못먹는 음식을 중복 없이 입력해주세요.")}

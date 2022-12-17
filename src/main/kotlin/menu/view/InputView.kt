@@ -14,7 +14,7 @@ class InputView {
             viewValidate.coachNamesForm(coachNames)
             coachNames.split(",")
         }catch (e:IllegalArgumentException){
-            readCoachesName()
+           return readCoachesName()
         }
     }
 
@@ -25,7 +25,7 @@ class InputView {
             viewValidate.excludedFoodsForm(excludedFoods)
             excludedFoods.split(",")
         } catch (e:IllegalArgumentException){
-            readExcludedFoods(name)
+            return readExcludedFoods(name)
         }
     }
 
