@@ -20,6 +20,21 @@ class ApplicationTest : NsTest() {
     @Nested
     internal inner class AllFeatureTest {
         @Test
+        fun `추천할 카테고리를 고르는 기능 테스트`() {
+            assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
+                val executable = Executable {
+                    val categories = CategoryRepository().getRecommendCategory()
+                    assertThat(categories == listOf("한식", "한식", "중식", "아시안", "중식"))
+                    //1: "일식", 2: "한식", 3: "중식", 4: "아시안", 5: "양식"
+                }
+                assertRandomTest(
+                    executable,
+                    Mocking.ofRandomNumberInRange(2, 2, 2, 3, 4, 2, 3),  // 숫자는 카테고리 번호를 나타낸다.
+                )
+            }
+        }
+
+        @Test
         fun `기능 테스트`() {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
                 val executable = Executable {
