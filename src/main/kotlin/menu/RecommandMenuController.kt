@@ -63,8 +63,7 @@ class RecommandMenuController(private val nameMenu: MutableList<Pair<String, Lis
         for (day in personMenu) {
             for (element in day) {
                 finalResult.add(element)
-            }
-        }
+            } }
         for (i in 0 until coachNumber) {
             val temp = mutableListOf<String>()
             for (n in 0..4) {
@@ -74,7 +73,5 @@ class RecommandMenuController(private val nameMenu: MutableList<Pair<String, Lis
                 finalResult.clear()
                 setMenus()
                 break
-            }
-        }
-    }
+            } } }
 }
