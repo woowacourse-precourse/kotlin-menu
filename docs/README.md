@@ -1,0 +1,21 @@
+## 기능 목록 작성 
+
+- view
+  - InputView
+    - 코치의 이름 입력
+    - 코치가 못 먹는 메뉴
+  - OutputView
+    - 메뉴 추천 시작
+    - 코치 이름 입력 안내
+    - 코치 못먹는 음식 입력 안내
+    - 메뉴 추천 결과
+    - 추천 완료 안내
+  - ViewValidate
+    - 코치이름은 최대 2~4글자
+    - 코치는 최소 2~5명 식사
+- model
+  - Category
+  - Menu
+  - Week
+- controller
+  - RecommendMenu
