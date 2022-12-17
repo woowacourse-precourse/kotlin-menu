@@ -1,7 +1,7 @@
 package menu
 
-import menu.controller.MenuController
+import menu.controller.RecommendController
 
 fun main() {
-    MenuController()
+    RecommendController()
 }

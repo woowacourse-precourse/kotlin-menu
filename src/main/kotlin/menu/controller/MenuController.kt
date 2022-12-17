@@ -1,45 +1,13 @@
 package menu.controller
 
 import camp.nextstep.edu.missionutils.Randoms
-import menu.data.Categories
 import menu.data.Menus
-import menu.input.InputView
-import menu.output.OutputView
 
-class MenuController {
-    // TODO: 전체적인 메뉴 추천 기능 진행
-
-    private val inputView = InputView()
-    private val outputView = OutputView()
-
-    private val coaches: List<String>
-    private val notEatMenus = mutableListOf<List<String>>()
-
-    private val recommendCategories: List<String> = CategoryController().getRecommendCategory()
+class MenuController(private val coaches: List<String>, private val recommendCategories: List<String>, private val notEatMenus: List<List<String>>) {
     private val recommendMenus = mutableListOf<List<String>>()
 
     init {
-        outputView.startRecommendMenu()
-
-        outputView.inputCoachName()
-        coaches = inputView.inputCoachName()
-
-        notEatMenu()
-
         recommendMenu()
-
-        outputView.resultRecommendMenu()
-        outputView.outputHeaderDay()
-        outputView.outputCategory(recommendCategories)
-        outputView.outputRecommendMenu(coaches, recommendMenus)
-        outputView.outputSuccessRecommend()
-    }
-
-    private fun notEatMenu() {
-        coaches.forEach {
-            outputView.inputNotEatMenu(it)
-            notEatMenus.add(inputView.inputNotEatMenu(it))
-        }
     }
 
     private fun recommendMenu() {
@@ -53,6 +21,8 @@ class MenuController {
             recommendMenus.add(nowDay)
         }
     }
+
+    fun getRecommendMenus(): List<List<String>> = recommendMenus
 
     private fun checkEatMenu(menuName: String, coachIndex: Int): Boolean {
         if(notEatMenus[coachIndex].contains(menuName))
