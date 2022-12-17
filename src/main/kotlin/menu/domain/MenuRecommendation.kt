@@ -26,6 +26,8 @@ class MenuRecommendation(
 
         getCategories()
         getRecommendMenu()
+
+        outputView.printResult(categories, menusGonnaEat)
     }
 
     fun getCategories() {
