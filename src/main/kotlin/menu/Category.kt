@@ -1,6 +1,8 @@
 package menu
 
 import camp.nextstep.edu.missionutils.Randoms
+import java.util.*
+
 
 class Category {
     //메뉴
@@ -12,10 +14,15 @@ class Category {
 
     fun recommandCategory() : MutableList<String>{
         var weekCategory = mutableListOf<String>()
-        for (i in 1..5){
+        while (weekCategory.size != 5){
             var categories = mutableListOf("일식", "한식", "중식", "아시안", "양식")
             val category: String = categories.get(Randoms.pickNumberInRange(1, 5))
-            weekCategory.add(category)
+
+            //3번 이상 같은 카테고리면 X
+            val count = Collections.frequency(weekCategory, category)
+            if (count != 2){
+                weekCategory.add(category)
+            }
         }
         return weekCategory
     }
