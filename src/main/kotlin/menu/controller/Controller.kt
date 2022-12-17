@@ -22,8 +22,8 @@ class Controller {
         val categories = menuRecommend.recommendCategory()
         coaches.forEach { coach ->
             menuRecommend.recommendMenusToCoach(categories, coach)
-            println(coach.getRecommendedMenus())
         }
+        outputView.printResult(categories, coaches)
     }
 
     private fun readCoaches(): List<Coach> {
