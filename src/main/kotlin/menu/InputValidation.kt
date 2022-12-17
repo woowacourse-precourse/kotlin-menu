@@ -18,11 +18,11 @@ class InputValidation {
         if(foods.size> MAX_IMPOSSIBLE_FOOD_NUMBER ) throw IllegalArgumentException()
     }
 
-    fun checkInvalidImpossibleFood(input: String,menu:List<String>){
-        if(!menu.contains(input)) throw IllegalArgumentException()
+    fun checkInvalidImpossibleFood(foods: List<String>,menu:List<String>){
+        foods.forEach {food->
+            if (!menu.contains(food)) throw IllegalArgumentException()
+        }
     }
-
-
 
     companion object{
         const val MAX_COACH_NUMBER = 5
