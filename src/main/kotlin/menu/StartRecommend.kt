@@ -5,52 +5,12 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class StartRecommend {
     fun gameStart() {
-        println("점심 메뉴 추천을 시작합니다.")
+        val inputView = InputView()
+        val user = inputView.inputCoach()
 
-        println()
-        println("코치의 이름을 입력해 주세요. (, 로 구분)")
-        var input = Console.readLine()
-        val user = input.split(",")
-
-        // 코치 숫자 예외처리
-        if (user.size < 2 || user.size > 5) {
-            throw IllegalArgumentException("[ERROR]코치는 최소 2명 최대 5명이 같이 식사를 할 수 있습니다.")
-        }
-
-        // 코치 이름 예외처리
-        for (i in user.indices) {
-            if (user[i].length < 2 || user[i].length > 4) {
-                throw IllegalArgumentException("[ERROR]이름 형식에 맞춰주세요(이름은 2글자에서 4글자).")
-            }
-        }
-
-        println()
-
+        val avoid = inputView.inputCantEatMenu(user as MutableList<String>)
         // 못 먹는 메뉴 담는 배열
-        var avoid = mutableListOf<MutableList<String>>()
 
-        for (i in 0 until user.size) {
-            println(user[i] + "(이)가 못 먹는 메뉴를 입력해 주세요.")
-            var menu = Console.readLine()
-            if (menu == null) {
-                avoid.add("." as MutableList<String>)
-                println()
-                continue
-            }
-            if (menu.contains(",")) {
-                var cantEat = menu.split(",")
-                if (cantEat.size > 2) {
-                    throw IllegalArgumentException("[ERROR] 먹지 못하는 메뉴는 최대 2개 입니다.")
-                }
-                avoid.add(cantEat as MutableList<String>)
-                println()
-                continue
-            }
-            avoid.add(menu as MutableList<String>)
-            println()
-        }
-
-        println(avoid)
 
         println("메뉴 추천 결과입니다.")
         println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
@@ -85,7 +45,8 @@ class StartRecommend {
 
                     while (true) {
                         val menu: String = Randoms.shuffle(japan)[0]
-                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+
+                        if (!avoid[idx].contains(menu)) {
                             print(" | ")
                             print(menu)
                             break
@@ -95,7 +56,7 @@ class StartRecommend {
                 } else if (diet[i] == "한식") {
                     while (true) {
                         val menu: String = Randoms.shuffle(korea)[0]
-                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                        if (!avoid[idx].contains(menu)) {
                             print(" | ")
                             print(menu)
                             break
@@ -104,7 +65,7 @@ class StartRecommend {
                 } else if (diet[i] == "중식") {
                     while (true) {
                         val menu: String = Randoms.shuffle(china)[0]
-                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                        if (!avoid[idx].contains(menu)) {
                             print(" | ")
                             print(menu)
                             break
@@ -113,7 +74,7 @@ class StartRecommend {
                 } else if (diet[i] == "아시안") {
                     while (true) {
                         val menu: String = Randoms.shuffle(asian)[0]
-                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                        if (!avoid[idx].contains(menu)) {
                             print(" | ")
                             print(menu)
                             break
@@ -122,7 +83,7 @@ class StartRecommend {
                 } else if (diet[i] == "양식") {
                     while (true) {
                         val menu: String = Randoms.shuffle(western)[0]
-                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                        if (!avoid[idx].contains(menu)) {
                             print(" | ")
                             print(menu)
                             break
