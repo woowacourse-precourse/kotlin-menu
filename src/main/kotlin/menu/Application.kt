@@ -34,15 +34,6 @@ fun main() {
         }
     }
 
-    for (coachIndex in coaches.indices) {  //코치마다 요일별로 메뉴 추천
-        val coachMenu = mutableListOf<String>()
-        for (categoryIndex in recommendedCategory.indices) {
-            val menu = menuRecommend.pickMenu(recommendedCategory[categoryIndex], coachMenu, dislikeMenus[coachIndex])
-            coachMenu.add(menu)
-        }
-        recommendedMenu.add(coachMenu)
-    }
-
     println("메뉴 추천 결과입니다.")
     println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
     printRecommendCategory(recommendedCategory)
