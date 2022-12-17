@@ -8,7 +8,10 @@ class Category {
 
     fun pickCategory() : String{
         val randomNumber = Randoms.pickNumberInRange(1, 5)
-        categoryCount[randomNumber]++
-        return categories[randomNumber]
+        if(categoryCount[randomNumber-1]>=2){
+            return pickCategory()
+        }
+        categoryCount[randomNumber-1]++
+        return categories[randomNumber-1]
     }
 }

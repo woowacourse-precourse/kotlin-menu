@@ -11,6 +11,7 @@ class MenuController {
     fun startRecommend() {
         inputCoachName()
         inputHateFood()
+        pickWeekMenu()
     }
 
     private fun inputCoachName() {
@@ -30,4 +31,7 @@ class MenuController {
         }
     }
 
+    private fun pickWeekMenu() {
+        menuRecommender.pickWeekMenu()
+    }
 }
