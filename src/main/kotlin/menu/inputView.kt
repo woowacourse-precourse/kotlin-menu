@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console.readLine
 
 class inputView {
     val error = ErrorMessage()
+    val CT = categories()
 
     // 숫자인지 물어보는 함수
     fun isNumeric(s: String): Boolean {

@@ -5,7 +5,7 @@ class menuRecommend {
     val IV = inputView()
     val MN = Menu()
     var coachNameCollect= listOf<String>()
-    var coachMenuCollect= mutableListOf<String>()
+    var coachNotEat = mutableListOf<List<String>>()
     var coachsMenuCollection= mutableListOf<List<String>>()
     var categoryNameCollect = listOf<String>()
 
@@ -18,10 +18,9 @@ class menuRecommend {
 
     fun duringInput(){
         coachNameCollect=IV.inputCoachName()
-//        println(coachNameCollect)
         for (i in 0 until coachNameCollect.size){
             OV.inputNotEat(coachNameCollect[i])
-            IV.inputNotEating()
+            coachNotEat.add(IV.inputNotEating())
             println()
         }
     }
@@ -31,21 +30,24 @@ class menuRecommend {
         eachCoach()
     }
 
-    fun duringMenuSelect(): List<String>{
-        var idx=0
-        var menu = mutableListOf<String>()
+    fun duringMenuSelect(i : Int): List<String>{
+        var ctidx=0
+        var menuCollect = mutableListOf<String>()
+        var menu = ""
         while (true){
-            if (menu.size==5) break
-            menu.add(MN.menuRecommend(categoryNameCollect[idx]))
-            idx+=1
+            if (menuCollect.size==5) break
+            menu = MN.menuRecommend(categoryNameCollect[ctidx])
+            if ((coachNotEat[i]).contains(menu)) continue
+            menuCollect.add(menu)
+            ctidx+=1
         }
-        return menu
+        return menuCollect
     }
 
     fun eachCoach(){
         var coachMenuCollect= listOf<String>()
         for (i in 0 until coachNameCollect.size){
-            coachMenuCollect=duringMenuSelect()
+            coachMenuCollect=duringMenuSelect(i)
             coachsMenuCollection.add(coachMenuCollect)
         }
     }
