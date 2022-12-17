@@ -1,6 +1,7 @@
 package menu.view
 
 import menu.values.Strings
+import java.lang.StringBuilder
 
 class Output {
 
@@ -20,5 +21,16 @@ class Output {
 
     fun printResultPhrases(){
         println(Strings.RESULT.message)
+    }
+
+    fun printStandard(){
+        println(Strings.DAY.message)
+    }
+
+    fun printFoodCategory(foodType : ArrayList<String>) : String{
+        val sb = StringBuilder()
+        sb.append("[ 카테고리 | ").append(foodType.joinToString(" | ")).append("]")
+
+        return sb.toString()
     }
 }
