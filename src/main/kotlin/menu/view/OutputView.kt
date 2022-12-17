@@ -1,5 +1,6 @@
 package menu.view
 
+import menu.domain.Coach
 import menu.utils.Constant.CATEGORY
 import menu.utils.Constant.CLOSE_BRACKET
 import menu.utils.Constant.DIVISION
@@ -26,20 +27,22 @@ class OutputView {
     }
 
     fun printInputCoachHateMenusMessage(coachName: String) {
-        println("$coachName$INPUT_HATE_MENUS_MESSAGE")
+        println("\n$coachName$INPUT_HATE_MENUS_MESSAGE")
     }
 
-    fun printRecommendMenuResult(categories: List<String>) {
+    fun printRecommendMenuResult(coaches: List<Coach>, categories: List<String>) {
         printRecommendMenuResultMessage()
         printDayOfWeek()
         printCategory(categories)
+        coaches.forEach { coach -> printCoachesMenus(coach.getCoachName(), coach.getMenus()) }
+        printRecommendMenuEndMessage()
     }
 
     private fun printRecommendMenuResultMessage() {
-        println(RECOMMEND_MENU_RESULT_MESSAGE)
+        println("\n$RECOMMEND_MENU_RESULT_MESSAGE")
     }
 
-    fun printCoachesMenus(coachName: String, menus: List<String>) {
+    private fun printCoachesMenus(coachName: String, menus: List<String>) {
         print("$OPEN_BRACKET $coachName ")
         menus.forEach { menu ->
             print("$SEPARATOR $menu ")
@@ -64,7 +67,7 @@ class OutputView {
         println(CLOSE_BRACKET)
     }
 
-    fun printRecommendMenuEndMessage() {
-        println(RECOMMEND_MENU_END_MESSAGE)
+    private fun printRecommendMenuEndMessage() {
+        println("\n$RECOMMEND_MENU_END_MESSAGE")
     }
 }

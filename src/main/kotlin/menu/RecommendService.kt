@@ -12,40 +12,34 @@ class RecommendService {
         OutputView().printStartMessage()
         val coaches = InputView().getCoaches()
         val categories = generateCategories()
-        OutputView().printRecommendMenuResult(categories)
         recommendMenus(coaches, categories)
-        OutputView().printRecommendMenuEndMessage()
+        OutputView().printRecommendMenuResult(coaches, categories)
     }
 
     private fun recommendMenus(coaches: List<Coach>, categories: List<String>) {
-        generateMenus(coaches, categories)
-    }
-
-    private fun generateMenus(coaches: List<Coach>, categories: List<String>) {
-        coaches.forEach { coach ->
-            val menus = mutableListOf<String>()
-            categories.forEach { category ->
-                var menu = selectMenu(coach, category)
-                while (menus.contains(menu)) {
-                    menu = selectMenu(coach, category)
-                }
-                menus.add(menu)
+        categories.forEach { category ->
+            coaches.forEach { coach ->
+                val menu = selectMenu(coach, category)
+                coach.addMenu(menu)
             }
-            OutputView().printCoachesMenus(coach.getCoachName(), menus)
         }
     }
 
     private fun selectMenu(coach: Coach, category: String): String {
         val menus = Category.getMenuList(category)
-        var menu = generateRandomMenu(menus)
-        while (coach.containHateMenus(menu)) {
-            menu = generateRandomMenu(menus)
+        var menu = generateRandomMenu(coach, menus)
+        while (coach.containMenu(menu)) {
+            menu = generateRandomMenu(coach, menus)
         }
         return menu
     }
 
-    private fun generateRandomMenu(menus: List<String>): String {
-        return Randoms.shuffle(menus)[0]
+    private fun generateRandomMenu(coach: Coach, menus: List<String>): String {
+        var menu = Randoms.shuffle(menus)[0]
+        while (coach.containHateMenus(menu)) {
+            menu = Randoms.shuffle(menus)[0]
+        }
+        return menu
     }
 
     private fun generateCategories(): List<String> {
