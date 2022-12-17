@@ -1,0 +1,6 @@
+package menu
+
+object Constants {
+
+
+}

@@ -1,0 +1,7 @@
+package menu
+
+class InputView {
+
+
+
+}
