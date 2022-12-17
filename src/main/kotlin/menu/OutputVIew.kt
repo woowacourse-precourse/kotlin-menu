@@ -23,6 +23,4 @@ class OutputVIew {
 
         return diet
     }
-
-
 }

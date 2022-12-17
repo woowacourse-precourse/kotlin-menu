@@ -11,6 +11,14 @@ class InputView {
         var input = Console.readLine()
         val user = input.split(",")
 
+        inputCoachException(user)
+
+        println()
+
+        return user
+    }
+
+    private fun inputCoachException(user: List<String>) {
         // 코치 숫자 예외처리
         if (user.size < 2 || user.size > 5) {
             throw IllegalArgumentException("[ERROR]코치는 최소 2명 최대 5명이 같이 식사를 할 수 있습니다.")
@@ -22,15 +30,10 @@ class InputView {
                 throw IllegalArgumentException("[ERROR]이름 형식에 맞춰주세요(이름은 2글자에서 4글자).")
             }
         }
-
-        println()
-
-        return user
     }
 
     fun inputCantEatMenu(user : MutableList<String>) : MutableList<MutableList<String>>{
         var avoid = mutableListOf<MutableList<String>>()
-
         for (i in 0 until user.size) {
             println(user[i] + "(이)가 못 먹는 메뉴를 입력해 주세요.")
             var menu = Console.readLine()
@@ -48,10 +51,10 @@ class InputView {
                 println()
                 continue
             }
-            if(menu != null){
-                avoid[i].add(menu)
-                println()
-            }
+//            if(menu != null){
+//                avoid[i].add(menu)
+//                println()
+//            }
         }
         return avoid
     }
