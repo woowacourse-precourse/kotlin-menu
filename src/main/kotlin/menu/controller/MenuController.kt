@@ -14,9 +14,9 @@ class MenuController {
         val cannotEatFood = askCannotEatFood(names)
         val determinedCategory = CategoryController().randomCategory()
         val result = mutableListOf<List<String>>()
+        for (category in determinedCategory)
+            result.add(determineWholeMenu(category, cannotEatFood, result))
 
-        for (cantEat in cannotEatFood)
-            result.add(determineMenu(determinedCategory,cantEat))
         OutputView().printResult(names, determinedCategory, result)
     }
 
@@ -35,24 +35,36 @@ class MenuController {
         return cannotEatFood
     }
 
-
-    private fun determineMenu(determinedCategory: List<Food>, cantEat: List<String>): List<String> {
-        val determinedMenu = mutableListOf<String>()
-        var category = 0
-        while (determinedMenu.size < 5) {
-            val menus = determinedCategory[category].menu
-            val menu: String = Randoms.shuffle(menus)[0]
-            if(checkDuplicateMenu(determinedMenu, menu) || checkCantEatFood(menu, cantEat))
-                continue
-            determinedMenu.add(menu)
-            category++
+    private fun determineWholeMenu(
+        determinedCategory: Food,
+        cannotEatFood: List<List<String>>,
+        determinedMenu: MutableList<List<String>>
+    ): MutableList<String> {
+        val result = mutableListOf<String>()
+        for (cantEat in cannotEatFood) {
+            result.add(retryForRightMenu(determinedCategory.menu, determinedMenu, cantEat))
         }
-        return determinedMenu
+        return result
     }
 
-    private fun checkDuplicateMenu(determinedMenu: MutableList<String>, menu: String): Boolean {
-        if (determinedMenu.contains(menu))
-            return true
+    private fun retryForRightMenu(
+        menus: List<String>,
+        determinedMenu: MutableList<List<String>>, cantEat: List<String>
+    ): String {
+        while (true) {
+            var check = true
+            val menu = Randoms.shuffle(menus)[0]
+            if (checkDuplicateMenu(determinedMenu, menu) || checkCantEatFood(menu, cantEat))
+                check = false
+            if (check)
+                return menu
+        }
+    }
+
+    private fun checkDuplicateMenu(determinedMenu: MutableList<List<String>>, menu: String): Boolean {
+        for (result in determinedMenu)
+            if (result.contains(menu))
+                return true
         return false
     }
 
