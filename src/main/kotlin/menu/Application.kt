@@ -18,7 +18,7 @@ fun main() {
     val coachNames = progressCoachNameStage()
     val coachWithMenuBans = progressGetBanMenu(coachNames)
     val recommendResult = progressRecommend(coachWithMenuBans)
-    progressConclusion(recommendResult)
+    progressConclusion()
 }
 
 private fun progressStart() {
@@ -43,24 +43,19 @@ private fun progressGetBanMenu(coachNames: List<String>): List<List<String>> {
     return coachWithMenuBans
 }
 
-private fun progressRecommend(coachWithMenuBans: List<List<String>>): List<List<String>> {
+private fun progressRecommend(coachWithMenuBans: List<List<String>>) {
     outputView.printConclusionPhrase()
     val categorys = categoryPicker.genrateCategorys()
     val recommendResult = mutableListOf<List<String>>()
-    for (coachWithMenuBan in coachWithMenuBans) {
-        val printPurposeConclusion =
-            mutableListOf(coachWithMenuBan[0]) + menuPicker.generateMenus(coachWithMenuBan, categorys)
-        recommendResult.add(printPurposeConclusion)
-    }
     outputView.printWeekOfTheDayPhrase()
     println(categorys.map { it.korean }.joinToString(separator = " | ", prefix = "[ 카테고리 | ", postfix = " ]"))
-    return recommendResult
+    for (coachWithMenuBan in coachWithMenuBans) {
+        print("[ ${coachWithMenuBan[0]} |")
+        println(menuPicker.generateMenus(coachWithMenuBan,categorys).joinToString(separator = " | ", postfix = " ]"))
+    }
 }
 
-private fun progressConclusion(recommendResults: List<List<String>>) {
-    for (recommendResult in recommendResults) {
-        println(recommendResult.joinToString(separator = " | ", prefix = "[ ", postfix = " ]"))
-    }
+private fun progressConclusion() {
     println()
     outputView.printEndPhrase()
 }
