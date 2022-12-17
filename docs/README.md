@@ -5,7 +5,7 @@ Progress & MileStones
   - ~~Make recommended category~~
   - Test
 - MenuRepository
-  - Make recommended menu (according to category and coach info)
+  - ~~Make recommended menu (according to category and coach info)~~
   - Test
 
 ## View
