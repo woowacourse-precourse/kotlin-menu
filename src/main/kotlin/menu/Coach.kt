@@ -4,8 +4,7 @@ class Coach(
     val name: String,
 ) {
 
-    //TODO : private
-    var hatingMenus = arrayListOf<String>()
+    private var hatingMenus = arrayListOf<String>()
     var thisWeekMenus = arrayListOf<String>()
 
     fun setHatingMenus(inputHatingMenus: List<String>) {

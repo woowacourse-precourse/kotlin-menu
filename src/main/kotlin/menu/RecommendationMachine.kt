@@ -4,7 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.FoodData.categoryToMenus
 
 class RecommendationMachine {
-    //TODO : private
     var thisWeekCategories = arrayListOf<Int>()
 
     fun recommendTodayMenu(coaches: List<Coach>) {
@@ -12,6 +11,7 @@ class RecommendationMachine {
 
         coaches.forEach { eachCoach ->
             var isRecommended = false
+
             while (!isRecommended) {
                 val randomMenu = Randoms.shuffle(todaysCategory.categoryToMenus())[0]
                 isRecommended = eachCoach.selectMyMenu(randomMenu)
@@ -31,5 +31,4 @@ class RecommendationMachine {
             }
         }
     }
-
 }

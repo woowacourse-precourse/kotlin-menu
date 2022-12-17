@@ -17,11 +17,11 @@ class InputValidator {
         hatingMenus.validateIsAlreadyExistHatingMenu()
     }
 
-    private fun String.validateIsAlreadyExistHatingMenu(){
+    private fun String.validateIsAlreadyExistHatingMenu() {
         val hatingMenuRecords = mutableSetOf<String>()
 
         this.split(",").forEach { eachMenu ->
-            require(!hatingMenuRecords.contains(eachMenu)){
+            require(!hatingMenuRecords.contains(eachMenu)) {
                 ERROR_ALREADY_CONTAINED_HATING_MENU
             }
             hatingMenuRecords.add(eachMenu)
