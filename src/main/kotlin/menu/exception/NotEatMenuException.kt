@@ -4,23 +4,30 @@ import menu.data.Menus
 import menu.message.ExceptionMessage
 
 class NotEatMenuException(menus: String) {
+    private var menu = splitMenus(menus)
+
     init {
-        notEatMenuIsMoreThanThree(menus)
-        notAvailableMenu(menus)
+        removeSpace()
+        notEatMenuIsMoreThanThree()
+        notAvailableMenu()
     }
 
-    private fun notEatMenuIsMoreThanThree(menus: String) {
-        val menu = menus.split(',')
+    private fun splitMenus(menus: String): List<String> = menus.split(',')
 
+    private fun removeSpace() {
+        val tmpMenu = menu.toMutableList()
+        tmpMenu.removeIf { it.isEmpty() }
+        menu = tmpMenu
+    }
+
+    private fun notEatMenuIsMoreThanThree() {
         if(menu.size > 2)
             throw IllegalArgumentException(ExceptionMessage.notEatMenuIsMoreThanThree)
     }
 
-    private fun notAvailableMenu(menus: String) {
-        val menu = menus.split(',')
-
+    private fun notAvailableMenu() {
         menu.forEach {
-            if(it.isNullOrEmpty())
+            if(it.isEmpty())
                 return@forEach
             if(!Menus.allMenu.contains(it))
                 throw IllegalArgumentException(ExceptionMessage.notAvailableMenu)
