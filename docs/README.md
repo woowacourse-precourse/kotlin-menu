@@ -1,4 +1,5 @@
 ## 기능 목록
+-[ ] 점심 메뉴 추천 시작 - run()#MenuController
 -[ ] 점심 메뉴 추천을 시작합니다. - menuRecommendationStartPrint()#OutputView
 -[ ] 코치의 이름을 입력해주세요. - coachNamePrint()#OutputView
 -[ ] 코치의 이름을 입력 받는다. - getCoachName()#InputView
