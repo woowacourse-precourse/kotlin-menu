@@ -28,6 +28,7 @@ class Coach(private val name: String) {
     }
 
     fun decideInedibleMenus(inputMenus: List<String>) {
+        if (inputMenus[0].isBlank()) return
         inputMenus.forEach {
             if (!Category.isMenuExist(it)) {
                 throw IllegalArgumentException(MENU_ERROR)
