@@ -21,13 +21,13 @@ class MenuProgram(val input: InputView, val output: OutputView) {
 
     fun runProgram() {
         output.printStart()
-        makeCoachs()
+        makeCoaches()
         findHateFood()
         setMenu()
         output.printResult(categoryOfDay.getCategoryData(), coachs)
     }
 
-    private fun makeCoachs() {
+    private fun makeCoaches() {
         val coach = input.inputCoachName()
         for (each in coach) {
             coachs.add(Coach(each, mutableListOf()))
@@ -52,7 +52,7 @@ class MenuProgram(val input: InputView, val output: OutputView) {
         return categories.getCategoryByIndex(pick) //해당 카테고리 반환
     }
 
-    fun makeMenu(menus: List<String>, coach: Coach) {
+    private fun makeMenu(menus: List<String>, coach: Coach) {
 
         var menu: String = Randoms.shuffle(menus)[0]
 
@@ -70,6 +70,5 @@ class MenuProgram(val input: InputView, val output: OutputView) {
             }
         }
     }
-
 
 }

@@ -1,9 +1,6 @@
 package menu
 
-class Category(val number:Int, val categoryName:String, val menus:List<String>, var count:Int=0) {
-
-
-
+data class Category(val number:Int, val categoryName:String, val menus:List<String>, var count:Int=0) {
 }
 
 

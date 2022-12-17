@@ -3,7 +3,7 @@ package menu
 import camp.nextstep.edu.missionutils.Console
 
 const val ASK_COACH_NAMES="코치의 이름을 입력해 주세요. (, 로 구분)"
-class InputView(val checker: ValidChecker = ValidChecker()) {
+class InputView(private val checker: ValidChecker = ValidChecker()) {
 
     fun inputCoachName(): List<String> {
         val coachNames: String
