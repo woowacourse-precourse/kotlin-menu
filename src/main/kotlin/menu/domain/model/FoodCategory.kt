@@ -4,16 +4,21 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.util.*
 import java.lang.IllegalArgumentException
 
-enum class FoodCategory(private val menus: List<String>) {
-    KOREAN(KOREAN_FOODS),
-    JAPANENSE(JAPANESE_FOODS),
-    CHINESE(CHINESE_FOODS),
-    ASIAN(ASIAN_FOODS),
-    WESTERN(WESTERN_FOODS);
+enum class FoodCategory(
+    private val categoryName: String,
+    private val menus: List<String>
+) {
+    KOREAN("한식", KOREAN_FOODS),
+    JAPANENSE("일식", JAPANESE_FOODS),
+    CHINESE("중식", CHINESE_FOODS),
+    ASIAN("아시안", ASIAN_FOODS),
+    WESTERN("양식", WESTERN_FOODS);
 
     fun recommand(): String {
         return Randoms.shuffle(menus)[0]
     }
+
+    fun getCategoryName() = categoryName
 
     fun containsFood(foodName: String): Boolean {
         return menus.contains(foodName)
