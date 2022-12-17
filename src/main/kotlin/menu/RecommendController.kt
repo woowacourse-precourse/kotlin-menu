@@ -18,12 +18,12 @@ class RecommendController {
         ui.printResult(recommendCategory, recommendMenu)
     }
 
-    fun setInputs() {
+    private fun setInputs() {
         coaches = ui.getCoachName()
         coachHateMenu = ui.getCoachHateMenu(coaches)
     }
 
-    fun recommend() {
+    private fun recommend() {
         for(coach in coaches) {
             recommendMenu[coach] = mutableListOf()
         }
