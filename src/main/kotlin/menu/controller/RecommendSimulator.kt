@@ -18,20 +18,19 @@ class RecommendSimulator(
 
     fun run() {
         val coachList = getCoach()
-        val category = CategoryGenerator().makeCategory()
+        val categoryGenerator = CategoryGenerator()
+        val category = categoryGenerator.makeCategory()
         val menuList = mutableListOf<Menu>()
         coachList.getCoach().forEach { coach ->
             val food = getFood(coach)
-            getMenu(category, food)
+            menuList.add(getMenu(category, food))
         }
+        output.printCategories(categoryGenerator.toStringCategory(category))
+
     }
 
-    /* 1. 각 food와 coach에 따라 menu를 추천하고, 해당 값을 저장한다.
-
-     */
-    private fun getMenu(categories: List<Int>, food: Food) {
+    private fun getMenu(categories: List<Int>, food: Food): Menu {
         val menus = mutableListOf<String>()
-
         for (category in categories) {
             val menu = when (category) {
                 1 -> FOOD_JAPAN
@@ -44,30 +43,16 @@ class RecommendSimulator(
             val randomMenu = shuffle(menu)[0]
             if (!menus.contains(randomMenu) && !food.getFood().contains(randomMenu)) menus.add(randomMenu)
         }
-        println(categories)
-        println(menus)
-        //val menu: String = shuffle(menus)[0]
-
-
+        return Menu(menus)
     }
 
     private fun getCoach(): Coach {
-        try {
-            output.printRequestName()
-            return input.getValidatedCoach()
-
-        } catch (e: IllegalArgumentException) {
-            throw e
-        }
+        output.printRequestName()
+        return input.getValidatedCoach()
     }
 
     private fun getFood(coach: String): Food {
-        try {
-            output.printRequestFood(coach)
-            return input.getValidatedFood()
-
-        } catch (e: IllegalArgumentException) {
-            throw e
-        }
+        output.printRequestFood(coach)
+        return input.getValidatedFood()
     }
 }

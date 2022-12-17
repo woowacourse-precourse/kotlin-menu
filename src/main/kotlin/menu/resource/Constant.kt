@@ -7,7 +7,14 @@ const val INPUT_FOOD = "\n%s(이)가 못 먹는 메뉴를 입력해 주세요."
 
 // FOR OUTPUT VIEW
 const val RECOMMEND_RESULT = "\n메뉴 추천 결과입니다."
+const val RECOMMEND_PART = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
+const val CATEGORY = "카테고리"
 const val RECOMMEND_END = "\n추천을 완료했습니다."
+
+// FOR SIGN
+const val START_BRACKET = "[ "
+const val END_BRACKET = " ]"
+const val SEPARATOR = " | "
 
 // FOR FOOD
 val FOOD_JAPAN = listOf<String>("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")
