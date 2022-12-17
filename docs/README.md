@@ -33,4 +33,4 @@ Progress & MileStones
     - ~~Run recommendation process~~
     - ~~Set input using UIController~~
     - ~~Recommend menu~~
-    - Test recommendation process
+    - ~~Test recommendation process~~
