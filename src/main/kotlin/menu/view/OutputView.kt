@@ -2,6 +2,7 @@ package menu.view
 
 import menu.Category
 import menu.Day
+import menu.domain.Coach
 
 class OutputView {
     fun printStart() {
@@ -23,6 +24,12 @@ class OutputView {
     private fun printCategory(categories: List<Category>) {
         val daysByKorean = listOf(CATEGORY_HEADER) + categories.map { category -> category.byKorean() }
         val description = getFormedDescription(daysByKorean)
+        println("[ $description ]")
+    }
+
+    private fun printMenus(coach: Coach) {
+        val recommendResult = coach.getRecommendResult()
+        val description = getFormedDescription(recommendResult)
         println("[ $description ]")
     }
 

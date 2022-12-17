@@ -18,6 +18,10 @@ class Coach(
         }
     }
 
+    fun getRecommendResult(): List<String> {
+        return listOf(name) + menus
+    }
+
     private fun recommendMenu(category: Category): String {
         var menu = ""
         var success = false
