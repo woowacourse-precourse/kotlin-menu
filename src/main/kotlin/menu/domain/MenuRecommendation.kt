@@ -20,7 +20,6 @@ class MenuRecommendation(
         outputView.printStart()
 
         coachName = removeTrims(inputCoachName())
-        println(coachName)
         coachName.forEach { name -> menusCantEat[name] = inputMenuCantEat(name) }
 
         getCategories()
