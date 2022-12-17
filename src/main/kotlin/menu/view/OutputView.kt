@@ -12,6 +12,7 @@ class OutputView {
     }
 
     fun printFinish(categoriesDTO: CategoriesDTO, coachesDTO: CoachesDTO) {
+        println(FINISH_ANNOUNCEMENT)
         printDivision()
 
         printCategory(categoriesDTO.getCategories())
@@ -52,7 +53,7 @@ class OutputView {
     }
 
     private fun printRecommendDone() {
-        println(FINISH_ANNOUNCEMENT)
+        println(RECOMMEND_DONE_ANNOUNCEMENT)
     }
 
     companion object {
@@ -60,7 +61,8 @@ class OutputView {
         const val DESCRIPTION_FORM = " | "
         const val DIVISION_HEADER = "구분"
         const val ERROR_HEADER = "[ERROR]"
-        const val FINISH_ANNOUNCEMENT = "추천을 완료했습니다."
+        const val FINISH_ANNOUNCEMENT = "메뉴 추천 결과입니다."
+        const val RECOMMEND_DONE_ANNOUNCEMENT = "추천을 완료했습니다."
         const val START_ANNOUNCEMENT = "점심 메뉴 추천을 시작합니다."
     }
 }
