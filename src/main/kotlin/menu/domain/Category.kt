@@ -25,5 +25,6 @@ enum class Category(
     companion object {
         fun getCategoryName(number: Int): String = values().find { it.categoryNumber == number }!!.categoryName
         fun isMenuExist(menu: String): Boolean = values().find { it.menus.contains(menu) } != null
+        fun getMenuList(categoryName: String): List<String> = values().find { it.categoryName == categoryName }!!.menus
     }
 }
