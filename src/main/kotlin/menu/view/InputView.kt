@@ -3,6 +3,7 @@ package menu.view
 import camp.nextstep.edu.missionutils.Console
 import menu.utils.Exception.coachNameInputException
 import menu.utils.Exception.coachPersonnelInputException
+import menu.utils.Exception.coachUneatableMenuInputException
 
 
 class InputView {
@@ -20,7 +21,7 @@ class InputView {
         val uneatableMenu = mutableListOf<String>()
         coach.forEach {
             OutputView().coachUneatableMenuPrint(it)
-            uneatableMenu.addAll(Console.readLine()!!.trim().split(","))
+            uneatableMenu.addAll(Console.readLine().coachUneatableMenuInputException().trim().split(","))
         }
         return uneatableMenu.toSet()
     }

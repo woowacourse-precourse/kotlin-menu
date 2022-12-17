@@ -23,4 +23,13 @@ object Exception {
             throw IllegalArgumentException(COACH_PERSONNEL_INPUT_TYPE_ERROR_MESSAGE)
         }
     }
+
+    fun String.coachUneatableMenuInputException(): String {
+        try {
+            if (this.trim().split(",").size > 2) throw IllegalArgumentException(COACH_NAME_INPUT_TYPE_ERROR_MESSAGE)
+            return this
+        } catch (e: IllegalArgumentException) {
+            throw IllegalArgumentException(COACH_NAME_INPUT_TYPE_ERROR_MESSAGE)
+        }
+    }
 }
