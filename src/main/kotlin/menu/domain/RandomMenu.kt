@@ -13,7 +13,7 @@ class RandomMenu {
         for (i in RANGE_START..RANGE_END) {
             val categoryMenus = getCategoryMenus()
             for (coach in coaches) {
-                getRecommendMenu(coach, categoryMenus)
+                getRecommendMenus(coach, categoryMenus)
             }
         }
         return categoryNames
@@ -29,10 +29,10 @@ class RandomMenu {
         return MenuCategory.getMenus(randomNumber)
     }
 
-    private fun getRecommendMenu(coach: Coach, categoryMenus: List<String>) {
+    private fun getRecommendMenus(coach: Coach, categoryMenus: List<String>) {
         val menu: String = shuffle(categoryMenus)[FIRST_VALUE]
         if (menu in coach.getRecommendedMenu() || menu in coach.getBias()) {
-            return getRecommendMenu(coach, categoryMenus)
+            return getRecommendMenus(coach, categoryMenus)
         }
         coach.saveRecommendMenus(menu)
     }
