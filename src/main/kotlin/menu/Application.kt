@@ -1,5 +1,11 @@
 package menu
 
+import menu.controller.MenuController
+
 fun main() {
-    // TODO: 프로그램 구현
+    val menuController = MenuController()
+    try {
+        menuController.recommendMenu()
+    } catch (e: IllegalArgumentException) {
+    }
 }
