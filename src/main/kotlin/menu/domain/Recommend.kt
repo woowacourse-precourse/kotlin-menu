@@ -6,7 +6,7 @@ import menu.constants.MAXIMUM_DUPLICATE_CATEGORY_COUNT
 class Recommend {
     fun recommendCategoryMenu(category: String, coach: Coach): String {
         while (true) {
-            val menus = Menus.getCategoryMenus(category)
+            val menus = Menu.getCategoryMenus(category)
             val menu = Randoms.shuffle(menus)[0]
             if (coach.getCantEatMenus().contains(menu)) continue
             if (!coach.getRecommendedMenus().contains(menu)) return menu
@@ -16,7 +16,7 @@ class Recommend {
     fun recommendCategory(categories: List<String>): String {
         var category: String
         do {
-            category = Menus.getCategories(Randoms.pickNumberInRange(1, 5))
+            category = Menu.getCategories(Randoms.pickNumberInRange(1, 5))
         } while (!checkCategoryAvailable(categories, category))
         return category
     }
