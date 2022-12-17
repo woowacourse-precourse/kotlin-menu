@@ -17,19 +17,20 @@ class CategoryChoice {
     fun randomCategory(): MutableList<Category> {
         val recommendationCategory = mutableListOf<Category>()
         while (recommendationCategory.size != 6) {
-            val category = categories.get(Randoms.pickNumberInRange(1, 5))
-            recommendationCategory.add(category)
+            if (recommendationCategory.categoryDuplicateCheck()) {
+                val category = categories.get(Randoms.pickNumberInRange(1, 5))
+                recommendationCategory.add(category)
+            }
         }
         return recommendationCategory
     }
 
-//    fun MutableList<String>.categoryDuplicateCheck(): Boolean {
-//        this.forEach {
-//            this.toString().replace(it,"")
-//
-//        }
-//
-//        println(this)
-//        return this.count { it.count() > 2 } == 0
-//    }
+    fun MutableList<Category>.categoryDuplicateCheck(): Boolean {
+        this.forEach {
+            return this.count { cnt ->
+                it == cnt
+            } <= 2
+        }
+        return true
+    }
 }
