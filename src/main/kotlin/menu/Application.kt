@@ -1,5 +1,17 @@
 package menu
 
+import menu.controller.MenuController
+import menu.view.InputView
+import menu.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    val menuController = initController()
+    menuController.inputCoachInfo()
+    menuController.recommendWeeklyMenuList()
+}
+
+private fun initController(): MenuController {
+    val inputView = InputView()
+    val outputView = OutputView()
+    return MenuController(inputView, outputView)
 }
