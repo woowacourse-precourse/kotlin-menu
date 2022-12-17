@@ -29,4 +29,20 @@ class Controller(
             coaches.add(Coach(it))
         }
     }
+
+    fun inputInedibleMenus() {
+        coaches.forEach {
+            inputInedibleMenu(it)
+        }
+    }
+
+    private fun inputInedibleMenu(coach: Coach) {
+        try {
+            outputView.requestInputInedibleFood(coach.name)
+            coach.decideInedibleMenus(inputView.readInedibleMenus())
+        } catch (e: IllegalArgumentException) {
+            outputView.showErrorMessage(e.message ?: "")
+            inputInedibleMenu(coach)
+        }
+    }
 }
