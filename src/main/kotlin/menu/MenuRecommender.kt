@@ -2,8 +2,8 @@ package menu
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class MenuSelector {
-    val menuList = MenuList()
+class MenuRecommender {
+    private val menuList = MenuList()
     fun generateWeekCategory(): List<Category> {
         val categories = mutableListOf<Category>()
 
