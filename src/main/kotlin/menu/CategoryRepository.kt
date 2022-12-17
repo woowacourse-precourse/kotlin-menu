@@ -10,16 +10,17 @@ class CategoryRepository {
         return categories[Randoms.pickNumberInRange(1, 5) - 1]
     }
 
-    fun getRecommendCategory(): List<String> {
-        val recommendCategory = mutableListOf<String>()
-        for(i in 0..4) {
+    fun getRecommendCategory(): String {
+        //val recommendCategory = mutableListOf<String>()
+        //for(i in 0..4) {
             var recommend = getRandomCategory()
             while(recommendedNumber[recommend] == 2) {
                 recommend = getRandomCategory()
             }
             recommendedNumber[recommend] = recommendedNumber[recommend]!! + 1
-            recommendCategory.add(recommend)
-        }
-        return recommendCategory
+        return recommend
+        //    recommendCategory.add(recommend)
+        //}
+        //return recommendCategory
     }
 }
