@@ -13,6 +13,14 @@ class ValidChecker {
             }
         }
         return coachNames
+    }
+
+    fun checkHateFood(foodName:String):List<String>{
+        var hateFood=foodName.split(",")
+        if(hateFood.size>2){
+            throw IllegalArgumentException()
+        }
+        return hateFood
 
     }
 }
