@@ -1,6 +1,6 @@
 # 🗒️ 기능 목록
 - [X] 입력을 담당하는 `InputView` 클래스 구현
-- [ ] 출력을 담당하는 `OutputView` 클래스 구현
+- [X] 출력을 담당하는 `OutputView` 클래스 구현
 - [ ] 입출력 담당 클래스들에 대한 의존성 주입을 간단하게 처리하기 위해 입출력 담당 클래스들을 하나로 묶어주는 역할을 하는 `Views` 데이터 클래스 구현
 - [ ] 코치 이름 입력에 대한 예외처리를 하는 `ValidateCoachNameUseCase` 유즈케이스 클래스 구현
 - [ ] 코치가 못 먹는 음식 입력에 대한 예외처리를 하는 `ValidateInedibleFoodUseCase` 유즈케이스 클래스 구현
