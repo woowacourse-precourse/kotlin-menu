@@ -20,9 +20,7 @@ class Controller(
         coaches = getCoachNames()
         val coachDislikeMenus = mutableMapOf<String, List<String>>()
         coaches.forEach {
-            val dislikeMenusInput = inputView.readDislikeMenus(it)
-            val dislikeMenu = inputValidator.validateDislikeMenus(dislikeMenusInput, menu)
-            coachDislikeMenus[it] = dislikeMenu
+            coachDislikeMenus[it] = getDislikeMenus(it)
         }
         return LunchMenuRecommender(coachDislikeMenus, menu.menus(), coaches)
     }
@@ -43,7 +41,14 @@ class Controller(
         }
     }
 
-    private fun getDislikeMenus() {
-
+    private fun getDislikeMenus(name: String): List<String> {
+        while (true) {
+            try {
+                val dislikeMenusInput = inputView.readDislikeMenus(name)
+                return inputValidator.validateDislikeMenus(dislikeMenusInput, menu)
+            } catch (e: IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 }
