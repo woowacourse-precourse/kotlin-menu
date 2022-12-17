@@ -4,7 +4,6 @@ import menu.data.Category
 import menu.data.MenuResult
 
 class OutputView {
-
     private fun printCategories(categories: List<Category>) {
         print("[ 카테고리 | ")
         for (index in categories.indices) {
