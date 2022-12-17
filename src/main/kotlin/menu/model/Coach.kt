@@ -4,14 +4,12 @@ import menu.common.MAX_CANT_EAT_MENU_SIZE
 
 class Coach(private val name: String) {
 
-    private lateinit var cantEatMenus: List<Menu>
+    private val cantEatMenus = mutableListOf<Menu>()
     private val menuTable = mutableMapOf<DayOfWeek, Menu>()
 
     fun name(): String = name
 
-    fun setCantEatMenus(menus: List<Menu>) {
-        cantEatMenus = menus
-    }
+    fun addCantEatMenu(menu: Menu) = cantEatMenus.add(menu)
 
     fun recommendedTooManyCategory(category: Category): Boolean =
         menuTable.values.count { it.getCategory() == category } >= MAX_CANT_EAT_MENU_SIZE

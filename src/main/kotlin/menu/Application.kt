@@ -27,5 +27,5 @@ private fun setCantEatMenu(coaches: List<Coach>) =
     coaches.forEach { coach ->
         OutputView.printMessage("\n" + CANT_EAT_MENU_INPUT_MESSAGE.format(coach.name()))
         val menus = InputView.readMenus().map { Menu(it) }
-        coach.setCantEatMenus(menus)
+        menus.forEach { menu -> coach.addCantEatMenu(menu) }
     }
