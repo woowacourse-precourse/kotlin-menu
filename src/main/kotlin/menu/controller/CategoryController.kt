@@ -22,10 +22,9 @@ class CategoryController {
 
     private fun isContainedOver2(determinedCategory: MutableList<Food>, category: Food): Boolean {
         var count = 0
-        for (determinedOne in determinedCategory) {
+        for (determinedOne in determinedCategory)
             if (determinedOne == category)
                 count++
-        }
         if (count >= 2)
             return true
         return false

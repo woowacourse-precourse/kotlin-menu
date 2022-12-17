@@ -42,9 +42,8 @@ class OutputView {
     private fun printCoachMenu(names: List<String>, result: List<List<String>>) {
         for (coach in names.indices) {
             print(PRINT_RESULT_START + names[coach])
-            for (day in 0 until 5) {
+            for (day in 0 until 5)
                 print(PRINT_RESULT_MID + result[day][coach])
-            }
             println(PRINT_RESULT_END)
         }
     }
