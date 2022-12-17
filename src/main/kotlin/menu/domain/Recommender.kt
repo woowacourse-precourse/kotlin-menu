@@ -3,7 +3,7 @@ package menu.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class Recommender {
-    private val category = listOf("구분", "일식", "한식", "중식", "아시안", "양식")
+    private val category = listOf("구분", "JAPAN", "KOREAN", "CHINA", "ASIAN", "WESTERN")
     // 카테고리에 해당하는 메뉴를 리스트에 저장하여 해시맵 형태로 저장
     private val menus = HashMap<String, List<String>>()
 
@@ -32,10 +32,8 @@ class Recommender {
         return category[index]
     }
 
-    // TODO : 코치가 가지고 있는 데이터 (이미 먹은 음식, 못 먹는 음식)을 가져와
-    //        알맞는 음식을 추천할 수 있도록 기능 구현 필요
     fun pickMenu(category : String, coach: Coach): String {
-
+        
         return ""
     }
 }
