@@ -23,19 +23,15 @@ class MenuRecommender {
         return false
     }
 
-    fun generateMenuByCoach(coach: Coach, categories: List<Category>): List<Menu> {
-        val menus = mutableListOf<Menu>()
-
-        var dayOfWeek = 0
-        while (menus.size < 5) {
-            val menu = Randoms.shuffle(menuList.getMenus()[categories[dayOfWeek]])[0]
+    fun generateMenuByCoach(coach: Coach, menus: List<Menu>,categories: List<Category>, dayOfWeek: Int): Menu {
+        while (true) {
+            val menusByCategory = menuList.getMenus()[categories[dayOfWeek]]
+            val menuNamesByCategory = menusByCategory!!.map { it.toString() }
+            val menu = Menu(Randoms.shuffle(menuNamesByCategory)[0])
             if (validateMenu(coach, menu, menus))
                 continue
-            menus.add(menu)
-            dayOfWeek++
+            return menu
         }
-
-        return menus
     }
 
     private fun validateMenu(coach: Coach, menu: Menu, menus: List<Menu>): Boolean {

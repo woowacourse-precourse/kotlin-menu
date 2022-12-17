@@ -46,10 +46,14 @@ class World {
         categories: List<Category>,
         coaches: List<Coach>
     ): Map<Coach, List<Menu>> {
-        val menusByCoaches = mutableMapOf<Coach, List<Menu>>()
-        for (coach in coaches) {
-            val menus = menuRecommender.generateMenuByCoach(coach, categories)
-            menusByCoaches[coach] = menus
+        val menusByCoaches = mutableMapOf<Coach, MutableList<Menu>>()
+        for (i in 0..4) {
+            for (coach in coaches) {
+                if (menusByCoaches[coach] == null)
+                    menusByCoaches[coach] = mutableListOf()
+                val menu = menuRecommender.generateMenuByCoach(coach, menusByCoaches[coach]!!, categories, i)
+                menusByCoaches[coach]?.add(menu)
+            }
         }
         return menusByCoaches
     }

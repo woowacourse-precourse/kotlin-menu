@@ -4,6 +4,10 @@ fun main() {
     try {
         World()
     } catch (e: Exception) {
-        println("[ERROR] ${e.message}")
+        when (e) {
+            is IllegalArgumentException, is IllegalStateException -> {
+                println("[ERROR] ${e.message}")
+            }
+        }
     }
 }
