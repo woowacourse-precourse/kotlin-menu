@@ -10,16 +10,22 @@ class Category {
     var asian = mutableListOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")
     var west = mutableListOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
 
-    fun recommendCategory() : MutableList<String>{
-        var weekCategory = mutableListOf<String>()
-        while (weekCategory.size != 5){
+    fun recommendCategory(weekCategory: MutableList<String>) : MutableList<String>{
+        while (true){
             var categories = mutableListOf("", "일식", "한식", "중식", "아시안", "양식")
             val category: String = categories.get(Randoms.pickNumberInRange(1, 5))
-
-            val count = Collections.frequency(weekCategory, category)
-            if (count != 2) weekCategory.add(category)
+            if (duplicationCategory(weekCategory, category) == 1){
+                weekCategory.add(category)
+                break
+            }
         }
         return weekCategory
+    }
+
+    fun duplicationCategory(weekCategory: MutableList<String>, category: String) : Int{
+        val count = Collections.frequency(weekCategory, category)
+        if (count != 2) return 1
+        return 0
     }
 
     fun coachJapanMenu(coaches : MutableList<Coach>) : MutableList<Coach>{

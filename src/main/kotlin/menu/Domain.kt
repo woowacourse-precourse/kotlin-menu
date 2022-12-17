@@ -23,13 +23,24 @@ class Domain {
         return coaches
     }
 
-    fun createCategory() : MutableList<String>{
-        var category = Category()
-        var weekCategory = category.recommendCategory()
+    fun createCategory(weekCategory: MutableList<String>) : MutableList<String>{
+        var weekCategory = weekCategory
+        weekCategory = Category().recommendCategory(weekCategory)
         return weekCategory
     }
 
-    fun coachMenuRecommend(coaches: MutableList<Coach>, weekCategory: MutableList<String>) : MutableList<Coach>{
+    fun coachMenuRecommend(coaches: MutableList<Coach>, category: String) : MutableList<Coach>{
+        var coaches = coaches
+        if (category =="일식") coaches = Category().coachJapanMenu(coaches)
+        if (category == "한식") coaches = Category().coachKoreaMenu(coaches)
+        if (category == "중식") coaches = Category().coachChinaMenu(coaches)
+        if (category == "아시안") coaches = Category().coachAsianMenu(coaches)
+        if (category == "양식") coaches = Category().coachWestMenu(coaches)
+
+        return coaches
+    }
+
+    /*fun coachMenuRecommend(coaches: MutableList<Coach>, weekCategory: MutableList<String>) : MutableList<Coach>{
         var coaches = coaches
         for (i in weekCategory){
             if (i =="일식") coaches = Category().coachJapanMenu(coaches)
@@ -39,7 +50,7 @@ class Domain {
             if (i == "양식") coaches = Category().coachWestMenu(coaches)
         }
         return coaches
-    }
+    }*/
 
     fun serviceResult(coaches: MutableList<Coach>, weekCategory: MutableList<String>){
         OutputView().menuResult(coaches, weekCategory)

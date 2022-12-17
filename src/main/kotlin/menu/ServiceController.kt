@@ -9,9 +9,11 @@ class ServiceController {
 
         var coaches = domain.createCoach()
         coaches = domain.coachHateFood(coaches)
-        var weekCategory = domain.createCategory()
-        coaches = domain.coachMenuRecommend(coaches, weekCategory)
-
+        var weekCategory = mutableListOf<String>()
+        for (i in 0..4){
+            weekCategory = domain.createCategory(weekCategory)
+            coaches = domain.coachMenuRecommend(coaches, weekCategory[i])
+        }
         domain.serviceResult(coaches, weekCategory)
     }
 }
