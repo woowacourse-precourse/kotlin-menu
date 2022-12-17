@@ -9,6 +9,6 @@ object InputView {
     fun readCoaches(): Coach {
         println(MENU_RECOMMEND)
         println(INPUT_COACH_NAME)
-        return Coach.from(Console.readLine().split(","))
+        return Coach(Console.readLine().split(","))
     }
 }
