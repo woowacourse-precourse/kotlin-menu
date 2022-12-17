@@ -30,6 +30,15 @@ enum class FoodCategory(private val menus: List<String>) {
                 else -> throw IllegalArgumentException("잘못된 카테고리 번호입니다.")
             }
         }
+
+        fun categoryOfFoodName(foodName: String): FoodCategory {
+            values().forEach {
+                if (it.menus.contains(foodName)) {
+                    return it
+                }
+            }
+            throw IllegalArgumentException("그런 음식 이름은 존재하지 않습니다.")
+        }
     }
 
 }
