@@ -17,12 +17,8 @@ class InputView {
         }
     }
 
-    fun getCoachUneatableMenu(coach: List<String>): Set<String> {
-        val uneatableMenu = mutableListOf<String>()
-        coach.forEach {
-            OutputView().coachUneatableMenuPrint(it)
-            uneatableMenu.addAll(Console.readLine().coachUneatableMenuInputException().trim().split(","))
-        }
-        return uneatableMenu.toSet()
+    fun getCoachUneatableMenu(coach: String): List<String> {
+        OutputView().coachUneatableMenuPrint(coach)
+        return Console.readLine().coachUneatableMenuInputException().trim().split(",").toSet().toList()
     }
 }
