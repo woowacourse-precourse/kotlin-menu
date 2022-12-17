@@ -14,13 +14,21 @@ fun main() {
     val category = createRandomCategory()
     printRecommandResult(category)
     startService(cantEatMenu, category)
+    printRecommandComplete()
+}
+fun printCoachMenu(result: MutableList<String>) {
+    println(result.joinToString(" | ","[ "," ]"))
+}
+fun printRecommandComplete() {
+    println("\n추천을 완료했습니다.")
 }
 fun startService(cantEatMenu: Map<String, List<String>>, category: List<String>) {
     val coachName = cantEatMenu.keys.toList()
     val menus = cantEatMenu.values.toList()
     var result: MutableList<String>
     for(i in coachName.indices) {
-        menuRecommandService(coachName[i], menus[i], category, i)
+        result = menuRecommandService(coachName[i], menus[i], category, i)
+        printCoachMenu(result)
     }
 
 }
@@ -38,7 +46,6 @@ fun menuRecommandService(coachName: String, menus: List<String>, category: List<
             count++
         }
     }
-    println(result)
     return result
 }
 //토미,제임스,포코
@@ -50,7 +57,6 @@ fun printRecommandResult(category: List<String>) {
     val week: List<String> = listOf("구분","월요일","화요일","수요일","목요일","금요일")
     println(week.joinToString(" | ","[ "," ]"))
     println(category.joinToString(" | ","[ "," ]"))
-    println("추천을 완료했습니다.")
 }
 fun createRandomCategory(): MutableList<String> {
     val categories: List<String> = listOf("","일식", "한식", "중식", "아시안", "양식")
@@ -81,7 +87,7 @@ fun recommandMenu(category: String): String {
     return Randoms.shuffle(menus)[0]
 }
 fun printStartRecommand() {
-    println("점심 메뉴 추천을 시작합니다.")
+    println("점심 메뉴 추천을 시작합니다.\n")
     println("코치의 이름을 입력해 주세요. (, 로 구분)")
 }
 fun inputName(): List<String> {
