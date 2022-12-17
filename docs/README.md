@@ -13,9 +13,9 @@
   - [ ] 코치의 이름이 2글자보다 작거나 4글자보다 크다면 예외처리한다. - coachNameInputException()#Exception
   - [ ] 코치가 2명보다 작거나 5명보다 크다면 예외처리한다. - coachPersonnelInputException()#Exception
   - [ ] 코치가 못 먹는 메뉴가 2개보다 크다면 예외처리한다. - coachUneatableMenuInputException()#Exception
-  - [ ] 한주에 같은 카테코리가 2개보다 크다면 예외처리한다. - categoryInputException()#Exception
 - [ ] 코치들은 월, 화, 수, 목, 금요일에 점심 식사를 같이 한다.
-- [ ] 매일 추천할 카테고리를 무작위로 정한다. - randomCategory()#Category
+- [ ] 매일 추천할 카테고리를 무작위로 정한다. - randomCategory()#CategoryChoice
+  - [ ] 한주에 같은 카테코리가 2개보다 크다면 카테고리를 다시 입력 받는다. - categoryInputException()#CategoryChoice
 - [ ] 각 코치가 매일 먹을 메뉴를 추천한다. - menuRecommendation()#Recommendation
   - [ ] 각 코치에게는 한 주에 중복되지 않는 메뉴를 추천해야 한다.
 - [ ] 상수 값 #Constant
