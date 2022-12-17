@@ -14,7 +14,7 @@ class MenuController(
         val coachesNames = inputCoaches()
         val inEdibleFoodsAboutCoaches = inputInedibleFoods(coachesNames)
         recommendMenu(inEdibleFoodsAboutCoaches)
-        printRecommendedMenu()
+        printRecommendedMenu(coachesNames)
     }
 
     private fun printStartMessage() {
@@ -40,8 +40,9 @@ class MenuController(
         menuService.recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches)
     }
 
-    private fun printRecommendedMenu() {
+    private fun printRecommendedMenu(coaches: List<String>) {
         val recommendedMenu = menuService.getRecommendedMenus()
-        outputView.printRecommendedResultMessage(recommendedMenu)
+        println(recommendedMenu)
+        outputView.printRecommendedResultMessage(coaches, recommendedMenu)
     }
 }

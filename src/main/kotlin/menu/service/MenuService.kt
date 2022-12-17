@@ -7,33 +7,51 @@ class MenuService {
     private val menuRepository = MenuRepository()
 
     fun recommendMenuByDaysOfWeek(inEdibleFoodsAboutCoaches: Map<String, List<String>>) {
-        inEdibleFoodsAboutCoaches.forEach { (coach, inEdibleFoods) ->
-            while (menuRepository.getRecommendedFoodsSize(coach) != WEEKDAY_SIZE) {
-                val recommendedMenu = recommendMenu(coach, inEdibleFoods)
-                menuRepository.putMenu(coach, recommendedMenu)
-            }
+        for (day in 0 until WEEKDAY_SIZE) {
+            val coaches = inEdibleFoodsAboutCoaches.keys.toList()
+            val recommendedMenus = recommendMenu(coaches, inEdibleFoodsAboutCoaches)
+            menuRepository.putMenu(day, coaches, recommendedMenus)
         }
     }
 
-    private fun recommendMenu(coach: String, inedibleFoods: List<String>): String {
-        val categories = menuRepository.getAllCategoryAsString()
-        val randomCategoryName = categories[Randoms.pickNumberInRange(1, 5)]
-        val randomCategory = menuRepository.getCategory(randomCategoryName)
-
+    private fun recommendMenu(coaches: List<String>, inEdibleFoodsAboutCoaches: Map<String, List<String>>): List<String> {
         do {
-            val randomMenu = randomCategory?.getRandomFood(inedibleFoods)!!
-            if (randomMenu !in menuRepository.getRecommendFoods(coach) &&
-                isMenuCategoryLessThan(coach, randomMenu, 2)
-            ) {
-                return randomMenu
+            val categories = menuRepository.getAllCategoryAsString()
+            val randomCategoryName = categories[Randoms.pickNumberInRange(1, 5)]
+            if (validateCategory(randomCategoryName)) continue
+            val recommendedMenus = arrayListOf<String>()
+            coaches.forEach { coach ->
+                val inedibleFoods = inEdibleFoodsAboutCoaches[coach]
+                val randomCategory = menuRepository.getCategory(randomCategoryName)
+                val randomMenu = randomCategory?.getRandomFood(inedibleFoods!!)!!
+                if (validateRecommendable(coach, randomMenu)) return@forEach
+                recommendedMenus.add(randomMenu)
             }
-        } while (true) // 이미 추천한 메뉴가 포함되어 있지 않을 때까지
+            menuRepository.plusCategoryCount(randomCategoryName)
+            return recommendedMenus
+        } while (true)
     }
 
-    private fun isMenuCategoryLessThan(coach: String, menu: String, size: Int): Boolean {
-        val category = menuRepository.getCategoryByMenu(menu)
-        val recommendedSizes = menuRepository.getRecommendedSizePerCategories(coach)
-        return (recommendedSizes[category] ?: 0) <= size
+    private fun validateCategory(randomCategoryName: String): Boolean {
+        if (!isMenuCategoryLessThan(randomCategoryName, 2)) {
+            return true
+        }
+        return false
+    }
+
+    private fun validateRecommendable(coach: String, randomMenu: String): Boolean {
+        if (!isMenuCategoryLessThan(randomMenu, 2)) {
+            return true
+        }
+        if (menuRepository.isRecommendedAlready(randomMenu, coach)) {
+            return true
+        }
+        return false
+    }
+
+    private fun isMenuCategoryLessThan(categoryName: String, size: Int): Boolean {
+        val recommendedSizes = menuRepository.getCategoriesCount(categoryName)
+        return recommendedSizes < size
     }
 
     fun getRecommendedMenus() = menuRepository.getCoachRecommendedMenus()

@@ -3,54 +3,39 @@ package menu.repository
 import menu.domain.MenuCategory
 
 class MenuRepository {
-    private val coachesRecommendedFoods = linkedMapOf<String, List<String>>()
+    // 요일별 코치들 추천 메뉴
+    private val coachesRecommendedFoods = HashMap<Int, LinkedHashMap<String, String>>()
+    private val categoriesCount = HashMap<String, Int>()
 
     fun getAllCategoryAsString(): List<String> = MenuCategory.getAllCategoryAsString()
 
     fun getCategory(categoryName: String) = MenuCategory.convert(categoryName)
 
-    fun getRecommendedFoodsSize(coach: String) = coachesRecommendedFoods[coach]?.size ?: 0
+    fun isRecommendedAlready(menu: String, coach: String): Boolean {
+        coachesRecommendedFoods.forEach { (_, foods) ->
+            if (foods[coach] == menu) {
+                return true
+            }
+        }
+        return false
+    }
 
-    fun getRecommendFoods(coach: String) = coachesRecommendedFoods[coach] ?: emptyList()
+    fun plusCategoryCount(categoryName: String) {
+        val originCategoryCount = categoriesCount.getOrPut(categoryName) { 0 }
+        categoriesCount[categoryName] = originCategoryCount
+    }
 
     fun getCoachRecommendedMenus() = coachesRecommendedFoods
 
-    fun getRecommendedSizePerCategories(coach: String): Map<MenuCategory, Int> {
-        val recommendedSizePerCategories = linkedMapOf<MenuCategory, Int>()
-        val recommendedFoods = getRecommendFoods(coach)
-        recommendedFoods.forEach { food ->
-            val allCategory = MenuCategory.getAllCategory()
-            allCategory.forEach { category ->
-                addRecommendedMenuCategoryCount(category, food, recommendedSizePerCategories)
-            }
-        }
-        return recommendedSizePerCategories
+    fun getCategoriesCount(categoryName: String): Int {
+        return categoriesCount[categoryName] ?: 0
     }
 
-    private fun addRecommendedMenuCategoryCount(
-        category: MenuCategory,
-        food: String,
-        recommendedSizePerCategories: LinkedHashMap<MenuCategory, Int>,
-    ) {
-        if (category.isContain(food)) {
-            val originSize = recommendedSizePerCategories.getOrPut(category) { 0 }
-            recommendedSizePerCategories[category] = originSize + 1
+    fun putMenu(day: Int, coaches: List<String>, recommendedFoods: List<String>) {
+        val foods = linkedMapOf<String, String>()
+        for (index in coaches.indices) {
+            foods[coaches[index]] = recommendedFoods[index]
         }
-    }
-
-    fun getCategoryByMenu(menu: String): MenuCategory? {
-        val allCategory = MenuCategory.getAllCategory()
-        allCategory.forEach { category ->
-            if (category.isContain(menu)) {
-                return category
-            }
-        }
-        return null
-    }
-
-    fun putMenu(coach: String, food: String) {
-        val recommendedFoods = ArrayList(getRecommendFoods(coach))
-        recommendedFoods.add(food)
-        coachesRecommendedFoods[coach] = recommendedFoods
+        coachesRecommendedFoods[day] = foods
     }
 }
