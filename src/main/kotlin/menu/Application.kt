@@ -1,5 +1,9 @@
 package menu
 
 fun main() {
-    // TODO: 프로그램 구현
+    val recommendService = RecommendController()
+    recommendService.run()
 }
+
+
+
