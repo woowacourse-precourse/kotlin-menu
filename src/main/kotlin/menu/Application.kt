@@ -1,5 +1,6 @@
 package menu
 
+import menu.UI.InputView
 import menu.UI.OutputView
 
 fun main() {
@@ -11,5 +12,5 @@ fun main() {
     var west = mutableListOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
 
     OutputView().serviceStart()
-
+    var coachNames = InputView().coachName()
 }
