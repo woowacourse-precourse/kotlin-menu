@@ -13,7 +13,6 @@ class OutputView {
             val menus = recommendation.value
             println("[ ${recommendation.key} | ${recommendation.value[0]} | ${recommendation.value[1]} | ${recommendation.value[2]} | ${recommendation.value[3]} | ${recommendation.value[4]} ]")
         }
-
-        println("추천을 완료했습니다.")
+        println("\n추천을 완료했습니다.")
     }
 }
