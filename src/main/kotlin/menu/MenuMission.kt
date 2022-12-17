@@ -12,38 +12,45 @@ class MenuMission(private val inputView: InputView, private val outputView: Outp
     val ASIAN = listOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")
     val WEST = listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
 
+    /*메뉴를 추천하는 과정은 아래와 같이 이뤄진다.
+    월요일에 추천할 카테고리를 무작위로 정한다.
+    각 코치가 월요일에 먹을 메뉴를 추천한다.
+    화, 수, 목, 금요일에 대해 i, ii 과정을 반복한다.*/
     fun missionStart() {
         val coaches = coachCheck(inputView.getCoach())
         val coachesHateFoods = coachHateFood(coaches)
-        val categories = recommendCategory()
-        outputView.printCategories(categories)
-        coaches.forEach {
-            recommendMenuCoach(it, coachesHateFoods[it], categories)
+        var recommendFood = mutableMapOf<String, MutableList<String>>()//이름 별 음식 저장
+        var day = 0
+        val categories = mutableListOf<Int>()
+        while (day != 5) {
+            val category: Int = (Randoms.pickNumberInRange(1, 5))//    월요일에 추천할 카테고리를 무작위로 정한다.
+            //카테고리 예외
+            //menu 예외
+            coaches.forEach {
+                val menu: String = Randoms.shuffle(getFood(category))[0]//    각 코치가 월요일에 먹을 메뉴를 추천한다.
+                if(recommendFood[it]==null){
+                    recommendFood[it]= mutableListOf()
+                }
+                recommendFood[it]?.add(menu)
+            }
+            categories.add(category)
+            day++
         }
+        outputView.printCategories(categories)
+        outputView.printRecommendMenu(coaches, recommendFood)
         outputView.printEnd()
     }
 
-    fun recommendCategory(): List<Int> {
-        val categories = mutableListOf<Int>()
-        while (categories.size != 5) {
-            val category: Int = (Randoms.pickNumberInRange(1, 5))
-
-            if (categories.count { it == category } == 2)
-                continue
-
-            categories.add(category)
+    fun recommendCoachs(coaches: List<String>, category: Int): MutableMap<String, MutableList<String>> {
+        val recommendFood = mutableMapOf<String, MutableList<String>>()
+        coaches.forEach {
+            val menu: String = Randoms.shuffle(getFood(category))[0]//    각 코치가 월요일에 먹을 메뉴를 추천한다.
+            if(recommendFood[it]==null){
+                recommendFood[it]= mutableListOf()
+            }
+            recommendFood[it]?.add(menu)
         }
-        return categories
-    }
-
-
-    fun recommendMenuCoach(coach: String, coachHateFood: List<String>?, categories: List<Int>) {
-        val coachFoods = mutableListOf<String>()
-        categories.forEach {
-            val menu: String = Randoms.shuffle(getFood(it))[0]
-            coachFoods.add(menu)
-        }
-        outputView.recommendMenu(coach, coachFoods)
+        return recommendFood
     }
 
     fun getFood(pickNumberInRange: Int): List<String> {
