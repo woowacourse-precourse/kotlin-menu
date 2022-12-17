@@ -17,7 +17,6 @@ class RandomMenu {
             }
         }
         return categoryNames
-
     }
 
     private fun getCategory(): List<String> {
@@ -25,6 +24,7 @@ class RandomMenu {
         if (categories[randomNumber - 1] >= 2) {
             return getCategory()
         }
+        categories[randomNumber - 1]++
         categoryNames.add(MenuCategory.getCategoryName(randomNumber))
         return when (randomNumber) {
             1 -> MenuCategory.JAPANESE.getMenus()
