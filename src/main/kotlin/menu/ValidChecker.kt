@@ -9,13 +9,15 @@ private const val MAXIMUM_COACHS=5
 private const val MINIMUM_NAME=2
 private const val MAXIMUM_NAME=4
 private const val MINIMUM_HATE_FOOD=2
+private const val BLANK=" "
+private const val NO_BLANK=""
 
 
 class ValidChecker {
 
 
     fun checkCoachNames(names: String): List<String> {
-        val coachNames = names.replace(" ","").split(SPLIT_UNIT) //공백 포함 입력 시 공백 제거
+        val coachNames = names.replace(BLANK,NO_BLANK).split(SPLIT_UNIT) //공백 포함 입력 시 공백 제거
         if (coachNames.size < MINIMUM_COACHS || coachNames.size > MAXIMUM_COACHS) {
             throw IllegalArgumentException(ERROR_COACH_COUNT_MSG)
         }
