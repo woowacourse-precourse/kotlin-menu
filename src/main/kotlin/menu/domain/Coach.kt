@@ -1,17 +1,18 @@
 package menu.domain
 
-class Coach(val name: String, private val hateMenus: MutableList<Menu> = mutableListOf()) {
+class Coach(val name: String) {
 
-    val selectedMenus = mutableListOf<Menu>()
+    private val hateMenus: MutableList<Menu> = mutableListOf()
+    private val _selectedMenus = mutableListOf<Menu>()
+    val selectedMenus get() = _selectedMenus as List<Menu>
 
     init {
-        require(name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH)
-        require(hateMenus.size in MIN_HATE_LENGTH..MAX_HATE_LENGTH)
+        require(name.length in MIN_NAME_LENGTH..MAX_NAME_LENGTH) { ERROR_NAME_LENGTH }
     }
 
-    fun selectMenu(menu: Menu): Boolean {
+    fun addSelectedMenu(menu: Menu): Boolean {
         if (isHateMenu(menu)) return false
-        return selectedMenus.add(menu)
+        return _selectedMenus.add(menu)
     }
 
     fun addHateMenu(menu: Menu) {
@@ -25,7 +26,8 @@ class Coach(val name: String, private val hateMenus: MutableList<Menu> = mutable
     companion object {
         private const val MAX_NAME_LENGTH = 4
         private const val MIN_NAME_LENGTH = 2
-        private const val MIN_HATE_LENGTH = 0
         private const val MAX_HATE_LENGTH = 2
+
+        private const val ERROR_NAME_LENGTH = "이름 길이가 ${MIN_NAME_LENGTH}이상 ${MAX_NAME_LENGTH}가 아닙니다."
     }
 }

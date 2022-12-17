@@ -3,7 +3,7 @@ package menu.domain
 import camp.nextstep.edu.missionutils.Randoms
 
 class MenuRecommender(private val coaches: Coaches) {
-    data class Result(val categories: Categories, val coachToMenus: Map<Coach, List<Menu>>)
+    data class Result(val categories: List<Category>, val coachToMenus: Map<Coach, List<Menu>>)
 
     private val categories = Categories()
 
@@ -19,7 +19,7 @@ class MenuRecommender(private val coaches: Coaches) {
 
     private fun recommend(coach: Coach, category: Category) {
         var menu = recommend(category)
-        while (coach.selectMenu(menu).not()) {
+        while (coach.addSelectedMenu(menu).not()) {
             menu = recommend(category)
         }
     }
@@ -33,6 +33,6 @@ class MenuRecommender(private val coaches: Coaches) {
     private fun makeResult(categories: Categories, coaches: Coaches): Result {
         val result = coaches.coaches
             .associateWith { it.selectedMenus.toList() }
-        return Result(categories, result)
+        return Result(categories.categories, result)
     }
 }

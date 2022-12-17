@@ -27,8 +27,7 @@ enum class Category(private val number: Int, private val text: String) {
 
         private fun from(number: Int): Category {
             return Category.values()
-                .firstOrNull { it.number == number }
-                ?: throw IllegalArgumentException(ERROR_NOT_CATEGORY)
+                .first { it.number == number }
         }
     }
 }

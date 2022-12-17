@@ -17,9 +17,8 @@ data class Menu(val name: String, val category: Category) {
         private val menuNames get() = availableMenus.map { it.name }
 
         fun from(name: String): Menu {
-            val menu = availableMenus.firstOrNull { it.name == name }
+            return availableMenus.firstOrNull { it.name == name }
                 ?: throw IllegalArgumentException("$name not in menu")
-            return menu
         }
     }
 }

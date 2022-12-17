@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console
 class InputView {
 
     fun readCoaches(): List<String> {
-        println("코치의 이름을 입력해 주세요. (, 로 구분)")
+        println("코치의 이름을 입력해 주세요. (${SEPARATOR} 로 구분)")
         return readWithSeparator()
     }
 
@@ -15,12 +15,10 @@ class InputView {
     }
 
     private fun readWithSeparator(): List<String> {
-        val line = Console.readLine()
+        val line = Console.readLine().trim()
 
         if (!line.contains(SEPARATOR)) return listOf(line)
-
-        return line.trim()
-            .split(SEPARATOR)
+        return line.split(SEPARATOR)
     }
 
     companion object {
