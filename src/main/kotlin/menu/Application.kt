@@ -31,3 +31,7 @@ fun main() {
         recommendedMenu.add(coachMenu)
     }
 }
+
+fun printRecommendCategory(categories: List<String>){
+    println("[ 카테고리 | ${categories[0]} | ${categories[1]} | ${categories[2]} | ${categories[3]} | ${categories[4]} ]")
+}
