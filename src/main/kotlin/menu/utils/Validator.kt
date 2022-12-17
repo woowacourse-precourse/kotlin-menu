@@ -30,14 +30,10 @@ object Validator {
         require(input.length in 2..4) { COACH_NAME_LENGTH_ERROR_MESSAGE }
     }
 
-    fun checkHateMenusSize(input: String) {
-        val menus = input.split(',')
-        require(menus.size in 0..2) { HATE_MENUS_COUNT_ERROR_MESSAGE }
-    }
-
     fun checkHateMenusValid(hateMenus: List<String>) {
         checkHateMenusDuplication(hateMenus)
         checkHateMenusExist(hateMenus)
+        checkHateMenusSize(hateMenus)
     }
 
     private fun checkHateMenusDuplication(hateMenus: List<String>) {
@@ -47,5 +43,9 @@ object Validator {
 
     private fun checkHateMenusExist(hateMenus: List<String>) {
         hateMenus.forEach { require(Category.isMenuExist(it)) { HATE_MENUS_EXIST_ERROR_MESSAGE } }
+    }
+
+    private fun checkHateMenusSize(hateMenus: List<String>) {
+        require(hateMenus.size in 0..2) { HATE_MENUS_COUNT_ERROR_MESSAGE }
     }
 }
