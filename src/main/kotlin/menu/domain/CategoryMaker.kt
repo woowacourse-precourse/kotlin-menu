@@ -10,7 +10,7 @@ class CategoryMaker(private val generator: CategoryNumberGenerator) {
         val categories = mutableListOf<Category>()
 
         do {
-            val number = generator.generate()
+            val number = generator.generate() - 1
             if(count[number] < 2) {
                 categories.add(Category.values()[number])
                 count[number]++

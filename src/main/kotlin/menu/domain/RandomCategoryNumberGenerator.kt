@@ -8,7 +8,7 @@ class RandomCategoryNumberGenerator : CategoryNumberGenerator {
     }
 
     companion object {
-        const val MAX_RANGE = 4
-        const val MIN_RANGE = 0
+        const val MAX_RANGE = 5
+        const val MIN_RANGE = 1
     }
 }
