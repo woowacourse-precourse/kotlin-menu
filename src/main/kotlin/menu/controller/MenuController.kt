@@ -34,7 +34,6 @@ class MenuController {
     private fun setHateMenus(coach: Coach) {
         val menus = readHateMenus(coach)
         menus.forEach { coach.addHateMenu(it) }
-
     }
 
     private fun readHateMenus(coach: Coach): List<Menu> {

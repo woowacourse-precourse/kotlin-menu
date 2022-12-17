@@ -16,8 +16,8 @@ class Coach(val name: String) {
     }
 
     fun addHateMenu(menu: Menu) {
-        require(menu !in hateMenus)
-        require(hateMenus.size < MAX_HATE_LENGTH)
+        require(menu !in hateMenus) { "중복된 메뉴입니다." }
+        require(hateMenus.size < MAX_HATE_LENGTH) { "못 먹는 음식은 최대 2개입니다." }
         hateMenus.add(menu)
     }
 
