@@ -1,6 +1,7 @@
 package menu.domain.model
 
 import menu.util.*
+import menu.util.ERROR.DUPLICATED_WEEK
 import menu.util.ERROR.WRONG_NUMBER_WEEKDAY
 import java.lang.StringBuilder
 
@@ -30,7 +31,7 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
         }
         weeklyCategory.forEach { weekday ->
             require(weeklyCategory.count { it::class.java == weekday::class.java } == 1) {
-                "똑같은 요일이 2번 입력됬습니다."
+                DUPLICATED_WEEK
             }
         }
     }

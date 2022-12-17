@@ -12,4 +12,5 @@ object ERROR {
     const val NOT_EXIST_FOOD = ERR.plus("그런 음식 이름은 존재하지 않습니다.")
     const val WRONG_NUMBER_WEEKDAY = ERR.plus("월, 화, 수, 목, 금 5일으로 이루어진 카테고리를 입력해 주세요.")
     const val MAXIMUN_DIET_LENGTH = ERR.plus("평일 식단을 초과하여 작성 중입니다.")
+    const val DUPLICATED_WEEK = ERR.plus("똑같은 요일이 2번 입력됬습니다.")
 }
