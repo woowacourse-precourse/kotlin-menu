@@ -5,6 +5,7 @@ import menu.data.*
 
 class RandomCategoryGenerator {
     private val categories: List<String> = listOf(
+        "",
         JAPANESE_FOOD,
         KOREAN_FOOD,
         CHINESE_FOOD,
@@ -16,15 +17,14 @@ class RandomCategoryGenerator {
         val categoryContainer = mutableListOf<String>()
 
         while (categoryContainer.size < FIVE) {
-            val category = categories[Randoms.pickNumberInRange(ZERO, FOUR)]
+            val category = categories[Randoms.pickNumberInRange(ONE, FIVE)]
             categoryContainer.add(category)
         }
         return categoryContainer
     }
 
     companion object {
-        const val ZERO = 0
-        const val FOUR = 4
+        const val ONE = 1
         const val FIVE = 5
     }
 }
