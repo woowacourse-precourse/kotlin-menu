@@ -1,5 +1,17 @@
 package menu
 
+import menu.controller.DietMenuController
+import menu.view.InputView
+import menu.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    try {
+        val dietMenuController = DietMenuController(
+            inputView = InputView(),
+            outputView = OutputView()
+        )
+        dietMenuController.startRecommend()
+    } catch (e: Exception) {
+        println(e.message)
+    }
 }
