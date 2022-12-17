@@ -16,5 +16,7 @@ class OutputView {
         }
     }
 
-
+    fun serviceEnd(){
+        println("추천을 완료했습니다.")
+    }
 }

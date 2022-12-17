@@ -36,4 +36,7 @@ fun main() {
 
     //메뉴 추천표 출력
     OutputView().menuResult(coach, weekCategory)
+
+    //종료 메시지
+    OutputView().serviceEnd()
 }
