@@ -55,10 +55,8 @@ class MenuView {
     private fun processRecommend() {
         for (i in 0 until calender.weeks.size) {
             recommender.recommendCategory()
-        }
-        for (i in 0 until coaches.size) {
-            for (j in 0 until calender.weeks.size) {
-                recommender.recommendMenu(coaches[i], recommender.categoryRecord[j])
+            for (j in 0 until coaches.size) {
+                recommender.recommendMenu(coaches[j], recommender.categoryRecord[i])
             }
         }
     }
