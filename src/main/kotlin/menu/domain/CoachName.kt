@@ -8,6 +8,9 @@ class CoachName(private val value: String) {
         require(isNameRange()) { ERROR.format(ERROR_NAME_LENGTH) }
     }
 
+    fun getName(): String =
+        this.value
+
     private fun isNotBlank(): Boolean =
         value.isNotBlank()
 

@@ -11,6 +11,11 @@ class Coach(private val names: List<String>) {
         require(isSize()) { ERROR.format(ERROR_COACH_SIZE) }
     }
 
+    fun names(): List<CoachName> =
+        this.names.map { name ->
+            CoachName(name)
+        }
+
     private fun isSize(): Boolean =
         names.size >= MIN_COACH_COUNT && names.size <= MAX_COACH_COUNT
 }
