@@ -1,6 +1,7 @@
 package menu
 
 import camp.nextstep.edu.missionutils.Randoms
+import camp.nextstep.edu.missionutils.test.Assertions.assertSimpleTest
 import camp.nextstep.edu.missionutils.test.NsTest
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions.assertTimeoutPreemptively
@@ -109,6 +110,47 @@ class ApplicationTest : NsTest() {
                 )
             }
         }
+    }
+
+    @DisplayName("전체 예외 테스트")
+    @Nested
+    internal inner class ExceptionTest {
+        val ERROR_MESSAGE = "[ERROR]"
+        @Test
+        fun `코치 이름 예외 테스트 - 코치의 이름이 최소 2글자, 최대 4글자가 아닌 경우 예외를 발생시킨다`() {
+            assertSimpleTest {
+                runException("구구구구구구구,제임스")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+            assertSimpleTest {
+                runException("구,제임스")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+        @Test
+        fun `코치 이름 예외 테스트 - 코치가 최소 2명, 최대 5명이 아닌 경우 예외를 발생시킨다`() {
+            assertSimpleTest {
+                runException("제임스")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+            assertSimpleTest {
+                runException("구,제임스,제,임,스,구구")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+        @Test
+        fun `못 먹는 메뉴 예외 테스트 - 못 먹는 메뉴가 최소 0개, 최대 2개가 아니면 예외를 발생시킨다`() {
+            assertSimpleTest {
+                runException("구구,제임스", "김,치,찌,개")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+            assertSimpleTest {
+                runException("구구,제임스", "김,밥", "김,치,찌,개")
+                assertThat(output()).contains(ERROR_MESSAGE)
+            }
+        }
+
+
     }
 
     class Mocking<T>(
