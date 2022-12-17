@@ -15,5 +15,6 @@ class InputValidator {
     fun validateHateMenu(input: String) {
         val menu = input.split(',')
         require(menu.size in 0..2) { ErrorMessage.MENU_RANGE_ERROR }
+        require(menu.toSet().size == menu.size){ErrorMessage.NOT_REPEAT}
     }
 }
