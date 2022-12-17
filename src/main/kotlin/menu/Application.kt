@@ -1,5 +1,9 @@
 package menu
 
 fun main() {
-    World()
+    try {
+        World()
+    } catch (e: Exception) {
+        println("[ERROR] ${e.message}")
+    }
 }
