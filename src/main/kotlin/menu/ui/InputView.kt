@@ -6,11 +6,11 @@ import menu.data.*
 class InputView {
     private val outputView = OutputView()
 
-    fun enterCoachName(): String {
+    fun enterCoachName(): List<String> {
         while (true) {
             val coachName = Console.readLine()
             kotlin.runCatching { checkCoachName(coachName) }
-                .onSuccess { return coachName }
+                .onSuccess { return coachName.split(",") }
                 .onFailure { outputView.printErrorMessage(ERROR_RETRY) }
         }
     }
