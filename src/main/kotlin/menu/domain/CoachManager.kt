@@ -37,4 +37,34 @@ class CoachManager(
             pickMenuOnce(categories[i])
         }
     }
+
+    private fun matchCoachFormat(coach: Coach): String {
+        return Message.PrintMessage.RECOMMEND_FOOD.msg.format(
+            coach.getName(),
+            coach.getEatenFoods()[0],
+            coach.getEatenFoods()[1],
+            coach.getEatenFoods()[2],
+            coach.getEatenFoods()[3],
+            coach.getEatenFoods()[4],
+        )
+    }
+
+    fun getCategoriesDetails(): String {
+        return Message.PrintMessage.CATEGORY.msg.format(
+            categories[0],
+            categories[1],
+            categories[2],
+            categories[3],
+            categories[4],
+        )
+    }
+
+    fun getCoachesDetails(): String{
+        var result = ""
+        for (coach in coaches) {
+            result += matchCoachFormat(coach)
+            result += "\n"
+        }
+        return result
+    }
 }
