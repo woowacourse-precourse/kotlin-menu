@@ -1,6 +1,7 @@
 package menu.controller
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.Food
 import menu.INSERT_NAME
 import menu.START_MESSAGE
 import menu.view.InputView
@@ -11,7 +12,11 @@ class MenuController {
     fun start() {
         val names = startMenuRecommend()
         val cannotEatFood = askCannotEatFood(names)
-        val category = randomCategory()
+        val determinedCategory = randomCategory()
+        val result = mutableListOf<List<String>>()
+
+        for (cantEat in cannotEatFood)
+            result.add(determineMenu(determinedCategory,cantEat))
 
     }
 
@@ -49,6 +54,33 @@ class MenuController {
                 count++
         }
         if (count > 2)
+            return true
+        return false
+    }
+
+    private fun determineMenu(determinedCategory: List<String>, cantEat: List<String>): List<String> {
+        val determinedMenu = mutableListOf<String>()
+        while (determinedMenu.size <= 5) {
+            for (category in determinedCategory) {
+                val menus = Food.valueOf(category).menu
+                val menu: String = Randoms.shuffle(menus)[0]
+                if(checkDuplicateMenu(determinedMenu, menu) && checkCantEatFood(menu, cantEat))
+                    continue
+
+                determinedMenu.add(menu)
+            }
+        }
+        return determinedMenu
+    }
+
+    fun checkDuplicateMenu(determinedMenu: MutableList<String>, menu: String): Boolean {
+        if (determinedMenu.contains(menu))
+            return true
+        return false
+    }
+
+    fun checkCantEatFood(menu: String, cantEat: List<String>): Boolean {
+        if (cantEat.contains(menu))
             return true
         return false
     }
