@@ -22,4 +22,13 @@ class ViewValidateTest {
             viewValidate.coachNamesForm(input)
         }
     }
+
+    @ParameterizedTest
+    @ValueSource(strings = ["짬뽕,물고기", "쌈밥,쌈밥,쌈밥" ,"쌈밥,쌈밥"])
+    fun `입력 받은 음식 형식 유효성 테스트 `(input: String) {
+        assertThrows<IllegalArgumentException> {
+            viewValidate.excludedFoodsForm(input)
+        }
+    }
+
 }
