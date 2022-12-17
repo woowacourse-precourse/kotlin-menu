@@ -55,6 +55,7 @@ class InputView {
     private fun readMenu(): List<String> {
         val input = Console.readLine().split(",")
         if (!checkMenuItemSize(input)) return readMenu()
+        if (input[0].isEmpty()) return listOf()
         for (menu in input) {
             if (!checkMenuNameInCategory(menu)) return readMenu()
         }
