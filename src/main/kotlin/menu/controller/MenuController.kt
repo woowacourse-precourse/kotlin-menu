@@ -20,7 +20,6 @@ class MenuController(
      */
     fun inputCoachInfo() {
         coaches = inputView.readCoachName()
-        println(coaches)
         coaches.forEach { coach ->
             notEatMenus.add(inputView.readCoachNotEat(coach))
         }
