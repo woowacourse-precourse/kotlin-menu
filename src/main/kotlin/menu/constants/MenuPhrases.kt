@@ -6,6 +6,7 @@ object MenuPhrases {
     const val BLANK_COACH_NAME_ERROR = "[ERROR] 입력하신 코치 이름중 공백으로 입력된것이 있습니다."
     const val COACH_MENU_BAN_SIZE_ERROR = "[ERROR] 입력하신 코치의 금지메뉴 갯수가 잘못되었습니다."
     const val COACH_MENU_BAN_NOT_IN_EXIST_MENU = "[ERROR] 입력하신 코치의 금지메뉴가 메뉴목록에 없습니다."
+    const val INCORRECT_MENU_PICKER_NUMBER_ERROR = "[ERROR] 맞지않는 pickerNumber 입니다."
 
     const val START_PHRASE = "점심 메뉴 추천을 시작합니다."
     const val REQUEST_COACH_NAMES_PHRASE = "코치의 이름을 입력해 주세요. (, 로 구분)"
