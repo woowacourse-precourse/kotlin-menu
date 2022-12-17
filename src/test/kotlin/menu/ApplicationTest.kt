@@ -65,7 +65,7 @@ class ApplicationTest : NsTest() {
         fun `예외 테스트`() {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
                 val executable = Executable {
-                    runException("구구", "구,제임스", "구구,제임스", "칙촉", "김밥,떡볶이,된장찌개", "김밥", "떡볶이")
+                    runException("구구", "구,제임스", "구구,제임스,하니,둘리,캔디,루나", "구구,제임스", "칙촉", "김밥,떡볶이,된장찌개", "김밥", "떡볶이")
                     assertThat(output()).contains(
                             "점심 메뉴 추천을 시작합니다.",
                             "코치의 이름을 입력해 주세요. (, 로 구분)",
