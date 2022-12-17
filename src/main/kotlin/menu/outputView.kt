@@ -28,7 +28,7 @@ class outputView {
     }
 
     fun coachNameMenu(coachName: String, menuCollect: List<String>) {
-        println("[$coachName] | ${menuCollect[0]}| ${menuCollect[1]} | ${menuCollect[2]} | ${menuCollect[3]} | ${menuCollect[4]} ]")
+        println("[ ${coachName} | ${menuCollect[0]} | ${menuCollect[1]} | ${menuCollect[2]} | ${menuCollect[3]} | ${menuCollect[4]} ]")
     }
 
     fun category(categoryName: List<String>){

@@ -17,7 +17,7 @@ class menuRecommend {
 
     fun duringInput(){
         coachNameCollect=IV.inputCoachName()
-        println(coachNameCollect)
+//        println(coachNameCollect)
         for (i in 0 until coachNameCollect.size){
             OV.inputNotEat(coachNameCollect[i])
             IV.inputNotEating()
@@ -27,17 +27,18 @@ class menuRecommend {
 
     fun categoryMenuSelect(){
         categoryNameCollect=MN.categorySelect()
-
+//        println(duringMenuSelect())
+//        duringMenuSelect()
     }
 
-    fun duringMenuSelect(){
+    fun duringMenuSelect(): List<String>{
         var idx=0
         while (true){
             if (coachMenuCollect.size==5) break
-            MN.menuRecommend(categoryNameCollect[idx])
+            coachMenuCollect.add(MN.menuRecommend(categoryNameCollect[idx]))
             idx+=1
         }
-
+        return coachMenuCollect
     }
 
     fun final(){
@@ -45,7 +46,8 @@ class menuRecommend {
         OV.day()
         OV.category(categoryNameCollect)
         for(i in 0 until coachNameCollect.size){
-//            OV.coachNameMenu(coachNameCollect[i],"메뉴리스트")
+            duringMenuSelect()
+            OV.coachNameMenu(coachNameCollect[i],coachMenuCollect)
         }
         OV.endService()
     }
