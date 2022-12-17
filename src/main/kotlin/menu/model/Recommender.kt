@@ -17,6 +17,12 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
     private val categoryCounter = mutableListOf<Int>(0, 0, 0, 0, 0)
     private val eatingMenu = mutableListOf<MutableList<String>>()
 
+    init {
+        for (index in coach.indices) {
+            eatingMenu.add(mutableListOf<String>())
+        }
+    }
+
     fun selectCategory(categoryNumber: Int): Flag {
         if (categoryCounter[categoryNumber] == 2) {
             return Flag.FAIL
@@ -25,7 +31,7 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
     }
 
     fun getCategory(categoryNumber: Int): Menu {
-        categoryCounter[categoryNumber] ++
+        categoryCounter[categoryNumber]++
         return menu[categoryNumber]
     }
 
