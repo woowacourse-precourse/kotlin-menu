@@ -1,16 +1,18 @@
 package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.util.DuplicationRemover
 import menu.util.InputValidator
 
 class InputView(
-    private val inputValidator: InputValidator = InputValidator()
+    private val inputValidator: InputValidator = InputValidator(),
 ) {
     fun inputCoaches(): List<String> {
         println(COACH_NAMES_INPUT_MESSAGE)
         val coachNames = input().trim().split(",")
+        val nonDuplicatedCoachNames = DuplicationRemover.removeDuplication(coachNames)
         printEnter()
-        return inputValidator.validateCoachesNames(coachNames)
+        return inputValidator.validateCoachesNames(nonDuplicatedCoachNames)
     }
 
     private fun input(): String = Console.readLine()

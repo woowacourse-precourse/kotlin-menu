@@ -11,6 +11,7 @@ class MenuController(
 ) : Controller(inputView, outputView) {
     override fun run() {
         printStartMessage()
+        println(inputCoaches())
     }
 
     private fun printStartMessage() {
