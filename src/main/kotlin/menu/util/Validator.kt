@@ -2,6 +2,14 @@ package menu.util
 
 class Validator {
 
+    fun checkCoachesInput(input : String) {
+        checkCoachesSizeValid(input)
+        input.split(",").forEach {
+            checkNameValid(input)
+            checkNameSizeValid(input)
+        }
+    }
+
     fun checkNameValid(input : String) {
         require(input.matches("^[가-힣]*$".toRegex())) { Constants.NAME_VALUE_ERROR }
     }
