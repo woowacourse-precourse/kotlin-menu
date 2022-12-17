@@ -3,8 +3,6 @@ package menu.output
 import menu.message.PrintMessage
 
 class OutputView {
-    // TODO: 점심메뉴 추천 시작 문구 출력, 코치 이름 입력 문구 출력, 해당 코치가 못 먹는 메뉴 문구 출력, 메뉴 추천 결과 출력
-
     fun startRecommendMenu() {
         println(PrintMessage.startRecommend)
     }
@@ -13,11 +11,48 @@ class OutputView {
         println(PrintMessage.inputCoachName)
     }
 
-    fun inputNotEatMenu() {
-        println(PrintMessage.inputNotEatMenu)
+    fun inputNotEatMenu(coachName: String) {
+        println("$coachName" + PrintMessage.inputNotEatMenu)
     }
 
     fun resultRecommendMenu() {
         println(PrintMessage.resultToRecommendMenu)
     }
+
+    fun outputHeaderDay() {
+        println(PrintMessage.resultHeaderOfDay)
+    }
+
+    fun outputSuccessRecommend() {
+        println(PrintMessage.successRecommend)
+    }
+
+    fun outputCategory(categories: List<String>) {
+        print("[ 카테고리 |")
+
+        for(index in categories.indices) {
+            print(" ${categories[index]} ")
+            compareLastIndex(categories, index)
+        }
+    }
+
+    fun outputRecommendMenu(coaches: List<String>, recommendMenus: List<List<String>>) {
+        for(coachIndex in coaches.indices) {
+            print("[ ${coaches[coachIndex]} |")
+
+            for(day in recommendMenus.indices) {
+                print(" ${recommendMenus[day][coachIndex]} ")
+                compareLastIndex(recommendMenus, day)
+            }
+        }
+    }
+
+    private fun compareLastIndex(list: List<Any>, index: Int) {
+        if(list.size - 1 == index) {
+            println("]")
+            return
+        }
+        print("|")
+    }
+
 }
