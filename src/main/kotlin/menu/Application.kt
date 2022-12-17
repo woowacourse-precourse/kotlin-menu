@@ -3,20 +3,19 @@ package menu
 import camp.nextstep.edu.missionutils.Randoms
 import menu.common.*
 import menu.model.Category
+import menu.model.Coach
 import menu.model.DayOfWeek
+import menu.model.Menu
 import menu.view.InputView
 import menu.view.OutputView
 
 fun main() {
-    val foodTable = setCategoryByDayOfWeek()
-
     OutputView.printMessage(WELCOME_MESSAGE)
     val coaches = askCoaches()
 
     val cantEatMenu = setCantEatMenu(coaches)
 
-    val recommendedMenuTable = MenuRecommender.recommendMenuTable(foodTable, cantEatMenu)
-    OutputView.printRecommendedMenuTable(foodTable, recommendedMenuTable)
+
 
     OutputView.printMessage("\n" + RECOMMENDED_COMPLETE_MESSAGE)
 }
@@ -37,18 +36,18 @@ private fun setCategoryByDayOfWeek(): Map<DayOfWeek, Category> {
     return foodTable
 }
 
-private fun askCoaches(): List<String> {
+private fun askCoaches(): List<Coach> {
     OutputView.printMessage("\n" + COACHES_INPUT_MESSAGE)
-    return InputView.readCoaches()
+    return InputView.readCoaches().map { Coach(it) }
 }
 
-private fun setCantEatMenu(coaches: List<String>): Map<String, List<String>> {
+private fun setCantEatMenu(coaches: List<Coach>): Map<String, List<String>> {
     val cantEatMenu = mutableMapOf<String, List<String>>()
 
     coaches.forEach { coach ->
         OutputView.printMessage("\n" + CANT_EAT_MENU_INPUT_MESSAGE.format(coach))
-        val menus = InputView.readMenus()
-        cantEatMenu[coach] = menus
+        val menus = InputView.readMenus().map { Menu(it) }
+        coach.setCantEatMenus(menus)
     }
 
     return cantEatMenu
