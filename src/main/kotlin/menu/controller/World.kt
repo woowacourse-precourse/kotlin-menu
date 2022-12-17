@@ -14,6 +14,15 @@ class World {
 
     private val coaches = mutableListOf<Coach>()
 
+    private fun tryAndReRun(fn: () -> List<String>): List<String> {
+        return try {
+            fn()
+        } catch (e: IllegalArgumentException) {
+            outputView.print("[ERROR] ${e.message}")
+            tryAndReRun(fn)
+        }
+    }
+
     init {
         outputView.print(Message.MSG_START)
 
@@ -30,15 +39,19 @@ class World {
     }
 
     private fun processCoachName(): List<String> {
-        outputView.print(Message.MSG_COACH_NAME)
-
-        return inputView.getCoachName()
+        val input = tryAndReRun {
+            outputView.print(Message.MSG_COACH_NAME)
+            inputView.getCoachName()
+        }
+        return input
     }
 
     private fun processDeclineMenus(name: String): List<Menu> {
-        outputView.print(Message.MSG_DECLINE_MENU, Pair("NAME", name))
-
-        return inputView.getDeclineMenu().map { Menu(it) }
+        val input = tryAndReRun {
+            outputView.print(Message.MSG_DECLINE_MENU, Pair("NAME", name))
+            inputView.getDeclineMenu()
+        }
+        return input.map { Menu(it) }
     }
 
     private fun processRecommendation(coaches: List<Coach>) {
