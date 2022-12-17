@@ -36,21 +36,8 @@ class Domain {
         if (category == "중식") coaches = Category().coachChinaMenu(coaches)
         if (category == "아시안") coaches = Category().coachAsianMenu(coaches)
         if (category == "양식") coaches = Category().coachWestMenu(coaches)
-
         return coaches
     }
-
-    /*fun coachMenuRecommend(coaches: MutableList<Coach>, weekCategory: MutableList<String>) : MutableList<Coach>{
-        var coaches = coaches
-        for (i in weekCategory){
-            if (i =="일식") coaches = Category().coachJapanMenu(coaches)
-            if (i == "한식") coaches = Category().coachKoreaMenu(coaches)
-            if (i == "중식") coaches = Category().coachChinaMenu(coaches)
-            if (i == "아시안") coaches = Category().coachAsianMenu(coaches)
-            if (i == "양식") coaches = Category().coachWestMenu(coaches)
-        }
-        return coaches
-    }*/
 
     fun serviceResult(coaches: MutableList<Coach>, weekCategory: MutableList<String>){
         OutputView().menuResult(coaches, weekCategory)
