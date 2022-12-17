@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Randoms
 class CategoryRandomGenerator {
 
     fun generate() : Category {
-        return Category.getCategories().get(Randoms.pickNumberInRange(RANDOM_LOWER_INCLUSIVE-1, RANDOM_UPPER_INCLUSIVE-1))
+        return Category.of(Randoms.pickNumberInRange(RANDOM_LOWER_INCLUSIVE, RANDOM_UPPER_INCLUSIVE))
     }
 
     companion object {
