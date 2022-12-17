@@ -1,6 +1,6 @@
-package menu.View
+package menu.view
 
-import menu.Resource.*
+import menu.resource.*
 
 class OutputView {
 

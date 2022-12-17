@@ -1,4 +1,4 @@
-package menu.Resource
+package menu.resource
 
 // FOR INPUT VIEW
 

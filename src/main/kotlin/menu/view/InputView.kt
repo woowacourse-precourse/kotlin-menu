@@ -1,4 +1,4 @@
-package menu.View
+package menu.view
 
 import camp.nextstep.edu.missionutils.Console
 
