@@ -1,6 +1,9 @@
 package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.constants.Exception.Companion.EXCEPTION_INVALID_COACH_NUM
+import menu.constants.Exception.Companion.EXCEPTION_INVALID_NAME_LENGTH
+import menu.constants.Exception.Companion.EXCEPTION_IS_NOT_MENU
 import menu.model.Menu
 
 class InputView {
@@ -20,13 +23,13 @@ class InputView {
 
     private fun checkCoachName(coach: List<String>) {
         if (coach.size < 2 || coach.size > 4) {
-            outputView.printException("[ERROR]")
-            throw IllegalArgumentException("[ERROR]")
+            outputView.printException(EXCEPTION_INVALID_COACH_NUM)
+            throw IllegalArgumentException(EXCEPTION_INVALID_COACH_NUM)
         }
         for (name in coach) {
             if (name.length < 2 || name.length > 5) {
-                outputView.printException("[ERROR]")
-                throw IllegalArgumentException("[ERROR]")
+                outputView.printException(EXCEPTION_INVALID_NAME_LENGTH)
+                throw IllegalArgumentException(EXCEPTION_INVALID_NAME_LENGTH)
             }
         }
     }
@@ -39,7 +42,7 @@ class InputView {
         return banFood
     }
 
-    fun checkbanFood(banFood: List<String>) {
+    private fun checkbanFood(banFood: List<String>) {
         var isExist = false
         for (food in banFood) {
             if (japan.menu.contains(food) || korean.menu.contains(food) || china.menu.contains(food) || asian.menu.contains(
@@ -51,8 +54,8 @@ class InputView {
             }
         }
         if (!isExist) {
-            outputView.printException("[ERROR]")
-            throw IllegalArgumentException("[ERROR]")
+            outputView.printException(EXCEPTION_IS_NOT_MENU)
+            throw IllegalArgumentException(EXCEPTION_IS_NOT_MENU)
         }
     }
 
