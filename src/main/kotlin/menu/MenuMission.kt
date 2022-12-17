@@ -14,7 +14,7 @@ class MenuMission(private val inputView: InputView) {
     fun coachHateFood(coaches: List<String>) {
         val coachHate = mutableMapOf<String,List<String>>()
         coaches.forEach{
-            val hates = inputView.getHateFood(it).split(",")
+            val hates = hateFoodCheck(inputView.getHateFood(it))
             coachHate[it] = hates
         }
     }
@@ -34,4 +34,10 @@ class MenuMission(private val inputView: InputView) {
         return coaches
     }
 
+    fun hateFoodCheck(hateFood:String): List<String> {
+        val hates = hateFood.split(",")
+        if (hates.size > 2)
+            throw IllegalArgumentException(ERROR_COACHES_MIN_MESSAGE)
+        return hates
+    }
 }
