@@ -22,15 +22,15 @@ class RecommendSimulator(
         val category = categoryGenerator.makeCategory()
         val menuList = mutableListOf<Menu>()
         coachList.getCoach().forEach { coach ->
-            val food = getFood(coach)
-            menuList.add(getMenu(category, food))
+            menuList.add(getMenu(category, getFood(coach), coach))
         }
-        output.printCategories(categoryGenerator.toStringCategory(category))
-
+        output.printResult(categoryGenerator.toStringCategory(category))
+        output.printMenu(menuList)
     }
 
-    private fun getMenu(categories: List<Int>, food: Food): Menu {
+    private fun getMenu(categories: List<Int>, food: Food, coach: String): Menu {
         val menus = mutableListOf<String>()
+        menus.add(coach)
         for (category in categories) {
             val menu = when (category) {
                 1 -> FOOD_JAPAN

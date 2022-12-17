@@ -17,22 +17,16 @@ class OutputView {
     fun printRequestFood(name: String) {
         println(INPUT_FOOD.format(name))
     }
-    fun printResult() {
+    fun printResult(categories: List<String>) {
         println(RECOMMEND_RESULT)
-        println()
-
-    }
-    fun printCategories(categories: List<String>) {
+        println(RECOMMEND_PART)
         println(categories.joinToString(SEPARATOR, START_BRACKET, END_BRACKET))
     }
 
     fun printMenu(menu: List<Menu>) {
-
-    }
-
-
-
-    fun printEnd() {
+        menu.forEach {
+            it -> println(it.getMenu().joinToString(SEPARATOR, START_BRACKET, END_BRACKET))
+        }
         print(RECOMMEND_END)
     }
 }
