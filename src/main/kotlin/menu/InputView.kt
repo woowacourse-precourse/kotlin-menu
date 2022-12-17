@@ -31,17 +31,18 @@ class InputView {
     }
 
     private fun checkMenuNameInCategory(menu: String): Boolean {
-        return Category.전부.menus.contains(menu)
+        try {
+            if (!Category.전부.menus.contains(menu)) throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
+            println("[ERROR] 카테고리의 메뉴 리스트에 없는 메뉴입니다.")
+            return false
+        }
+        return true
     }
     private fun readMenu(): List<String> {
         val input = Console.readLine().split(",")
-        try {
-            for(menu in input) {
-                if(!checkMenuNameInCategory(menu)) throw IllegalArgumentException()
-            }
-        }catch(e: IllegalArgumentException) {
-            println("[ERROR] 카테고리의 메뉴 리스트에 없는 메뉴입니다.")
-            return readMenu()
+        for(menu in input) {
+            if(!checkMenuNameInCategory(menu)) return readMenu()
         }
         return input
     }
