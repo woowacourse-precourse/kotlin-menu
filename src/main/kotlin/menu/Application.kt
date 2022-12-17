@@ -6,12 +6,12 @@ import menu.view.OutputView
 import java.lang.IllegalArgumentException
 
 fun main() {
-   try {
-      val inputView = InputView()
-      val outputView = OutputView()
-      MenuRecommendation(inputView, outputView).start()
-   } catch (e: IllegalArgumentException) {
-      println(e.message)
-      return
-   }
+    try {
+        val inputView = InputView()
+        val outputView = OutputView()
+        MenuRecommendation(inputView, outputView).start()
+    } catch (e: IllegalArgumentException) {
+        println(e.message)
+        return
+    }
 }

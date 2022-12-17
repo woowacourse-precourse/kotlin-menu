@@ -19,7 +19,7 @@ class InputView {
         println(INPUT_FOOD_CANT_EAT.format(name))
 
         val menus = Console.readLine().trim()
-        if(menus == "") return listOf()
+        if (menus == "") return listOf()
         ErrorCheck.checkValidMenu(menus)
         // TODO: 입력된 메뉴가 카테고리 내에 없는 메뉴라면?
 
