@@ -13,4 +13,4 @@ const val RECOMMEND_END = "\n추천을 완료했습니다."
 
 // FOR ERROR HANDLING
 private const val ERROR_MESSAGE_PREFIX = "[ERROR] "
-const val ERROR_INPUT_BRIDGE_NULL = ERROR_MESSAGE_PREFIX + "공백이 아닌 숫자를 입력해주세요"
+const val ERROR_INPUT_COACH = ERROR_MESSAGE_PREFIX + "올바른 형태의 코치의 수와 코치의 이름을 입력해주세요."
