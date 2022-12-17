@@ -57,4 +57,11 @@ class MenuRecommend {
         }
         return westernMenu
     }
+
+    fun pickMenu(category: String, coachMenu: List<String>, dislikeMenu: List<String>): String {
+        val menus = getSpecificMenuList(category)
+        val menu = Randoms.shuffle(menus)[0]
+
+        return menu
+    }
 }
