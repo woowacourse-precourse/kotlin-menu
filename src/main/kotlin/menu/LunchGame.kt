@@ -12,8 +12,10 @@ class LunchGame(
     //TODO : PRIVATE 멤버로 바꾸기
     lateinit var coaches: List<Coach>
 
-    fun play(){
+    fun play() {
         initCoaches()
+        initHatingMenusToEachCoach()
+        recommendMenus()
     }
 
     fun initCoaches() {
@@ -21,11 +23,16 @@ class LunchGame(
     }
 
     private fun getCoachesName(): List<String> {
-        val coachesName = view.inputView.requestCoachesName()
+        while (true) {
+            try {
+                val coachesName = view.inputView.requestCoachesName()
 
-        inputValidator.validateCoaches(coachesName)
-
-        return coachesName.split(",")
+                inputValidator.validateCoaches(coachesName)
+                return coachesName.split(",")
+            } catch (e: java.lang.IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun initHatingMenusToEachCoach() {
@@ -38,11 +45,16 @@ class LunchGame(
     }
 
     private fun getHatingMenusName(coachName: String): List<String> {
-        val hatingMenus = view.inputView.requestHatingMenus(coachName)
+        while (true) {
+            try {
+                val hatingMenus = view.inputView.requestHatingMenus(coachName)
 
-        inputValidator.validateHatingMenu(hatingMenus)
-
-        return hatingMenus.split(",")
+                inputValidator.validateHatingMenu(hatingMenus)
+                return hatingMenus.split(",")
+            } catch (e: java.lang.IllegalArgumentException) {
+                println(e.message)
+            }
+        }
     }
 
     fun recommendMenus() {
