@@ -6,5 +6,7 @@ object Constant {
     const val COACH_UNEATABLE_MENU_MESSAGE = "%s(이) 가 못 먹는 메뉴를 입력해 주세요."
 
     const val ERROR_MESSAGE = "[ERROR] 잘못입력하셨습니다."
-    const val COACH_NAME_INPUT_TYPE_ERROR_MESSAGE = "[ERROR] 코치의 이름은 최소 2글자, 최대 4글자여야 합니다.\n"
+    const val COACH_NAME_INPUT_TYPE_ERROR_MESSAGE = "[ERROR] 코치의 이름은 최소 2글자, 최대 4글자여야 합니다."
+    const val COACH_PERSONNEL_INPUT_TYPE_ERROR_MESSAGE = "[ERROR] 코치는 최소 2명 이상 입력해야 합니다."
+
 }
