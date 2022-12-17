@@ -1,5 +1,6 @@
 package menu
 
 fun main() {
-    menuRecommend()
+    val user=menuRecommend()
+    user.categorySelect()
 }

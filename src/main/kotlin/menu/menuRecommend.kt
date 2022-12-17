@@ -23,4 +23,10 @@ class menuRecommend {
         }
     }
 
+
+
+    fun categorySelect(){
+        MN.categorySelect()
+    }
+
 }
