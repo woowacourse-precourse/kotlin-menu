@@ -2,35 +2,37 @@ package menu.view
 
 import menu.model.Coach
 import menu.values.Category
-import menu.values.GameMessage
+import menu.values.MenuMessage
 
 class OutputView {
-    fun printMessage(message:String){
+    fun printMessage(message: String) {
         println(message)
     }
 
-    fun printMenu(weeklyCategory:List<Category>,coaches:List<Coach>){
-        println("메뉴 추천 결과입니다.")
-        println(GameMessage.WEEKLY_DAY)
+    fun printMenu(weeklyCategory: List<Category>, coaches: List<Coach>) {
+        println(MenuMessage.MENU_RESULT)
+        println(MenuMessage.WEEKLY_DAY)
         printCategory(weeklyCategory)
-        repeat(coaches.size){index->
-            printOneDayMenu(coaches[index].name,coaches[index].weeklyMenus)
+        repeat(coaches.size) { index ->
+            printOneDayMenu(coaches[index].name, coaches[index].weeklyMenus)
         }
-        println("추천을 완료했습니다.")
+        println(MenuMessage.END)
     }
 
-    private fun printCategory(weeklyCategory:List<Category>){
-        print("[ 카테고리 ")
-        repeat(weeklyCategory.size){index->
-            print(GameMessage.CATEGORY_PRINT.format(weeklyCategory[index].koreanName))
+    private fun printCategory(weeklyCategory: List<Category>) {
+        print(MenuMessage.CATEGORY_MESSAGE)
+        repeat(weeklyCategory.size) { index ->
+            print(MenuMessage.CATEGORY_PRINT.format(weeklyCategory[index].koreanName))
         }
-        println("]")
+        println(MenuMessage.CLOSE_SQUARE_BRACKETS)
+        println(MenuMessage.ENTER)
     }
-    private fun printOneDayMenu(name:String,weeklyMenus:List<String>){
-        print("[ $name ")
-        repeat(weeklyMenus.size) {index->
-            print(GameMessage.MENU_PRINT.format(weeklyMenus[index]))
+
+    private fun printOneDayMenu(name: String, weeklyMenus: List<String>) {
+        print(MenuMessage.COACH_NAME.format(name))
+        repeat(weeklyMenus.size) { index ->
+            print(MenuMessage.MENU_PRINT.format(weeklyMenus[index]))
         }
-        println("]")
+        println(MenuMessage.CLOSE_SQUARE_BRACKETS)
     }
 }
