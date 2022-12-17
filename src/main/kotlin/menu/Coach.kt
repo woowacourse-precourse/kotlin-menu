@@ -9,4 +9,5 @@ class Coach(private val name: String,
         return false
     }
 
+    fun getName() = name
 }
