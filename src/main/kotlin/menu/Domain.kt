@@ -5,7 +5,6 @@ import menu.UI.OutputView
 
 class Domain {
     fun createCoach() : MutableList<Coach>{
-        //코치 생성
         var coachNames = InputView().coachName()
         var coaches = mutableListOf<Coach>()
         for (i in coachNames){
@@ -26,11 +25,11 @@ class Domain {
 
     fun createCategory() : MutableList<String>{
         var category = Category()
-        var weekCategory = category.recommandCategory()
+        var weekCategory = category.recommendCategory()
         return weekCategory
     }
 
-    fun coachMenuRecommand(coaches: MutableList<Coach>, weekCategory: MutableList<String>) : MutableList<Coach>{
+    fun coachMenuRecommend(coaches: MutableList<Coach>, weekCategory: MutableList<String>) : MutableList<Coach>{
         var coaches = coaches
         for (i in weekCategory){
             if (i =="일식") coaches = Category().coachJapanMenu(coaches)

@@ -10,7 +10,7 @@ class ServiceController {
         var coaches = domain.createCoach()
         coaches = domain.coachHateFood(coaches)
         var weekCategory = domain.createCategory()
-        coaches = domain.coachMenuRecommand(coaches, weekCategory)
+        coaches = domain.coachMenuRecommend(coaches, weekCategory)
 
         domain.serviceResult(coaches, weekCategory)
     }
