@@ -53,7 +53,7 @@ private fun progressRecommend(coachWithMenuBans: List<List<String>>): List<List<
         recommendResult.add(printPurposeConclusion)
     }
     outputView.printWeekOfTheDayPhrase()
-    println(categorys.joinToString(separator = " | ", prefix = "[ 카테고리 | ", postfix = " ]"))
+    println(categorys.map { it.korean }.joinToString(separator = " | ", prefix = "[ 카테고리 | ", postfix = " ]"))
     return recommendResult
 }
 
