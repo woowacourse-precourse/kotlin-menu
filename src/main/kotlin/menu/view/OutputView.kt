@@ -1,27 +1,36 @@
 package menu.view
 
+import menu.constants.String.Companion.STRING_DAY
+import menu.constants.String.Companion.STRING_DIVIDER
+import menu.constants.String.Companion.STRING_END_SYMBOL
+import menu.constants.String.Companion.STRING_INPUT_COACH_NAME
+import menu.constants.String.Companion.STRING_INPUT_FOOD_BAN
+import menu.constants.String.Companion.STRING_PRINT_RESULT
+import menu.constants.String.Companion.STRING_PRINT_RESULT_DONE
+import menu.constants.String.Companion.STRING_PRINT_START
+import menu.constants.String.Companion.STRING_START_SYMBOL
 import menu.model.Recommender
 
 class OutputView {
     fun printStart() {
-        println("점심 메뉴 추천을 시작합니다.")
+        println(STRING_PRINT_START)
     }
 
     fun printInputCoachName() {
-        println("코치의 이름을 입력해 주세요. (, 로 구분)")
+        println(STRING_INPUT_COACH_NAME)
     }
 
     fun printInputFoodBan(coach: String) {
-        println("${coach}(이)가 못 먹는 메뉴를 입력해 주세요.")
+        println("$coach" + STRING_INPUT_FOOD_BAN)
     }
 
     fun printResult(recommender: Recommender, result: MutableList<List<String>>) {
-        println("메뉴 추천 결과입니다.")
-        println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
+        println(STRING_PRINT_RESULT)
+        println(STRING_DAY)
         printCategory(recommender)
         printMenu(recommender, result)
         println()
-        println("추천을 완료했습니다.")
+        println(STRING_PRINT_RESULT_DONE)
     }
 
     private fun printCategory(recommender: Recommender) {
@@ -29,16 +38,16 @@ class OutputView {
         for (index in 0 until 5) {
             resultString += recommender.getEatingCategory(index) + addDivider(index, 5)
         }
-        resultString += " ]"
+        resultString += STRING_END_SYMBOL
         println(resultString)
     }
 
     private fun printMenu(recommender: Recommender, result: MutableList<List<String>>) {
         for (index in result[0].indices) {
-            var startString = "[ "
+            var startString = STRING_START_SYMBOL
             startString += recommender.getCoach(index) + " | "
             var resultString = addMenuString(startString, index, result)
-            resultString += " ]"
+            resultString += STRING_END_SYMBOL
             println(resultString)
         }
     }
@@ -53,7 +62,7 @@ class OutputView {
 
     private fun addDivider(day: Int, size: Int): String {
         if (day < size - 1) {
-            return " | "
+            return STRING_DIVIDER
         }
         return ""
     }
