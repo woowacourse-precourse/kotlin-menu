@@ -21,4 +21,13 @@ fun main() {
         val todayCategory = menuRecommend.pickCategory(recommendedCategory)
         recommendedCategory.add(todayCategory)
     }
+
+    for (coachIndex in coaches.indices) {  //코치마다 요일별로 메뉴 추천
+        val coachMenu = mutableListOf<String>()
+        for (categoryIndex in recommendedCategory.indices) {
+            val menu = menuRecommend.pickMenu(recommendedCategory[categoryIndex], coachMenu, dislikeMenus[coachIndex])
+            coachMenu.add(menu)
+        }
+        recommendedMenu.add(coachMenu)
+    }
 }
