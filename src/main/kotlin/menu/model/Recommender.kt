@@ -22,6 +22,7 @@ class Recommender(coach: List<String>, banFood: MutableList<List<String>>) {
     }
 
     fun getCategory(categoryNumber: Int): Menu {
+        categoryCounter[categoryNumber] ++
         return menu[categoryNumber]
     }
 
