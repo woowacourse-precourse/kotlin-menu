@@ -1,6 +1,7 @@
 package menu.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.constant.Constant
 
 class Food {
     private val japanFood = listOf("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")
@@ -11,11 +12,11 @@ class Food {
 
     fun recommendFood(category: String): String {
         return when (category) {
-            "한식" -> pickRandomFood(koreaFood)
-            "양식" -> pickRandomFood(westernFood)
-            "중식" -> pickRandomFood(chinaFood)
-            "일식" -> pickRandomFood(japanFood)
-            "아시안" -> pickRandomFood(asiaFood)
+            Constant.KOREAN_FOOD -> pickRandomFood(koreaFood)
+            Constant.WESTERN_FOOD -> pickRandomFood(westernFood)
+            Constant.CHINESE_FOOD -> pickRandomFood(chinaFood)
+            Constant.JAPANESE_FOOD -> pickRandomFood(japanFood)
+            Constant.ASIAN_FOOD -> pickRandomFood(asiaFood)
             else -> ""
         }
     }

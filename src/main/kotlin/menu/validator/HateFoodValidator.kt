@@ -1,5 +1,6 @@
 package menu.validator
 
+import menu.constant.Constant
 import menu.util.Util
 
 class HateFoodValidator {
@@ -11,7 +12,7 @@ class HateFoodValidator {
 
     private fun checkInputSize(input : String) : Boolean {
         val inputSize = Util().convertCommaStringToList(input).size
-        if (inputSize < 0 || inputSize > 2) {
+        if (inputSize < Constant.HATE_FOOD_LIST_MIN_SIZE || inputSize > Constant.HATE_FOOD_LIST_MAX_SIZE) {
             return true
         }
         return false

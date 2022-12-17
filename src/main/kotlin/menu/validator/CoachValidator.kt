@@ -1,5 +1,6 @@
 package menu.validator
 
+import menu.constant.Constant
 import menu.util.Util
 
 class CoachValidator {
@@ -11,7 +12,7 @@ class CoachValidator {
 
     private fun checkInputOverNumberScope(input: String): Boolean {
         val inputSize = Util().convertCommaStringToList(input).size
-        if (inputSize < 2 || inputSize > 5) {
+        if (inputSize < Constant.COACH_MEMBER_MIN_NUM || inputSize > Constant.COACH_MEMBER_MAX_NUM) {
             return true
         }
         return false
@@ -20,7 +21,7 @@ class CoachValidator {
     private fun checkNameIsOverSize(input: String): Boolean {
         val coachList = Util().convertCommaStringToList(input)
         for (coach in coachList) {
-            if (coach.length < 2 || coach.length > 4) {
+            if (coach.length < Constant.COACH_NAME_MIN_SIZE || coach.length > Constant.COACH_NAME_MAX_SIZE) {
                 return true
             }
         }

@@ -1,5 +1,6 @@
 package menu.domain
 
+import menu.constant.Constant
 import menu.util.Util
 
 class MenuRecommender {
@@ -20,7 +21,7 @@ class MenuRecommender {
     private fun initAteFoodList(coachListSize : Int) {
         for (xIndex in 0 until coachListSize) {
             val list = mutableListOf<String>()
-            for (yIndex in 0..4) {
+            for (yIndex in 0 until Constant.DAY_MAX_NUM) {
                 list.add("")
             }
             ateFoodList.add(list)

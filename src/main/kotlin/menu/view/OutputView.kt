@@ -1,5 +1,7 @@
 package menu.view
 
+import menu.constant.Constant
+
 class OutputView {
     fun outputResult(weekMenu: List<List<String>>, coachList: List<String>, categoryList: List<String>) {
         println("메뉴 추천 결과입니다.")
@@ -12,7 +14,7 @@ class OutputView {
     private fun makeDayFoodList(weekMenu: List<List<String>>, coachList: List<String>) {
         for (coachIndex in coachList.indices) {
             val foodList = mutableListOf<String>()
-            for (dayIndex in 0..4) {
+            for (dayIndex in 0 until Constant.DAY_MAX_NUM) {
                 foodList.add(weekMenu[dayIndex][coachIndex])
             }
             println(makeOutputForm(coachList[coachIndex], foodList))
