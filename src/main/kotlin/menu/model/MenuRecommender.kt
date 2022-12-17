@@ -23,7 +23,7 @@ class MenuRecommender {
         return false
     }
 
-    fun generateMenuByCoach(coach: Coach, menus: List<Menu>, categories: List<Category>, dayOfWeek: Int): Menu {
+    private fun generateMenuByCoach(coach: Coach, menus: List<Menu>, categories: List<Category>, dayOfWeek: Int): Menu {
         if (categories.size != 5 || dayOfWeek < 0 || dayOfWeek > 4)
             throw IllegalStateException(Message.ERR_MENU_ARGUMENT)
         while (true) {
@@ -41,5 +41,36 @@ class MenuRecommender {
         if (menus.contains(menu))
             return true
         return false
+    }
+
+    fun getRecommendation(
+        categories: List<Category>,
+        coaches: List<Coach>
+    ): Map<Coach, List<Menu>> {
+        val menusByCoaches = mutableMapOf<Coach, MutableList<Menu>>()
+        for (i in 0..4) {
+            getDayRecommendation(menusByCoaches, categories, coaches, i)
+        }
+        return menusByCoaches
+    }
+
+    private fun getDayRecommendation(
+        menusByCoaches: MutableMap<Coach, MutableList<Menu>>,
+        categories: List<Category>,
+        coaches: List<Coach>, dayOfWeek: Int
+    ) {
+        for (coach in coaches) {
+            getCoachRecommendation(menusByCoaches, categories, dayOfWeek, coach)
+        }
+    }
+
+    private fun getCoachRecommendation(
+        menusByCoaches: MutableMap<Coach, MutableList<Menu>>,
+        categories: List<Category>, dayOfWeek: Int, coach: Coach
+    ) {
+        if (menusByCoaches[coach] == null)
+            menusByCoaches[coach] = mutableListOf()
+        val menu = generateMenuByCoach(coach, menusByCoaches[coach]!!, categories, dayOfWeek)
+        menusByCoaches[coach]?.add(menu)
     }
 }

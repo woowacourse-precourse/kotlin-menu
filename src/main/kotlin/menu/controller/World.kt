@@ -44,42 +44,9 @@ class World {
     private fun processRecommendation(coaches: List<Coach>) {
         val menuRecommender = MenuRecommender()
         val categories = menuRecommender.generateWeekCategory()
-        val recommendedMenus = getRecommendation(menuRecommender, categories, coaches)
+        val recommendedMenus = menuRecommender.getRecommendation(categories, coaches)
 
         outputView.printRecommendationResult(categories, recommendedMenus)
     }
 
-    private fun getRecommendation(
-        menuRecommender: MenuRecommender,
-        categories: List<Category>,
-        coaches: List<Coach>
-    ): Map<Coach, List<Menu>> {
-        val menusByCoaches = mutableMapOf<Coach, MutableList<Menu>>()
-        for (i in 0..4) {
-            getDayRecommendation(menusByCoaches, menuRecommender, categories, coaches, i)
-        }
-        return menusByCoaches
-    }
-
-    private fun getDayRecommendation(
-        menusByCoaches: MutableMap<Coach, MutableList<Menu>>,
-        menuRecommender: MenuRecommender,
-        categories: List<Category>,
-        coaches: List<Coach>, dayOfWeek: Int
-    ) {
-        for (coach in coaches) {
-            getCoachRecommendation(menusByCoaches, menuRecommender, categories, dayOfWeek, coach)
-        }
-    }
-
-    private fun getCoachRecommendation(
-        menusByCoaches: MutableMap<Coach, MutableList<Menu>>,
-        menuRecommender: MenuRecommender,
-        categories: List<Category>, dayOfWeek: Int, coach: Coach
-    ) {
-        if (menusByCoaches[coach] == null)
-            menusByCoaches[coach] = mutableListOf()
-        val menu = menuRecommender.generateMenuByCoach(coach, menusByCoaches[coach]!!, categories, dayOfWeek)
-        menusByCoaches[coach]?.add(menu)
-    }
 }
