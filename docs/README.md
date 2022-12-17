@@ -5,7 +5,7 @@
 - [X] 코치 이름 입력에 대한 예외처리를 하는 `ValidateCoachNameUseCase` 유즈케이스 클래스 구현
 - [X] 코치가 못 먹는 음식 입력에 대한 예외처리를 하는 `ValidateInedibleFoodUseCase` 유즈케이스 클래스 구현
 - [X] 코치의 음식들을 추천해주는 `RecommendFoodsUseCase` 클래스 구현
-- [ ] 예외처리 클래스들에 대한 의존성 주입을 간단하게 처리하기 위해 예외처리 클래스들을 하나로 묶어주는 역할을 하는 `UseCases` 데이터 클래스 구현
+- [X] 예외처리 클래스들에 대한 의존성 주입을 간단하게 처리하기 위해 예외처리 클래스들을 하나로 묶어주는 역할을 하는 `UseCases` 데이터 클래스 구현
 - [ ] 점심 메뉴 추천 시스템을 관리하는 클래스의 컨트랙트를 정의하는 `RecommendService` 인터페이스 구현
 - [ ] 점심 메뉴 추천 시스템을 관리하는 클래스인 `Recommendation` 클래스 구현
 - [ ] 음식 랜덤 카테고리의 생성을 담당하는 `CategoryMaker`, `CategoryNumberGenerator`, `CategoryRandomNumberGenerator` 클래스들 구현
