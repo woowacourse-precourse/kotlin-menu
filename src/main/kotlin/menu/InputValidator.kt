@@ -11,7 +11,6 @@ class InputValidator {
     }
 
     fun validateHatingMenu(hatingMenus: String) {
-        hatingMenus.validateHasEmptyChar()
         hatingMenus.validateNumberOfHatingMenu()
         hatingMenus.validateIsInMenu()
         hatingMenus.validateIsAlreadyExistHatingMenu()
