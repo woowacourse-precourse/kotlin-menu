@@ -1,13 +1,13 @@
 package menu.service
 
-import menu.domain.LogicManager
+import menu.domain.CoachManager
 import menu.view.InputView
 import menu.view.OutputView
 
 class Controller {
     private val inputView = InputView()
     private val outputView = OutputView()
-    private lateinit var logicManager: LogicManager
+    private lateinit var coachManager: CoachManager
 
     fun run() {
         val coachNames = getCoachNames()
@@ -32,12 +32,12 @@ class Controller {
     }
 
     private fun pickMenuPerCoach(coachNames: List<String>, unavailableFoods: MutableList<List<String>>) {
-        logicManager = LogicManager(coachNames, unavailableFoods)
-        logicManager.pickCategory()
-        logicManager.pickMenuFifth()
+        coachManager = CoachManager(coachNames, unavailableFoods)
+        coachManager.pickCategory()
+        coachManager.pickMenuFifth()
     }
 
     private fun showResult() {
-        outputView.printResult(logicManager.getCategoriesDetails(), logicManager.getCoachesDetails())
+        outputView.printResult(coachManager.getCategoriesDetails(), coachManager.getCoachesDetails())
     }
 }
