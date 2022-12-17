@@ -1,5 +1,6 @@
 package menu
 
+import camp.nextstep.edu.missionutils.Console
 import java.lang.Error
 
 class UIController {
@@ -12,51 +13,29 @@ class UIController {
     }
 
     fun getCoachName(): List<String> {
-        //try catch
-        var coaches: List<String> = listOf()
-        while (coaches.isEmpty()) {
-            try {
-                coaches = validateService.validateCoachName(inputView.getCoachName())
-            } catch (e: Error) {
-                println(e.message)
-            }
+        while (true) {
+            val coaches = inputView.getCoachName()
+            runCatching {
+                validateService.validateCoachName(coaches)
+            }.onSuccess { return coaches }.onFailure { println(it.message) }
         }
-        return coaches
     }
 
     fun getCoachHateMenu(coaches: List<String>): Map<String, List<String>> {
-        var coachHateMenu = mapOf<String, List<String>>()
-        while(coachHateMenu.size != coaches.size) {
-            try {
-                coachHateMenu = getAllCoachHateMenu(coaches, coachHateMenu)
-            } catch (e: Error) {
-                println(e.message)
-            }
+        val coachHateMenu = mutableMapOf<String, List<String>>()
+        for (coach in coaches) {
+            coachHateMenu[coach] = getOneCoachHateMenu(coach)
         }
-
         return coachHateMenu
-    }
-
-    private fun getAllCoachHateMenu(coaches: List<String>, coachHateMenu: Map<String, List<String>>): Map<String, List<String>> {
-        val newCoachHateMenu = mutableMapOf<String, List<String>>()
-        newCoachHateMenu.putAll(coachHateMenu)
-        for (i in coachHateMenu.size until coaches.size) {
-            var coach = coaches[i]
-            newCoachHateMenu[coach] = getOneCoachHateMenu(coach)
-        }
-        return newCoachHateMenu
     }
 
     private fun getOneCoachHateMenu(name: String): List<String> {
-        var coachHateMenu = listOf<String>()
-        try {
-            while (coachHateMenu.isEmpty()) {
-                coachHateMenu = validateService.validateHateMenu(inputView.getHateMenu(name))
-            }
-        } catch(e: Error) {
-            println(e.message)
+        while (true) {
+            val coachHateMenu = inputView.getHateMenu(name)
+            runCatching {
+                validateService.validateHateMenu(coachHateMenu)
+            }.onSuccess { return coachHateMenu }.onFailure { println(it.message) }
         }
-        return coachHateMenu
     }
 
     fun printResult(category: List<String>, recommendations: Map<String, List<String>>) {
