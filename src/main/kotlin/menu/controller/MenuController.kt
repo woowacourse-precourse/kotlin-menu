@@ -8,7 +8,6 @@ import menu.view.InputView
 import menu.view.OutputView
 
 class MenuController {
-
     fun start() {
         val names = startMenuRecommend()
         val cannotEatFood = askCannotEatFood(names)
@@ -41,9 +40,8 @@ class MenuController {
         determinedMenu: MutableList<List<String>>
     ): MutableList<String> {
         val result = mutableListOf<String>()
-        for (cantEat in cannotEatFood) {
+        for (cantEat in cannotEatFood)
             result.add(retryForRightMenu(determinedCategory.menu, determinedMenu, cantEat))
-        }
         return result
     }
 
