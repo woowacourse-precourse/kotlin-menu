@@ -4,24 +4,24 @@ import menu.view.OutputView
 
 class Validator {
     fun validateCoachName(name: List<String>) {
-        if (!(checkCoachNum(name) && checkCoachNameSize(name))) {
-            OutputView().printErrorMessage(ERROR_COACH)
+        checkCoachNum(name)
+        checkCoachNameSize(name)
+    }
+
+    private fun checkCoachNum(coach: List<String>) {
+        if (coach.size !in 2..5) {
+            OutputView().printErrorMessage(ERROR_COACH_NUM)
             throw IllegalArgumentException()
         }
     }
 
-    private fun checkCoachNum(coach: List<String>): Boolean {
-        if (coach.size in 2..5)
-            return true
-        return false
-    }
-
-    private fun checkCoachNameSize(names: List<String>): Boolean {
+    private fun checkCoachNameSize(names: List<String>) {
         for (name in names) {
-            if (name.length < 2 || name.length > 4)
-                return false
+            if (name.length < 2 || name.length > 4) {
+                OutputView().printErrorMessage(ERROR_COACH_NAME_NUM)
+                throw IllegalArgumentException()
+            }
         }
-        return true
     }
 
     fun validateFood(food: List<String>) {

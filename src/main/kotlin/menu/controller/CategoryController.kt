@@ -20,7 +20,7 @@ class CategoryController {
         return categories[Randoms.pickNumberInRange(1, 5) - 1]
     }
 
-    fun isContainedOver2(determinedCategory: MutableList<Food>, category: Food): Boolean {
+    private fun isContainedOver2(determinedCategory: MutableList<Food>, category: Food): Boolean {
         var count = 0
         for (determinedOne in determinedCategory) {
             if (determinedOne == category)
