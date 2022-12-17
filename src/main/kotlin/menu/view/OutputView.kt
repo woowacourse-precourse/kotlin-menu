@@ -3,6 +3,8 @@ package menu.view
 import menu.data.Coach
 
 class OutputView {
+    private val stringBuilder = StringBuilder()
+
     fun printStartMessage() {
         println(START_MESSAGE)
     }
@@ -30,7 +32,7 @@ class OutputView {
     }
 
     private fun getResultHeader(categories: List<String>): String {
-        val stringBuilder = StringBuilder()
+        stringBuilder.setLength(INIT_LENGTH)
         stringBuilder.append(DAYS_MESSAGE + LINE_BREAKER)
         stringBuilder.append(LEFT_BRACKET + CATEGORY + VERTICAL_LINE)
         categories.forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
@@ -40,7 +42,7 @@ class OutputView {
     }
 
     private fun getResultMain(coaches: MutableList<Coach>): String {
-        val stringBuilder = StringBuilder()
+        stringBuilder.setLength(INIT_LENGTH)
         for (coach in coaches) {
             stringBuilder.append(LEFT_BRACKET + coach.getName() + VERTICAL_LINE)
             coach.getRecommendedMenu().forEach { stringBuilder.append(it).append(VERTICAL_LINE) }
@@ -63,5 +65,6 @@ class OutputView {
         const val LINE_BREAKER = "\n"
         const val DAYS_MESSAGE = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
         const val DELETE_LAST_THREE = 3
+        const val INIT_LENGTH = 0
     }
 }
