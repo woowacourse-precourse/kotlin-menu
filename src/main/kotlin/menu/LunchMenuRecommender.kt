@@ -17,12 +17,12 @@ class LunchMenuRecommender(
     }
 
     fun chooseOneWeekMenu() {
-
+        chooseOneDayMenu()
     }
 
     private fun chooseOneDayMenu() {
         val categoryIndex = chooseCategory()
-        chooseMenu(totalMenus[categoryIndex])
+        chooseMenuForEachCoach(totalMenus[categoryIndex])
     }
 
     private fun chooseCategory(): Int {
@@ -38,15 +38,32 @@ class LunchMenuRecommender(
         coaches.forEach {
             while (true) {
                 val randomMenu = chooseMenu(categoryMenus)
-                // 못 먹는 메뉴인지 체크
-                val dislike = false
-                // 중복된 메뉴인지 체크
-                val duplicateMenu = false
+                val dislike = dislikeMenus[it]?.let { dislikeMenuOfThisCoach ->
+                    isDislikeMenu(
+                        dislikeMenuOfThisCoach,
+                        randomMenu
+                    )
+                } ?: false
+                val duplicateMenu = recommendedMenu[it]?.let { recommendedMenuOfThisCoach ->
+                    isAlreadyRecommended(
+                        recommendedMenuOfThisCoach,
+                        randomMenu
+                    )
+                } ?: false
                 if (!dislike && !duplicateMenu) {
                     recommendedMenu[it]?.add(randomMenu)
+                    break
                 }
             }
         }
+    }
+
+    private fun isDislikeMenu(dislikeMenus: List<String>, menuChosen: String): Boolean {
+        return dislikeMenus.contains(menuChosen)
+    }
+
+    private fun isAlreadyRecommended(recommendedMenus: List<String>, menuChosen: String): Boolean {
+        return recommendedMenus.contains(menuChosen)
     }
 
     private fun chooseMenu(categoryMenus: List<String>): String {
