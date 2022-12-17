@@ -1,33 +1,23 @@
 package menu.controller
 
-import camp.nextstep.edu.missionutils.Console
 import camp.nextstep.edu.missionutils.Randoms
 import menu.domain.Category
 import menu.utils.CATEGOTY
 import menu.utils.DAYS
-import menu.view.InputView
 import menu.view.OutputView
 
 class MenuController {
 
     private val inputController = InputController()
-    private val weekend = mutableMapOf<String, String>()
+
     private val categories = CATEGOTY.split(", ")
     private val days = DAYS.split(", ")
     private val coachMenus = mutableMapOf<String, MutableList<MutableList<String>>>()
 
     fun run() {
         val coaches = inputController.getCoach().names()
-        var tryNumber = 1
-        while (tryNumber <= 5) {
-            val category = categories.get(Randoms.pickNumberInRange(1, 5))
-            if (weekend.values.filter { it == category }.size >= 2) {
-                continue
-            }
-            weekend[days[tryNumber]] = category
-            tryNumber++
-        }
 
+        val weekend = getWeenkend(categories, days)
         val result = mutableMapOf<String, MutableList<String>>()
         for (coach in coaches) {
             coachMenus[coach.getName()] = mutableListOf()
@@ -74,5 +64,22 @@ private fun getCategory(index: Int, weekend: MutableMap<String, String>): Catego
     val weekendCategory = weekend.values.toList().get(index)
     val category = Category.of(weekendCategory)
     return category
+}
+
+private fun getWeenkend(
+    categories: List<String>,
+    days: List<String>
+): MutableMap<String, String> {
+    val weekend = mutableMapOf<String, String>()
+    var tryNumber = 1
+    while (tryNumber <= 5) {
+        val category = categories.get(Randoms.pickNumberInRange(1, 5))
+        if (weekend.values.filter { it == category }.size >= 2) {
+            continue
+        }
+        weekend[days[tryNumber]] = category
+        tryNumber++
+    }
+    return weekend
 }
 
