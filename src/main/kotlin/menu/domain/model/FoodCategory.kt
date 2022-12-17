@@ -15,6 +15,10 @@ enum class FoodCategory(private val menus: List<String>) {
         return Randoms.shuffle(menus)[0]
     }
 
+    fun containsFood(foodName: String): Boolean {
+        return menus.contains(foodName)
+    }
+
     companion object {
         fun categoryOf(category: Int): FoodCategory {
             return when (category) {
