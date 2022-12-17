@@ -16,6 +16,8 @@ class InputView(private val outputView: OutputView) {
         outputView.printMessage(MenuMessage.REQUEST_HATE_MENU.format(name))
         val input = Console.readLine()
         validator.validateHateMenu(input)
+        if(input == null)
+            return listOf()
         return input.split(',')
     }
 }
