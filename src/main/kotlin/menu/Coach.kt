@@ -16,6 +16,9 @@ class Coach(
         }
     }
 
+    /**
+     * 이미 선택한 메뉴이거나 내가 싫어하는 메뉴에 포함된다면 해당 메뉴를 선택할 수 없다.
+     */
     fun selectMyMenu(menu: String): Boolean {
         if (isMyHatingMenu(menu) || thisWeekMenus.contains(menu)) {
             return false
