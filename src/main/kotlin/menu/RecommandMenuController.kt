@@ -27,7 +27,7 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
         var wholeCount = 0
         while (wholeCount < 5) {
             val number = Randoms.pickNumberInRange(1, 5)
-            val category: String = menuList.getCategories().categories()[number-1]
+            val category: String = menuList.getCategories().categories()[number - 1]
             var count = 0
             for (element in dayCategory) {
                 if (element == category) {
@@ -69,12 +69,12 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
                 finalResult.add(element)
             }
         }
-        for(i in 0 until coachNumber){
-            val temp= mutableListOf<String>()
-            for(n in 0..4){
-                temp.add(finalResult[i + coachNumber*n])
+        for (i in 0 until coachNumber) {
+            val temp = mutableListOf<String>()
+            for (n in 0..4) {
+                temp.add(finalResult[i + coachNumber * n])
             }
-            if(temp.distinct().size!=5){
+            if (temp.distinct().size != 5) {
                 finalResult.clear()
                 setMenus()
                 break
