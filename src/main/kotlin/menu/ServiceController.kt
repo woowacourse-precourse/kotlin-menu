@@ -4,16 +4,15 @@ import menu.UI.OutputView
 
 class ServiceController {
     fun serviceStart(){
-        var domain = Domain()
         OutputView().serviceStart()
 
-        var coaches = domain.createCoach()
-        coaches = domain.coachHateFood(coaches)
+        var coaches = Domain().createCoach()
+        coaches = Domain().coachHateFood(coaches)
         var weekCategory = mutableListOf<String>()
         for (i in 0..4){
-            weekCategory = domain.createCategory(weekCategory)
-            coaches = domain.coachMenuRecommend(coaches, weekCategory[i])
+            weekCategory = Domain().createCategory(weekCategory)
+            coaches = Domain().coachMenuRecommend(coaches, weekCategory[i])
         }
-        domain.serviceResult(coaches, weekCategory)
+        Domain().serviceResult(coaches, weekCategory)
     }
 }
