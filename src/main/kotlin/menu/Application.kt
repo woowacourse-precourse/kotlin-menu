@@ -9,4 +9,7 @@ fun main() {
     println("-------")
     println(coachesNotEatFoods)
 
+    val recommendMenu = RecommendMenu(coachesNotEatFoods)
+    recommendMenu.processRecommendMenu()
+
 }
