@@ -23,7 +23,7 @@ class OutputView {
             for (day in 0 until 5) {
                 foods.add(recommendedMenuPerCoaches[day]!![coach]!!)
             }
-            print(foods.joinToString(" | ", "[ $coach | ", " ] "))
+            print(foods.joinToString(" | ", "[ $coach | ", " ]\n"))
         }
         printEnter()
         printMessage(RECOMMENDED_EXIT_MESSAGE)
