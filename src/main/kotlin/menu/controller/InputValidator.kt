@@ -10,7 +10,7 @@ class InputValidator {
 
     fun getValidatedCoach(): Coach {
         try {
-            val input = inputView.readCoach()
+            val input = inputView.readCoach().split(',')
 
             validator.checkValidateCoach(input)
             return Coach(input)

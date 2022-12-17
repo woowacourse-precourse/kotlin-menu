@@ -1,6 +1,9 @@
 package menu.domain
 
 class Validator {
-    fun checkValidateCoach(coach: String) {
+    fun checkValidateCoach(coach: List<String>) {
+        coach.forEach {
+            
+        }
     }
 }
