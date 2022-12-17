@@ -1,5 +1,6 @@
 package menu.view
 
+import menu.constants.Constant.Companion.dayNumber
 import menu.constants.String.Companion.STRING_DAY
 import menu.constants.String.Companion.STRING_DIVIDER
 import menu.constants.String.Companion.STRING_END_SYMBOL
@@ -35,7 +36,7 @@ class OutputView {
 
     private fun printCategory(recommender: Recommender) {
         var resultString = "[ 카테고리 | "
-        for (index in 0 until 5) {
+        for (index in 0 until dayNumber) {
             resultString += recommender.getEatingCategory(index) + addDivider(index, 5)
         }
         resultString += STRING_END_SYMBOL
