@@ -14,4 +14,15 @@ class Recommender(coach: List<String>, banFood: MutableList<List<String>>) {
     private val menu = listOf<Menu>(japan, korean, china, asian, western)
     private val categoryCounter = mutableListOf<Int>(0, 0, 0, 0, 0)
 
+    fun selectCategory(categoryNumber: Int): Flag {
+        if (categoryCounter[categoryNumber] == 2) {
+            return Flag.FAIL
+        }
+        return Flag.PASS
+    }
+
+    fun getCategory(categoryNumber: Int): Menu {
+        return menu[categoryNumber]
+    }
+
 }
