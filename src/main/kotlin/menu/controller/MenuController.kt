@@ -15,7 +15,7 @@ class MenuController {
     fun run() {
         outputView.printStartMessage()
 
-        val coaches = makeCoaches()
+        val coaches = readUntilValid { makeCoaches() }
         for (coach in coaches.coaches) {
             setHateMenus(coach)
         }
