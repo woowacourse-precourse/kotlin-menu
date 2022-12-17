@@ -55,9 +55,12 @@ internal class MenuRecommenderTest {
                 val james = Coach("제임스")
                 val poco = Coach("포코")
 
-                tomi.setCantEatMenus(listOf(Menu("우동"), Menu("스시")))
-                james.setCantEatMenus(listOf(Menu("뇨끼"), Menu("월남쌈")))
-                poco.setCantEatMenus(listOf(Menu("마파두부"), Menu("고추잡채")))
+                tomi.addCantEatMenu(Menu("우동"))
+                tomi.addCantEatMenu(Menu("스시"))
+                james.addCantEatMenu(Menu("뇨끼"))
+                james.addCantEatMenu(Menu("월남쌈"))
+                poco.addCantEatMenu(Menu("마파두부"))
+                poco.addCantEatMenu(Menu("고추잡채"))
 
                 return listOf(tomi, james, poco)
             }
