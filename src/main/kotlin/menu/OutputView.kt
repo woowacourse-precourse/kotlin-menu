@@ -23,7 +23,7 @@ class OutputView {
         categories.forEach{category->
             print("$DIVIDE_LINE $category ")
         }
-        print(SENTENCE_END)
+        println(SENTENCE_END)
     }
 
     fun printMenus(coachName:String,menus:List<String>){
@@ -31,7 +31,7 @@ class OutputView {
         menus.forEach{menu->
             print("$DIVIDE_LINE $menu ")
         }
-        print(SENTENCE_END)
+        println(SENTENCE_END)
     }
 
     companion object{
