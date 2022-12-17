@@ -1,6 +1,7 @@
 package menu.controller
 
 import menu.domain.Coach
+import menu.domain.MenuRecommend
 import menu.utils.RepeatInputProcess
 import menu.view.InputView
 import menu.view.OutputView
@@ -9,6 +10,7 @@ import menu.view.OutputView
 class Controller {
     private val outputView = OutputView()
     private val inputView = InputView()
+    private val menuRecommend = MenuRecommend()
 
     init {
         outputView.printStartMent()
@@ -17,6 +19,9 @@ class Controller {
     fun operate() {
         val coaches = readCoaches()
         readCantEatMenu(coaches)
+        coaches.forEach { coach ->
+            recommendMenuToCoach(coach)
+        }
     }
 
     private fun readCoaches(): List<Coach> {
@@ -34,5 +39,9 @@ class Controller {
             outputView.printInputCantEatMenuMent(it.name)
             it.setCantEatMenus(RepeatInputProcess.repeat { inputView.readCantEatMenus() } as List<String>)
         }
+    }
+
+    private fun recommendMenuToCoach(coach: Coach) {
+        println(menuRecommend.recommendToCoach(coach))
     }
 }
