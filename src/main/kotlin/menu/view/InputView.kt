@@ -1,5 +1,6 @@
 package menu.view
 
+import camp.nextstep.edu.missionutils.Console
 import menu.domain.resource.SEPARATOR
 
 class InputView {
@@ -7,7 +8,7 @@ class InputView {
     fun readCoachName() {
         println(INPUT_COACH_NAME)
 
-        val names = readLine()?.trim()
+        val names = Console.readLine().trim()
 
     }
 
