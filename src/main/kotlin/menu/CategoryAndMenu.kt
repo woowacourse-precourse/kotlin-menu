@@ -1,7 +1,7 @@
 package menu
 
 object CategoryAndMenu {
-    val categories = listOf("일식", "한식", "중식", "아시안", "양식")
+    val categories = listOf("", "일식", "한식", "중식", "아시안", "양식")
 
     val menus = listOf(
         listOf(),
