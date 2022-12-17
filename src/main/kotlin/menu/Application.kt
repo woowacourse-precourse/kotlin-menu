@@ -1,5 +1,7 @@
 package menu
 
+import menu.domain.controller.Recommendation
+
 fun main() {
-    // TODO: 프로그램 구현
+    Recommendation().run()
 }

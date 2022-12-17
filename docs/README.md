@@ -13,7 +13,7 @@
 - [X] 에러 결과에 대한 상태를 관리하는 클래스인 `ErrorState` 데이터 클래스 구현
 - [X] 메뉴 관련 데이터들을 관리하는 역할을 하는 클래스인 `Menu` object 클래스 구현
 - [X] 메뉴 추천 시스템에 필요한 데이터들을 관리하는 클래스인 `State` object 클래스 구현
-- [ ] `main` 함수 구현
+- [X] `main` 함수 구현
 - [ ] `ValidateCoachNameUseCase`에 대한 테스트 코드 구현
 - [ ] `ValidateInedibleFoodUseCase`에 대한 테스트 코드 구현
 - [ ] `RecommendFoodsUseCase`에 대한 테스트 코드 구현
