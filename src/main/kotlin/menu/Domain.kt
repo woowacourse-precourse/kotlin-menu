@@ -5,10 +5,10 @@ import menu.UI.OutputView
 
 class Domain {
     fun createCoach() : MutableList<Coach>{
-        var coachNames = InputView().coachName()
-        var coaches = mutableListOf<Coach>()
+        val coachNames = InputView().coachName()
+        val coaches = mutableListOf<Coach>()
         for (i in coachNames){
-            var person = Coach()
+            val person = Coach()
             person.setName(i)
             coaches.add(person)
         }
@@ -17,7 +17,7 @@ class Domain {
 
     fun coachHateFood(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var hateFoods = InputView().hateFood(i)
+            val hateFoods = InputView().hateFood(i)
             i.hateFood = hateFoods.toMutableList()
         }
         return coaches

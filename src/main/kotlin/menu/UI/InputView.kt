@@ -6,7 +6,7 @@ import menu.Exception
 
 class InputView {
     fun coachName() : List<String>{
-        var coachNames = listOf<String>()
+        var coachNames: List<String>
         try {
             println("코치의 이름을 입력해 주세요. (, 로 구분)")
             coachNames = Console.readLine().split(",")
@@ -19,7 +19,7 @@ class InputView {
     }
 
     fun hateFood(coach: Coach) : List<String>{
-        var hateFoods = listOf<String>()
+        var hateFoods: List<String>
         try {
             println("${coach.getName()}(이)가 못 먹는 메뉴를 입력해 주세요.")
             hateFoods = Console.readLine().split(",")

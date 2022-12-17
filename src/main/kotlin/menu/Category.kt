@@ -12,7 +12,7 @@ class Category {
 
     fun recommendCategory(weekCategory: MutableList<String>) : MutableList<String>{
         while (true){
-            var categories = mutableListOf("", "일식", "한식", "중식", "아시안", "양식")
+            val categories = mutableListOf("", "일식", "한식", "중식", "아시안", "양식")
             val category: String = categories.get(Randoms.pickNumberInRange(1, 5))
             if (duplicationCategory(weekCategory, category) == 1){
                 weekCategory.add(category)
@@ -30,35 +30,35 @@ class Category {
 
     fun coachJapanMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var menus = japan
+            val menus = japan
             recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachKoreaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var menus = korea
+            val menus = korea
             recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachChinaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var menus = china
+            val menus = china
             recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachAsianMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var menus = asian
+            val menus = asian
             recommendMenu(i, menus)
         }
         return coaches
     }
     fun coachWestMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
         for (i in coaches){
-            var menus = west
+            val menus = west
             recommendMenu(i, menus)
         }
         return coaches
