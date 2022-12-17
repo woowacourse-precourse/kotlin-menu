@@ -25,6 +25,13 @@ fun main() {
     for(date in 0..4){ //요일별로 추천해줄 메뉴 카테고리 선정
         val todayCategory = menuRecommend.pickCategory(recommendedCategory)
         recommendedCategory.add(todayCategory)
+
+        for (coachIndex in coaches.indices) { //요일별로 코치에게 메뉴 추천
+            val coachMenu = recommendedMenu[coachIndex]
+            val menu = menuRecommend.pickMenu(todayCategory, coachMenu, dislikeMenus[coachIndex])
+            val editedMenu = addMenu(coachMenu, menu)
+            recommendedMenu[coachIndex] = editedMenu
+        }
     }
 
     for (coachIndex in coaches.indices) {  //코치마다 요일별로 메뉴 추천
