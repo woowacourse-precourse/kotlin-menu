@@ -4,6 +4,15 @@ import menu.util.*
 
 class OutputView {
 
+    // 코치별 추천 받은 음식 물자열로 변환
+    private fun convertCoachMenuToString(coach: String, weeklyCoachMenu: MutableList<String>): String {
+        val coachMenus = mutableListOf(coach)
+        weeklyCoachMenu.forEach { menu ->
+            coachMenus.add(menu)
+        }
+        return coachMenus.joinToString(SEPARATOR, PREFIX, POSTFIX)
+    }
+
     // 요구사항에 맞게 카테고리 문자열로 변환
     private fun convertCategoryToString(categories: MutableList<Int>): String {
         val result = mutableListOf(CATEGORY)
