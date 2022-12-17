@@ -6,13 +6,18 @@ import menu.domain.Category
 import menu.utils.CATEGOTY
 import menu.utils.DAYS
 import menu.view.InputView
+import menu.view.OutputView
 
 class MenuController {
+
+    private val inputController = InputController()
+    private val weekend = mutableMapOf<String, String>()
+    private val categories = CATEGOTY.split(", ")
+    private val days = DAYS.split(", ")
+    private val coachMenus = mutableMapOf<String, MutableList<MutableList<String>>>()
+
     fun run() {
-        val coaches = InputView.readCoaches().names()
-        val weekend = mutableMapOf<String, String>()
-        val categories = CATEGOTY.split(", ")
-        val days = DAYS.split(", ")
+        val coaches = inputController.getCoach().names()
         var tryNumber = 1
         while (tryNumber <= 5) {
             val category = categories.get(Randoms.pickNumberInRange(1, 5))
@@ -23,7 +28,6 @@ class MenuController {
             tryNumber++
         }
 
-        val coachMenus = mutableMapOf<String, MutableList<MutableList<String>>>()
         val result = mutableMapOf<String, MutableList<String>>()
         for (coach in coaches) {
             coachMenus[coach.getName()] = mutableListOf()
@@ -31,7 +35,7 @@ class MenuController {
         }
 
         for (coach in coaches) {
-            val foods = InputView.readMenus(coach).getMenus()
+            val foods = inputController.getMenus(coach).getMenus()
             println()
 
             for (i in 0 until 5) {
@@ -62,15 +66,7 @@ class MenuController {
             }
         }
 
-        println("메뉴 추천 결과입니다.")
-        println("[ " + days.joinToString(" | ") + " ]")
-        println("[ 카테고리 | " + weekend.values.joinToString(" | ") + " ]")
-        result.entries.map { menus ->
-            println("[ ${menus.key} | " + menus.value.joinToString(" | ") + " ]")
-
-        }
-        println()
-        println("추천을 완료했습니다.")
+        OutputView.printResult(weekend, result)
     }
 }
 
@@ -79,3 +75,4 @@ private fun getCategory(index: Int, weekend: MutableMap<String, String>): Catego
     val category = Category.of(weekendCategory)
     return category
 }
+
