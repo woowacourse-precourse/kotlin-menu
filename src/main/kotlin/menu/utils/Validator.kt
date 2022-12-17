@@ -3,6 +3,8 @@ package menu.utils
 import menu.utils.ErrorMessage.COACH_COUNT_ERROR_MESSAGE
 import menu.utils.ErrorMessage.COACH_DUPLICATION_ERROR_MESSAGE
 import menu.utils.ErrorMessage.COACH_NAME_LENGTH_ERROR_MESSAGE
+import menu.utils.ErrorMessage.HATE_MENUS_COUNT_ERROR_MESSAGE
+import menu.utils.ErrorMessage.HATE_MENUS_DUPLICATION_ERROR_MESSAGE
 
 object Validator {
     fun checkCoachesValid(input: String) {
@@ -23,5 +25,15 @@ object Validator {
 
     fun checkCoachNameValid(input: String) {
         require(input.length in 2..4) { COACH_NAME_LENGTH_ERROR_MESSAGE }
+    }
+
+    fun checkHateMenusValid(input: String) {
+        val menus = input.split(',')
+        require(menus.size in 0..2) { HATE_MENUS_COUNT_ERROR_MESSAGE }
+    }
+
+    fun checkHateMenusDuplication(hateMenus: List<String>) {
+        val distinct = hateMenus.distinct()
+        require(hateMenus.size == distinct.size) { HATE_MENUS_DUPLICATION_ERROR_MESSAGE }
     }
 }
