@@ -32,16 +32,6 @@ class ServiceController(
         return generator.makeRecommendations(days, coaches)
     }
 
-//    private fun setCoachRecommendations(coaches: List<Coach>) {
-//        repeat(coaches.size) { coachIndex ->
-//            //todo 상수화
-//            repeat(5) { dayWeeksIndex ->
-//                val recommendation = generator.makeRecommendation(coaches[coachIndex])
-//                coaches[coachIndex].addRecommendation(recommendation)
-//            }
-//        }
-//    }
-
     private fun printResultRecommendation(recommendations: List<Recommendation>) {
         outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
         outputView.printList(listOf("구분", "월요일", "화요일", "수요일", "목요일", "금요일"))
@@ -63,14 +53,6 @@ class ServiceController(
         repeat(recommendations[0].coachesMenus.size) {
             outputView.printList(coachesMenus[it].distinct())
         }
-//        repeat(recommendations.size) { index1 ->
-//            val recommendation = recommendations[index1]
-//            val menus = mutableListOf<String>(recommendation.coachesMenus[index1].first)
-//            repeat(recommendation.coachesMenus.size) { index2 ->
-//                menus.add(recommendation.coachesMenus[index2].second)
-//            }
-//            outputView.printList(menus)
-//        }
     }
 
 
