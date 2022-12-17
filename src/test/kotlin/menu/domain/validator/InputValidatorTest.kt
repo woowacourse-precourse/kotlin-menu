@@ -31,5 +31,10 @@ class InputValidatorTest {
         fun `코치이름 크기 4초과일떄 일때`() {
             assertThrows<IllegalArgumentException> { validator.getValidateCoachNames("포코,조던,메타월드피스,박남춘,장인성,말리빈") }
         }
+
+        @Test
+        fun `공백처리 확인 테스트`() {
+            assertThrows<IllegalArgumentException> { validator.getValidateCoachNames("포코,조던,   ,박남춘,장인성,말리빈") }
+        }
     }
 }
