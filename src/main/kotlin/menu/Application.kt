@@ -1,5 +1,8 @@
 package menu
 
+import camp.nextstep.edu.missionutils.Randoms
+import menu.controller.MenuController
+
 fun main() {
-    // TODO: 프로그램 구현
+    MenuController().run()
 }
