@@ -12,8 +12,8 @@ class OutputView {
         println(Message.PrintMessage.GET_COACH_NAME.msg)
     }
 
-    fun printGetUnavailableFood() {
-        println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg)
+    fun printGetUnavailableFood(coachName : String) {
+        println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg.format(coachName))
     }
 
     fun printResult() {
