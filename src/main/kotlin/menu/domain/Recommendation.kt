@@ -12,4 +12,14 @@ class Recommendation {
             Category.WESTERN_FOOD -> listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니")
         }
     }
+    fun menuRecommendation(category : Category, uneatableMenu : List<String>): String {
+        val menus : List<String> = categoryMenuSelect(category)
+        while (true){
+            val menu: String = Randoms.shuffle(menus)[0]
+            if (menu !in uneatableMenu) {
+                println(menu)
+                return menu
+            }
+        }
+    }
 }
