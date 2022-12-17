@@ -11,7 +11,8 @@ class MenuController(
 ) : Controller(inputView, outputView) {
     override fun run() {
         printStartMessage()
-        println(inputCoaches())
+        val coachesNames = inputCoaches()
+        val inEdibleFoods = inputInedibleFoods(coachesNames)
     }
 
     private fun printStartMessage() {
@@ -19,4 +20,17 @@ class MenuController(
     }
 
     private fun inputCoaches(): List<String> = repeat(inputView::inputCoaches)
+
+    private fun inputInedibleFoods(coachesNames: List<String>): Map<String, List<String>> {
+        val inedibleFoodsPerCoach = hashMapOf<String, List<String>>()
+        coachesNames.forEach { coachName ->
+            inedibleFoodsPerCoach[coachName] = inputInedibleFoodsPerCoach(coachName)
+        }
+        return inedibleFoodsPerCoach
+    }
+
+    private fun inputInedibleFoodsPerCoach(coachName: String): List<String> {
+        outputView.printInedibleFoodInputMessage(coachName)
+        return repeat(inputView::inputInedibleFoods)
+    }
 }

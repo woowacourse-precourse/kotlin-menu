@@ -15,6 +15,12 @@ class InputView(
         return inputValidator.validateCoachesNames(nonDuplicatedCoachNames)
     }
 
+    fun inputInedibleFoods(): List<String> {
+        val inedibleFoods = input().trim().split(",")
+        printEnter()
+        return inputValidator.validateInedibleFoods(inedibleFoods)
+    }
+
     private fun input(): String = Console.readLine()
 
     private fun printEnter() = println()
