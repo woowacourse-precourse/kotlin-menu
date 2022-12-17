@@ -12,11 +12,10 @@ class RandomCategoryGenerator {
         WESTERN_FOOD
     )
 
-
     fun createRandomCategory(): MutableList<String> {
         val categoryContainer = mutableListOf<String>()
 
-        while (categoryContainer.size < 5) {
+        while (categoryContainer.size < FIVE) {
             val category = categories[Randoms.pickNumberInRange(ZERO, FOUR)]
             categoryContainer.add(category)
         }
@@ -27,5 +26,6 @@ class RandomCategoryGenerator {
     companion object {
         const val ZERO = 0
         const val FOUR = 4
+        const val FIVE = 5
     }
 }
