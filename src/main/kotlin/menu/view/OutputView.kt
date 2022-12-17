@@ -1,6 +1,7 @@
 package menu.view
 
 import menu.domain.Category
+import menu.domain.Coach
 
 class OutputView {
 
@@ -8,12 +9,12 @@ class OutputView {
         println(START_RECOMMEND)
     }
 
-    fun printResult(category: List<Category>, menus: Map<String, List<String>>) {
+    fun printResult(category: List<Category>, coaches: List<Coach>) {
         println(RESULT_RECOMMEND)
         printLine(TITLE_DAYS, days)
         printLine(TITLE_CATEGORY, category)
-        for (menu in menus.keys) {
-            printLine(menu, menus[menu]!!)
+        coaches.forEach {
+            printLine(it.getName(), it.menusGonnaEat)
         }
         println(END_RECOMMEND)
     }

@@ -1,6 +1,5 @@
 package menu.domain
 
-import camp.nextstep.edu.missionutils.Randoms
 import camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import menu.domain.resource.MAX_DUPLICATE_CATEGORY
 import menu.domain.resource.NUM_OF_DAYS
@@ -12,20 +11,19 @@ class MenuRecommendation(
     private val outputView: OutputView
 ) {
     private lateinit var coachName: List<String>
-    private val menusCantEat = mutableMapOf<String, List<String>>()
-    private val menusGonnaEat = mutableMapOf<String, MutableList<String>>()
+    private val coaches = mutableListOf<Coach>()
     private val categories = mutableListOf<Category>()
 
     fun start() {
         outputView.printStart()
 
         coachName = removeTrims(inputCoachName())
-        coachName.forEach { name -> menusCantEat[name] = inputMenuCantEat(name) }
+        coachName.forEach { name -> coaches.add(Coach(name, inputMenuCantEat(name))) }
 
         getCategories()
         getRecommendMenu()
 
-        outputView.printResult(categories, menusGonnaEat)
+        outputView.printResult(categories, coaches)
     }
 
     fun getCategories() {
@@ -41,44 +39,10 @@ class MenuRecommendation(
 
     fun getRecommendMenu() {
         for (day in 0 until NUM_OF_DAYS) {
-            for (coach in coachName) {
-                getMenu(day, coach)
+            coaches.forEach {
+                it.getMenu(categories[day])
             }
         }
-    }
-
-    fun getMenu(day: Int, coach: String) {
-        while (true) {
-            val menu = Randoms.shuffle(Category.getMenus(categories[day]))[0]
-
-            if (canEatMenu(coach, menu) && !isAlreadyHad(coach, menu)) {
-                addMenu(coach, menu)
-                break
-            }
-        }
-    }
-
-    fun canEatMenu(coach: String, menu: String): Boolean {
-        if (menusCantEat[coach]!!.contains(menu)) {
-            return false
-        }
-        return true
-    }
-
-    fun isAlreadyHad(coach: String, menu: String): Boolean {
-        val eatMenu = menusGonnaEat[coach] ?: mutableListOf()
-
-        if (eatMenu.contains(menu)) {
-            return true
-        }
-
-        return false
-    }
-
-    fun addMenu(coach: String, menu: String) {
-        val eatMenu = menusGonnaEat[coach] ?: mutableListOf()
-        eatMenu.add(menu)
-        menusGonnaEat[coach] = eatMenu
     }
 
     fun inputCoachName(): List<String> {
