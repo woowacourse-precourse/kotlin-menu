@@ -1,9 +1,12 @@
 package menu
 
-data class MenuCategory(
-    val japanese: List<String>,
-    val korean: List<String>,
-    val chines: List<String>,
-    val asian: List<String>,
-    val western: List<String>
-)
+import java.lang.IllegalArgumentException
+
+enum class MenuCategory {
+    JAPANESE_FOOD,
+    KOREAN_FOOD,
+    CHINESE_FOOD,
+    ASIAN_FOOD,
+    WESTERN_FOOD;
+}
+
