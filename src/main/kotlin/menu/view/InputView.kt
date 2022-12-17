@@ -23,7 +23,7 @@ class InputView {
             input
         } catch (e: IllegalArgumentException) {
             print("[ERROR] 입력 값을 확인해주세요.")
-            inputCoachList()
+            inputHateFoodList()
         }
     }
 }
