@@ -53,11 +53,7 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
                             if (!name.second.contains(menu)) {
                                 dayMenus.add(menu)
                                 break
-                            }
-                        }
-                    }
-                }
-            }
+                            } } } } }
             personMenu.add(dayMenus)
         }
         reshapeList(personMenu)
