@@ -76,8 +76,11 @@ class RecommendController(
     }
 
     private fun recommendMenus() {
+        val categories = categoriesDTO.getCategories()
         val coaches = coachesDTO.getCoaches()
-        coaches.map { coach -> coach.recommendMenus(categoriesDTO) }
+        categories.map {category ->
+            coaches.map { coach -> coach.recommendMenu(category) }
+        }
     }
 
     private fun finishService() {

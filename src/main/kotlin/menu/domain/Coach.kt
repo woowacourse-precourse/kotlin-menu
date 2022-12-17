@@ -10,19 +10,7 @@ class Coach(
 ) {
     private val menus = mutableListOf<String>()
 
-    fun recommendMenus(categoriesDTO: CategoriesDTO) {
-        val categories = categoriesDTO.getCategories()
-        categories.map { category ->
-            val menu = recommendMenu(category)
-            menus.add(menu)
-        }
-    }
-
-    fun getRecommendResult(): List<String> {
-        return listOf(name) + menus
-    }
-
-    private fun recommendMenu(category: Category): String {
+    fun recommendMenu(category: Category) {
         var menu = ""
         var success = false
         do {
@@ -31,7 +19,11 @@ class Coach(
                 success = true
             }
         } while (!success)
-        return menu
+        menus.add(menu)
+    }
+
+    fun getRecommendResult(): List<String> {
+        return listOf(name) + menus
     }
 
     private fun isDislikeMenu(menu: String): Boolean {
