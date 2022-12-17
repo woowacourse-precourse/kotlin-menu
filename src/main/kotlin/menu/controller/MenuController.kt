@@ -16,4 +16,6 @@ class MenuController(
     private fun printStartMessage() {
         outputView.printStartMessage()
     }
+
+    private fun inputCoaches(): List<String> = repeat(inputView::inputCoaches)
 }
