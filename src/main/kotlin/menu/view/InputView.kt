@@ -23,7 +23,7 @@ class InputView {
     }
 
     fun readCoaches(): List<Coach> {
-        println("코치의 이름을 입력해주세요. (, 로 구분)")
+        println("코치의 이름을 입력해 주세요. (, 로 구분)")
         val input = Console.readLine().split(",")
         val coaches = mutableListOf<Coach>()
         if (!checkCoachNamesRequirements(input)) return readCoaches()
@@ -53,7 +53,7 @@ class InputView {
 
     fun readMenus(coaches: List<Coach>) {
         for (coach in coaches) {
-            println("${coach.name}(이)가 못 먹는 메뉴를 입력해주세요.")
+            println("${coach.name}(이)가 못 먹는 메뉴를 입력해 주세요.")
             coach.addUneatableMenus(readMenu())
             println()
         }
