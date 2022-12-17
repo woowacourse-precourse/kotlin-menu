@@ -16,19 +16,26 @@ class MenuRepository {
     fun getCoachRecommendedMenus() = coachesRecommendedFoods
 
     fun getRecommendedSizePerCategories(coach: String): Map<MenuCategory, Int> {
-        val recommendedSizePerCategories = hashMapOf<MenuCategory, Int>()
+        val recommendedSizePerCategories = linkedMapOf<MenuCategory, Int>()
         val recommendedFoods = getRecommendFoods(coach)
         recommendedFoods.forEach { food ->
             val allCategory = MenuCategory.getAllCategory()
             allCategory.forEach { category ->
-                val isContain = category.isContain(food)
-                if (isContain) {
-                    val originSize = recommendedSizePerCategories.getOrPut(category) { 0 }
-                    recommendedSizePerCategories[category] = originSize + 1
-                }
+                addRecommendedMenuCategoryCount(category, food, recommendedSizePerCategories)
             }
         }
         return recommendedSizePerCategories
+    }
+
+    private fun addRecommendedMenuCategoryCount(
+        category: MenuCategory,
+        food: String,
+        recommendedSizePerCategories: LinkedHashMap<MenuCategory, Int>,
+    ) {
+        if (category.isContain(food)) {
+            val originSize = recommendedSizePerCategories.getOrPut(category) { 0 }
+            recommendedSizePerCategories[category] = originSize + 1
+        }
     }
 
     fun getCategoryByMenu(menu: String): MenuCategory? {
