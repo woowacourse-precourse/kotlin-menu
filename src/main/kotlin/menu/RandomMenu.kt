@@ -6,7 +6,7 @@ import camp.nextstep.edu.missionutils.Randoms.shuffle
 class RandomMenu {
     fun getRecommendResult(coaches: MutableList<Coach>) {
         for (coach in coaches) {
-            getRecommendMenus(coach,)
+            getRecommendMenus(coach)
         }
     }
 

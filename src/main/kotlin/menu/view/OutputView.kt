@@ -26,10 +26,16 @@ class OutputView {
 
     fun printRecommendResult(coaches: MutableList<Coach>) {
         val stringBuilder = StringBuilder()
-        stringBuilder.append(DAYS_MESSAGE)
-        stringBuilder.append(LEFT_BRACKET + CATEGORY + VERTICAL_LINE + MenuCategory.getCategories().joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
+        stringBuilder.append(DAYS_MESSAGE + LINE_BREAKER)
+        stringBuilder.append(
+            LEFT_BRACKET + CATEGORY + VERTICAL_LINE + MenuCategory.getCategories()
+                .joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
+        stringBuilder.append(LINE_BREAKER)
         for (coach in coaches) {
-            stringBuilder.append(LEFT_BRACKET + coach.getName() + VERTICAL_LINE + coach.getRecommendedMenu().joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
+            stringBuilder.append(
+                LEFT_BRACKET + coach.getName() + VERTICAL_LINE + coach.getRecommendedMenu()
+                    .joinToString { VERTICAL_LINE } + RIGHT_BRACKET)
+            stringBuilder.append(LINE_BREAKER)
         }
         println(stringBuilder)
     }
@@ -44,6 +50,7 @@ class OutputView {
         const val LEFT_BRACKET = "[ "
         const val RIGHT_BRACKET = " ]"
         const val CATEGORY = "카테고리"
+        const val LINE_BREAKER = "\n"
         const val DAYS_MESSAGE = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
 
     }

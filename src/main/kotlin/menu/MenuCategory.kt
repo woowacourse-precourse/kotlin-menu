@@ -19,11 +19,11 @@ enum class MenuCategory(private val value: String, private val menu: List<String
         }
 
         fun isValidateMenu(input: String): Boolean {
-           for(value in MenuCategory.values()) {
-               if (input in value.menu) {
-                   return true
-               }
-           }
+            for (value in MenuCategory.values()) {
+                if (input in value.menu) {
+                    return true
+                }
+            }
             return false
         }
     }

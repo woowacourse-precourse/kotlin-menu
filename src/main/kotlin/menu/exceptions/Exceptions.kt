@@ -5,16 +5,16 @@ import menu.MenuCategory
 class Exceptions {
     fun validateCoachNames(input: String) {
         val inputs = input.split(",")
-        require(inputs.size == inputs.distinct().size) {throw IllegalArgumentException(WRONG_DUPLICATE_COACH_INPUT)}
-        require(inputs.all { it.length in 2..4 }) {throw IllegalArgumentException(WRONG_NAME_LENGTH_COACH_INPUT)}
-        require(inputs.size in 2..5) {throw IllegalArgumentException(WRONG_NUMBER_COACH_INPUT)}
+        require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(WRONG_DUPLICATE_COACH_INPUT) }
+        require(inputs.all { it.length in 2..4 }) { throw IllegalArgumentException(WRONG_NAME_LENGTH_COACH_INPUT) }
+        require(inputs.size in 2..5) { throw IllegalArgumentException(WRONG_NUMBER_COACH_INPUT) }
     }
 
     fun validateCoachBias(input: String) {
         val inputs = input.split(",")
-        require(inputs.size == inputs.distinct().size) {throw  IllegalArgumentException(WRONG_DUPLICATE_FOOD_INPUT)}
-        require(inputs.size in 0..2) {throw IllegalArgumentException(WRONG_SIZE_FOOD_INPUT)}
-        require(inputs.all { MenuCategory.isValidateMenu(it) }) {throw IllegalArgumentException(WRONG_EXIST_FOOD_INPUT)}
+        require(inputs.size == inputs.distinct().size) { throw IllegalArgumentException(WRONG_DUPLICATE_FOOD_INPUT) }
+        require(inputs.size in 0..2) { throw IllegalArgumentException(WRONG_SIZE_FOOD_INPUT) }
+        require(inputs.all { MenuCategory.isValidateMenu(it) }) { throw IllegalArgumentException(WRONG_EXIST_FOOD_INPUT) }
     }
 
     companion object {
