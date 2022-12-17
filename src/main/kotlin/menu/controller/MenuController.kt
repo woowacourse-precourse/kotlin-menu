@@ -62,6 +62,15 @@ class MenuController {
             }
         }
 
+        println("메뉴 추천 결과입니다.")
+        println("[ " + days.joinToString(" | ") + " ]")
+        println("[ 카테고리 | " + weekend.values.joinToString(" | ") + " ]")
+        result.entries.map { menus ->
+            println("[ ${menus.key} | " + menus.value.joinToString(" | ") + " ]")
+
+        }
+        println()
+        println("추천을 완료했습니다.")
     }
 }
 
