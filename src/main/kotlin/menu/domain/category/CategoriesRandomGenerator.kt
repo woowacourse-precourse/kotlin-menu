@@ -1,4 +1,4 @@
-package menu
+package menu.domain.category
 
 import camp.nextstep.edu.missionutils.Randoms
 import menu.domain.Category

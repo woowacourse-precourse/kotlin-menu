@@ -1,4 +1,4 @@
-package menu
+package menu.domain.category
 
 import menu.domain.Category
 

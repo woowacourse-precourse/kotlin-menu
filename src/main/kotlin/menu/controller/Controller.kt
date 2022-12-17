@@ -1,9 +1,8 @@
 package menu.controller
 
-import menu.*
-import menu.domain.Category
-import menu.domain.Coach
-import menu.domain.LaunchMenuService
+import menu.domain.*
+import menu.domain.category.CategoriesRandomGenerator
+import menu.domain.menu.MenuRandomGenerator
 import menu.view.InputView
 import menu.view.OutputView
 

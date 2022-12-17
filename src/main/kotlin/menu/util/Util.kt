@@ -10,6 +10,7 @@ class Util {
         allFood.addAll(Category.중식.food)
         allFood.addAll(Category.아시안.food)
         allFood.addAll(Category.일식.food)
+        allFood.add("")
         return allFood
     }
 }

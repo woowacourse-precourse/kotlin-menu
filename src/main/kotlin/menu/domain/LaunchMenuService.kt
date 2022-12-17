@@ -1,7 +1,7 @@
 package menu.domain
 
-import menu.CategoriesGenerator
-import menu.MenuGenerator
+import menu.domain.category.CategoriesGenerator
+import menu.domain.menu.MenuGenerator
 
 class LaunchMenuService {
 
