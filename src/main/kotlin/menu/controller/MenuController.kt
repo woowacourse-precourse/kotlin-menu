@@ -1,9 +1,9 @@
-package menu.lunch.controller
+package menu.controller
 
-import menu.lunch.domain.MenuRecommend
-import menu.lunch.domain.RandomCategory
-import menu.lunch.view.InputView
-import menu.lunch.view.OutputView
+import menu.domain.MenuRecommend
+import menu.domain.RandomCategory
+import menu.view.InputView
+import menu.view.OutputView
 
 class MenuController {
     private val input by lazy { InputView() }

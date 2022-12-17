@@ -1,4 +1,4 @@
-package menu.lunch.domain
+package menu.domain
 
 class Coach(val name: String) {
     private val dislikedFood = mutableListOf<String>()

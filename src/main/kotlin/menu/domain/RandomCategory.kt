@@ -1,4 +1,4 @@
-package menu.lunch.domain
+package menu.domain
 
 import camp.nextstep.edu.missionutils.Randoms
 

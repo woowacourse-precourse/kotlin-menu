@@ -1,4 +1,4 @@
-package menu.lunch.domain
+package menu.domain
 
 class MenuRecommend {
     val coaches = mutableListOf<Coach>()

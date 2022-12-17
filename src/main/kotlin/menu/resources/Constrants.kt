@@ -1,4 +1,4 @@
-package menu.lunch.resources
+package menu.resources
 
 // FOR MENU RECOMMEND LOGIC
 const val JAPANESE_FOOD_CATEGORY = "일식"

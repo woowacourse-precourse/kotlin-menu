@@ -1,12 +1,12 @@
-package menu.lunch.view
+package menu.view
 
-import menu.lunch.domain.Coach
-import menu.lunch.resources.OUTPUT_CATEGORY_LIST
-import menu.lunch.resources.OUTPUT_COACH_LIST
-import menu.lunch.resources.OUTPUT_DAY_OF_THE_WEEK
-import menu.lunch.resources.OUTPUT_END_MESSAGE
-import menu.lunch.resources.OUTPUT_RECOMMEND_RESULT_PRE_MESSAGE
-import menu.lunch.resources.OUTPUT_START_MESSAGE
+import menu.domain.Coach
+import menu.resources.OUTPUT_CATEGORY_LIST
+import menu.resources.OUTPUT_COACH_LIST
+import menu.resources.OUTPUT_DAY_OF_THE_WEEK
+import menu.resources.OUTPUT_END_MESSAGE
+import menu.resources.OUTPUT_RECOMMEND_RESULT_PRE_MESSAGE
+import menu.resources.OUTPUT_START_MESSAGE
 
 class OutputView {
     fun printStartMessage() {
