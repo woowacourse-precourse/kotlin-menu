@@ -58,7 +58,6 @@ class menuRecommend {
         OV.day()
         OV.category(categoryNameCollect)
         for(i in 0 until coachNameCollect.size){
-            // 얘때문에 코치별 이름, 메뉴 뜨는거
             OV.coachNameMenu(coachNameCollect[i],coachsMenuCollection[i])
         }
         OV.endService()

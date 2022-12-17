@@ -22,7 +22,7 @@ class Menu {
         return categoryCollect
     }
 
-    fun menuRecommend(categorieName: String): String{ // 카테고리 내 못먹는 음식과 비교하여 랜덤으로 아무거나 추천
+    fun menuRecommend(categorieName: String): String{
         var menu=""
         if (categorieName=="일식") menu=Randoms.shuffle(CT.Japanese)[0]
         if (categorieName=="한식") menu=Randoms.shuffle(CT.Korean)[0]
