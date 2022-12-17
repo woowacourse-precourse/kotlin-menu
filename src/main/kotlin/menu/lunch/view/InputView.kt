@@ -17,4 +17,18 @@ class InputView {
             nameOfCoaches
         }
     }
+
+    private fun checkRange(nameOfCoaches: List<String>) {
+        require(nameOfCoaches.size >= 2) { ERROR_INPUT_AT_LEAST_TWO }
+        require(nameOfCoaches.size <= 5) { ERROR_INPUT_AT_MOST_FIVE }
+    }
+
+    fun readDislikeMenu(name: String): List<String> {
+        return infinityRead {
+            println(INPUT_DISLIKE_MENU.format(name))
+            val dislikeMenu = Console.readLine().split(',')
+            require(dislikeMenu.size <= 2) { ERROR_INPUT_AT_MOST_TWO }
+            dislikeMenu
+        }
+    }
 }

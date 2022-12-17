@@ -11,9 +11,16 @@ class MenuController {
 
     fun run() {
         addCoach()
+        addDislikedFood()
     }
 
     private fun addCoach() {
         recommend.addCoach(input.readNameOfCoaches())
+    }
+
+    private fun addDislikedFood() {
+        recommend.coaches.forEach { coach ->
+            recommend.addDislikedFood(coach.name, input.readDislikeMenu(coach.name))
+        }
     }
 }
