@@ -10,4 +10,14 @@ enum class FoodCategory(private val foodNames: List<String>, private val categor
     fun getFoodNames() = foodNames
     fun getCategoryNumber() = categoryNumber
 
+//    fun getFoodCategory(num: Int): FoodCategory? {
+//        val foodCategories = FoodCategory.values().toList()
+//        for (fc in foodCategories) {
+//            if (fc.categoryNumber == num) {
+//                return fc
+//            }
+//        }
+//        return null
+//    }
+
 }
