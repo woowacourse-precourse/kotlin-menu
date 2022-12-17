@@ -9,7 +9,7 @@ class MenuController {
     private val input by lazy { InputView() }
     private val output by lazy { OutputView() }
     private val category by lazy { RandomCategory() }
-    private val recommend = MenuRecommend()
+    private val recommend by lazy { MenuRecommend() }
 
     fun run() {
         // catch
