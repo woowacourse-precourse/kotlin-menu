@@ -6,7 +6,7 @@ private const val DUPLICATED_ERROR = "중복된 값이 있습니다."
 private const val NAME_COUNT_START = 2
 private const val NAME_COUNT_END = 5
 private const val MENU_COUNT_START = 0
-private const val MENU_COUNT_END = 0
+private const val MENU_COUNT_END = 2
 
 class InputValidator {
 
