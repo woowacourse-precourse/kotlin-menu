@@ -7,3 +7,9 @@ const val ASIAN_FOOD = "팟타이, 카오 팟, 나시고렝, 파인애플 볶음
 const val WESTERN_FOOD = "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니"
 const val CATEGOTY = "카테고리, 일식, 중식, 한식, 아시안, 양식"
 const val DAYS = "구분, 월요일, 화요일, 수요일, 목요일, 금요일"
+
+const val MIN_NAME_LENGTH = 2
+const val MAX_NAME_LENGTH = 4
+
+const val MENU_RECOMMEND = "점심 메뉴 추천을 시작합니다."
+const val INPUT_COACH_NAME = "코치의 이름을 입력해 주세요. (, 로 구분)"
