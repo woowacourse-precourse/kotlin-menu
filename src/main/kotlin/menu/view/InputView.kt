@@ -44,8 +44,8 @@ class InputView {
 
     private fun checkMenuItemSize(menus: List<String>): Boolean {
         try {
-            if(menus.size > 2) throw IllegalArgumentException()
-        } catch(e: IllegalArgumentException) {
+            if (menus.size > 2) throw IllegalArgumentException()
+        } catch (e: IllegalArgumentException) {
             println("[ERROR] 각 코치의 못 먹는 메뉴는 최대 2개 입니다.")
             return false
         }
@@ -54,7 +54,7 @@ class InputView {
 
     private fun readMenu(): List<String> {
         val input = Console.readLine().split(",")
-        if(!checkMenuItemSize(input)) return readMenu()
+        if (!checkMenuItemSize(input)) return readMenu()
         for (menu in input) {
             if (!checkMenuNameInCategory(menu)) return readMenu()
         }
