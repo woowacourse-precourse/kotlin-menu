@@ -17,7 +17,7 @@ class MenuController {
 
         val coaches = readUntilValid { makeCoaches() }
         for (coach in coaches.coaches) {
-            setHateMenus(coach)
+            readUntilValid { setHateMenus(coach) }
         }
 
         val recommender = MenuRecommender(coaches)
@@ -33,9 +33,8 @@ class MenuController {
 
     private fun setHateMenus(coach: Coach) {
         val menus = readHateMenus(coach)
-        readUntilValid {
-            menus.forEach { coach.addHateMenu(it) }
-        }
+        menus.forEach { coach.addHateMenu(it) }
+
     }
 
     private fun readHateMenus(coach: Coach): List<Menu> {
