@@ -19,6 +19,7 @@ class Coach(val name: String) {
     }
 
     private fun isDislikedFood(food: String) = dislikedFood.contains(food)
+
     private fun isAlreadyEatFood(food: String) = alreadyEatFood.contains(food)
 
     fun isName(name: String) = this.name == name

@@ -14,12 +14,12 @@ class MenuRecommend {
         }
     }
 
-    fun isEatSameCategoryMany(category: String) = logOfCategory.count { it == category } >= 2
-
     fun addCategoryRecord(category: FoodCategory) {
         logOfCategory.add(category.category)
         coaches.forEach { coach ->
             coach.eatFood(category)
         }
     }
+
+    fun isEatSameCategoryMany(category: String) = logOfCategory.count { it == category } >= 2
 }
