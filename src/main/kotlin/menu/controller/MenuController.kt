@@ -47,6 +47,21 @@ class MenuController {
                 }
             }
         }
+        for (i in 0 until 5) {
+            for (c in result) {
+
+                while (true) {
+                    val menu = Randoms.shuffle(c.value)[0]
+
+                    if (result[c.key]?.contains(menu) ?: false) {
+                        continue
+                    }
+                    result[c.key]?.add(menu)
+                    break
+                }
+            }
+        }
+
     }
 }
 
