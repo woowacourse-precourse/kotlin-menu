@@ -13,7 +13,7 @@ object Category {
     private const val MAX_RECOMMENDED_CATEGORIES_SIZE = 6
 
     fun getRecommendCategories(): List<String> {
-        val recommendedCategories = mutableSetOf("카테고리")
+        val recommendedCategories = mutableListOf("카테고리")
         while (recommendedCategories.size < MAX_RECOMMENDED_CATEGORIES_SIZE) {
             val pickedCategory = getRandomPickedRecommendCategory(getCategories())
             if (recommendedCategories.count { it == pickedCategory } == MAX_RECOMMEND_COUNT) {
