@@ -1,5 +1,7 @@
 package menu
 
+import menu.controller.Menu
+
 fun main() {
-    // TODO: 프로그램 구현
+    Menu().recommend()
 }
