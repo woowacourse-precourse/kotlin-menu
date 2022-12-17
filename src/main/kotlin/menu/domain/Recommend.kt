@@ -1,7 +1,7 @@
 package menu.domain
 
 import camp.nextstep.edu.missionutils.Randoms
-import menu.constants.MAXIMUM_DUPLICATE_CATEGORY_COUNT
+import menu.utils.MAXIMUM_DUPLICATE_CATEGORY_COUNT
 
 class Recommend {
     fun recommendMenu(coach: Coach, category: String): String {

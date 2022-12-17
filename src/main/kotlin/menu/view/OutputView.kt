@@ -1,7 +1,7 @@
 package menu.view
 
-import menu.constants.*
 import menu.domain.Coach
+import menu.utils.*
 
 class OutputView {
 

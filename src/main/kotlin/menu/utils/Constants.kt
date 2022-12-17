@@ -1,4 +1,4 @@
-package menu.constants
+package menu.utils
 
 // 기준 숫자
 const val MINIMUM_COACH_COUNT = 2

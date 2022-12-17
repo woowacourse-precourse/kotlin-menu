@@ -1,6 +1,6 @@
 package menu.exception
 
-import menu.constants.*
+import menu.utils.*
 
 class Validator {
     fun checkCoachNames(input: String): List<String> {
