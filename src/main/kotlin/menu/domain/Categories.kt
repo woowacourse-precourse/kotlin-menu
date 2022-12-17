@@ -7,7 +7,7 @@ class Categories {
     val selectedCategories get() = _selectedCategories as List<Category>
 
     fun addRandomCategory(): Category {
-        check(_selectedCategories.size <= WEEK_NUMBER) { ERROR_MAX_LENGTH }
+        check(_selectedCategories.size < WEEK_NUMBER) { ERROR_MAX_LENGTH }
         val category = selectCategory()
         _selectedCategories.add(category)
         return category

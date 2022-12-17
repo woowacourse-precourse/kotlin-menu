@@ -18,13 +18,13 @@ class MenuRecommender(private val coaches: Coaches) {
     }
 
     private fun recommend(coach: Coach, category: Category) {
-        var menu = recommend(category)
+        var menu = makeRandomMenu(category)
         while (coach.addSelectedMenu(menu).not()) {
-            menu = recommend(category)
+            menu = makeRandomMenu(category)
         }
     }
 
-    private fun recommend(category: Category): Menu {
+    private fun makeRandomMenu(category: Category): Menu {
         val menus = Menu.existMenus.filter { it.category == category }.map { it.name }
         val menuName = Randoms.shuffle(menus)[0]
         return Menu(menuName, category)
