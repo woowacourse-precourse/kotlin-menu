@@ -32,7 +32,7 @@ class OutputView {
     }
 
     private fun printFormedDescription(elements: List<String>) {
-        val description = elements.joinToString { DESCRIPTION_FORM }
+        val description = elements.joinToString(DESCRIPTION_FORM)
         println("[ $description ]")
     }
 
