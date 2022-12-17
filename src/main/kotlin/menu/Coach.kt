@@ -1,4 +1,7 @@
 package menu
 
-class Coach {
+class Coach(
+    val name:String
+) {
+
 }
