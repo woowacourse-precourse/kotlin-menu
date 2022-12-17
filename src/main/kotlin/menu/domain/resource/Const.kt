@@ -10,3 +10,6 @@ const val MIN_MENU_CANT_EAT = 0
 const val MAX_MENU_CANT_EAT = 2
 
 const val SEPARATOR = ","
+
+const val MAX_DUPLICATE_CATEGORY = 2
+const val NUM_OF_DAYS = 5
