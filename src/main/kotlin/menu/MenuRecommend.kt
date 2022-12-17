@@ -60,8 +60,19 @@ class MenuRecommend {
 
     fun pickMenu(category: String, coachMenu: List<String>, dislikeMenu: List<String>): String {
         val menus = getSpecificMenuList(category)
-        val menu = Randoms.shuffle(menus)[0]
+        while (true) {
+            val menu = Randoms.shuffle(menus)[0]
+            val menuDuplicate = isMenuDuplicated(coachMenu, menu)
+            if(!menuDuplicate){
+                return menu
+            }
+        }
+    }
 
-        return menu
+    private fun isMenuDuplicated(coachMenu: List<String>, menu: String):Boolean{
+        if(coachMenu.contains(menu)){
+            return true
+        }
+        return false
     }
 }
