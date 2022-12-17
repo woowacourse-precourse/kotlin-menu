@@ -11,12 +11,17 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
         require(weeklyCategory.size == 5) {
             "월, 화, 수, 목, 금으로 이루어진 카테고리를 입력해 주세요."
         }
+    }
+
+    fun hasDuplicatedCategory(): Boolean {
         if (weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > 2 ||
             weeklyCategory.count { it.getCategory() == FoodCategory.KOREAN } > 2 ||
             weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > 2 ||
             weeklyCategory.count { it.getCategory() == FoodCategory.WESTERN } > 2 ||
             weeklyCategory.count { it.getCategory() == FoodCategory.CHINESE } > 2) {
-            throw IllegalArgumentException("카테고리가 2개 이상 중복됩니다.")
+            return true
         }
+        return false
     }
+
 }
