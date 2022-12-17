@@ -21,9 +21,9 @@ class MenuRecommender {
     }
 
     private fun initAteFoodList() {
-        for(xIndex in 0..2){
+        for (xIndex in 0..2) {
             val list = mutableListOf<String>()
-            for(yIndex in 0..4){
+            for (yIndex in 0..4) {
                 list.add("")
             }
             ateFoodList.add(list)

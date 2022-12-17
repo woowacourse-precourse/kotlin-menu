@@ -12,7 +12,7 @@ class MenuController {
         inputCoachName()
         inputHateFood()
         pickWeekMenu()
-        outputView.outputResult(menuRecommender.weekMenu,menuRecommender.coachNameList,menuRecommender.categoryList)
+        outputView.outputResult(menuRecommender.weekMenu, menuRecommender.coachNameList, menuRecommender.categoryList)
     }
 
     private fun inputCoachName() {
@@ -26,7 +26,7 @@ class MenuController {
     }
 
     private fun inputHateFood() {
-        for(people in menuRecommender.coachNameList){
+        for (people in menuRecommender.coachNameList) {
             println("${people}(이)가 못 먹는 메뉴를 입력해 주세요.")
             menuRecommender.setHateFoodList(inputView.inputHateFoodList())
         }
