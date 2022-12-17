@@ -217,11 +217,11 @@ val menu: String = Randoms.shuffle(menus)[0]
 - [x] 코치가 못먹는 음식 입력안내 #inputNotEat()
 - [x] 서비스 시작 문구 #startService()
 - [x] 서비스 종료 문구 #endService()
-- [ ] 메뉴 추천 결과 #menuResult()
+- [x] 메뉴 추천 결과 #menuResult()
 - [Menu]
-- [ ] 랜덤메뉴 추천 #menuRecommend()
-- [ ] 메뉴
-- [ ] 카테고리 랜덤 선정 #categorySelect()
+- [x] 랜덤메뉴 추천 #menuRecommend()
+- [ ] 먹은 메뉴가 있다면 제외하고 추천해주는 기능
+- [x] 카테고리 랜덤 선정 #categorySelect()
 
 - ### 예외처리(Exception)
 - 입출력관련IllegalArgumentException 발생(단, [ERROR] 로시작)
