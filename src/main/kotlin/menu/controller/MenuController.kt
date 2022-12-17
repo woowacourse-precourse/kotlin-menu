@@ -22,5 +22,36 @@ class MenuController {
             weekend[days[tryNumber]] = category
             tryNumber++
         }
+
+        val coachMenus = mutableMapOf<String, MutableList<MutableList<String>>>()
+        val result = mutableMapOf<String, MutableList<String>>()
+        for (coach in coaches) {
+            coachMenus[coach.getName()] = mutableListOf()
+            result[coach.getName()] = mutableListOf()
+        }
+
+        for (coach in coaches) {
+            val foods = InputView.readMenus(coach).getMenus()
+            println()
+
+            for (i in 0 until 5) {
+                val category = getCategory(i, weekend)
+                val menus = category.menus.toMutableList()
+                for (food in foods) {
+                    if (menus.contains(food.getName())) {
+                        menus.remove(food.getName())
+                    }
+                }
+                for (c in coaches) {
+                    coachMenus[c.getName()]?.add(menus)
+                }
+            }
+        }
     }
+}
+
+private fun getCategory(index: Int, weekend: MutableMap<String, String>): Category {
+    val weekendCategory = weekend.values.toList().get(index)
+    val category = Category.of(weekendCategory)
+    return category
 }
