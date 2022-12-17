@@ -20,6 +20,9 @@ class InputValidator {
 
     fun validateDislikeMenus(dislikeMenus: String, totalMenu: Menu): List<String> {
         val dislikeMenuList = dislikeMenus.split(DELIMETER)
+        if (dislikeMenuList[0] == "") {
+            return dislikeMenuList
+        }
         dislikeMenuList.forEach {
             if (!totalMenu.contains(it)) {
                 throw IllegalArgumentException(MENU_NOT_EXIST_ERROR)
