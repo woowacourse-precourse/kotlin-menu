@@ -12,10 +12,17 @@ class StartRecommend {
         var input = Console.readLine()
         val user = input.split(",")
 
+        // 코치 숫자 예외처리
+        if(user.size < 2 || user.size > 5){
+            throw IllegalArgumentException("코치는 최소 2명 최대 5명이 같이 식사를 할 수 있습니다.")
+        }
 
-//        for (i in user.indices) {
-//
-//        }
+        // 코치 이름 예외처리
+        for (i in user.indices) {
+            if(user[i].length < 2 || user[i].length > 4){
+                throw IllegalArgumentException("이름 형식에 맞춰주세요(이름은 2글자에서 4글자).")
+            }
+        }
 
         println()
         var avoid = mutableListOf<MutableList<String>>()
