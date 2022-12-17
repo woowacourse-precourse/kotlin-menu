@@ -17,14 +17,20 @@ class Coach(
         return false
     }
 
-    fun containsRecommends(menus: List<String>): Boolean {
+    fun countContainsRecommends(menus: List<String>): Int {
+        var count = 0
+
         repeat(recommendations.size) { index ->
             if(menus.contains(recommendations[index])) {
-                return true
+                count++
             }
         }
 
-        return false
+        return count
+    }
+
+    fun containsRecommend(menu: String): Boolean {
+        return recommendations.contains(menu)
     }
 
     fun addRecommendation(recommendation: String) {

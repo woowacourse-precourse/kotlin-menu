@@ -9,7 +9,15 @@ class Generator {
     fun makeRecommendation(coach: Coach): String {
         val category = makeCategory(coach)
 
-        return ""
+        return makeMenu(coach, category)
+    }
+
+    private fun makeMenu(coach: Coach, category: String): String {
+        while (true) {
+            val menu = getMenu(category)
+            val randomMenuName = Randoms.shuffle(menu.menus)[0]
+            if (isAvailableMenu(coach, randomMenuName)) return randomMenuName
+        }
     }
 
     private fun makeCategory(coach: Coach): String {
@@ -20,16 +28,17 @@ class Generator {
     }
 
     private fun isAvailableCategory(coach: Coach, category: String): Boolean {
-        var categoryCount = 0
+        val menu = getMenu(category)
+        val categoryCount = coach.countContainsRecommends(menu.menus)
+        return categoryCount <= 2
+        // todo 상수화
+    }
 
-        Menu.values().forEach { menu ->
-            if (menu.name_ko == category) {
-                if (coach.containsRecommends(menu.menus)) categoryCount++
-            }
-        }
+    private fun isAvailableMenu(coach: Coach, menu: String): Boolean {
+        if (coach.containsCantEatMenu(menu)) return false
+        if (coach.containsRecommend(menu)) return false
 
-        return categoryCount < 2
-        //todo 상수화
+        return true
     }
 
     private fun getCategoryName(categoryNumber: Int): String {
@@ -43,5 +52,12 @@ class Generator {
         }
     }
 
+    private fun getMenu(category: String): Menu {
+        Menu.values().forEach { menu ->
+            if (menu.name_ko == category) return menu
+        }
 
+        // todo 다른 방법 고안 필요
+        return Menu.JAPAN
+    }
 }

@@ -46,14 +46,15 @@
   
 
 - [ ] 메뉴 추천 (발행) 
-  - [ ] 카테고리 발행
+  - [x] 카테고리 발행
     - [x] Randoms.pickNumberInRange()를 이용해 카테고리 발행
     - [x] 추천 가능한 카테고리인지 확인
       - [x] 코치의 카테고리가 두번 있는지 확인
-  - [ ] 메뉴 발행
-    - [ ] Randoms.shuffle()을 이용해 발행
-      - [ ] val menu: String = Randoms.shuffle(menus)[0] (첫번째 값 사용)
-      - [ ] 모든 메뉴(못먹는 메뉴 포함) 전달해, 못먹는 메뉴일 때 재발행
+  - [x] 메뉴 발행
+    - [x] Randoms.shuffle()을 이용해 발행
+      - [x] val menu: String = Randoms.shuffle(menus)[0] (첫번째 값 사용)
+      - [x] 못먹는 메뉴일 때 재발행
+        - [x] 못먹는 메뉴인지 확인
 
   
   
