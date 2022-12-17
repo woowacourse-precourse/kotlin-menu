@@ -8,11 +8,11 @@ class SuggestionMenu {
         allMenus.add(mutableListOf<String>())
         for (i in 1..HIGH_CATEGORY) {
             when (i) {
-                1 -> allMenus.add(japanMenus.split(",").map { it.trim() }.toMutableList())
-                2 -> allMenus.add(koreanMenus.split(",").map { it.trim() }.toMutableList())
-                3 -> allMenus.add(chineseMenus.split(",").map { it.trim() }.toMutableList())
-                4 -> allMenus.add(asianMenus.split(",").map { it.trim() }.toMutableList())
-                5 -> allMenus.add(westernMenus.split(",").map { it.trim() }.toMutableList())
+                Category.JAPANESE_FOOD.index -> allMenus.add(japanMenus.split(",").map { it.trim() }.toMutableList())
+                Category.KOREAN_FOOD.index -> allMenus.add(koreanMenus.split(",").map { it.trim() }.toMutableList())
+                Category.CHINESE_FOOD.index -> allMenus.add(chineseMenus.split(",").map { it.trim() }.toMutableList())
+                Category.ASIAN_FOOD.index -> allMenus.add(asianMenus.split(",").map { it.trim() }.toMutableList())
+                Category.WESTERN_FOOD.index -> allMenus.add(westernMenus.split(",").map { it.trim() }.toMutableList())
             }
         }
     }
