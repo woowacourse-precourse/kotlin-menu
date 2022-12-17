@@ -22,9 +22,17 @@ class LaunchMenuService {
         return getMenu(category,impossibleMenus,menuGenerator)
     }
 
-    fun isValidMenu(impossibleMenus: List<String>,menu:String):Boolean{
+    fun isValidMenu(impossibleMenus: List<String>, menu:String):Boolean{
         if(impossibleMenus.contains(menu)) return false
         return true
+    }
+
+    fun categoryToString(categories:List<Category>):List<String>{
+        val categoriesToString = mutableListOf<String>()
+        categories.forEach{category->
+            categoriesToString.add(category.categoryName)
+        }
+        return categoriesToString
     }
 
     companion object{
