@@ -12,8 +12,8 @@ class OutputView {
         println(INPUT_COACH)
     }
 
-    fun printRequestFood() {
-        println(INPUT_FOOD)
+    fun printRequestFood(name: String) {
+        println(INPUT_FOOD.format(name))
     }
 
     fun printResult() {
