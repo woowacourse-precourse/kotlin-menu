@@ -25,7 +25,98 @@ class Category {
         return weekCategory
     }
 
-    fun coachMenu(coach: Coach, weekCategory: MutableList<String>) : MutableList<String>{
+    fun coachJapanMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
+        var coachMenu = mutableListOf<String>()
+        for (i in coaches){
+            var menus = japan
+            while (true){
+                val menu: String = Randoms.shuffle(menus)[0]
+                //중복메뉴, 먹지 못하는 음식 추전 X
+                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                    i.menu.add(menu)
+                    break
+                }
+                if (i.hateFood.contains(menu) && i.menu.contains(menu)){
+                    continue
+                }
+            }
+        }
+        return coaches
+    }
+    fun coachKoreaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
+        var coachMenu = mutableListOf<String>()
+        for (i in coaches){
+            var menus = korea
+            while (true){
+                val menu: String = Randoms.shuffle(menus)[0]
+                //중복메뉴, 먹지 못하는 음식 추전 X
+                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                    i.menu.add(menu)
+                    break
+                }
+                if (i.hateFood.contains(menu) && i.menu.contains(menu)){
+                    continue
+                }
+            }
+        }
+        return coaches
+    }
+    fun coachChinaMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
+        var coachMenu = mutableListOf<String>()
+        for (i in coaches){
+            var menus = china
+            while (true){
+                val menu: String = Randoms.shuffle(menus)[0]
+                //중복메뉴, 먹지 못하는 음식 추전 X
+                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                    i.menu.add(menu)
+                    break
+                }
+                if (i.hateFood.contains(menu) && i.menu.contains(menu)){
+                    continue
+                }
+            }
+        }
+        return coaches
+    }
+    fun coachAsianMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
+        var coachMenu = mutableListOf<String>()
+        for (i in coaches){
+            var menus = asian
+            while (true){
+                val menu: String = Randoms.shuffle(menus)[0]
+                //중복메뉴, 먹지 못하는 음식 추전 X
+                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                    i.menu.add(menu)
+                    break
+                }
+                if (i.hateFood.contains(menu) && i.menu.contains(menu)){
+                    continue
+                }
+            }
+        }
+        return coaches
+    }
+    fun coachWestMenu(coaches : MutableList<Coach>) : MutableList<Coach>{
+        var coachMenu = mutableListOf<String>()
+        for (i in coaches){
+            var menus = west
+            while (true){
+                val menu: String = Randoms.shuffle(menus)[0]
+                //중복메뉴, 먹지 못하는 음식 추전 X
+                if (!i.hateFood.contains(menu) && !i.menu.contains(menu)){
+                    i.menu.add(menu)
+                    break
+                }
+                if (i.hateFood.contains(menu) && i.menu.contains(menu)){
+                    continue
+                }
+            }
+        }
+        return coaches
+    }
+
+    /*fun coachMenu(coach: Coach, weekCategory: MutableList<String>) : MutableList<String>{
         var coachMenu = mutableListOf<String>()
         for (i in weekCategory){
             if (i == "일식"){
@@ -34,8 +125,12 @@ class Category {
                     val menu: String = Randoms.shuffle(menus)[0]
                     //중복메뉴, 먹지 못하는 음식 추전 X
                     if (!coach.hateFood.contains(menu) && !coach.menu.contains(menu)){
+                        println("Test$menu")
                         coachMenu.add(menu)
                         break
+                    }
+                    if (coach.hateFood.contains(menu) && coach.menu.contains(menu)){
+                        continue
                     }
                 }
             }
@@ -46,7 +141,11 @@ class Category {
                     //중복메뉴, 먹지 못하는 음식 추전 X
                     if (!coach.hateFood.contains(menu) && !coach.menu.contains(menu)){
                         coachMenu.add(menu)
+                        println("Test$menu")
                         break
+                    }
+                    if (coach.hateFood.contains(menu) && coach.menu.contains(menu)){
+                        continue
                     }
                 }
             }
@@ -57,7 +156,11 @@ class Category {
                     //중복메뉴, 먹지 못하는 음식 추전 X
                     if (!coach.hateFood.contains(menu) && !coach.menu.contains(menu)){
                         coachMenu.add(menu)
+                        println("Test$menu")
                         break
+                    }
+                    if (coach.hateFood.contains(menu) && coach.menu.contains(menu)){
+                        continue
                     }
                 }
             }
@@ -68,7 +171,11 @@ class Category {
                     //중복메뉴, 먹지 못하는 음식 추전 X
                     if (!coach.hateFood.contains(menu) && !coach.menu.contains(menu)){
                         coachMenu.add(menu)
+                        println("Test$menu")
                         break
+                    }
+                    if (coach.hateFood.contains(menu) && coach.menu.contains(menu)){
+                        continue
                     }
                 }
             }
@@ -79,11 +186,15 @@ class Category {
                     //중복메뉴, 먹지 못하는 음식 추전 X
                     if (!coach.hateFood.contains(menu) && !coach.menu.contains(menu)){
                         coachMenu.add(menu)
+                        println("Test$menu")
                         break
+                    }
+                    if (coach.hateFood.contains(menu) && coach.menu.contains(menu)){
+                        continue
                     }
                 }
             }
         }
         return coachMenu
-    }
+    }*/
 }
