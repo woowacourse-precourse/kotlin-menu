@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class MenuRecommender {
     fun makeMenus(coaches: List<Coach>): MenuResult {
-        val categories = makeCatogories()
+        val categories = makeCategories()
         val recommendations = makeRecommendations(categories, coaches)
         return MenuResult(categories, recommendations)
     }
@@ -20,7 +20,7 @@ class MenuRecommender {
         }
     }
 
-    private fun makeCatogories(): List<Category> {
+    private fun makeCategories(): List<Category> {
         val categories = mutableListOf<Category>()
         while(categories.size < 5) {
             val category = convertCategory(Randoms.pickNumberInRange(1, 5))
