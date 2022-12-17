@@ -15,12 +15,10 @@ class MenuController {
     private val coaches: List<String>
     private val notEatMenus = mutableListOf<List<String>>()
 
-    private val recommendCategories= mutableListOf<String>()
+    private val recommendCategories: List<String> = CategoryController().getRecommendCategory()
     private val recommendMenus = mutableListOf<List<String>>()
 
     init {
-        setRecommendCategory()
-
         outputView.startRecommendMenu()
 
         outputView.inputCoachName()
@@ -82,23 +80,5 @@ class MenuController {
         }while(checkEatMenu(menuName, coachIndex))
 
         return menuName
-    }
-
-    private fun setRecommendCategory() {
-        for(day in 0 until 5) {
-            var category = getCategory()
-
-            while(true) {
-                if(recommendCategories.count{ it == category } < 2) {
-                    break
-                }
-                category = getCategory()
-            }
-            recommendCategories.add(category)
-        }
-    }
-
-    private fun getCategory(): String {
-        return Categories.categories[Randoms.pickNumberInRange(1, 5) - 1]
     }
 }
