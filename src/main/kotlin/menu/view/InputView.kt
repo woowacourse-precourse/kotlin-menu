@@ -12,6 +12,7 @@ class InputView {
             val input = Console.readLine()
             val coaches = inputValidation.checkNumberOfCoach(input)
             inputValidation.checkCoachNameLength(coaches)
+            println()
             coaches
         } catch (e: IllegalArgumentException) {
             println(e.message)
@@ -25,6 +26,7 @@ class InputView {
             val input = Console.readLine()
             val foods = inputValidation.checkNumberOfImpossibleFood(input)
             inputValidation.checkInvalidImpossibleFood(foods)
+            println()
             foods
         } catch (e: IllegalArgumentException) {
             println(e.message)

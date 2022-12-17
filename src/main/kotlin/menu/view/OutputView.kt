@@ -3,11 +3,11 @@ package menu.view
 class OutputView {
 
     fun printServiceStart() {
-        println(SERVICE_START_MESSAGE)
+        println(SERVICE_START_MESSAGE+"\n")
     }
 
     fun printServiceEnd() {
-        print(SERVICE_END_MESSAGE)
+        print("\n"+SERVICE_END_MESSAGE)
     }
 
     fun printMenuResultInitialMessage() {
