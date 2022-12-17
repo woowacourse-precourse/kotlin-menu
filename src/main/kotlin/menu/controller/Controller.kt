@@ -43,7 +43,7 @@ class Controller {
     fun getCoachesName(input : String) : List<String> {
         try {
             validator.checkCoachesInput(input)
-            return input.split(",").toList()
+            return input.split(",").map { it.trim() }
         } catch(e: IllegalArgumentException) {
             output.printError(e)
             return inputCoachesName()
@@ -55,7 +55,7 @@ class Controller {
     fun getFoodsName(input : String) : List<String> {
         try {
             Validator().checkFoodsInput(input)
-            return input.split(",").toList()
+            return input.split(",").map { it.trim() }
         } catch (e : IllegalArgumentException) {
             output.printError(e)
             return inputFoodsName()
