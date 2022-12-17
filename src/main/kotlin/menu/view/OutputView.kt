@@ -5,20 +5,20 @@ import menu.strings.Message
 
 class OutputView {
     fun printStart() {
-        print(Message.PrintMessage.PRINT_RECOMMEND.msg)
+        println(Message.PrintMessage.PRINT_RECOMMEND.msg)
     }
 
     fun printGetCoach() {
-        print(Message.PrintMessage.GET_COACH_NAME.msg)
+        println(Message.PrintMessage.GET_COACH_NAME.msg)
     }
 
     fun printGetUnavailableFood() {
-        print(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg)
+        println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg)
     }
 
     fun printResult() {
         println(Message.PrintMessage.PRINT_RESULT.msg)
-        print(Message.PrintMessage.DAYS.msg)
+        println(Message.PrintMessage.DAYS.msg)
     }
 
     fun printCategory(category: List<String>) {
@@ -30,6 +30,7 @@ class OutputView {
             category[4]))
     }
 
+    // TODO : 코치가 먹을 음식 출력 기능 구현 필요
     fun printCoach(coach: Coach) {
         println(Message.PrintMessage.RECOMMEND_FOOD.msg.format(
 
