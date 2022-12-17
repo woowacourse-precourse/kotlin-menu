@@ -14,7 +14,7 @@ Progress & MileStones
   - ~~Get coach's hate menu~~
   
 - OutputView
-  - Print process start
+  - ~~Print process start~~
   - Print result
 
 ## Service
