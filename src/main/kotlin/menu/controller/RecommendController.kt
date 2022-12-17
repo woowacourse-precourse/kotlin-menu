@@ -1,6 +1,8 @@
 package menu.controller
 
+import menu.domain.CategoryMaker
 import menu.domain.CoachGenerator
+import menu.dto.CategoriesDTO
 import menu.dto.CoachesDTO
 import menu.dto.MenusDTO
 import menu.dto.NamesDTO
@@ -8,10 +10,12 @@ import menu.view.InputView
 import menu.view.OutputView
 
 class RecommendController(
+    private val categoryMaker: CategoryMaker,
     private val coachGenerator: CoachGenerator,
     private val inputView: InputView,
     private val outputView: OutputView
 ) {
+    private lateinit var categoriesDTO: CategoriesDTO
     private lateinit var coachesDTO: CoachesDTO
     private lateinit var menusDTO: MenusDTO
     private lateinit var namesDTO: NamesDTO
@@ -60,5 +64,9 @@ class RecommendController(
                 outputView.printError(exception.message ?: "")
             }
         } while (!success)
+    }
+
+    private fun selectCategories() {
+        categoriesDTO = categoryMaker.make()
     }
 }
