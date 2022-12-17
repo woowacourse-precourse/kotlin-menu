@@ -48,17 +48,17 @@ class InputValidatorTest {
 
         @Test
         fun `메뉴2가지 이상일때`() {
-            assertThrows<IllegalArgumentException> { validator.getCoachMenuBan("팟타이,그라탱,뇨끼", "포코") }
+            assertThrows<IllegalArgumentException> { validator.getCoachWithMenuBan("팟타이,그라탱,뇨끼", "포코") }
         }
 
         @Test
         fun `메뉴 아무 입력 없을때`() {
-            assertThat(validator.getCoachMenuBan("", "포코")).isEqualTo(listOf("포코"))
+            assertThat(validator.getCoachWithMenuBan("", "포코")).isEqualTo(listOf("포코"))
         }
 
         @Test
         fun `정상 입력시`() {
-            assertThat(validator.getCoachMenuBan("팟타이,뇨끼", "포코")).isEqualTo(listOf("포코", "팟타이", "뇨끼"))
+            assertThat(validator.getCoachWithMenuBan("팟타이,뇨끼", "포코")).isEqualTo(listOf("포코", "팟타이", "뇨끼"))
         }
     }
 }

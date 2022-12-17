@@ -18,6 +18,7 @@ fun main() {
     val coachNames = progressCoachNameStage()
     val coachWithMenuBans = progressGetBanMenu(coachNames)
     val recommendResult = progressRecommend(coachWithMenuBans)
+    progressConclusion(recommendResult)
 }
 
 private fun progressStart() {
@@ -52,6 +53,14 @@ private fun progressRecommend(coachWithMenuBans: List<List<String>>): List<List<
         recommendResult.add(printPurposeConclusion)
     }
     outputView.printWeekOfTheDayPhrase()
-    println(categorys.joinToString(separator = " | ", prefix = "[ 카테고리", postfix = "]"))
+    println(categorys.joinToString(separator = " | ", prefix = "[ 카테고리 | ", postfix = " ]"))
     return recommendResult
+}
+
+private fun progressConclusion(recommendResults: List<List<String>>) {
+    for (recommendResult in recommendResults) {
+        println(recommendResult.joinToString(separator = " | ", prefix = "[ ", postfix = " ]"))
+    }
+    println()
+    outputView.printEndPhrase()
 }
