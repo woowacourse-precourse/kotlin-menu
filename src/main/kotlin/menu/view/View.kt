@@ -34,14 +34,14 @@ object View {
         UI.printEndMenuRecommend()
     }
 
-    fun printRecommendedCategories(){
+    private fun printRecommendedCategories(){
         val result = mutableListOf<String>()
         result.add("카테고리")
         result.addAll(Category.getRecommendCategories())
         println(result.joinToString(separator = " | ", prefix = "[ ", postfix = " ]"))
     }
 
-    fun printRecommendedMenuForCoach(coach : Coach){
+    private fun printRecommendedMenuForCoach(coach : Coach){
         val result = mutableListOf<String>()
         result.add(coach.getName())
         result.addAll(coach.getRecommendMenus())

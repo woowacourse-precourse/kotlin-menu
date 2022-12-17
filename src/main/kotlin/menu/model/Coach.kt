@@ -30,8 +30,6 @@ class Coach(coachName: String) {
         this.cantEat.addAll(cantEat)
     }
 
-    fun getCantEat() = cantEat
-
     fun getRecommendMenus() = recommendedMenus
 
 }

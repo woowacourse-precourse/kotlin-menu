@@ -14,9 +14,6 @@ object Category {
 
     private val recommendedCategories = mutableListOf<String>()
 
-    // 추천 카테고리를 반환 ex) 한식,양식,일식,중식,중식
-    fun getRecommendCategories() = recommendedCategories
-
     fun initRecommendCategories(): List<String> {
         while (recommendedCategories.size < MAX_RECOMMENDED_CATEGORIES_SIZE) {
             val pickedCategory = getRandomPickedRecommendCategory(getCategories())
@@ -27,6 +24,8 @@ object Category {
         }
         return recommendedCategories.toList()
     }
+
+    fun getRecommendCategories() = recommendedCategories
 
     private fun getCategories(): List<String> {
         val tempMenus = MENUS.split("\n")

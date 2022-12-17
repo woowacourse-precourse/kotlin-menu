@@ -13,18 +13,17 @@ object Menu {
 
     private val menuDB = mutableMapOf<String, List<String>>()
 
-    fun initMenuDB(){
+    fun initMenuDB() {
         val tempMenuDB = MENUS.split("\n")
-        for (splitMenuDB in tempMenuDB){
+        for (splitMenuDB in tempMenuDB) {
             val miniMenuDB = splitMenuDB.split(":")
-            menuDB[miniMenuDB[CATEGORY_NAME].replace(" ","")] = miniMenuDB[MENU_NAMES].replace(" ","").split(",")
+            menuDB[miniMenuDB[CATEGORY_NAME].replace(" ", "")] = miniMenuDB[MENU_NAMES].replace(" ", "").split(",")
         }
     }
 
-    // 카테고리가 정해진 메뉴들중에 하나 뽑음
-    fun getRandomPickedMenu(categoryMenus : List<String>) : String{
+    fun getRandomPickedMenu(categoryMenus: List<String>): String {
         return Randoms.shuffle(categoryMenus)[0]
     }
 
-    fun getPickedCategoryMenus(key : String) = menuDB[key]
+    fun getPickedCategoryMenus(key: String) = menuDB[key]
 }
