@@ -15,7 +15,6 @@ class MenuRecommend {
         while (true) {
             val menus = Menus.getCategoryMenus(category)
             val menu = Randoms.shuffle(menus)[0]
-            println(menu)
             if (coach.getCantEatMenus().contains(menu)) continue
             if (!recommendMenus.contains(menu)) return menu
         }
