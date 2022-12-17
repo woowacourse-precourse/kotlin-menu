@@ -35,6 +35,8 @@ fun main() {
     println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
     printRecommendCategory(recommendedCategory)
     printRecommendMenu(recommendedMenu, coaches)
+
+    println("\n추천을 완료했습니다.")
 }
 
 fun printRecommendCategory(categories: List<String>){
