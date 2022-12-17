@@ -2,7 +2,7 @@ package menu
 
 fun main() {
     try {
-        RecommendMenu().run()
+        RecommendService().run()
     } catch (e: Exception) {
         when (e) {
             is IllegalArgumentException -> throw IllegalStateException(e.message)
