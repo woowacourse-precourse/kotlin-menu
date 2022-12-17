@@ -17,7 +17,7 @@ class ValidatorTest {
         }
     }
 
-    @ValueSource(strings = ["우동,스시,팟타이"])
+    @ValueSource(strings = ["우동,스시,팟타이","우동,우동"])
     @ParameterizedTest
     fun `메뉴 입력 테스트`(input: String) {
         assertThrows<IllegalArgumentException> {
