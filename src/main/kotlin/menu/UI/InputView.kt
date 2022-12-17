@@ -10,8 +10,7 @@ class InputView {
         try {
             println("코치의 이름을 입력해 주세요. (, 로 구분)")
             coachNames = Console.readLine().split(",")
-            Exception().coachNumberException(coachNames)
-            Exception().coachNameException(coachNames)
+            Exception().coachException(coachNames)
         }catch (e : IllegalArgumentException){
             println(e.message)
             return coachName()
@@ -20,8 +19,15 @@ class InputView {
     }
 
     fun hateFood(coach: Coach) : List<String>{
-        println("${coach.getName()}(이)가 못 먹는 메뉴를 입력해 주세요.")
-        var hateFoods = Console.readLine().split(",")
+        var hateFoods = listOf<String>()
+        try {
+            println("${coach.getName()}(이)가 못 먹는 메뉴를 입력해 주세요.")
+            hateFoods = Console.readLine().split(",")
+            Exception().hateFoodException(hateFoods)
+        }catch (e: IllegalArgumentException){
+            println(e.message)
+            return hateFood(coach)
+        }
         return hateFoods
     }
 }
