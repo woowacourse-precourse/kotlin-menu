@@ -1,7 +1,14 @@
 package menu.controller
 
-class MenuController {
-    fun startRecommend() {
+import menu.view.InputView
+import menu.view.OutputView
 
+class MenuController {
+    private val inputView = InputView()
+    private val outputView = OutputView()
+    fun startRecommend() {
+        print("점심 메뉴 추천을 시작합니다.\n")
+        println("코치의 이름을 입력해 주세요. (, 로 구분")
+        inputView.inputCoachList()
     }
 }
