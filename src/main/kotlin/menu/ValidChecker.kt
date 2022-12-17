@@ -15,7 +15,7 @@ class ValidChecker {
 
 
     fun checkCoachNames(names: String): List<String> {
-        val coachNames = names.split(SPLIT_UNIT)
+        val coachNames = names.replace(" ","").split(SPLIT_UNIT) //공백 포함 입력 시 공백 제거
         if (coachNames.size < MINIMUM_COACHS || coachNames.size > MAXIMUM_COACHS) {
             throw IllegalArgumentException(ERROR_COACH_COUNT_MSG)
         }
@@ -28,7 +28,7 @@ class ValidChecker {
     }
 
     fun checkHateFood(foodName: String): List<String> {
-        val hateFood = foodName.split(SPLIT_UNIT)
+        val hateFood = foodName.replace(", ",",").replace(" ,",",").split(SPLIT_UNIT) //공백 포함 입력 시 공백 제거
         if (hateFood.size > MINIMUM_HATE_FOOD) {
             throw IllegalArgumentException(ERROR_HATE_FOOD_COUNT_MSG)
         }
