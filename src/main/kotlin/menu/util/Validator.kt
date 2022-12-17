@@ -12,6 +12,13 @@ class Validator {
         }
     }
 
+    fun checkFoodsInput(input : String) {
+        checkFoodsSizeValid(input)
+        input.split(",").forEach {
+            checkNameValid(input)
+        }
+    }
+
     fun checkNameValid(input : String) {
         require(input.matches("^[가-힣]*$".toRegex())) { Constants.NAME_VALUE_ERROR }
     }
