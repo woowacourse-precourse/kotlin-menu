@@ -17,4 +17,27 @@ class CoachTest {
             Coach(name)
         }
     }
+
+    @Test
+    @DisplayName("못 먹는 음식을 3개 이상 넣으면 에러가 발생한다.")
+    fun inedibleCountTest() {
+        assertThrows<IllegalArgumentException> {
+            Coach("팔코").apply {
+                addInedible(Food.of("감차찌개"))
+                addInedible(Food.of("짜장면"))
+                addInedible(Food.of("된장찌개"))
+            }
+        }
+    }
+
+    @Test
+    @DisplayName("못 먹는 음식을 중복으로 넣으면 에러가 발생한다.")
+    fun inedibleDuplicatedTest() {
+        assertThrows<IllegalArgumentException> {
+            Coach("팔코").apply {
+                addInedible(Food.of("감차찌개"))
+                addInedible(Food.of("감차찌개"))
+            }
+        }
+    }
 }
