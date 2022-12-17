@@ -11,7 +11,7 @@ class MenuController(
     lateinit var coaches: List<String>
     private var notEatMenus = mutableListOf<List<String>>()
     // 한주에 먹을 카테고리 리스트
-    private val catetories = mutableListOf<Int>()
+    private val categories = mutableListOf<Int>()
     // 코치들의 한주의 먹을 음식 리스트
     private lateinit var weeklyCoachesMenus: Array<MutableList<String>>
 
@@ -28,12 +28,12 @@ class MenuController(
 
     // 먹을 카테고리 선택
     private fun choseCategory(): Int {
-        val category = randomCategory(catetories)
-        catetories.add(category)
+        val category = randomCategory(categories)
+        categories.add(category)
         return category
     }
 
-    fun recommandWeeklyMenuList() {
+    fun recommendWeeklyMenuList() {
         weeklyCoachesMenus = Array(coaches.size) { mutableListOf() }
         // 한 주동안 먹을 음식 추천
         repeat(MAX_DAY) {
