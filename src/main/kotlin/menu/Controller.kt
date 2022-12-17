@@ -29,7 +29,8 @@ class Controller(
     }
 
     private fun startRecommendation(lunchMenuRecommender: LunchMenuRecommender) {
-        TODO()
+        val recommendation = lunchMenuRecommender.chooseOneWeekMenu()
+        outputView.printMenuRecommendation(recommendation, coaches)
     }
 
     private fun getCoachNames() {

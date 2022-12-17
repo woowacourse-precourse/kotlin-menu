@@ -12,7 +12,7 @@
   - 각 코치가 못 먹는 메뉴 입력 받기
     - 잘못된 입력인 경우 다시 입력 받기
   - 추천기 생성
-- [ ] startRecommendation
+- [x] startRecommendation
   - 메뉴 추천 실행
   - 추천 결과 출력
 
