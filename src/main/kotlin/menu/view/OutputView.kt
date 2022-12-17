@@ -30,8 +30,8 @@ class OutputView {
         const val RESULT_RECOMMEND = "\n메뉴 추천 결과입니다."
         const val END_RECOMMEND = "\n추천을 완료했습니다."
 
-        const val MENU_START = "["
-        const val MENU_END = "]"
+        const val MENU_START = "[ "
+        const val MENU_END = " ]"
         const val MENU_SEPARATOR = " | "
 
         const val TITLE_DAYS = "구분"
