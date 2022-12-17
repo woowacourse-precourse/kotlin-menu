@@ -1,8 +1,7 @@
 package menu.domain.model
 
-import menu.util.LEFT_BRACKET
-import menu.util.RIGHT_BRACKET
-import menu.util.SEPERATOR
+import menu.util.*
+import menu.util.ERROR.WRONG_NUMBER_WEEKDAY
 import java.lang.StringBuilder
 
 class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> by weeklyCategory {
@@ -14,11 +13,11 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
     override fun toString(): String {
         val stringbuilder = StringBuilder()
         stringbuilder.append(LEFT_BRACKET)
-        stringbuilder.append("카테고리")
+        stringbuilder.append(CATEGORY)
         stringbuilder.append(SEPERATOR)
         for (i in weeklyCategory.indices) {
             stringbuilder.append(weeklyCategory[i].getCategory().getCategoryName())
-            if (i == weeklyCategory.size - 1) continue
+            if (i == weeklyCategory.size - ONE) continue
             stringbuilder.append(SEPERATOR)
         }
         stringbuilder.append(RIGHT_BRACKET)
@@ -26,8 +25,8 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
     }
 
     private fun validateWeeklyCategory() {
-        require(weeklyCategory.size == 5) {
-            "월, 화, 수, 목, 금으로 이루어진 카테고리를 입력해 주세요."
+        require(weeklyCategory.size == NUMBER_OF_WEEKDAY) {
+            WRONG_NUMBER_WEEKDAY
         }
     }
 
@@ -35,14 +34,18 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
      * 한주의 같은 카테고리는 2개이하로 설정 가능하다
      */
     fun hasDuplicatedCategory(): Boolean {
-        if (weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > 2 ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.KOREAN } > 2 ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > 2 ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.WESTERN } > 2 ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.CHINESE } > 2) {
+        if (weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > WRONG_NUMBER_WEEKDAY ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.KOREAN } > WRONG_NUMBER_WEEKDAY ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > WRONG_NUMBER_WEEKDAY ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.WESTERN } > WRONG_NUMBER_WEEKDAY ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.CHINESE } > WRONG_NUMBER_WEEKDAY) {
             return true
         }
         return false
     }
 
+    companion object {
+        const val NUMBER_OF_WEEKDAY = 5
+        const val MAX_CATEGORY_COUNT = 2
+    }
 }

@@ -3,17 +3,20 @@ package menu.view
 import menu.domain.model.Coach
 import menu.domain.model.Coaches
 import menu.domain.model.WeeklyCategory
+import menu.util.Message.OUTPUT_END_RECOMMAND
+import menu.util.Message.OUTPUT_RECOMMAND_RESULT
+import menu.util.Message.OUTPUT_WEEK_INFO
 
 class OutputView {
 
     fun menuRecommandResults(weeklyCategory: WeeklyCategory, coaches: Coaches) {
-        println("메뉴 추천 결과입니다.")
-        println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
+        println(OUTPUT_RECOMMAND_RESULT)
+        println(OUTPUT_WEEK_INFO)
         println(weeklyCategory.toString())
         coaches.forEach { coach ->
             println(coach)
         }
-        println("\n추천을 완료했습니다.")
+        println(OUTPUT_END_RECOMMAND)
     }
 
 }

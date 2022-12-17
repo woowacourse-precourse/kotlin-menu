@@ -1,6 +1,10 @@
 package menu.domain.model
 
+import menu.util.ERROR.COACH_MAX_INEDIBLE_LENGTH
+import menu.util.ERROR.COACH_NAME_LENGTH
+import menu.util.ERROR.DUPLICATED_FOOD
 import menu.util.LEFT_BRACKET
+import menu.util.ONE
 import menu.util.RIGHT_BRACKET
 import menu.util.SEPERATOR
 import java.lang.StringBuilder
@@ -13,8 +17,8 @@ class Coach(
     private val diet = mutableListOf<Food>()
 
     init {
-        require(name.length in 2..4) {
-            "코치의 이름은 2글자 이상 4글자 이하로 작성해 주세요."
+        require(name.length in MIN_COACH_NAME_LENGTH..MAX_COACH_NAME_LENGTH) {
+            COACH_NAME_LENGTH
         }
     }
 
@@ -25,7 +29,7 @@ class Coach(
         stringBuilder.append(SEPERATOR)
         for (i in diet.indices) {
             stringBuilder.append(diet[i].getName())
-            if (i == diet.size - 1) continue
+            if (i == diet.size - ONE) continue
             stringBuilder.append(SEPERATOR)
         }
         stringBuilder.append(RIGHT_BRACKET)
@@ -56,11 +60,15 @@ class Coach(
 
     private fun indedibleValidateCheck(food: Food) {
         require(!inedible.contains(food)) {
-            "해당 음식은 이미 입력됬습니다."
+            DUPLICATED_FOOD
         }
-        require(inedible.size <= 1) {
-            "금식은 최대 2개까지 입니다."
+        require(inedible.size <= ONE) {
+            COACH_MAX_INEDIBLE_LENGTH
         }
     }
 
+    companion object {
+        const val MIN_COACH_NAME_LENGTH = 2
+        const val MAX_COACH_NAME_LENGTH = 4
+    }
 }
