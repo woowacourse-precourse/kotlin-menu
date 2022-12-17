@@ -7,14 +7,14 @@ class NotEatMenuException(menus: String) {
     private var menu = splitMenus(menus)
 
     init {
-        removeSpace()
+        removeEmptyValue()
         notEatMenuIsMoreThanThree()
         notAvailableMenu()
     }
 
     private fun splitMenus(menus: String): List<String> = menus.split(',')
 
-    private fun removeSpace() {
+    private fun removeEmptyValue() {
         val tmpMenu = menu.toMutableList()
         tmpMenu.removeIf { it.isEmpty() }
         menu = tmpMenu
