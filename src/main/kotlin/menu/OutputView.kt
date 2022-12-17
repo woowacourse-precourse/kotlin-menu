@@ -3,7 +3,7 @@ package menu
 class OutputView {
 
     /**
-     * 카테고리와 메뉴들의 결과를 출력하는 함수
+     * 선정된 카테고리와 선정된 메뉴들의 결과를 출력하는 함수
      */
     fun printResults(messageCategory: String, results: List<String>) {
         print("[ $messageCategory ")

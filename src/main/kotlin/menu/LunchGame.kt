@@ -31,7 +31,7 @@ class LunchGame(
             categories[categoryNum]!!
         })
         coaches.forEach { eachCoach ->
-            view.outputView.printResults(eachCoach.name, eachCoach.thisWeekMenus)
+            view.outputView.printResults(eachCoach.name, eachCoach.thisWeekMenus.toList())
         }
         view.outputView.printMessage(FINISHED)
     }
