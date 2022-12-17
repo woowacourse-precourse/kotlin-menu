@@ -7,5 +7,6 @@ class ExceptionMessage {
         const val isNotAvailableName = "[ERROR] 입력된 코치 이름 중 최소 2글자, 최대 4글자를 지키지 못하는 값이 있습니다."
 
         const val notEatMenuIsMoreThanThree = "[ERROR] 입력된 못 먹는 메뉴의 갯수가 3개 이상입니다."
+        const val notAvailableMenu = "[ERROR] 입력된 메뉴는 존재하지 않습니다."
     }
 }
