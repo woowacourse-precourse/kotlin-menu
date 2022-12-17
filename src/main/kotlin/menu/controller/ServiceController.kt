@@ -8,18 +8,18 @@ class ServiceController(
     private val outputView: OutputView
 ) {
 
-    fun run() {
-        getValidatedInput()
-    }
+//    fun run() {
+//        getValidatedInput()
+//    }
 
-    private fun getValidatedInput(): Int {
-        while (true) {
-            try {
-                return inputView.read()
-            } catch (e: IllegalArgumentException) {
-                outputView.printErrorMessage(e)
-            }
-        }
-    }
+//    private fun getValidatedInput(): Int {
+//        while (true) {
+//            try {
+//                return inputView.read()
+//            } catch (e: IllegalArgumentException) {
+//                outputView.printErrorMessage(e)
+//            }
+//        }
+//    }
 
 }

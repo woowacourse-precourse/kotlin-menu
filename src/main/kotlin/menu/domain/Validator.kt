@@ -24,6 +24,8 @@ class Validator {
         require(menus.size in MIN_COACH_CANT_EAT_MENU_NUMBER..MAX_COACH_CANT_EAT_MENU_NUMBER) {
             ERROR_MESSAGE + RECOMMEND_CANT_EAT_MENUS_CONDITION_MESSAGE
         }
+
+        // todo 아무것도 없을 때 공백인지 확인
     }
 
 }

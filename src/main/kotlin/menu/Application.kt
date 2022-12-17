@@ -11,6 +11,7 @@ fun main() {
     val inputView = InputView(validator)
     val mainController = ServiceController(inputView, outputView)
 
-    mainController.run()
+    // mainController.run()
 
+    inputView.readCoachCantEatMenus()
 }
