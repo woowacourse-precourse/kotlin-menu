@@ -11,6 +11,12 @@ class RecommendController {
     private var coaches: List<String> = listOf()
     private var coachHateMenu: Map<String, List<String>> = mutableMapOf()
 
+    fun run() {
+        ui.start()
+        setInputs()
+        recommend()
+        ui.printResult(recommendCategory, recommendMenu)
+    }
 
     fun setInputs() {
         coaches = ui.getCoachName()
