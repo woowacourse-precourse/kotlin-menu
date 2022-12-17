@@ -1,5 +1,15 @@
 package menu
 
+import menu.controller.InputValidator
+import menu.controller.RecommendSimulator
+import menu.view.OutputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    try {
+        val recommendSimulator = RecommendSimulator(InputValidator(), OutputView())
+
+        recommendSimulator.run()
+    } catch (e: IllegalArgumentException) {
+        throw e
+    }
 }
