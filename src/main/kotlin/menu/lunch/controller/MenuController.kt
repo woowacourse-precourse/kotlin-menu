@@ -27,6 +27,9 @@ class MenuController {
     }
 
     private fun chooseMenu() {
-        val category = category.getRandomCategory()
+        while (recommend.categoryRecord.size < 5) {
+            val category = category.getRandomCategory()
+            recommend.addCategoryRecord(category)
+        }
     }
 }
