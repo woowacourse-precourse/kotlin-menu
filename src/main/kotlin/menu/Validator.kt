@@ -39,6 +39,8 @@ class Validator {
 
     private fun checkFoodIsExistInMenu(food: String) {
         var check = false
+        if (food == "")
+            check = true
         for (menu in Food.values())
             if (menu.menu.contains(food))
                 check = true

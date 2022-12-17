@@ -12,7 +12,7 @@ class MenuController {
     fun start() {
         val names = startMenuRecommend()
         val cannotEatFood = askCannotEatFood(names)
-        val determinedCategory = randomCategory()
+        val determinedCategory = CategoryController().randomCategory()
         val result = mutableListOf<List<String>>()
 
         for (cantEat in cannotEatFood)
@@ -35,34 +35,12 @@ class MenuController {
         return cannotEatFood
     }
 
-    fun randomCategory(): List<String> {
-        val determinedCategory = mutableListOf<String>()
-        val categories = listOf("일식", "한식", "중식", "아시안", "양식")
-        while (determinedCategory.size < 5) {
-            val category: String = categories[Randoms.pickNumberInRange(0, 4)]
-            if (isContainedOver2(determinedCategory, category))
-                continue
-            determinedCategory.add(category)
-        }
-        return determinedCategory
-    }
 
-    private fun isContainedOver2(determinedCategory: MutableList<String>, category: String): Boolean {
-        var count = 0
-        for (determinedOne in determinedCategory) {
-            if (determinedOne == category)
-                count++
-        }
-        if (count > 2)
-            return true
-        return false
-    }
-
-    private fun determineMenu(determinedCategory: List<String>, cantEat: List<String>): List<String> {
+    private fun determineMenu(determinedCategory: List<Food>, cantEat: List<String>): List<String> {
         val determinedMenu = mutableListOf<String>()
         var category = 0
         while (determinedMenu.size < 5) {
-            val menus = Food.valueOf(determinedCategory[category]).menu
+            val menus = determinedCategory[category].menu
             val menu: String = Randoms.shuffle(menus)[0]
             if(checkDuplicateMenu(determinedMenu, menu) || checkCantEatFood(menu, cantEat))
                 continue
@@ -72,13 +50,13 @@ class MenuController {
         return determinedMenu
     }
 
-    fun checkDuplicateMenu(determinedMenu: MutableList<String>, menu: String): Boolean {
+    private fun checkDuplicateMenu(determinedMenu: MutableList<String>, menu: String): Boolean {
         if (determinedMenu.contains(menu))
             return true
         return false
     }
 
-    fun checkCantEatFood(menu: String, cantEat: List<String>): Boolean {
+    private fun checkCantEatFood(menu: String, cantEat: List<String>): Boolean {
         if (cantEat.contains(menu))
             return true
         return false

@@ -15,7 +15,7 @@ class OutputView {
         println("[ERROR] $msg")
     }
 
-    fun printResult(names: List<String>, determinedCategory: List<String>, result: List<List<String>>) {
+    fun printResult(names: List<String>, determinedCategory: List<Food>, result: List<List<String>>) {
         println(PRINT_RESULT)
         printDay()
         printCategory(determinedCategory)
@@ -33,10 +33,10 @@ class OutputView {
         println(PRINT_RESULT_END)
     }
 
-    private fun printCategory(categories: List<String>) {
+    private fun printCategory(categories: List<Food>) {
         print("${PRINT_RESULT_START}카테고리")
         for (category in categories)
-            print(PRINT_RESULT_MID+category)
+            print(PRINT_RESULT_MID+category.name)
         println(PRINT_RESULT_END)
     }
 
