@@ -8,17 +8,25 @@ class InputView {
     private val viewValidate = ViewValidate()
 
     fun readCoachesName(): List<String> {
-        outputView.printInputCoachNames()
-        val coachNames = Console.readLine()
-        viewValidate.coachNamesForm(coachNames)
-        return coachNames.split(",")
+        return try{
+            outputView.printInputCoachNames()
+            val coachNames = Console.readLine()
+            viewValidate.coachNamesForm(coachNames)
+            coachNames.split(",")
+        }catch (e:IllegalArgumentException){
+            readCoachesName()
+        }
     }
 
     fun readExcludedFoods(name: String): List<String> {
-        outputView.printInputExcludedFood(name)
-        val excludedFoods = Console.readLine()
-        viewValidate.excludedFoodsForm(excludedFoods)
-        return excludedFoods.split(",")
+        return try {
+            outputView.printInputExcludedFood(name)
+            val excludedFoods = Console.readLine()
+            viewValidate.excludedFoodsForm(excludedFoods)
+            excludedFoods.split(",")
+        } catch (e:IllegalArgumentException){
+            readExcludedFoods(name)
+        }
     }
 
 }
