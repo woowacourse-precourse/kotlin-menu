@@ -59,7 +59,10 @@ class MenuRecommendation(
     }
 
     fun canEatMenu(coach: String, menu: String): Boolean {
-
+        if (menusCantEat[coach]!!.contains(menu)) {
+            return false
+        }
+        return true
     }
 
     fun isAlreadyHad(coach: String, menu: String): Boolean {
