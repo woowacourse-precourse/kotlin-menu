@@ -50,7 +50,7 @@ private fun progressRecommend(coachWithMenuBans: List<List<String>>) {
     outputView.printWeekOfTheDayPhrase()
     println(categorys.map { it.korean }.joinToString(separator = " | ", prefix = "[ 카테고리 | ", postfix = " ]"))
     for (coachWithMenuBan in coachWithMenuBans) {
-        print("[ ${coachWithMenuBan[0]} |")
+        print("[ ${coachWithMenuBan[0]} | ")
         println(menuPicker.generateMenus(coachWithMenuBan,categorys).joinToString(separator = " | ", postfix = " ]"))
     }
 }
