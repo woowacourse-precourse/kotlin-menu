@@ -12,16 +12,31 @@ class OutputView {
     }
 
     fun printNoticeNoEating(coachName: String) {
-        println("$coachName$ENTER_NO_EATING")
+        println("\n$coachName$ENTER_NO_EATING")
     }
 
     fun printNoticeResult() {
         println(RECOMMEND_MENU)
     }
 
-    fun printFinishNotice(){
+    fun printFinishNotice() {
         println(PROGRAM_END)
     }
+
+    fun printCategoryContainer(categoryContainer: MutableList<String>) {
+        val categoryResult = mutableListOf("카테고리")
+        categoryResult.addAll(categoryContainer)
+
+        println(categoryResult.joinToString(prefix = LEFT, separator = BAR, postfix = RIGHT))
+    }
+
+    fun printFoodContainer(foodContainer: MutableList<String>, coachName: String) {
+        val foodResult = mutableListOf(coachName)
+        foodResult.addAll(foodContainer)
+
+        println(foodResult.joinToString(prefix = LEFT, separator = BAR, postfix = RIGHT))
+    }
+
     fun printErrorMessage(errorContent: String) {
         println(ERROR_HEADER + errorContent)
     }
