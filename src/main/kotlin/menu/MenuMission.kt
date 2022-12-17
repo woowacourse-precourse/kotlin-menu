@@ -18,20 +18,20 @@ class MenuMission(private val inputView: InputView, private val outputView: Outp
         val categories = recommendCategory()
 
 
-
     }
 
     fun recommendCategory(): List<Int> {
         val categories = mutableListOf<Int>()
         while (categories.size != 5) {
             val category: Int = (Randoms.pickNumberInRange(1, 5))
+            
+            if (categories.count { it == category } == 2)
+                continue
+
             categories.add(category)
         }
         return categories
     }
-
-
-
 
 
     // 입력 체크...
