@@ -14,18 +14,20 @@ class LunchMenuRecommender(
     }
 
     private fun chooseOneDayMenu() {
+        val categoryIndex = chooseCategory()
+        chooseMenu(totalMenus[categoryIndex])
+    }
+
+    private fun chooseCategory(): Int {
         val randomNumber = Randoms.pickNumberInRange(1, 5)
-        if (categoryChosen.count { it.equals(randomNumber) } == 2) {
-            chooseOneDayMenu()
+        if (categoryChosen.count { it == randomNumber } == 2) {
+            chooseCategory()
         }
-        chooseCategory(totalMenus[randomNumber])
+        categoryChosen.add(randomNumber)
+        return randomNumber
     }
 
-    private fun chooseCategory(categoryMenus: List<String>) {
-
-    }
-
-    private fun chooseMenu() {
+    private fun chooseMenu(categoryMenus: List<String>) {
 
     }
 }
