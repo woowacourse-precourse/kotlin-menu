@@ -10,8 +10,4 @@ class OutputView {
         println(e.message)
     }
 
-    companion object {
-
-    }
-
 }
