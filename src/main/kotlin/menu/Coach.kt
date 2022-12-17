@@ -4,11 +4,11 @@ class Coach(
     val name: String,
 ) {
 
-    private var hatingMenus = arrayListOf<Menu>()
+    private var hatingMenus = arrayListOf<String>()
 
-    fun setHatingMenus(inputHatingMenus: List<Menu>) {
+    fun setHatingMenus(inputHatingMenus: List<String>) {
         inputHatingMenus.forEach { eachHatingMenu ->
-            if (eachHatingMenu != Menu("")) {
+            if (eachHatingMenu != "") {
                 hatingMenus.add(eachHatingMenu)
             }
         }
