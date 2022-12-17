@@ -9,4 +9,9 @@ class InputView {
         val input = Console.readLine()
         return validator.checkCoachNames(input)
     }
+
+    fun readCantEatMenus(): List<String> {
+        val input = Console.readLine()
+        return validator.checkCantEatMenu(input)
+    }
 }
