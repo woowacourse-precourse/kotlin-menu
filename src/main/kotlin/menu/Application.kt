@@ -1,7 +1,6 @@
 package menu
 
-import menu.controller.RecommendController
-
 fun main() {
-    RecommendController()
+    val recommendMenu = RecommendMenu()
+    recommendMenu.run()
 }
