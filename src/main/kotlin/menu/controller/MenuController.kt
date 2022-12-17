@@ -6,5 +6,7 @@ class MenuController {
 
     fun run(){
         input().printStart()
+        val coachName = input().InputName()
+
     }
 }
