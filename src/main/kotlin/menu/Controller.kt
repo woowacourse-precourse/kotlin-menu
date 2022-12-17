@@ -17,7 +17,15 @@ class Controller(
     }
 
     private fun initialize(): LunchMenuRecommender {
-        TODO()
+        val coachNamesInput = inputView.readCoachNames()
+        coaches = inputValidator.validateCoachNames(coachNamesInput)
+        val coachDislikeMenus = mutableMapOf<String, List<String>>()
+        coaches.forEach {
+            val dislikeMenusInput = inputView.readDislikeMenus(it)
+            val dislikeMenu = inputValidator.validateDislikeMenus(dislikeMenusInput, menu)
+            coachDislikeMenus[it] = dislikeMenu
+        }
+        return LunchMenuRecommender(coachDislikeMenus, menu.menus(), coaches)
     }
 
     private fun startRecommendation(lunchMenuRecommender: LunchMenuRecommender) {
