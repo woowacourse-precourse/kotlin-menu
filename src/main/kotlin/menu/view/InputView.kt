@@ -20,11 +20,15 @@ class InputView {
         else if (splitInput.size > 5)
             throw IllegalArgumentException(Message.ERR_COACH_LESS_THAN_FIVE)
         for (i in splitInput) {
-            if (i.length < 2)
-                throw IllegalArgumentException(Message.ERR_COACH_NAME_MORE_THAN_TWO)
-            else if (i.length > 4)
-                throw IllegalArgumentException(Message.ERR_COACH_NAME_LESS_THAN_FOUR)
+            validateCoachCharSize(i)
         }
+    }
+
+    private fun validateCoachCharSize(input: String) {
+        if (input.length < 2)
+            throw IllegalArgumentException(Message.ERR_COACH_NAME_MORE_THAN_TWO)
+        else if (input.length > 4)
+            throw IllegalArgumentException(Message.ERR_COACH_NAME_LESS_THAN_FOUR)
     }
 
     fun getDeclineMenu(): List<String> {

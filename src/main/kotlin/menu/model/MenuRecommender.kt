@@ -10,8 +10,7 @@ class MenuRecommender {
 
         while (categories.size < 5) {
             val category = Category.values()[Randoms.pickNumberInRange(1, 5) - 1]
-            if (validateCategory(categories, category))
-                continue
+            if (validateCategory(categories, category)) continue
             categories.add(category)
         }
 
@@ -29,8 +28,7 @@ class MenuRecommender {
             val menusByCategory = menuList.getMenus()[categories[dayOfWeek]]
             val menuNamesByCategory = menusByCategory!!.map { it.toString() }
             val menu = Menu(Randoms.shuffle(menuNamesByCategory)[0])
-            if (validateMenu(coach, menu, menus))
-                continue
+            if (validateMenu(coach, menu, menus)) continue
             return menu
         }
     }
