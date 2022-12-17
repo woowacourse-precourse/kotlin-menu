@@ -23,10 +23,12 @@ class MenuView {
             try {
                 initSettings()
                 break;
-            } catch (_: InvalidCoachCount) {
+            } catch (e: InvalidCoachCount) {
                 coaches.clear()
-            } catch (_: InvalidNameLengthException) {
+                println(e.message)
+            } catch (e: InvalidNameLengthException) {
                 coaches.clear()
+                println(e.message)
             }
         }
         processRecommend()
@@ -35,12 +37,12 @@ class MenuView {
 
     private fun initSettings() {
         println("코치의 이름을 입력해 주세요. (, 로 구분)")
-        // 이 부분 예외 사항 체크
         val tokenizer = StringTokenizer(Console.readLine(), ",")
         val coachNames = tokenizer.toList()
-
+        validateCoachCount(coachNames.size)
         println()
         for (name in coachNames) {
+            validateCoachNameLength(name.toString())
             coaches.add(Coach(name.toString()))
 
             println("${name}(이)가 못 먹는 메뉴를 입력해 주세요.")
@@ -57,7 +59,6 @@ class MenuView {
             recommender.recommendCategory()
         }
         for (i in 0 until coaches.size) {
-            println("${coaches[i].name}에게 추천하겠습니다.")
             for (j in 0 until calender.weeks.size) {
                 recommender.recommendMenu(coaches[i], recommender.categoryRecord[j])
             }
