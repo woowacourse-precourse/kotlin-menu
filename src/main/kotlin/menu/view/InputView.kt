@@ -4,17 +4,18 @@ import camp.nextstep.edu.missionutils.Console
 import menu.domain.Validator
 
 class InputView(
-    private val validator: Validator,
-    private val outputView: OutputView
+    private val validator: Validator
 ) {
 
-    fun read(): Int {
-        outputView.printMessage("")
+    fun readRecommendCoaches(): List<String> {
         val input = Console.readLine()
 
-        validator.validate(input)
-
-        return input.toInt()
+        return input.split(",").toList()
     }
 
+    fun readCoachCantEatMenus(): List<String> {
+        val input = Console.readLine()
+
+        return input.split(",").toList()
+    }
 }
