@@ -8,5 +8,17 @@ class OutputView {
 
     fun printInputName() {
 
-    }   
+    }
+
+    fun printInputFood() {
+
+    }
+
+    fun printResult() {
+
+    }
+
+    fun printEnd() {
+        
+    }
 }
