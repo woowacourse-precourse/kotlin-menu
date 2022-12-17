@@ -15,7 +15,7 @@ Progress & MileStones
   
 - OutputView
   - ~~Print process start~~
-  - Print result
+  - ~~Print result~~
 
 ## Service
 - ValidateService
