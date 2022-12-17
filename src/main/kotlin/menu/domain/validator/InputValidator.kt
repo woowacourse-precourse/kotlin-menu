@@ -34,7 +34,7 @@ class InputValidator {
         return true
     }
 
-    fun getCoachMenuBan(userInput: String, coachName: String): List<String> {
+    fun getCoachWithMenuBan(userInput: String, coachName: String): List<String> {
         val coachWithMenuBan = mutableListOf(coachName)
         val processedUserInput = userInput.split(",")
         if (processedUserInput[0].isBlank()) return coachWithMenuBan

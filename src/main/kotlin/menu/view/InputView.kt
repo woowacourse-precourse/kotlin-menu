@@ -14,12 +14,12 @@ class InputView(private val inputValidator: InputValidator) {
         }
     }
 
-    fun readMenuBan(coachName: String): List<String> {
+    fun readCoachWithMenuBan(coachName: String): List<String> {
         return try {
-            inputValidator.getCoachMenuBan(userInput = readLine(), coachName = coachName)
+            inputValidator.getCoachWithMenuBan(userInput = readLine(), coachName = coachName)
         } catch (error: IllegalArgumentException) {
             println(error.message)
-            readMenuBan(coachName = coachName)
+            readCoachWithMenuBan(coachName = coachName)
         }
     }
 }
