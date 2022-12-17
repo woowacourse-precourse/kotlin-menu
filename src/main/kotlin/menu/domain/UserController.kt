@@ -26,11 +26,25 @@ class UserController {
         val categoryList = randomCategoryGenerator.createRandomCategory()
         outputView.printNoticeResult()
         outputView.printCategoryContainer(categoryList)
+        showMenu(categoryList)
+        outputView.printFinishNotice()
+    }
+
+    private fun showMenu(categoryList: MutableList<String>) {
         for (coachName in coachNameContainer.indices) {
             val menuList = MenuCreator(categoryList).createRandomMenu()
-            outputView.printFoodContainer(menuList, coachNameContainer[coachName])
+            if (checkMenu(menuList, coachName)) {
+                outputView.printFoodContainer(menuList, coachNameContainer[coachName])
+            } else showMenu(categoryList)
         }
-        outputView.printFinishNotice()
+    }
+
+    private fun checkMenu(menuList: MutableList<String>, coachName: Int): Boolean {
+        for (food in 0 until noEatingContainer[coachName].size - 1) {
+            if (menuList.contains(noEatingContainer[coachName][food]))
+                return false
+        }
+        return true
     }
 
 }
