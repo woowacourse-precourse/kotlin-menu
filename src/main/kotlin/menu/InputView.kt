@@ -22,7 +22,7 @@ class InputView {
 
     fun coachHateMenuInput(coaches: List<Coach>, allMenus: List<List<String>>) {  // 코치 먹지 못하는 메뉴 입력받기.
         coaches.forEach {
-            val hateMenus = personHateMenus(it,allMenus)
+            val hateMenus = personHateMenus(it, allMenus)
             it.hateEatMenus = hateMenus.toMutableList()
         }
     }
@@ -31,7 +31,7 @@ class InputView {
         while (true) {
             println(HATE_MENU_INPUT_PLEASE.format(coach.name))
             val input = input()
-            kotlin.runCatching { InputValidator.hateMenu(input,allMenus) }
+            kotlin.runCatching { InputValidator.hateMenu(input, allMenus) }
                 .onSuccess { return input.split(",") }
                 .onFailure { println(it.message) }
         }
