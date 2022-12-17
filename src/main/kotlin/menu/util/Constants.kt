@@ -10,6 +10,8 @@ class Constants {
         const val COACHES_MAX_SIZE = 5
         const val FOODS_MIN_SIZE = 0
         const val FOODS_MAX_SIZE = 2
+        const val LIMIT_DAYS = 5
+        const val LIMIT_CATEGORY_DISTINCT = 2
 
 
         const val ERROR_MESSAGE = "[ERROR] "
