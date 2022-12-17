@@ -10,4 +10,6 @@ class Coach(private val coachName: String, private val hateMenus: List<String>) 
     }
 
     fun containHateMenus(menu: String): Boolean = hateMenus.contains(menu)
+
+    fun getCoachName() = coachName
 }

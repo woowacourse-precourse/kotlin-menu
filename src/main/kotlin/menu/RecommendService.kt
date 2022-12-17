@@ -12,7 +12,9 @@ class RecommendService {
         OutputView().printStartMessage()
         val coaches = InputView().getCoaches()
         val categories = generateCategories()
+        OutputView().printRecommendMenuResult(categories)
         recommendMenus(coaches, categories)
+        OutputView().printRecommendMenuEndMessage()
     }
 
     private fun recommendMenus(coaches: List<Coach>, categories: List<String>) {
@@ -29,6 +31,7 @@ class RecommendService {
                 }
                 menus.add(menu)
             }
+            OutputView().printCoachesMenus(coach.getCoachName(), menus)
         }
     }
 
