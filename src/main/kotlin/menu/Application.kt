@@ -31,5 +31,6 @@ fun main() {
     for(i in coach){
         var coachMenu = category.coachMenu(i, weekCategory)
         i.menu = coachMenu
+        println(i.menu)
     }
 }
