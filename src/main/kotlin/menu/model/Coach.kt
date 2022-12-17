@@ -37,4 +37,8 @@ class Coach(
         recommendations.add(recommendation)
     }
 
+    fun getName() = name
+
+    fun getRecommendations() = recommendations
+
 }

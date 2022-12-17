@@ -12,8 +12,8 @@ class OutputView {
         println(REQUIRE_COACH_CANT_EAT_MENUS_MESSAGE_FORMAT.format(coachName))
     }
 
-    fun printMenus(menus: List<String>) {
-        println(menus.joinToString(" | ", "[ ", " ]"))
+    fun printList(list: List<String>) {
+        println(list.joinToString(" | ", "[ ", " ]"))
     }
 
     fun printErrorMessage(e: IllegalArgumentException) {

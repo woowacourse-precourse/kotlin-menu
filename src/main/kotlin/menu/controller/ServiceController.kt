@@ -2,6 +2,7 @@ package menu.controller
 
 import menu.domain.Generator
 import menu.model.Coach
+import menu.model.Recommendation
 import menu.values.NOTICE_RECOMMEND_SUCCESS_MESSAGE
 import menu.values.NOTICE_SERVICE_END_MESSAGE
 import menu.values.NOTICE_SERVICE_START_MESSAGE
@@ -19,26 +20,57 @@ class ServiceController(
         noticeStart()
         
         val coaches: List<Coach> = getCoaches()
-        setCoachRecommendations(coaches)
+        val recommendations: List<Recommendation> = createRecommendations(coaches)
 
-        printRecommendations(coaches)
+        printResultRecommendation(recommendations)
         noticeEnd()
     }
 
-    private fun printRecommendations(coaches: List<Coach>) {
-        outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
+    private fun createRecommendations(coaches: List<Coach>): List<Recommendation> {
+        val days = listOf("월요일", "화요일", "수요일", "목요일", "금요일")
 
-
+        return generator.makeRecommendations(days, coaches)
     }
 
-    private fun setCoachRecommendations(coaches: List<Coach>) {
-        repeat(coaches.size) { coachIndex ->
-            // todo 상수화
-            repeat(5) { dayWeeksIndex ->
-                val recommendation = generator.makeRecommendation(coaches[coachIndex])
-                coaches[coachIndex].addRecommendation(recommendation)
+//    private fun setCoachRecommendations(coaches: List<Coach>) {
+//        repeat(coaches.size) { coachIndex ->
+//            //todo 상수화
+//            repeat(5) { dayWeeksIndex ->
+//                val recommendation = generator.makeRecommendation(coaches[coachIndex])
+//                coaches[coachIndex].addRecommendation(recommendation)
+//            }
+//        }
+//    }
+
+    private fun printResultRecommendation(recommendations: List<Recommendation>) {
+        outputView.printMessage(NOTICE_SERVICE_END_MESSAGE)
+        outputView.printList(listOf("구분", "월요일", "화요일", "수요일", "목요일", "금요일"))
+        val categories = mutableListOf<String>()
+        repeat(recommendations.size) { categories.add(recommendations[it].category) }
+        outputView.printList(listOf("카테고리") + categories)
+
+        val coachesMenus = MutableList<MutableList<String>> (recommendations.size) { mutableListOf() }
+
+        repeat(recommendations.size) { index1 ->
+            repeat(recommendations[index1].coachesMenus.size) { index2 ->
+                coachesMenus[index2].add(recommendations[index2].coachesMenus[index2].first)
+            }
+            repeat(recommendations[index1].coachesMenus.size) { index2 ->
+                coachesMenus[index2].add(recommendations[index1].coachesMenus[index2].second)
             }
         }
+
+        repeat(recommendations[0].coachesMenus.size) {
+            outputView.printList(coachesMenus[it].distinct())
+        }
+//        repeat(recommendations.size) { index1 ->
+//            val recommendation = recommendations[index1]
+//            val menus = mutableListOf<String>(recommendation.coachesMenus[index1].first)
+//            repeat(recommendation.coachesMenus.size) { index2 ->
+//                menus.add(recommendation.coachesMenus[index2].second)
+//            }
+//            outputView.printList(menus)
+//        }
     }
 
 
