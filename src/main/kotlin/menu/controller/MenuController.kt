@@ -10,6 +10,7 @@ class MenuController {
     private val menuRecommender = MenuRecommender()
     fun startRecommend() {
         inputCoachName()
+        inputHateFood()
     }
 
     private fun inputCoachName() {
@@ -21,4 +22,12 @@ class MenuController {
     private fun setCoachName() {
         menuRecommender.setCoachNameList(inputView.inputCoachList())
     }
+
+    private fun inputHateFood() {
+        for(people in menuRecommender.coachNameList){
+            println("${people}(이)가 못 먹는 메뉴를 입력해 주세요.")
+            menuRecommender.setHateFoodList(inputView.inputHateFoodList())
+        }
+    }
+
 }
