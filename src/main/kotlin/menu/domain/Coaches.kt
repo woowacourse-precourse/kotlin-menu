@@ -4,6 +4,7 @@ class Coaches(val coaches: List<Coach>) {
 
     init {
         require(coaches.size in MIN_COACH..MAX_COACH)
+        require(coaches.distinct() == coaches)
     }
 
     companion object {
