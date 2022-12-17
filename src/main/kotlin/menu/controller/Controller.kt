@@ -1,5 +1,7 @@
 package menu.controller
 
+import menu.common.Category
+import menu.domain.CategoryCreator
 import menu.domain.Coach
 import menu.view.InputView
 import menu.view.OutputView
@@ -43,6 +45,20 @@ class Controller(
         } catch (e: IllegalArgumentException) {
             outputView.showErrorMessage(e.message ?: "")
             inputInedibleMenu(coach)
+        }
+    }
+
+    fun suggestMenus() {
+        val categories = CategoryCreator().createCategories()
+        categories.forEach {
+            suggestMenu(it)
+        }
+        outputView.showResult(categories, coaches)
+    }
+
+    private fun suggestMenu(category: Category) {
+        coaches.forEach {
+            it.suggestMenu(category)
         }
     }
 }
