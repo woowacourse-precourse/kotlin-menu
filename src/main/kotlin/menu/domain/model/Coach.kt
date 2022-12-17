@@ -17,6 +17,9 @@ class Coach(
         require(!inedible.contains(food)) {
             "해당 음식은 이미 입력됬습니다."
         }
+        require(inedible.size <= 1) {
+            "금식은 최대 2개까지 입니다."
+        }
         inedible.add(food)
     }
 
