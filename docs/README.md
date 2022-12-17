@@ -2,7 +2,7 @@ Progress & MileStones
 ---
 ## Model
 - CategoryRepository
-  - Make recommended category
+  - ~~Make recommended category~~
   - Test
 - MenuRepository
   - Make recommended menu (according to category and coach info)
