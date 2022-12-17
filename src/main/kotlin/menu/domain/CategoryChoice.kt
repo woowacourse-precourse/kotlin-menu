@@ -8,17 +8,17 @@ class CategoryChoice {
     private val categories = mutableListOf<Category>(
         Category.JAPANESE_FOOD,
         Category.JAPANESE_FOOD,
-        Category.ASIAN_FOOD,
+        Category.KOREAN_FOOD,
         Category.CHINESE_FOOD,
+        Category.ASIAN_FOOD,
         Category.WESTERN_FOOD,
-        Category.KOREAN_FOOD
     )
 
-    fun randomCategory(): MutableList<String> {
-        val recommendationCategory = mutableListOf<String>()
+    fun randomCategory(): MutableList<Category> {
+        val recommendationCategory = mutableListOf<Category>()
         while (recommendationCategory.size != 6) {
             val category = categories.get(Randoms.pickNumberInRange(1, 5))
-            recommendationCategory.add(category.name)
+            recommendationCategory.add(category)
         }
         return recommendationCategory
     }
