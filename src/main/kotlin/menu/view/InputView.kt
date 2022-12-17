@@ -15,6 +15,15 @@ class InputView {
         }
     }
 
+    fun readCannotEat(): List<String> {
+        while (true) {
+            val input = Console.readLine()
+            val food = input.split(",")
+            if (catchException { Validator().validateCoachName(food) })
+                return food
+        }
+    }
+
     private fun catchException(validate: () -> Unit): Boolean {
         try {
             validate()
