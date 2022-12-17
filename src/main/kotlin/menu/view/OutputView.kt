@@ -31,5 +31,6 @@ class OutputView {
         println(Message.PrintMessage.DAYS.msg)
         println(categoryString)
         println(coachesString)
+        println(Message.PrintMessage.PRINT_END.msg)
     }
 }
