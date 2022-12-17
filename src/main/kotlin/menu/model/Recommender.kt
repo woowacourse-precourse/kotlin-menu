@@ -15,6 +15,7 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
     private val western = Menu.WESTERN
     private val menu = listOf<Menu>(japan, korean, china, asian, western)
     private val categoryCounter = mutableListOf<Int>(0, 0, 0, 0, 0)
+    private val eatingCategory = mutableListOf<String>()
     private val eatingMenu = mutableListOf<MutableList<String>>()
 
     init {
@@ -32,6 +33,7 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
 
     fun getCategory(categoryNumber: Int): Menu {
         categoryCounter[categoryNumber]++
+        eatingCategory.add(menu[categoryNumber].category)
         return menu[categoryNumber]
     }
 
@@ -62,6 +64,14 @@ class Recommender(private val coach: List<String>, private val banFood: MutableL
             return Flag.FAIL
         }
         return Flag.PASS
+    }
+
+    fun getCoach(index: Int): String {
+        return coach[index]
+    }
+
+    fun getEatingCategory(index: Int): String {
+        return eatingCategory[index]
     }
 
 }
