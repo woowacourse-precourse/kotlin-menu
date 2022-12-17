@@ -1,11 +1,18 @@
 package menu.view
 
-class InputView {
+import camp.nextstep.edu.missionutils.Console
 
-    fun readCoach(){
+class InputView {
+    private val validator = InputValidator()
+    fun readCoach(): List<String> {
+        val input = Console.readLine()
+        validator.validateCoach(input)
+        return input.split(',')
     }
 
-    fun readHateMenu(){
-
+    fun readHateMenu():List<String>{
+       val input = Console.readLine()
+        validator.validateHateMenu(input)
+        return input.split(',')
     }
 }
