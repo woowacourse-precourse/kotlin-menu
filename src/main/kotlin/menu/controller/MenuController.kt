@@ -7,12 +7,13 @@ import menu.view.OutputView
 class MenuController(
     inputView: InputView,
     outputView: OutputView,
-    menuService: MenuService
+    private val menuService: MenuService
 ) : Controller(inputView, outputView) {
     override fun run() {
         printStartMessage()
         val coachesNames = inputCoaches()
-        val inEdibleFoods = inputInedibleFoods(coachesNames)
+        val inEdibleFoodsAboutCoaches = inputInedibleFoods(coachesNames)
+        recommendMenu(inEdibleFoodsAboutCoaches)
     }
 
     private fun printStartMessage() {
@@ -32,5 +33,11 @@ class MenuController(
     private fun inputInedibleFoodsPerCoach(coachName: String): List<String> {
         outputView.printInedibleFoodInputMessage(coachName)
         return repeat(inputView::inputInedibleFoods)
+    }
+
+    private fun recommendMenu(inEdibleFoodsAboutCoaches: Map<String, List<String>>) {
+        inEdibleFoodsAboutCoaches.forEach { (coach, inEdibleFoods) ->
+            println(menuService.recommendMenu(inEdibleFoods))
+        }
     }
 }
