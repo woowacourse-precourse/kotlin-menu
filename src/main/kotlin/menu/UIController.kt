@@ -1,8 +1,5 @@
 package menu
 
-import camp.nextstep.edu.missionutils.Console
-import java.lang.Error
-
 class UIController {
     private val inputView = InputView()
     private val outputView = OutputView()

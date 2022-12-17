@@ -1,7 +1,5 @@
 package menu
 
-import java.lang.IllegalArgumentException
-
 const val ERROR = "[ERROR]"
 
 class ValidateService {
