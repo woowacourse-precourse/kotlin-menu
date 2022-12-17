@@ -10,7 +10,7 @@ class Menu {
         while (true){
             if (categoryNumberCollect.size==5) break
             val categoryNumber: Int = Randoms.pickNumberInRange(1, 5)
-            if (categoryCollect.count { it == categoryNumber.toString() }>2) continue
+            if (categoryNumberCollect.count { it == categoryNumber.toString() }>2) continue
             categoryNumberCollect.add(categoryNumber.toString())
             if (categoryNumber==1) categoryCollect.add("일식")
             if (categoryNumber==2) categoryCollect.add("한식")
@@ -21,5 +21,8 @@ class Menu {
         return categoryCollect
     }
 
+    fun menuRecommend(){ // 카테고리 내 못먹는 음식과 비교하여 랜덤으로 아무거나 추천
+
+    }
 
 }
