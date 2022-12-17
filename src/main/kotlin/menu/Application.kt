@@ -35,11 +35,6 @@ fun main() {
         if (i == "양식") coaches = category.coachWestMenu(coaches)
     }
 
-    /*for(i in coach){
-        var coachMenu = category.coachMenu(i, weekCategory)
-        i.menu = coachMenu
-    }*/
-
     //메뉴 추천표 출력
     OutputView().menuResult(coaches, weekCategory)
 
