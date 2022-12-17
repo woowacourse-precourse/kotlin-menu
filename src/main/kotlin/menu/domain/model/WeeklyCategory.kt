@@ -34,11 +34,11 @@ class WeeklyCategory(private val weeklyCategory: List<Weekday>) : List<Weekday> 
      * 한주의 같은 카테고리는 2개이하로 설정 가능하다
      */
     fun hasDuplicatedCategory(): Boolean {
-        if (weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > WRONG_NUMBER_WEEKDAY ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.KOREAN } > WRONG_NUMBER_WEEKDAY ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > WRONG_NUMBER_WEEKDAY ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.WESTERN } > WRONG_NUMBER_WEEKDAY ||
-            weeklyCategory.count { it.getCategory() == FoodCategory.CHINESE } > WRONG_NUMBER_WEEKDAY) {
+        if (weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > MAX_CATEGORY_COUNT ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.KOREAN } > MAX_CATEGORY_COUNT ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.JAPANENSE } > MAX_CATEGORY_COUNT ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.WESTERN } > MAX_CATEGORY_COUNT ||
+            weeklyCategory.count { it.getCategory() == FoodCategory.CHINESE } > MAX_CATEGORY_COUNT) {
             return true
         }
         return false
