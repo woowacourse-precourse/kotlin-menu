@@ -4,9 +4,10 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.common.Category
 
 private const val NAME_ERROR = "코치의 이름은 2~4글자여야합니다."
+private const val MENU_ERROR = "없는 메뉴 입니다."
 
 class Coach(val name: String) {
-    val inedibleMenus = mutableSetOf<String>()
+    private val inedibleMenus = mutableSetOf<String>()
     val menus = mutableSetOf<String>()
 
     init {
@@ -21,17 +22,14 @@ class Coach(val name: String) {
 
     fun decideInedibleMenus(inputMenus: List<String>) {
         inputMenus.forEach {
-            if (Category.isMenuExist(it)) {
-                inedibleMenus.add(it)
+            if (!Category.isMenuExist(it)) {
+                throw IllegalArgumentException(MENU_ERROR)
             }
+            inedibleMenus.add(it)
         }
     }
 
-    fun suggestMenus(categories: List<Category>) {
-        categories.forEach { suggestMenu(it) }
-    }
-
-    private fun suggestMenu(category: Category) {
+    fun suggestMenu(category: Category) {
         var state = false
         while (!state) {
             val menu = Randoms.shuffle(category.menus)[0]
