@@ -13,13 +13,13 @@ class StartRecommend {
         val user = input.split(",")
 
         // 코치 숫자 예외처리
-        if(user.size < 2 || user.size > 5){
+        if (user.size < 2 || user.size > 5) {
             throw IllegalArgumentException("[ERROR]코치는 최소 2명 최대 5명이 같이 식사를 할 수 있습니다.")
         }
 
         // 코치 이름 예외처리
         for (i in user.indices) {
-            if(user[i].length < 2 || user[i].length > 4){
+            if (user[i].length < 2 || user[i].length > 4) {
                 throw IllegalArgumentException("[ERROR]이름 형식에 맞춰주세요(이름은 2글자에서 4글자).")
             }
         }
@@ -32,15 +32,22 @@ class StartRecommend {
         for (i in 0 until user.size) {
             println(user[i] + "(이)가 못 먹는 메뉴를 입력해 주세요.")
             var menu = Console.readLine()
-            if(menu == null) {
+            if (menu == null) {
+                avoid.add("." as MutableList<String>)
+                println()
                 continue
             }
-            if (menu.contains(",")){
+            if (menu.contains(",")) {
                 var cantEat = menu.split(",")
+                if (cantEat.size > 2) {
+                    throw IllegalArgumentException("[ERROR] 먹지 못하는 메뉴는 최대 2개 입니다.")
+                }
                 avoid.add(cantEat as MutableList<String>)
+                println()
                 continue
             }
             avoid.add(menu as MutableList<String>)
+            println()
         }
 
         println(avoid)
@@ -73,27 +80,54 @@ class StartRecommend {
         for (idx in 0 until user.size) {
             print("[ " + user[idx])
             var i = 0
-            while (i < diet.size){
+            while (i < diet.size) {
                 if (diet[i] == "일식") {
-                    val menu: String = Randoms.shuffle(japan)[0]
-                    print(" | ")
-                    print(menu)
+
+                    while (true) {
+                        val menu: String = Randoms.shuffle(japan)[0]
+                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                            print(" | ")
+                            print(menu)
+                            break
+                        }
+                    }
+
                 } else if (diet[i] == "한식") {
-                    val menu: String = Randoms.shuffle(korea)[0]
-                    print(" | ")
-                    print(menu)
+                    while (true) {
+                        val menu: String = Randoms.shuffle(korea)[0]
+                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                            print(" | ")
+                            print(menu)
+                            break
+                        }
+                    }
                 } else if (diet[i] == "중식") {
-                    val menu: String = Randoms.shuffle(china)[0]
-                    print(" | ")
-                    print(menu)
+                    while (true) {
+                        val menu: String = Randoms.shuffle(china)[0]
+                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                            print(" | ")
+                            print(menu)
+                            break
+                        }
+                    }
                 } else if (diet[i] == "아시안") {
-                    val menu: String = Randoms.shuffle(asian)[0]
-                    print(" | ")
-                    print(menu)
+                    while (true) {
+                        val menu: String = Randoms.shuffle(asian)[0]
+                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                            print(" | ")
+                            print(menu)
+                            break
+                        }
+                    }
                 } else if (diet[i] == "양식") {
-                    val menu: String = Randoms.shuffle(western)[0]
-                    print(" | ")
-                    print(menu)
+                    while (true) {
+                        val menu: String = Randoms.shuffle(western)[0]
+                        if (!avoid[idx].contains(menu) || avoid[idx].isNullOrEmpty()) {
+                            print(" | ")
+                            print(menu)
+                            break
+                        }
+                    }
                 }
                 i++
             }
