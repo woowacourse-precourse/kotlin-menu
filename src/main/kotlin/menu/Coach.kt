@@ -17,7 +17,7 @@ class Coach(
     }
 
     fun selectMyMenu(menu: String): Boolean {
-        if (isMyHatingMenu(menu)) {
+        if (isMyHatingMenu(menu) || thisWeekMenus.contains(menu)) {
             return false
         }
         thisWeekMenus.add(menu)
