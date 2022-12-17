@@ -7,8 +7,7 @@ class Service {
     fun startService(cantEatMenu: Map<String, List<String>>, category: List<String>, index: Int): MutableList<String> {
         val coachName = cantEatMenu.keys.toList()
         val menus = cantEatMenu.values.toList()
-        var result: MutableList<String>
-        result = menuRecommandService(coachName[index], menus[index], category, index)
+        var result: MutableList<String> = menuRecommandService(coachName[index], menus[index], category, index)
         return result
     }
     fun menuRecommandService(coachName: String, menus: List<String>, category: List<String>, index: Int): MutableList<String> {
@@ -31,18 +30,22 @@ class Service {
     fun createRandomCategory(): MutableList<String> {
         val categories: List<String> = listOf("","일식", "한식", "중식", "아시안", "양식")
         var result = mutableListOf<String>("카테고리")
-        var count = 1
+        var count = 1; var exceptionCount = 0
         var category: String
+        var saveRandomNumber = mutableListOf<Int>()
         while(count < 6) {
             var randomNum = Randoms.pickNumberInRange(1, 5)
             if(randomNum == 0) {
                 continue
             } else if(randomNum != 0) {
+                saveRandomNumber.add(exceptionCount, randomNum)
+                exceptionCount++
                 category = categories.get(randomNum)
                 result.add(count, category)
                 count++
             }
         }
+        categoryException(saveRandomNumber)
         return result
     }
     fun recommandMenu(category: String): String {
@@ -56,5 +59,28 @@ class Service {
         }
         return Randoms.shuffle(menus)[0]
     }
+    fun categoryException(saveRandomNumber: List<Int>) {
+        var oneCount = 0
+        var twoCount = 0
+        var threeCount = 0
+        var fourCount = 0
+        var fiveCount = 0
+        saveRandomNumber.forEach() {
+            when(it) {
+                1 -> oneCount++
+                2 -> twoCount++
+                3 -> threeCount++
+                4 -> fourCount++
+                5 -> fiveCount++
+            }
+        }
+        when {
+            oneCount > 2 -> return throw IllegalArgumentException("[ERROR] 같은 카테고리가 3개 이상입니다.")
+            twoCount > 2 -> return throw IllegalArgumentException("[ERROR] 같은 카테고리가 3개 이상입니다.")
+            threeCount > 2 -> return throw IllegalArgumentException("[ERROR] 같은 카테고리가 3개 이상입니다.")
+            fourCount > 2 -> return throw IllegalArgumentException("[ERROR] 같은 카테고리가 3개 이상입니다.")
+            fiveCount > 2 -> return throw IllegalArgumentException("[ERROR] 같은 카테고리가 3개 이상입니다.")
 
+        }
+    }
 }
