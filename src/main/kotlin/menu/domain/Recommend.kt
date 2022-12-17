@@ -4,7 +4,7 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.constants.MAXIMUM_DUPLICATE_CATEGORY_COUNT
 
 class Recommend {
-    fun recommendCategoryMenu(category: String, coach: Coach): String {
+    fun recommendMenu(coach: Coach, category: String): String {
         while (true) {
             val menus = Menu.getCategoryMenus(category)
             val menu = Randoms.shuffle(menus)[0]

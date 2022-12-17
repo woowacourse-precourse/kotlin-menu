@@ -27,14 +27,14 @@ class Controller {
         while (categories.size < 5) {
             val category = recommend.recommendCategory(categories)
             categories.add(category)
-            coaches.forEach {
-                recommendCoachMenu(category, it)
+            coaches.forEach { coach ->
+                recommendMenu(category, coach)
             }
         }
     }
 
-    private fun recommendCoachMenu(category: String, coach: Coach) {
-        val menu = recommend.recommendCategoryMenu(category, coach)
+    private fun recommendMenu(category: String, coach: Coach) {
+        val menu = recommend.recommendMenu(coach, category)
         coach.addRecommendedMenus(menu)
     }
 
@@ -43,17 +43,17 @@ class Controller {
         outputView.printInputCoachNamesMent()
         @Suppress("UNCHECKED_CAST")
         val names = RepeatInputProcess.repeat { inputView.readCoachNames() } as List<String>
-        names.forEach {
-            coaches.add(Coach(it))
+        names.forEach { name ->
+            coaches.add(Coach(name))
         }
         return coaches
     }
 
     private fun readCantEatMenu(coaches: List<Coach>) {
-        coaches.forEach {
-            outputView.printInputCantEatMenuMent(it.name)
+        coaches.forEach { coach ->
+            outputView.printInputCantEatMenuMent(coach.name)
             @Suppress("UNCHECKED_CAST")
-            it.setCantEatMenus(RepeatInputProcess.repeat { inputView.readCantEatMenus() } as List<String>)
+            coach.setCantEatMenus(RepeatInputProcess.repeat { inputView.readCantEatMenus() } as List<String>)
         }
     }
 }
