@@ -1,15 +1,18 @@
 package menu.view
 
 import camp.nextstep.edu.missionutils.Console
+import menu.domain.error.ErrorCheck
 import menu.domain.resource.SEPARATOR
 
 class InputView {
 
-    fun readCoachName() {
+    fun readCoachName(): List<String> {
         println(INPUT_COACH_NAME)
 
         val names = Console.readLine().trim()
+        ErrorCheck.checkValidCoachName(names)
 
+        return names.split(SEPARATOR)
     }
 
     companion object {
