@@ -11,4 +11,8 @@ sealed class Weekday(private val category: FoodCategory) {
         return category
     }
 
+    fun getRandomFood(): Food {
+        return category.recommand()
+    }
+
 }
