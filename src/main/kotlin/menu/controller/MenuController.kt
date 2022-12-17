@@ -1,7 +1,10 @@
 package menu.controller
 
 import menu.WEEK_NUMBER
-import menu.domain.*
+import menu.domain.Coach
+import menu.domain.Coaches
+import menu.domain.Menu
+import menu.domain.MenuRecommender
 import menu.view.InputView
 import menu.view.OutputView
 
@@ -23,7 +26,7 @@ class MenuController {
     }
 
     private fun makeCoaches(): Coaches {
-        val names = inputView.readCoaches()
+        val names = inputView.readCoachNames()
         val coaches = names.map { Coach(it) }
         return Coaches(coaches)
     }

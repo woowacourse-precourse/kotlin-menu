@@ -18,5 +18,5 @@ private fun setAvailableMenus() {
         val menus = categoryAndMenus[1].split(",").map { Menu(it.trim(), category) }
         availableMenus.addAll(menus)
     }
-    Menu.availableMenus = availableMenus
+    Menu.existMenus = availableMenus
 }

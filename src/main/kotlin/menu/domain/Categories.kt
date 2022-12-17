@@ -3,17 +3,17 @@ package menu.domain
 import menu.WEEK_NUMBER
 
 class Categories {
-    private val _categories: MutableList<Category> = mutableListOf()
-    val categories get() = _categories as List<Category>
+    private val _selectedCategories: MutableList<Category> = mutableListOf()
+    val selectedCategories get() = _selectedCategories as List<Category>
 
-    fun add(): Category {
-        check (_categories.size <= WEEK_NUMBER) { ERROR_MAX_LENGTH }
+    fun addRandomCategory(): Category {
+        check(_selectedCategories.size <= WEEK_NUMBER) { ERROR_MAX_LENGTH }
         val category = selectCategory()
-        _categories.add(category)
+        _selectedCategories.add(category)
         return category
     }
 
-    private fun count(category: Category) = _categories.count { it == category }
+    private fun count(category: Category) = _selectedCategories.count { it == category }
 
     private fun selectCategory(): Category {
         var category = Category.makeRandomCategory()

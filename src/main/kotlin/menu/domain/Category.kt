@@ -22,12 +22,7 @@ enum class Category(private val number: Int, private val text: String) {
 
         fun makeRandomCategory(): Category {
             val number = Randoms.pickNumberInRange(JAPANESE_NUMBER, WESTERN_NUMBER)
-            return Category.from(number)
-        }
-
-        private fun from(number: Int): Category {
-            return Category.values()
-                .first { it.number == number }
+            return Category.values().first { it.number == number }
         }
     }
 }

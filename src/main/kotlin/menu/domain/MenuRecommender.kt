@@ -9,7 +9,7 @@ class MenuRecommender(private val coaches: Coaches) {
 
     fun recommendAll(time: Int): Result {
         repeat(time) {
-            val category = categories.add()
+            val category = categories.addRandomCategory()
             coaches.coaches.forEach {
                 recommend(it, category)
             }
@@ -25,7 +25,7 @@ class MenuRecommender(private val coaches: Coaches) {
     }
 
     private fun recommend(category: Category): Menu {
-        val menus = Menu.availableMenus.filter { it.category == category }.map { it.name }
+        val menus = Menu.existMenus.filter { it.category == category }.map { it.name }
         val menuName = Randoms.shuffle(menus)[0]
         return Menu(menuName, category)
     }
@@ -33,6 +33,6 @@ class MenuRecommender(private val coaches: Coaches) {
     private fun makeResult(categories: Categories, coaches: Coaches): Result {
         val result = coaches.coaches
             .associateWith { it.selectedMenus.toList() }
-        return Result(categories.categories, result)
+        return Result(categories.selectedCategories, result)
     }
 }
