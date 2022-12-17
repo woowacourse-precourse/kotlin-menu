@@ -1,6 +1,7 @@
-package menu.domain
+package menu.service
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.domain.Coach
 
 class Recommender {
     private val category = listOf("구분", "JAPAN", "KOREAN", "CHINA", "ASIAN", "WESTERN")
