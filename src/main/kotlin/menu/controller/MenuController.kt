@@ -20,6 +20,7 @@ class MenuController {
     fun run() {
         Output().printStart()
         val coachName = Input().printSize()
+        println()
 
         coachHateFood(coachName)
 
@@ -32,7 +33,7 @@ class MenuController {
         println(Output().printFoodCategory(a))
 
         for (i in 0 until coachName.size) {
-            println(Output().printFoodGroup(makeMenu(a), coachName[i]))
+            println(Output().printFoodGroup(makeMenu(a,hateFood[i]), coachName[i]))
         }
 
         Output().printEnd()
@@ -72,10 +73,12 @@ class MenuController {
         return japanFood
     }
 
-    fun makeMenu(category: ArrayList<String>): ArrayList<String> {
+    fun makeMenu(category: ArrayList<String>, hatefoodlist : List<String>): ArrayList<String> {
         var arr = ArrayList<String>()
         for (i in 0 until 5) {
-            arr.add(Food().choiceFood(changeCategoryName(category, i) as ArrayList<String>))
+                arr.add(Food().choiceFood(changeCategoryName(category, i) as ArrayList<String>))
+
+
         }
         return arr
     }
