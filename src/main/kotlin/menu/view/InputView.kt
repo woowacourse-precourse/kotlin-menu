@@ -5,7 +5,6 @@ import menu.data.Category
 import menu.data.Coach
 
 class InputView {
-
     private fun checkCoachNamesRequirements(names: List<String>): Boolean {
         try {
             if (names.size < 2 || names.size > 5) throw IllegalArgumentException("coach-numbers")
