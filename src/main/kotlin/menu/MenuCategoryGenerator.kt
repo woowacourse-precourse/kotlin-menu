@@ -4,6 +4,17 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class MenuCategoryGenerator {
 
+    fun getRandomMenuCategory(): List<String> {
+        val randoMenuCategory = mutableListOf<String>()
+        while (randoMenuCategory.size != 5) {
+            val category: String = MenuCategory.judgeMenuCategory(Randoms.pickNumberInRange(1, 5))
+            if (randoMenuCategory.count { it == category } != 2) {
+                randoMenuCategory.add(category)
+            }
+        }
+        return randoMenuCategory
+    }
+
     companion object {
         private val JAPANESE_FOOD = listOf("규동", "우동", "미소시루", "스시", "가츠동", "오니기리", "하이라이스", "라멘", "오코노미야끼")
         private val KOREAN_FOOD = listOf("김밥", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음")
