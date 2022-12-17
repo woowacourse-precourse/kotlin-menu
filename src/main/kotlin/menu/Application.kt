@@ -30,5 +30,6 @@ fun main() {
     //코치 메뉴 추천
     for(i in coach){
         var coachMenu = category.coachMenu(i, weekCategory)
+        i.menu = coachMenu
     }
 }

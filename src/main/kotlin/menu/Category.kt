@@ -26,16 +26,16 @@ class Category {
     }
 
     fun coachMenu(coach: Coach, weekCategory: MutableList<String>) : MutableList<String>{
+        var coachMenu = mutableListOf<String>()
         for (i in weekCategory){
             if (i == "일식"){
                 var menus = japan
                 val menu: String = Randoms.shuffle(menus)[0]
 
                 //중복 메뉴 불가
-                if (!coach.menu.contains(menu)){
-                    coach.menu.add(menu)
-                }
+                if (!coach.menu.contains(menu))coachMenu.add(menu)
             }
         }
+        return coachMenu
     }
 }
