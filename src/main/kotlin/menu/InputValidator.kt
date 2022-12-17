@@ -3,12 +3,20 @@ package menu
 class InputValidator {
 
     fun validateCoaches(coachesName: String){
+        coachesName.validateHasEmptyChar()
         coachesName.validateCoachesName()
         coachesName.validateNumberOfCoach()
     }
 
     fun validateHatingMenu(hatingMenus: String){
+        hatingMenus.validateHasEmptyChar()
         hatingMenus.validateNumberOfHatingMenu()
+    }
+
+    private fun String.validateHasEmptyChar(){
+        require(!this.contains(" ")){
+            "[ERROR] 공백의 문자는 허용하지 않습니다."
+        }
     }
 
     private fun String.validateNumberOfHatingMenu(){
