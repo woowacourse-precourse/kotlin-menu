@@ -1,5 +1,14 @@
 package menu.constants
 
+// 기준 숫자
+const val MINIMUM_NAME_SIZE = 2
+const val MAXIMUM_NAME_SIZE = 5
+
+const val MINIMUM_NAME_LENGTH = 2
+const val MAXIMUM_NAME_LENGTH = 4
+
+const val MAXIMUM_DUPLICATE_CATEGORY_COUNT = 2
+
 // 출력 문구
 const val START_MENT = "점심 메뉴 추천을 시작합니다."
 const val INPUT_COACH_NAMES_MENT = "코치의 이름을 입력해 주세요. (, 로 구분)"

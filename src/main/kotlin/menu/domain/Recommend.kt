@@ -1,6 +1,7 @@
 package menu.domain
 
 import camp.nextstep.edu.missionutils.Randoms
+import menu.constants.MAXIMUM_DUPLICATE_CATEGORY_COUNT
 
 class Recommend {
     fun recommendCategoryMenu(category: String, coach: Coach): String {
@@ -25,7 +26,7 @@ class Recommend {
         categories.forEach {
             if (it == category) count += 1
         }
-        if (count > 2) return false
+        if (count > MAXIMUM_DUPLICATE_CATEGORY_COUNT) return false
         return true
     }
 }

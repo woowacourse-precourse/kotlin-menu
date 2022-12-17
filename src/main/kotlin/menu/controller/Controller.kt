@@ -6,7 +6,6 @@ import menu.utils.RepeatInputProcess
 import menu.view.InputView
 import menu.view.OutputView
 
-@Suppress("UNCHECKED_CAST")
 class Controller {
     private val outputView = OutputView()
     private val inputView = InputView()
@@ -42,6 +41,7 @@ class Controller {
     private fun readCoaches(): List<Coach> {
         val coaches = mutableListOf<Coach>()
         outputView.printInputCoachNamesMent()
+        @Suppress("UNCHECKED_CAST")
         val names = RepeatInputProcess.repeat { inputView.readCoachNames() } as List<String>
         names.forEach {
             coaches.add(Coach(it))
@@ -52,6 +52,7 @@ class Controller {
     private fun readCantEatMenu(coaches: List<Coach>) {
         coaches.forEach {
             outputView.printInputCantEatMenuMent(it.name)
+            @Suppress("UNCHECKED_CAST")
             it.setCantEatMenus(RepeatInputProcess.repeat { inputView.readCantEatMenus() } as List<String>)
         }
     }
