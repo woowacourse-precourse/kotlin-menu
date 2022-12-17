@@ -11,7 +11,14 @@ object InputValidator {
         }
     }
 
+    fun hateMenu(input: String) {
+        val menus = input.split(",").map { it.trim() }
+        if(menus.isEmpty()) return
+        if(menus.size>2) throwError(Error.ERROR_HATE_MENU_MAX_TWO)
+    }
+
     private fun throwError(error: Error) {
         throw IllegalArgumentException(error.message)
     }
+
 }
