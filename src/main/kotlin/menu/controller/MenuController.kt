@@ -18,12 +18,10 @@ class MenuController {
         menus: List<String>, determinedMenu: MutableList<List<String>>, cantEat: List<String>
     ): String {
         while (true) {
-            var check = true
             val menu = Randoms.shuffle(menus)[0]
             if (checkDuplicateMenu(determinedMenu, menu) || checkCantEatFood(menu, cantEat))
-                check = false
-            if (check)
-                return menu
+                continue
+            return menu
         }
     }
 
