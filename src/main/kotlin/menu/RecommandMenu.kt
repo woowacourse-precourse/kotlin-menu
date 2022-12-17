@@ -1,9 +1,10 @@
 package menu
 
-class RecommandMenu{
-    private var categories= CategoryRepository()
-    private var menus:MutableList<MenuRepository> = mutableListOf()
-    init{
+class RecommandMenu {
+    private var categories = CategoryRepository()
+    private var menus: MutableList<MenuRepository> = mutableListOf()
+
+    init {
         setCategories()
         setJapanMenus()
         setAsianMenus()
@@ -11,22 +12,24 @@ class RecommandMenu{
         setWesternMenus()
         setKoreanMenus()
     }
-    fun getCategories():CategoryRepository{
+
+    fun getCategories(): CategoryRepository {
         return categories
     }
 
-    fun getMenus():MutableList<MenuRepository> {
+    fun getMenus(): MutableList<MenuRepository> {
         return menus
     }
 
-    fun setCategories(){
+    fun setCategories() {
         categories.addLine("일식")
         categories.addLine("한식")
         categories.addLine("중식")
         categories.addLine("아시안")
         categories.addLine("양식")
     }
-    fun setJapanMenus(){
+
+    fun setJapanMenus() {
         val japanFood = MenuRepository()
         japanFood.setCategory("일식")
         japanFood.addLine("규동")
@@ -41,7 +44,7 @@ class RecommandMenu{
         menus.add(japanFood)
     }
 
-    fun setKoreanMenus(){
+    fun setKoreanMenus() {
         val koreanFood = MenuRepository()
         koreanFood.setCategory("한식")
         koreanFood.addLine("김밥")
@@ -56,7 +59,7 @@ class RecommandMenu{
         menus.add(koreanFood)
     }
 
-    fun setChiMenus(){
+    fun setChiMenus() {
         val chiFood = MenuRepository()
         chiFood.setCategory("중식")
         chiFood.addLine("깐풍기")
@@ -71,7 +74,7 @@ class RecommandMenu{
         menus.add(chiFood)
     }
 
-    fun setAsianMenus(){
+    fun setAsianMenus() {
         val asianFood = MenuRepository()
         asianFood.setCategory("아시안")
         asianFood.addLine("팟타이")
@@ -86,7 +89,7 @@ class RecommandMenu{
         menus.add(asianFood)
     }
 
-    fun setWesternMenus(){
+    fun setWesternMenus() {
         val westernFood = MenuRepository()
         westernFood.setCategory("양식")
         westernFood.addLine("라자냐")
