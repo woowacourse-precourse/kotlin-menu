@@ -52,7 +52,7 @@ class OutputView {
     private fun showCoachSuggestion(coaches: Set<Coach>) {
         coaches.forEach {
             val result: MutableList<String> = it.menus.toMutableList()
-            println(transformType(result.apply { add(0, it.name) }))
+            println(transformType(result.apply { add(0, it.coachName) }))
         }
     }
 

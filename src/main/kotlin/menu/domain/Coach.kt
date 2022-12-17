@@ -9,11 +9,13 @@ private const val NAME_LENGTH_START = 2
 private const val NAME_LENGTH_END = 4
 private const val FIRST = 0
 
-class Coach(val name: String) {
+class Coach(private val name: String) {
     private val inedibleMenus = mutableSetOf<String>()
 
     private val _menus = mutableSetOf<String>()
     val menus: Set<String> get() = _menus
+
+    val coachName: String get() = name
 
     init {
         validateName(name)

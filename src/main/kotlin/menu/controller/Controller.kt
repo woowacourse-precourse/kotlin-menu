@@ -40,7 +40,7 @@ class Controller(
 
     private fun inputInedibleMenu(coach: Coach) {
         try {
-            outputView.requestInputInedibleFood(coach.name)
+            outputView.requestInputInedibleFood(coach.coachName)
             coach.decideInedibleMenus(inputView.readInedibleMenus())
         } catch (e: IllegalArgumentException) {
             outputView.showErrorMessage(e.message ?: "")
