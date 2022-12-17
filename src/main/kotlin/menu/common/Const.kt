@@ -5,6 +5,7 @@ const val MIN_NUMBER_OF_COACH = 2
 const val MAX_NUMBER_OF_COACH = 5
 const val MIN_COACH_NAME_SIZE = 2
 const val MAX_COACH_NAME_SIZE = 4
+const val MAX_CANT_EAT_MENU_SIZE = 2
 
 // 메세지
 const val WELCOME_MESSAGE = "점심 메뉴 추천을 시작합니다."

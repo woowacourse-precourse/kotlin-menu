@@ -1,5 +1,7 @@
 package menu.model
 
+import menu.common.MAX_CANT_EAT_MENU_SIZE
+
 class Coach(private val name: String) {
 
     private lateinit var cantEatMenus: List<Menu>
@@ -12,7 +14,7 @@ class Coach(private val name: String) {
     }
 
     fun recommendedTooManyCategory(category: Category): Boolean =
-        menuTable.values.count { it.getCategory() == category } >= 2
+        menuTable.values.count { it.getCategory() == category } >= MAX_CANT_EAT_MENU_SIZE
     fun cantEat(menu: Menu): Boolean = cantEatMenus.contains(menu)
 
     fun recommended(menu: Menu): Boolean = menuTable.values.contains(menu)

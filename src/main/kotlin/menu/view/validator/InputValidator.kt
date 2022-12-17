@@ -23,7 +23,7 @@ object InputValidator {
     fun validateMenus(menus: String) {
         val separatedMenus = menus.split(",").map { it.trim() }
 
-        require(separatedMenus.size in 0..2) {
+        require(separatedMenus.size <= MAX_CANT_EAT_MENU_SIZE) {
             ERROR_MESSAGE_FORMAT.format("각 코치의 못 먹는 메뉴의 개수는 0개 이상 2개 이하여야 합니다.")
         }
         require(separatedMenus.all { menu -> menu == "" || Category.values().any { it.containMenu(Menu(menu)) } }) {
