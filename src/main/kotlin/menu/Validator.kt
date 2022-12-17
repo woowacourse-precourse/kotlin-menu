@@ -6,13 +6,13 @@ object Validator {
         if (!isInputBlank(userInput)) {
             return false
         }
-        val coachs = userInput.split(',')
+        val coaches  = userInput.split(',')
 
-        if (!isValidMember(coachs)) {
+        if (!isValidMember(coaches)) {
             return false
         }
 
-        if (!isValidLetter(coachs)) {
+        if (!isValidLetter(coaches)) {
             return false
         }
 
@@ -26,6 +26,11 @@ object Validator {
 
 
     fun isValidLetter(coachs: List<String>): Boolean {
+        for (c in coachs) {
+            if (c.length !in 2.. 4) {
+                return false
+            }
+        }
         return true
     }
 
