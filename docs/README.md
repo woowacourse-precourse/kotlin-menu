@@ -39,6 +39,6 @@
       - [ ] val menu: String = Randoms.shuffle(menus)[0] (첫번째 값 사용)
       - [ ] 모든 메뉴(못먹는 메뉴 포함) 전달해, 못먹는 메뉴일 때 재발행
 
-- [ ] DayWeek 추천 (요일, 카테고리, 음식)
+- [ ] DayWeek 추천 (요일, 카테고리, 음식들)
   - [ ] 
 
