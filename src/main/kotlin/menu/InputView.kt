@@ -36,5 +36,9 @@ class InputView {
         val pattern = Regex("(.+,?)*")
         if (!pattern.matches(input))
             throw IllegalArgumentException(Message.ERR_DECLINE_MENU_COMMA)
+        val splitInput = input.split(",")
+        if (splitInput.size > 2)
+            throw IllegalArgumentException(Message.ERR_DECLINE_MENU_LESS_THAN_TWO)
+
     }
 }
