@@ -5,6 +5,8 @@ class Coach(
     private val cantEatMenus: List<String>
 ) {
 
+    private val recommendations: MutableList<DayWeekRecommendation> = mutableListOf()
+
     fun containsMenu(menu: String): Boolean {
         repeat(cantEatMenus.size) { index ->
             if(cantEatMenus[index] == menu) {
@@ -13,6 +15,10 @@ class Coach(
         }
 
         return false
+    }
+
+    fun addRecommendation(dayWeekRecommendation: DayWeekRecommendation) {
+        recommendations.add(dayWeekRecommendation)
     }
 
 }
