@@ -1,7 +1,5 @@
 package menu.view
 
-import menu.domain.Coach
-import menu.domain.CoachManager
 import menu.strings.Message
 
 class OutputView {
@@ -15,15 +13,6 @@ class OutputView {
 
     fun printGetUnavailableFood(coachName : String) {
         println(Message.PrintMessage.GET_UNAVAILABLE_FOOD.msg.format(coachName))
-    }
-
-    fun printCategory(category: List<String>) {
-        println(Message.PrintMessage.CATEGORY.msg.format(
-            category[0],
-            category[1],
-            category[2],
-            category[3],
-            category[4]))
     }
 
     fun printResult(categoryString:String, coachesString: String) {
