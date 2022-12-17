@@ -1,8 +1,11 @@
 package menu
 
 class OutputView {
-    fun print(string: String) {
-        println(string)
+    fun print(string: String, vararg args: Pair<String, String>) {
+        var msg = string
+        for (arg in args)
+            msg = msg.replace(arg.first, arg.second)
+        println(msg)
     }
 
     fun printRecommendationResult(categories: List<Category>, menusByCoaches: Map<Coach, List<Menu>>) {
