@@ -5,6 +5,9 @@ import menu.common.Category
 
 private const val NAME_ERROR = "코치의 이름은 2~4글자여야합니다."
 private const val MENU_ERROR = "없는 메뉴 입니다."
+private const val NAME_LENGTH_START = 2
+private const val NAME_LENGTH_END = 4
+private const val FIRST = 0
 
 class Coach(val name: String) {
     private val inedibleMenus = mutableSetOf<String>()
@@ -17,7 +20,7 @@ class Coach(val name: String) {
     }
 
     private fun validateName(name: String) {
-        if (name.length !in 2..4) {
+        if (name.length !in NAME_LENGTH_START..NAME_LENGTH_END) {
             throw IllegalArgumentException(NAME_ERROR)
         }
     }
@@ -34,7 +37,7 @@ class Coach(val name: String) {
     fun suggestMenu(category: Category) {
         var state = false
         while (!state) {
-            val menu = Randoms.shuffle(category.menus)[0]
+            val menu = Randoms.shuffle(category.menus)[FIRST]
             if (validateMenu(menu)) {
                 state = true
                 _menus.add(menu)
