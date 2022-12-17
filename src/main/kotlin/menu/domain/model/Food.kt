@@ -10,4 +10,6 @@ data class Food(
         }
     }
 
+    fun getName() = name
+
 }
