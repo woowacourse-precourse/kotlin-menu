@@ -10,7 +10,7 @@ class InputView(
         println(COACH_NAMES_INPUT_MESSAGE)
         val coachNames = input().trim().split(",")
         printEnter()
-        return inputValidator.validateMultipleInputRange(coachNames)
+        return inputValidator.validateCoachesNames(coachNames)
     }
 
     private fun input(): String = Console.readLine()
