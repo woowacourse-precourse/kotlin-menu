@@ -22,15 +22,33 @@ class DietMenuController(
     fun startRecommend() {
         inputView.startMenuRecommand()
         setCoaches()
-        setIndevidible()
+        setInedible()
+        lunchRecommand()
     }
 
-    private fun setIndevidible() {
+    private fun lunchRecommand() {
+        coaches.forEach { coach ->
+            addRandomFood(coach)
+        }
+        outputView.menuRecommandResults(weeklyCategory, coaches)
+    }
+
+    private fun addRandomFood(coach: Coach) {
+        weeklyCategory.forEach { weekday ->
+            var randomFood: Food
+            do {
+                randomFood = weekday.getRandomFood()
+            } while (coach.checkDiet(randomFood))
+            coach.addDiet(randomFood)
+        }
+    }
+
+    private fun setInedible() {
         coaches.forEach { coach ->
             val input = inputView.inedibleFood(coach)
-            if (input.isEmpty()) return@forEach
+            if (input.isEmpty()) return@forEach // 공백일 때 패스
             input.split(",").forEach { inedibleFood ->
-                coach.addInedible(Food(foodCategory = FoodCategory.categoryOfFoodName(inedibleFood), inedibleFood))
+                coach.addInedible(Food(FoodCategory.categoryOfFoodName(inedibleFood.trim()), inedibleFood.trim()))
             }
         }
     }
