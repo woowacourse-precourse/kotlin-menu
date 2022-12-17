@@ -1,0 +1,21 @@
+## 기능 목록
+-[ ] 점심 메뉴 추천 시작 - run()#MenuController
+-[ ] 점심 메뉴 추천을 시작합니다. - menuRecommendationStartPrint()#OutputView
+-[ ] 코치의 이름을 입력해주세요. - coachNamePrint()#OutputView
+-[ ] 코치의 이름을 입력 받는다. - getCoachName()#InputView
+-[ ] 각 코치가 못 먹는 메뉴를 입력해주세요. - coachUneatableMenuPrint()#OutputView
+-[ ] 각 코치가 못 먹는 메뉴를 입력 받는다. - getCoachUneatableMenu()#InputView
+-[ ] 메뉴 추천 결과입니다. - menuRecommendationResultPrint()#OutputView
+-[ ] 예외 처리 함수 #Exception
+  - [ ] 사용자가 잘못된 값을 입력할 경우 IllegalArgumentException를 발생시킨다.
+  - [ ] Exception이 아닌 IllegalArgumentException, IllegalStateException 등과 같은 명확한 유형을 처리한다.
+  - [ ] 사용자가 잘못된 값을 입력할 경우 "[ERROR]"로 시작하는 에러 메시지를 출력 후 그 부분부터 입력을 다시 받는다.
+  - [ ] 코치의 이름이 2글자보다 작거나 4글자보다 크다면 예외처리한다. - coachNameInputException()#Exception
+  - [ ] 코치가 2명보다 작거나 5명보다 크다면 예외처리한다. - coachPersonnelInputException()#Exception
+  - [ ] 코치가 못 먹는 메뉴가 2개보다 크다면 예외처리한다. - coachUneatableMenuInputException()#Exception
+- [ ] 코치들은 월, 화, 수, 목, 금요일에 점심 식사를 같이 한다.
+- [ ] 매일 추천할 카테고리를 무작위로 정한다. - randomCategory()#CategoryChoice
+  - [ ] 한주에 같은 카테코리가 2개보다 크다면 카테고리를 다시 입력 받는다. - categoryInputException()#CategoryChoice
+- [ ] 각 코치가 매일 먹을 메뉴를 추천한다. - menuRecommendation()#Recommendation
+  - [ ] 각 코치에게는 한 주에 중복되지 않는 메뉴를 추천해야 한다.
+- [ ] 상수 값 #Constant
