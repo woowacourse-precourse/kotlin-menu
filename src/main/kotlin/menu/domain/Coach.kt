@@ -29,4 +29,8 @@ class Coach(
     private fun isDislikeMenu(menu: String): Boolean {
         return dislike.contains(menu)
     }
+
+    private fun isAlreadyRecommended(menu: String): Boolean {
+        return menus.contains(menu)
+    }
 }
