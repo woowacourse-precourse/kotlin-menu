@@ -20,7 +20,7 @@ class MenuService {
     ): List<String> {
         do {
             val categories = menuRepository.getAllCategoryAsString()
-            val randomCategoryName = categories[Randoms.pickNumberInRange(1, 5)]
+            val randomCategoryName = categories[Randoms.pickNumberInRange(RANDOM_PICK_START, RANDOM_PICK_END)]
             if (validateCategory(randomCategoryName)) continue
             val recommendedMenus = arrayListOf<String>()
             coaches.forEach { coach ->
@@ -36,16 +36,13 @@ class MenuService {
     }
 
     private fun validateCategory(randomCategoryName: String): Boolean {
-        if (!isMenuCategoryLessThan(randomCategoryName, 2)) {
+        if (!isMenuCategoryLessThan(randomCategoryName, MAXIMUM_CATEGORIES_COUNT)) {
             return true
         }
         return false
     }
 
     private fun validateRecommendable(coach: String, randomMenu: String): Boolean {
-        if (!isMenuCategoryLessThan(randomMenu, 2)) {
-            return true
-        }
         if (menuRepository.isRecommendedAlready(randomMenu, coach)) {
             return true
         }
@@ -61,5 +58,8 @@ class MenuService {
 
     companion object {
         private const val WEEKDAY_SIZE = 5
+        private const val RANDOM_PICK_START = 1
+        private const val RANDOM_PICK_END = 5
+        private const val MAXIMUM_CATEGORIES_COUNT = 2
     }
 }

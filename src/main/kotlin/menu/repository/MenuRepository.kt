@@ -21,14 +21,14 @@ class MenuRepository {
     }
 
     fun plusCategoryCount(categoryName: String) {
-        val originCategoryCount = categoriesCount.getOrPut(categoryName) { 0 }
+        val originCategoryCount = categoriesCount.getOrPut(categoryName) { DEFAULT_CATEGORY_COUNT }
         categoriesCount[categoryName] = originCategoryCount
     }
 
     fun getCoachRecommendedMenus() = coachesRecommendedFoods
 
     fun getCategoriesCount(categoryName: String): Int {
-        return categoriesCount[categoryName] ?: 0
+        return categoriesCount[categoryName] ?: DEFAULT_CATEGORY_COUNT
     }
 
     fun putMenu(day: Int, coaches: List<String>, recommendedFoods: List<String>) {
@@ -37,5 +37,9 @@ class MenuRepository {
             foods[coaches[index]] = recommendedFoods[index]
         }
         coachesRecommendedFoods[day] = foods
+    }
+
+    companion object {
+        private const val DEFAULT_CATEGORY_COUNT = 0
     }
 }
