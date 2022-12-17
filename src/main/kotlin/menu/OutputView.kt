@@ -1,6 +1,10 @@
 package menu
 
 class OutputView {
+
+    fun printBlankLine(){
+        println()
+    }
     fun printServiceStart() {
         println(SERVICE_START)
     }

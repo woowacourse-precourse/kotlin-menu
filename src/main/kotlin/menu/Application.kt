@@ -7,7 +7,7 @@ fun main() {
     val coaches = inputView.inputCoaches()
     val coachesNotEatFoods = inputView.inputCoachNotEat(coaches)
     val recommendMenu = RecommendMenu(coachesNotEatFoods)
-    println()
+    outputView.printBlankLine()
     val result = recommendMenu.processRecommendMenu()
     outputView.printResult(recommendResult = result)
 }
