@@ -1,5 +1,7 @@
-package menu
+package menu.controller
 
+import menu.data.Coach
+import menu.domain.RandomMenu
 import menu.view.View
 
 class Menu {

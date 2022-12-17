@@ -1,4 +1,4 @@
-package menu
+package menu.data
 
 class Coach(private val name: String) {
     private var bias = listOf<String>()

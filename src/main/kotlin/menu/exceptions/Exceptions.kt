@@ -1,6 +1,6 @@
 package menu.exceptions
 
-import menu.MenuCategory
+import menu.data.MenuCategory
 
 class Exceptions {
     fun validateCoachNames(input: String) {

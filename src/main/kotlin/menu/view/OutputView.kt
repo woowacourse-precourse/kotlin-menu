@@ -1,7 +1,6 @@
 package menu.view
 
-import menu.Coach
-import menu.MenuCategory
+import menu.data.Coach
 
 class OutputView {
     fun printStartMessage() {

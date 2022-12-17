@@ -1,7 +1,9 @@
-package menu
+package menu.domain
 
 import  camp.nextstep.edu.missionutils.Randoms.pickNumberInRange
 import camp.nextstep.edu.missionutils.Randoms.shuffle
+import menu.data.Coach
+import menu.data.MenuCategory
 
 class RandomMenu {
     private var categories = mutableListOf(0, 0, 0, 0, 0)

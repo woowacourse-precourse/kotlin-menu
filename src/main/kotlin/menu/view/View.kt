@@ -1,6 +1,6 @@
 package menu.view
 
-import menu.Coach
+import menu.data.Coach
 
 class View {
     private val inputView = InputView()
