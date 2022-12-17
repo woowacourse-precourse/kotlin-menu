@@ -8,7 +8,6 @@ class LunchMenuRecommender(
     private val coaches: List<String>
 ) {
     private val recommendedMenu = mutableMapOf<String, MutableList<String>>()
-    private val categoryChosen = mutableListOf<Int>()
 
     init {
         coaches.forEach {
@@ -17,24 +16,16 @@ class LunchMenuRecommender(
     }
 
     fun chooseOneWeekMenu(): MutableMap<String, MutableList<String>> {
+        val categories = Categories()
         for (day in 0 until TOTAL_NUMBER_OF_DAYS) {
-            chooseOneDayMenu()
+            chooseOneDayMenu(categories)
         }
         return recommendedMenu
     }
 
-    private fun chooseOneDayMenu() {
-        val categoryIndex = chooseCategory()
+    private fun chooseOneDayMenu(categories: Categories) {
+        val categoryIndex = categories.chooseCategory()
         chooseMenuForEachCoach(totalMenus[categoryIndex - 1])
-    }
-
-    private fun chooseCategory(): Int {
-        val randomNumber = Randoms.pickNumberInRange(0, Category.values().size)
-        if (categoryChosen.count { it == randomNumber } == MAX_NUMBER_OF_DUPLICATE_CATEGORY) {
-            chooseCategory()
-        }
-        categoryChosen.add(randomNumber)
-        return randomNumber
     }
 
     private fun chooseMenuForEachCoach(categoryMenus: List<String>) {
@@ -79,6 +70,5 @@ class LunchMenuRecommender(
 
     companion object {
         private const val TOTAL_NUMBER_OF_DAYS = 5
-        private const val MAX_NUMBER_OF_DUPLICATE_CATEGORY = 2
     }
 }
