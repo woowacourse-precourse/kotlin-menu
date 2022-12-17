@@ -7,13 +7,16 @@ import menu.lunch.view.OutputView
 
 class MenuController {
     private val input by lazy { InputView() }
+    private val output by lazy { OutputView() }
     private val category by lazy { RandomCategory() }
     private val recommend = MenuRecommend()
 
     fun run() {
+        output.printStartMessage()
         addCoach()
         addDislikedFood()
         chooseMenu()
+        output.printMenuRecommendResult(recommend.categoryRecord, recommend.coaches)
     }
 
     private fun addCoach() {
