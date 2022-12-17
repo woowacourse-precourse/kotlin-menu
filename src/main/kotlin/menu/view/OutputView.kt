@@ -8,8 +8,7 @@ import menu.data.Message
 class OutputView {
     fun print(string: String, vararg args: Pair<String, String>) {
         var msg = string
-        for (arg in args)
-            msg = msg.replace(arg.first, arg.second)
+        for (arg in args) msg = msg.replace(arg.first, arg.second)
         println(msg)
     }
 
