@@ -31,9 +31,42 @@ class Category {
             if (i == "일식"){
                 var menus = japan
                 val menu: String = Randoms.shuffle(menus)[0]
-
+                //먹지 못하는 음식 추전 X
+                if (!coach.hateFood.contains(menu)) coachMenu.add(menu)
                 //중복 메뉴 불가
-                if (!coach.menu.contains(menu))coachMenu.add(menu)
+                if (!coach.menu.contains(menu)) coachMenu.add(menu)
+            }
+            if (i == "한식"){
+                var menus = korea
+                val menu: String = Randoms.shuffle(menus)[0]
+                //먹지 못하는 음식 추전 X
+                if (!coach.hateFood.contains(menu)) coachMenu.add(menu)
+                //중복 메뉴 불가
+                if (!coach.menu.contains(menu)) coachMenu.add(menu)
+            }
+            if (i == "중식"){
+                var menus = china
+                val menu: String = Randoms.shuffle(menus)[0]
+                //먹지 못하는 음식 추전 X
+                if (!coach.hateFood.contains(menu)) coachMenu.add(menu)
+                //중복 메뉴 불가
+                if (!coach.menu.contains(menu)) coachMenu.add(menu)
+            }
+            if (i == "아시안"){
+                var menus = asian
+                val menu: String = Randoms.shuffle(menus)[0]
+                //먹지 못하는 음식 추전 X
+                if (!coach.hateFood.contains(menu)) coachMenu.add(menu)
+                //중복 메뉴 불가
+                if (!coach.menu.contains(menu)) coachMenu.add(menu)
+            }
+            if (i == "양식"){
+                var menus = west
+                val menu: String = Randoms.shuffle(menus)[0]
+                //먹지 못하는 음식 추전 X
+                if (!coach.hateFood.contains(menu)) coachMenu.add(menu)
+                //중복 메뉴 불가
+                if (!coach.menu.contains(menu)) coachMenu.add(menu)
             }
         }
         return coachMenu
