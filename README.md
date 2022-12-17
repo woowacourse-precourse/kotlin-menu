@@ -197,3 +197,34 @@ val menu: String = Randoms.shuffle(menus)[0]
   - [커밋 메시지 컨벤션](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) 가이드를 참고해 커밋 메시지를 작성한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
   - 소감문은 간소하게 입력해도 된다. 예를 들어, "."만 입력해도 된다.
+
+
+## 기능목록
+### View (Input / Output)
+- [Input] : 메뉴 추천을 받을 코치 이름 입력
+- [Input] : 각 코치가 못먹는 메뉴를 입력
+- [Input] : 게임재시작/ 종료여부입력
+- [Output] : 서비스 시작 문구
+- [Output] : 서비스 종료 문구
+- [Output] : 예외 상황시 에러문구 출력
+
+- ### Business Logic
+- [Inputview]
+- [ ] 코치 이름을 입력받는다. #inputCoachName()
+- [ ] 각 코치가 못 먹는 메뉴를 입력받는다. #inputNotEating()
+- [Outputview]
+- [ ] 서비스 시작 문구 #startService()
+- [ ] 서비스 종료 문구 #endService()
+- [ ] 메뉴 추천 결과 #menuResult()
+- [Menu]
+- [ ] 랜덤메뉴 추천 
+- [ ] 메뉴
+- [ ] 
+
+- ### 예외처리(Exception)
+- 입출력관련IllegalArgumentException 발생(단, [ERROR] 로시작)
+1. [ ] 코치 이름이 2~4글자가 아닐때
+2. [ ] 코치가 못먹는 음식이 3개 이상일 때
+3. [ ] 같은 카테고리가 2회 이상 나왔을 때
+4. [ ] 입력한 메뉴가 존재하지 않을 때
+5. [ ] 코치가 1명일 때
