@@ -25,6 +25,7 @@ const val AMERICA_MENUS = "라자냐,그라탱,뇨끼,끼슈,프렌치 토스트
 const val INPUT_COACH_NAME = "코치의 이름을 입력해 주세요. (, 로 구분)"
 const val INPUT_COACH_NOT_EAT = "(이)가 못 먹는 메뉴를 입력해 주세요."
 const val RESULT_MESSAGE = "메뉴 추천 결과입니다."
+const val FINISH_RECOMMEND_MESSAGE = "\n추천을 완료했습니다."
 const val DIVISION_MESSAGE = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
 
 const val ERROR_HEADER = "[ERROR] "

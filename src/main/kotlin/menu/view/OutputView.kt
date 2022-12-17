@@ -4,6 +4,17 @@ import menu.util.*
 
 class OutputView {
 
+    // 메뉴 추천 결과 출력
+    fun printResult(coaches: List<String>, categories: MutableList<Int>, weeklyCoachesMenus: Array<MutableList<String>>) {
+        println(RESULT_MESSAGE)
+        println(DIVISION_MESSAGE)
+        println(convertCategoryToString(categories))
+        for (index in coaches.indices) {
+            println(convertCoachMenuToString(coaches[index], weeklyCoachesMenus[index]))
+        }
+        println(FINISH_RECOMMEND_MESSAGE)
+    }
+
     // 코치별 추천 받은 음식 물자열로 변환
     private fun convertCoachMenuToString(coach: String, weeklyCoachMenu: MutableList<String>): String {
         val coachMenus = mutableListOf(coach)

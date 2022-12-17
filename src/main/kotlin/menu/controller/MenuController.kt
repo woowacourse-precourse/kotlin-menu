@@ -4,9 +4,11 @@ import camp.nextstep.edu.missionutils.Randoms
 import menu.domain.MenuMachine
 import menu.util.*
 import menu.view.InputView
+import menu.view.OutputView
 
 class MenuController(
-    private val inputView: InputView
+    private val inputView: InputView,
+    private val outputView: OutputView
 ) {
     lateinit var coaches: List<String>
     private var notEatMenus = mutableListOf<List<String>>()
@@ -42,6 +44,7 @@ class MenuController(
                 weeklyCoachesMenus[index].add(menu)
             }
         }
+        outputView.printResult(coaches, categories, weeklyCoachesMenus)
     }
 
     // 한주의 같은 음식과 코치가 먹지 못하는 음식을 제외하고 음식 하나 추천
