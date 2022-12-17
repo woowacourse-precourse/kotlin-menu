@@ -8,7 +8,9 @@ private const val MENU_ERROR = "없는 메뉴 입니다."
 
 class Coach(val name: String) {
     private val inedibleMenus = mutableSetOf<String>()
-    val menus = mutableSetOf<String>()
+
+    private val _menus = mutableSetOf<String>()
+    val menus: Set<String> get() = _menus
 
     init {
         validateName(name)
@@ -35,7 +37,7 @@ class Coach(val name: String) {
             val menu = Randoms.shuffle(category.menus)[0]
             if (validateMenu(menu)) {
                 state = true
-                menus.add(menu)
+                _menus.add(menu)
             }
         }
     }
@@ -51,6 +53,6 @@ class Coach(val name: String) {
     }
 
     private fun isDuplicated(menu: String): Boolean {
-        return menu in menus
+        return menu in _menus
     }
 }
