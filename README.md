@@ -210,18 +210,18 @@ val menu: String = Randoms.shuffle(menus)[0]
 
 - ### Business Logic
 - [Inputview]
-- [ ] 코치 이름을 입력받는다. #inputCoachName()
-- [ ] 각 코치가 못 먹는 메뉴를 입력받는다. #inputNotEating()
+- [x] 코치 이름을 입력받는다. #inputCoachName()
+- [x] 각 코치가 못 먹는 메뉴를 입력받는다. #inputNotEating()
 - [Outputview]
 - [x] 코치 이름 입력안내 #inputCoach()
 - [x] 코치가 못먹는 음식 입력안내 #inputNotEat()
-- [ ] 서비스 시작 문구 #startService()
-- [ ] 서비스 종료 문구 #endService()
+- [x] 서비스 시작 문구 #startService()
+- [x] 서비스 종료 문구 #endService()
 - [ ] 메뉴 추천 결과 #menuResult()
 - [Menu]
 - [ ] 랜덤메뉴 추천 
 - [ ] 메뉴
-- [ ] 
+- [ ] 카테고리 랜덤 선정 #categorySelect())
 
 - ### 예외처리(Exception)
 - 입출력관련IllegalArgumentException 발생(단, [ERROR] 로시작)
