@@ -18,7 +18,7 @@ class MenuRecommendation(
         outputView.printStart()
 
         coachName = removeTrims(inputCoachName())
-        coachName.forEach { name -> coaches.add(Coach(name, inputMenuCantEat(name))) }
+        coachName.forEach { name -> coaches.add(Coach(name, removeTrims(inputMenuCantEat(name)))) }
 
         getCategories()
         getRecommendMenu()
