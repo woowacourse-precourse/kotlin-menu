@@ -2,7 +2,7 @@ package menu
 
 import camp.nextstep.edu.missionutils.Randoms
 
-class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String>>>) {
+class RecommandMenuController(private val nameMenu: MutableList<Pair<String, List<String>>>) {
     private val menuList = RecommandMenu()
     private var dayCategory: MutableList<String> = mutableListOf()
     private val coachNumber = nameMenu.size
@@ -23,7 +23,7 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
     }
 
 
-    fun setDayCategory() {
+    private fun setDayCategory() {
         var wholeCount = 0
         while (wholeCount < 5) {
             val number = Randoms.pickNumberInRange(1, 5)
@@ -41,7 +41,7 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
         }
     }
 
-    fun setMenus() {
+    private fun setMenus() {
         val personMenu: MutableList<List<String>> = mutableListOf()
         for (day in dayCategory) {
             val dayMenus = mutableListOf<String>()
@@ -59,7 +59,7 @@ class RecommandMenuController(val nameMenu: MutableList<Pair<String, List<String
         reshapeList(personMenu)
     }
 
-    fun reshapeList(personMenu: MutableList<List<String>>) {
+    private fun reshapeList(personMenu: MutableList<List<String>>) {
         for (day in personMenu) {
             for (element in day) {
                 finalResult.add(element)

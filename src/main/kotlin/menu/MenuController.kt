@@ -14,7 +14,7 @@ class MenuController {
     }
 
 
-    fun startMessage() {
+    private fun startMessage() {
         outputView.printStartMessage()
     }
 
@@ -24,7 +24,7 @@ class MenuController {
         }
     }
 
-    fun inputCoachNames(): Boolean {
+    private fun inputCoachNames(): Boolean {
         try {
             outputView.printInputCoachNames()
             val userinput = inputView.inputCoachName()
@@ -38,7 +38,7 @@ class MenuController {
         return true
     }
 
-    fun cantEatMenu() {
+    private fun cantEatMenu() {
         for (name in coachNames) {
             while (true) {
                 if (inputCantEatMenu(name)) break
@@ -46,7 +46,7 @@ class MenuController {
         }
     }
 
-    fun inputCantEatMenu(name: String): Boolean {
+    private fun inputCantEatMenu(name: String): Boolean {
         try {
             outputView.printCantEatMenu(name)
             val userInput = inputView.inputCantEatMenu()
@@ -60,7 +60,7 @@ class MenuController {
         return true
     }
 
-    fun printResult() {
+    private fun printResult() {
         val recommandMenuResult = RecommandMenuController(nameMenu)
         recommandMenuResult.main()
         val cateResult = recommandMenuResult.getDayCategory()
