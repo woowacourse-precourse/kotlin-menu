@@ -5,6 +5,10 @@ class MenusDTO(private val menus: List<String>) {
         isSizeValid()
     }
 
+    fun getMenus(): List<String> {
+        return menus
+    }
+
     private fun isSizeValid() {
         require(menus.size in MIN_SIZE..MAX_SIZE) { SIZE_ERROR_MESSAGE }
     }
