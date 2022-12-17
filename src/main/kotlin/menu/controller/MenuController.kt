@@ -12,6 +12,7 @@ class MenuController {
         inputCoachName()
         inputHateFood()
         pickWeekMenu()
+        outputView.outputResult(menuRecommender.weekMenu,menuRecommender.coachNameList,menuRecommender.categoryList)
     }
 
     private fun inputCoachName() {
