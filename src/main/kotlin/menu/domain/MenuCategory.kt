@@ -30,8 +30,6 @@ enum class MenuCategory(
             else -> null
         }
 
-        fun getAllCategory(): List<MenuCategory> = listOf(JAPAN, KOREA, CHINA, ASIAN, WESTERN)
-
         fun getAllCategoryAsString(): List<String> = listOf("", "일식", "한식", "중식", "아시안", "양식")
     }
 }

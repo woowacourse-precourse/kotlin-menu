@@ -14,7 +14,10 @@ class MenuService {
         }
     }
 
-    private fun recommendMenu(coaches: List<String>, inEdibleFoodsAboutCoaches: Map<String, List<String>>): List<String> {
+    private fun recommendMenu(
+        coaches: List<String>,
+        inEdibleFoodsAboutCoaches: Map<String, List<String>>,
+    ): List<String> {
         do {
             val categories = menuRepository.getAllCategoryAsString()
             val randomCategoryName = categories[Randoms.pickNumberInRange(1, 5)]

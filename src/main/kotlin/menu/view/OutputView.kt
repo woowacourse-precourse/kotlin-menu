@@ -11,23 +11,20 @@ class OutputView {
         printMessage(INEDIBLE_FOOD_INPUT_MESSAGE.format(coachName))
     }
 
-    fun printRecommendedResultMessage(coaches: List<String>, recommendedMenuPerCoaches: HashMap<Int, LinkedHashMap<String, String>>) {
+    fun printRecommendedResultMessage(
+        coaches: List<String>,
+        recommendedMenuPerCoaches: HashMap<Int, LinkedHashMap<String, String>>,
+    ) {
         printMessage(RECOMMENDED_MENU_MESSAGE)
         printMessage(DAY_OF_WEEKS_MESSAGE)
         printMessage(CATEGORIES_MESSAGE)
         coaches.forEach { coach ->
-            print("[ $coach | ")
+            val foods = arrayListOf<String>()
             for (day in 0 until 5) {
-                val food = recommendedMenuPerCoaches[day]!![coach]
-                if (day == 4) {
-                    print(food)
-                }else {
-                    print("$food | ")
-                }
+                foods.add(recommendedMenuPerCoaches[day]!![coach]!!)
             }
-            printMessage(" ]")
+            print(foods.joinToString(" | ", "[ $coach | ", " ] "))
         }
-
         printEnter()
         printMessage(RECOMMENDED_EXIT_MESSAGE)
     }

@@ -42,7 +42,6 @@ class MenuController(
 
     private fun printRecommendedMenu(coaches: List<String>) {
         val recommendedMenu = menuService.getRecommendedMenus()
-        println(recommendedMenu)
         outputView.printRecommendedResultMessage(coaches, recommendedMenu)
     }
 }
