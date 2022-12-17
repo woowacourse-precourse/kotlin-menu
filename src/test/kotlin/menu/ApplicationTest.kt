@@ -50,6 +50,25 @@ class ApplicationTest : NsTest() {
         }
 
         @Test
+        fun `메뉴 추천 기능 테스트 - 추천할 수 없는 메뉴인 경우 다시 섞은 후 첫 번째 값을 사용해야 한다`() {
+            assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
+                val executable = Executable {
+                    val menu = MenuRepository().getRecommendMenu(listOf("김치찌개, 제육볶음"), listOf("김밥"), "한식")
+                    assertThat(menu == "쌈밥")
+                }
+                assertRandomTest(
+                    executable,Mocking.ofShuffle(
+                        listOf("김치찌개", "김밥", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이", "제육볶음"),
+                        listOf("제육볶음", "김밥", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이"),
+                        listOf("김밥", "제육볶음", "김치찌개", "쌈밥", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이"),
+                        listOf("쌈밥", "김밥", "김치찌개", "제육볶음", "된장찌개", "비빔밥", "칼국수", "불고기", "떡볶이"),
+                    )
+                )
+            }
+        }
+
+
+        @Test
         fun `기능 테스트`() {
             assertTimeoutPreemptively(RANDOM_TEST_TIMEOUT) {
                 val executable = Executable {
