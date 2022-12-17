@@ -14,6 +14,18 @@ class InputValidator {
         hatingMenus.validateHasEmptyChar()
         hatingMenus.validateNumberOfHatingMenu()
         hatingMenus.validateIsInMenu()
+        hatingMenus.validateIsAlreadyExistHatingMenu()
+    }
+
+    private fun String.validateIsAlreadyExistHatingMenu(){
+        val hatingMenuRecords = mutableSetOf<String>()
+
+        this.split(",").forEach { eachMenu ->
+            require(!hatingMenuRecords.contains(eachMenu)){
+                ERROR_ALREADY_CONTAINED_HATING_MENU
+            }
+            hatingMenuRecords.add(eachMenu)
+        }
     }
 
     private fun String.validateIsInMenu() {
@@ -51,6 +63,7 @@ class InputValidator {
     }
 
     companion object {
+        const val ERROR_ALREADY_CONTAINED_HATING_MENU = "[ERROR] 같은 메뉴를 싫어하는 메뉴에 넣을 수 없습니다."
         const val ERROR_NOT_EXIST_MENU = "[ERROR] 존재하지 않는 메뉴입니다."
         const val ERROR_EXIST_EMPTY_CHAR = "[ERROR] 공백의 문자는 허용하지 않습니다."
         const val ERROR_NUMBER_OF_HATING_MENU = "[ERROR] 싫어하는 메뉴의 개수는 0에서 2개만 유효합니다."
