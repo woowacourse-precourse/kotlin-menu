@@ -28,12 +28,14 @@ class outputView {
         println("[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]")
     }
 
+    fun category(categoryName: List<String>){
+        println("[ 카테고리 | ${categoryName[0]} | ${categoryName[1]} | ${categoryName[2]} | ${categoryName[3]} | ${categoryName[4]} ]")
+    }
+
     fun coachNameMenu(coachName: String, menuCollect: List<String>) {
         println("[ ${coachName} | ${menuCollect[0]} | ${menuCollect[1]} | ${menuCollect[2]} | ${menuCollect[3]} | ${menuCollect[4]} ]")
     }
 
-    fun category(categoryName: List<String>){
-        println("[ 카테고리 | ${categoryName[0]} | ${categoryName[1]} | ${categoryName[2]} | ${categoryName[3]} | ${categoryName[4]} ]")
-    }
+
 
 }
