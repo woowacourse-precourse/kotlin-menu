@@ -18,7 +18,6 @@ class Menu {
             if (categoryNumber==4) categoryCollect.add("아시안")
             if (categoryNumber==5) categoryCollect.add("양식")
         }
-        println(categoryCollect)
         return categoryCollect
     }
 

@@ -5,6 +5,7 @@ class menuRecommend {
     val IV = inputView()
     val MN = Menu()
     var coachCollect= listOf<String>()
+    var categoryCollect = listOf<String>()
 
 
     constructor(){
@@ -26,7 +27,9 @@ class menuRecommend {
 
 
     fun categorySelect(){
-        MN.categorySelect()
+        categoryCollect=MN.categorySelect()
+        println(categoryCollect)
+        OV.category(categoryCollect)
     }
 
 }
