@@ -22,13 +22,19 @@ class CoachManager(
             if (categories.count { it == newCategory } < 3) {
                 categories.add(newCategory)
             }
-        } while (categories.size <= 5)
+        } while (categories.size < 5)
     }
 
-    fun pickMenuOnce() {
+    private fun pickMenuOnce(category: String) {
         for (i in coaches.indices) {
-            val menu = recommender.pickMenu(categories[i], coaches[i])
+            val menu = recommender.pickMenu(category, coaches[i])
             coaches[i].addEatenFood(menu)
+        }
+    }
+
+    fun pickMenuFifth() {
+        for (i in 0 until 5) {
+            pickMenuOnce(categories[i])
         }
     }
 }
