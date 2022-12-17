@@ -5,6 +5,7 @@ class Coach(val name: String) {
     fun addUneatableMenus(menu: List<String>) {
         uneatableMenus.addAll(menu)
     }
+
     fun isUneatable(menu: String): Boolean {
         return uneatableMenus.contains(menu)
     }
