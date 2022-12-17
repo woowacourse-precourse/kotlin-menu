@@ -6,7 +6,7 @@ Progress & MileStones
   - ~~Test~~
 - MenuRepository
   - ~~Make recommended menu (according to category and coach info)~~
-  - Test
+  - ~~Test~~
 
 ## View
 - InputView
