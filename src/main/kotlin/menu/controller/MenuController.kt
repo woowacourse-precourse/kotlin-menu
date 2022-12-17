@@ -18,7 +18,7 @@ class MenuController {
             addCoach()
             addDislikedFood()
             chooseMenu()
-            output.printMenuRecommendResult(recommend.categoryRecord, recommend.coaches)
+            output.printMenuRecommendResult(recommend.logOfCategory, recommend.coaches)
         } catch (e: Exception) {
             println(e.message)
         }
@@ -35,7 +35,7 @@ class MenuController {
     }
 
     private fun chooseMenu() {
-        while (recommend.categoryRecord.size < 5) {
+        while (recommend.logOfCategory.size < 5) {
             val category = category.getRandomCategory()
             if (recommend.isEatSameCategoryMany(category.category).not()) {
                 recommend.addCategoryRecord(category)
