@@ -26,14 +26,7 @@ class RandomMenu {
         }
         categoryCount[randomNumber - 1] += 1
         categoryNames.add(MenuCategory.getCategoryName(randomNumber))
-        return when (randomNumber) {
-            1 -> MenuCategory.JAPANESE.getMenus()
-            2 -> MenuCategory.KOREAN.getMenus()
-            3 -> MenuCategory.CHINESE.getMenus()
-            4 -> MenuCategory.ASIAN.getMenus()
-            5 -> MenuCategory.WESTERN.getMenus()
-            else -> throw IllegalArgumentException()
-        }
+        return MenuCategory.getMenus(randomNumber)
     }
 
     private fun getRecommendMenu(coach: Coach, categoryMenus: List<String>) {

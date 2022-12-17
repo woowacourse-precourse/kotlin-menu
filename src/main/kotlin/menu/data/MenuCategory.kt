@@ -7,8 +7,6 @@ enum class MenuCategory(private val value: String, private val menu: List<String
     ASIAN("아시안", listOf("팟타이", "카오 팟", "나시고렝", "파인애플 볶음밥", "쌀국수", "똠얌꿍", "반미", "월남쌈", "분짜")),
     WESTERN("양식", listOf("라자냐", "그라탱", "뇨끼", "끼슈", "프렌치 토스트", "바게트", "스파게티", "피자", "파니니"));
 
-    fun getMenus() = this.menu
-
     companion object {
         fun getCategoryName(index: Int): String = MenuCategory.values()[index - 1].value
 
@@ -19,6 +17,17 @@ enum class MenuCategory(private val value: String, private val menu: List<String
                 }
             }
             return false
+        }
+
+        fun getMenus(randomNumber: Int): List<String> {
+            return when (randomNumber) {
+                1 -> JAPANESE.menu
+                2 -> KOREAN.menu
+                3 -> CHINESE.menu
+                4 -> ASIAN.menu
+                5 -> WESTERN.menu
+                else -> throw IllegalArgumentException()
+            }
         }
     }
 }
