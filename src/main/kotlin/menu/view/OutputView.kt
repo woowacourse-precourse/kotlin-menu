@@ -1,8 +1,18 @@
 package menu.view
 
+import menu.Day
+
 class OutputView {
-    fun printStartAnnouncement() {
+    fun printStart() {
         println(START_ANNOUNCEMENT)
+    }
+
+    fun printFinish() {}
+
+    private fun printDivision() {
+        val days = Day.values().map { day -> day.byKorean() }
+        val division = days.joinToString { " | " }
+        println("[ 구분 | $division ]")
     }
 
     companion object {
