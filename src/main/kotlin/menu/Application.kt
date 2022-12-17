@@ -1,5 +1,9 @@
 package menu
 
+import menu.view.InputView
+
 fun main() {
-    // TODO: 프로그램 구현
+    val inputView = InputView()
+    val menuMission = MenuMission(inputView)
+    menuMission.missionStart()
 }
