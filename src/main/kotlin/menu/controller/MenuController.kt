@@ -4,9 +4,10 @@ import menu.view.input
 
 class MenuController {
 
-    fun run(){
+    fun run() {
         input().printStart()
         val coachName = input().InputName()
+        println(coachName)
 
     }
 }
