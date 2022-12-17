@@ -21,10 +21,10 @@ class RandomMenu {
 
     private fun getCategoryMenus(): List<String> {
         val randomNumber = pickNumberInRange(RANGE_START, RANGE_END)
-        if (categoryCount[randomNumber - 1] >= DUPLICATE_COUNT) {
+        if (categoryCount[randomNumber - INDEX_MINUS] >= DUPLICATE_COUNT) {
             return getCategoryMenus()
         }
-        categoryCount[randomNumber - 1] += 1
+        categoryCount[randomNumber - INDEX_MINUS]++
         categoryNames.add(MenuCategory.getCategoryName(randomNumber))
         return MenuCategory.getMenus(randomNumber)
     }
@@ -42,5 +42,6 @@ class RandomMenu {
         const val RANGE_END = 5
         const val DUPLICATE_COUNT = 2
         const val FIRST_VALUE = 0
+        const val INDEX_MINUS = 1
     }
 }
