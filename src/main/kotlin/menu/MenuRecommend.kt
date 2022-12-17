@@ -18,6 +18,10 @@ class MenuRecommend {
             if (!duplicate) { //겹치지않는다면 이제 메뉴를 고를 차례로 넘어간다
                 return category
             }
+            val numberOfCategory = countCategory(recommendedCategory, category) //몇 번 겹치는 지 확인
+            if (numberOfCategory < 2) { //2회 이하로 겹친다면 이제 메뉴를 고를 차례로 넘어간다
+                return category
+            }
         }
     }
 
@@ -26,6 +30,16 @@ class MenuRecommend {
             return true
         }
         return false
+    }
+
+    private fun countCategory(recommendedCategory: List<String>, category: String): Int {
+        var numberOfCategory = 0
+        for (categoryIndex in recommendedCategory.indices) {
+            if (recommendedCategory[categoryIndex] == category) {
+                numberOfCategory++
+            }
+        }
+        return numberOfCategory
     }
 
     fun getSpecificMenuList(menuCategory: String): List<String>{
