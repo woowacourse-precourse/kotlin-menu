@@ -6,8 +6,6 @@ object Validator {
     private const val MAX_COACH_NAME = 4
     private const val MIN_COACH_COUNT = 2
     private const val MAX_COACH_COUNT = 5
-
-
     fun isValidCoachInput(userInput: String): Boolean {
         if (!isInputBlank(userInput)) {
             return false
@@ -16,7 +14,7 @@ object Validator {
         if (!isValidMember(coaches)) {
             return false
         }
-        if (!isValidLetter(coaches)) {
+        if (!isValidCoachNameLetter(coaches)) {
             return false
         }
         return true
@@ -27,7 +25,7 @@ object Validator {
         return true
     }
 
-    private fun isValidLetter(coachs: List<String>): Boolean {
+    private fun isValidCoachNameLetter(coachs: List<String>): Boolean {
         for (c in coachs) {
             if (c.length !in MIN_COACH_NAME.. MAX_COACH_NAME) {
                 return false
@@ -39,6 +37,14 @@ object Validator {
     private fun isValidMember(coachs: List<String>): Boolean {
         val count =  coachs.size
         if (count !in MIN_COACH_COUNT..MAX_COACH_COUNT) {
+            return false
+        }
+        return true
+    }
+
+    fun isValidCoachNotEat(userInput: String): Boolean {
+        val coachNotEatFoods  = userInput.split(',')
+        if (coachNotEatFoods.size !in 0 .. 2) {
             return false
         }
         return true
