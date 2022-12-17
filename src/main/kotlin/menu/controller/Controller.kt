@@ -13,4 +13,20 @@ class Controller(
     fun start() {
         outputView.showStart()
     }
+
+    fun inputNames() {
+        try {
+            outputView.requestInputName()
+            createCoaches(inputView.readCoachesName())
+        } catch (e: IllegalArgumentException) {
+            outputView.showErrorMessage(e.message ?: "")
+            inputNames()
+        }
+    }
+
+    private fun createCoaches(names: List<String>) {
+        names.forEach {
+            coaches.add(Coach(it))
+        }
+    }
 }
