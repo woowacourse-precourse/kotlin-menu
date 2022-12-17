@@ -40,7 +40,7 @@ class RecommendController(
         val names = namesDTO.getNames()
         names.map { name ->
             getMenus(name)
-            coachInputs.put(name, menusDTO.getMenus())
+            coachInputs[name] = menusDTO.getMenus()
             outputView.printInterval()
         }
 
@@ -78,7 +78,7 @@ class RecommendController(
     private fun recommendMenus() {
         val categories = categoriesDTO.getCategories()
         val coaches = coachesDTO.getCoaches()
-        categories.map {category ->
+        categories.map { category ->
             coaches.map { coach -> coach.recommendMenu(category) }
         }
     }

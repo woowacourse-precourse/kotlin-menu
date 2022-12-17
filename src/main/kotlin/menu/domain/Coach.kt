@@ -1,7 +1,6 @@
 package menu.domain
 
 import menu.Category
-import menu.dto.CategoriesDTO
 
 class Coach(
     private val name: String,

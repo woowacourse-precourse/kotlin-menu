@@ -18,7 +18,7 @@ class OutputView {
         printCategory(categoriesDTO.getCategories())
 
         val coaches = coachesDTO.getCoaches()
-        coaches.map { coach ->  printMenus(coach) }
+        coaches.map { coach -> printMenus(coach) }
         printInterval()
 
         printRecommendDone()
