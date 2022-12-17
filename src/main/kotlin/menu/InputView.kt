@@ -25,4 +25,18 @@ class InputView {
         return coaches
     }
 
+    private fun readMenu(): List<String> {
+        val input = Console.readLine()
+        // TODO : 카테고리 속에 없는 메뉴를 예외처리할 것인가? 고민하기
+        return input.split(",")
+    }
+
+
+    fun readMenus(coaches: List<Coach>) {
+        for (coach in coaches) {
+            println("${coach.name}(이)가 못 먹는 메뉴를 입력해주세요.")
+            coach.addUneatableMenus(readMenu())
+        }
+    }
+
 }
