@@ -14,9 +14,9 @@ class OutputView {
 
     private fun printCoachMenu(coach: Coach) {
         val resultMenu = StringBuilder("[ ${coach.name} |")
-        for (i in 0 until 5) {
+        for (i in 0 until SuggestionMenu.HIGH_DAY) {
             resultMenu.append(" ${coach.menus[i]} ")
-            if (i != 4) resultMenu.append("|")
+            if (i != SuggestionMenu.HIGH_DAY - 1) resultMenu.append("|")
             else resultMenu.append("]")
         }
         println(resultMenu)
@@ -24,9 +24,9 @@ class OutputView {
 
     private fun printCategory(category: List<String>) {
         val resultCategory = StringBuilder("[ 카테고리 |")
-        for (i in 0 until 5) {
+        for (i in 0 until SuggestionMenu.HIGH_CATEGORY) {
             resultCategory.append(" ${category[i]} ")
-            if (i != 4) resultCategory.append("|")
+            if (i != SuggestionMenu.HIGH_CATEGORY - 1) resultCategory.append("|")
             else resultCategory.append("]")
         }
         println(resultCategory)

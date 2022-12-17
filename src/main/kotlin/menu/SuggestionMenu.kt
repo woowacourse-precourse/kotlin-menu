@@ -8,11 +8,11 @@ class SuggestionMenu {
         allMenus.add(mutableListOf<String>())
         for (i in 1..allCategory.size) {
             when (i) {
-                1 -> allMenus.add(japanMenus.split(",").toMutableList())
-                2 -> allMenus.add(koreanMenus.split(",").toMutableList())
-                3 -> allMenus.add(chineseMenus.split(",").toMutableList())
-                4 -> allMenus.add(asianMenus.split(",").toMutableList())
-                5 -> allMenus.add(westernMenus.split(",").toMutableList())
+                1 -> allMenus.add(japanMenus.split(",").map { it.trim() }.toMutableList())
+                2 -> allMenus.add(koreanMenus.split(",").map { it.trim() }.toMutableList())
+                3 -> allMenus.add(chineseMenus.split(",").map { it.trim() }.toMutableList())
+                4 -> allMenus.add(asianMenus.split(",").map { it.trim() }.toMutableList())
+                5 -> allMenus.add(westernMenus.split(",").map { it.trim() }.toMutableList())
             }
         }
     }
@@ -60,6 +60,7 @@ class SuggestionMenu {
             else -> "양식"
         }
 
+    fun getAllMenus(): List<List<String>> = allMenus.map { it.toList() }.toList()
 
     companion object {
         private val allMenus = mutableListOf<MutableList<String>>()
@@ -70,9 +71,9 @@ class SuggestionMenu {
         private const val asianMenus = "팟타이, 카오 팟, 나시고렝, 파인애플 볶음밥, 쌀국수, 똠얌꿍, 반미, 월남쌈, 분짜"
         private const val westernMenus = "라자냐, 그라탱, 뇨끼, 끼슈, 프렌치 토스트, 바게트, 스파게티, 피자, 파니니"
 
-        private const val LOW_CATEGORY = 1
-        private const val HIGH_CATEGORY = 5
-        private const val HIGH_DAY = 5
+        const val LOW_CATEGORY = 1
+        const val HIGH_CATEGORY = 5
+        const val HIGH_DAY = 5
         private const val MAX_DUPLICATE_CATEGORY = 2
     }
 }
