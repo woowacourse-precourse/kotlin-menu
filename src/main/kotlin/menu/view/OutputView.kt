@@ -1,7 +1,7 @@
 package menu.view
 
-import menu.PrintMessage.INPUT_COACH_NAME_MESSAGE
-import menu.PrintMessage.START_MESSAGE
+import menu.utils.InfoMessage.INPUT_COACH_NAME_MESSAGE
+import menu.utils.InfoMessage.START_MESSAGE
 
 class OutputView {
     fun printStartMessage() {
