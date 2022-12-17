@@ -18,6 +18,7 @@ class Controller {
     fun run() {
         output.printStartMessage()
         handleCoaches()
+        handleMenu()
     }
 
     fun handleCoaches() {
@@ -28,6 +29,13 @@ class Controller {
             val hateFoods = inputFoodsName()
             coaches.add(Coach(it, hateFoods, categories))
         }
+    }
+
+    fun handleMenu() {
+        output.printResultMessage()
+        output.printResult(categories, coaches)
+        output.printJump()
+        output.printEndMessage()
     }
 
     fun inputCoachesName() : List<String> = getCoachesName(input.inputCoachesName())

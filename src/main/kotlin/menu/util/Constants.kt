@@ -25,6 +25,12 @@ class Constants {
         const val START_GAME_MESSAGE = "점심 메뉴 추천을 시작합니다."
         const val INPUT_COACHES_NAME_MESSAGE = "코치의 이름을 입력해 주세요. (, 로 구분)"
         const val INPUT_HATE_FOOD_MESSAGE = "%s(이)가 못 먹는 메뉴를 입력해 주세요."
+        const val RESULT_MESSAGE = "메뉴 추천 결과입니다."
+        const val MENU_RESULT_MESSAGE = "[ %s | %s ]"
+        const val SEPERATE_CHAR = " | "
+        const val DAY_MESSAGE = "구분"
+        const val CATEGORY_MESSAGE = "카테고리"
+        const val FINISH_MESSAGE = "추천을 완료했습니다."
 
     }
 }
