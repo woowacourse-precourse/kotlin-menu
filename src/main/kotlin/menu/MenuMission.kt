@@ -4,7 +4,19 @@ import menu.view.InputView
 
 class MenuMission(private val inputView: InputView) {
     fun missionStart() {
-        coachCheck(inputView.getCoach())
+        val coaches = coachCheck(inputView.getCoach())
+        coachHateFood(coaches)
+
+
+
+    }
+
+    fun coachHateFood(coaches: List<String>) {
+        val coachHate = mutableMapOf<String,List<String>>()
+        coaches.forEach{
+            val hates = inputView.getHateFood(it).split(",")
+            coachHate[it] = hates
+        }
     }
 
 
@@ -21,4 +33,5 @@ class MenuMission(private val inputView: InputView) {
             throw IllegalArgumentException(ERROR_COACHES_MAX_MESSAGE)
         return coaches
     }
+
 }
