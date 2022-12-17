@@ -27,14 +27,14 @@ class DietMenuController(
     }
 
     private fun lunchRecommand() {
-        coaches.forEach { coach ->
-            addRandomFood(coach)
+        weeklyCategory.forEach { weekday ->
+            addRandomFood(weekday)
         }
         outputView.menuRecommandResults(weeklyCategory, coaches)
     }
 
-    private fun addRandomFood(coach: Coach) {
-        weeklyCategory.forEach { weekday ->
+    private fun addRandomFood(weekday: Weekday) {
+        coaches.forEach { coach ->
             var randomFood: Food
             do {
                 randomFood = weekday.getRandomFood()
