@@ -19,18 +19,14 @@ class RecommendService {
     private fun recommendMenus(coaches: List<Coach>, categories: List<String>) {
         categories.forEach { category ->
             coaches.forEach { coach ->
-                val menu = selectMenu(coach, category)
+                val menu = generateRandomMenu(coach, category)
                 coach.addMenu(menu)
             }
         }
     }
 
-    private fun selectMenu(coach: Coach, category: String): String {
+    private fun generateRandomMenu(coach: Coach, category: String): String {
         val menus = Category.getMenuList(category)
-        return generateRandomMenu(coach, menus)
-    }
-
-    private fun generateRandomMenu(coach: Coach, menus: List<String>): String {
         var menu = Randoms.shuffle(menus)[0]
         while (coach.containHateMenus(menu) || coach.containMenu(menu)) {
             menu = Randoms.shuffle(menus)[0]
