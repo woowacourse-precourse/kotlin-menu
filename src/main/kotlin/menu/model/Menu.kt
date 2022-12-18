@@ -1,19 +1,17 @@
 package menu.model
 
-import java.io.FileReader
-
 class Menu {
 
-    fun getCategoryMenu(category: String): String {
-        var menu = ""
+    fun getCategoryMenu(category: String): List<String> {
+        var menus = listOf<String>()
         when (category) {
-            "아시안" -> menu = FileReader(Category.ASIAN_FOOD.getCategoryPath()).readText().split(", ").shuffled()[0]
-            "중식" -> menu = FileReader(Category.CHINESE_FOOD.getCategoryPath()).readText().split(", ").shuffled()[0]
-            "일식" -> menu = FileReader(Category.JAPANESE_FOOD.getCategoryPath()).readText().split(", ").shuffled()[0]
-            "한식" -> menu = FileReader(Category.KOREAN_FOOD.getCategoryPath()).readText().split(", ").shuffled()[0]
-            "양식" -> menu = FileReader(Category.WESTERN_FOOD.getCategoryPath()).readText().split(", ").shuffled()[0]
+            "아시안" -> menus = Category.ASIAN_FOOD.getCategoryFoods().split(", ")
+            "중식" -> menus = Category.CHINESE_FOOD.getCategoryFoods().split(", ")
+            "일식" -> menus = Category.JAPANESE_FOOD.getCategoryFoods().split(", ")
+            "한식" -> menus = Category.KOREAN_FOOD.getCategoryFoods().split(", ")
+            "양식" -> menus = Category.WESTERN_FOOD.getCategoryFoods().split(", ")
         }
-        return menu
+        return menus
     }
 
 }
