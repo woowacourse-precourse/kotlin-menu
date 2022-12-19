@@ -1,7 +1,9 @@
 package menu.controller
 
 class RecommendMenuImpl : RecommendMenu() {
+
     override fun chooseRandomCategory() {
+
     }
 
     override fun recommendMenu() {
