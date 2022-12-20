@@ -8,7 +8,7 @@ abstract class RecommendMenu {
 
     abstract fun isDuplicateCategory(category: Category): Boolean
 
-    abstract fun addRandomCategory()
+    abstract fun addRandomCategory(category: Category)
 
     abstract fun isDuplicateMenu(coach: Coach, menu: String): Boolean
 
