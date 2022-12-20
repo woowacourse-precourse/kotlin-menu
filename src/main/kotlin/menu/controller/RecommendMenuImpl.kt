@@ -1,9 +1,6 @@
 package menu.controller
 
-import menu.model.Category
-import menu.model.Coach
-import menu.model.RandomNumberGenerator
-import menu.model.Week
+import menu.model.*
 
 class RecommendMenuImpl : RecommendMenu() {
     private val week = Week()
@@ -17,12 +14,12 @@ class RecommendMenuImpl : RecommendMenu() {
         week.addCategory(categoriesName[randomNumberGenerator.generator()])
     }
 
-    override fun isDuplicateMenu(coach: Coach,menu :String): Boolean {
+    override fun isDuplicateMenu(coach: Coach, menu: String): Boolean {
         return coach.getRecommendedMenus().contains(menu)
     }
 
-    override fun recommendMenu() {
-        TODO("Not yet implemented")
+    override fun recommendMenu(coachs: List<Coach>, category: Category, menu: Menu) {
+        coachs.forEach { coach -> coach.addRecommendedMenus(category, menu) }
     }
 
 }
