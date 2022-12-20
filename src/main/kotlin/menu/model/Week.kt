@@ -1,12 +1,12 @@
 package menu.model
 
 class Week {
-    private val categories = mutableListOf<Category>()
+    private val categoriesName = mutableListOf<String>()
 
-    fun addCategory(category: Category) {
-        categories.add(category)
+    fun addCategory(category: String) {
+        categoriesName.add(category)
     }
 
-    fun getCategories() = categories
+    fun getCategories() = categoriesName
 
 }
