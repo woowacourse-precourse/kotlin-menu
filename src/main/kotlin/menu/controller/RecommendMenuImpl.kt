@@ -2,7 +2,7 @@ package menu.controller
 
 class RecommendMenuImpl : RecommendMenu() {
     override fun checkDuplicateCategory() {
-        TODO("Not yet implemented")
+
     }
 
     override fun chooseRandomCategory() {
