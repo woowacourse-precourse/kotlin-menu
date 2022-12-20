@@ -12,6 +12,8 @@ abstract class RecommendMenu {
 
     abstract fun isDuplicateMenu(coach: Coach, menu: String): Boolean
 
+    abstract fun hasExcludeMenu(coach: Coach, menu: String): Boolean
+
     abstract fun recommendMenu(coachs: List<Coach>, category: Category, menu: Menu)
 
 }
