@@ -8,7 +8,9 @@ class Coach(private val name: String) {
 
     fun getName() = name
 
-    fun addRecommendedMenus(category: Category,menu: Menu) {
+    fun getRecommendedMenus() = recommendedMenus
+
+    fun addRecommendedMenus(category: Category, menu: Menu) {
         recommendedMenus.add(Randoms.shuffle(menu.getCategoryMenu(category.getCategoryName()))[0])
     }
 
