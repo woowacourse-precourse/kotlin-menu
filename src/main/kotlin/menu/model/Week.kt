@@ -1,6 +1,8 @@
 package menu.model
 
 class Week {
+
+    private val dayOfWeek = listOf("월요일","화요일","수요일","목요일","금요일")
     private val categoriesName = mutableListOf<String>()
 
     fun addCategory(category: String) {
@@ -9,4 +11,5 @@ class Week {
 
     fun getCategories() = categoriesName
 
+    fun getDayOfWeek() = dayOfWeek
 }

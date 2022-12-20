@@ -9,9 +9,12 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
     private val randomNumberGenerator = RandomNumberGenerator()
 
     init {
-        val category = Randoms.shuffle(Category.values().toList())[0]
-        addRandomCategory(category)
-        recommendMenu(coaches, category, menu)
+        val category = Category.values()
+        category.shuffle()
+        repeat(week.getDayOfWeek().size) {
+            addRandomCategory(category[0])
+            recommendMenu(coaches, category[0], menu)
+        }
     }
 
     override fun isDuplicateCategory(category: Category): Boolean {
@@ -21,7 +24,7 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
     override fun addRandomCategory(category: Category) {
         if (!isDuplicateCategory(category)) {
             val categoriesName = Category.values().map { category -> category.getCategoryName() }
-            week.addCategory(categoriesName[randomNumberGenerator.generator()])
+            week.addCategory(categoriesName[randomNumberGenerator.generator()-1])
         }
     }
 
@@ -39,5 +42,7 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
             if (!isDuplicateMenu(coach, menu) && !hasExcludeMenu(coach, menu)) coach.addRecommendedMenus(menu)
         }
     }
+
+    fun getWeek() = week
 
 }

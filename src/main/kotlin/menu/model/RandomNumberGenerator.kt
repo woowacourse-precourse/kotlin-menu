@@ -4,6 +4,6 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RandomNumberGenerator : NumberGenerator {
     override fun generator() :Int {
-        return Randoms.pickNumberInRange(0,4)
+        return Randoms.pickNumberInRange(1,5)
     }
 }
