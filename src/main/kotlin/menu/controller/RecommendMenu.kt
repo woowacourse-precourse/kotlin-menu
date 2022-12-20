@@ -1,8 +1,10 @@
 package menu.controller
 
+import menu.model.Category
+
 abstract class RecommendMenu {
 
-    abstract fun checkDuplicateCategory()
+    abstract fun isDuplicateCategory(category: Category) : Boolean
 
     abstract fun chooseRandomCategory()
 
