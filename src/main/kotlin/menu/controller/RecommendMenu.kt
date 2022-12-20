@@ -2,10 +2,12 @@ package menu.controller
 
 abstract class RecommendMenu {
 
+    abstract fun checkDuplicateCategory()
+
     abstract fun chooseRandomCategory()
 
-    abstract fun recommendMenu()
+    abstract fun checkDuplicateMenu()
 
-    abstract fun recommendMenuInWeek()
+    abstract fun recommendMenu()
 
 }
