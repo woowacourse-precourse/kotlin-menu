@@ -3,9 +3,16 @@ package menu.controller
 import camp.nextstep.edu.missionutils.Randoms
 import menu.model.*
 
-class RecommendMenuImpl : RecommendMenu() {
+class RecommendMenuImpl(coaches:List<Coach>) : RecommendMenu() {
     private val week = Week()
+    private val menu = Menu()
     private val randomNumberGenerator = RandomNumberGenerator()
+
+    init {
+        val category = Randoms.shuffle(Category.values().toList())[0]
+        addRandomCategory(category)
+        recommendMenu(coaches,category,menu)
+    }
     override fun isDuplicateCategory(category: Category): Boolean {
         return week.getCategories().count { category -> category == category } > 2
     }
