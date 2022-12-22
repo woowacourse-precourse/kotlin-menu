@@ -4,8 +4,8 @@ import camp.nextstep.edu.missionutils.Randoms
 
 class RecommendMenu(private val coachesNotEatFoods: Map<String, List<String>>) {
 
-    var recommendMenuTable = mutableMapOf<String, MutableList<String>>() // 태경 : ["피자","초밥"]
-    var recommendFoodCateories = mutableMapOf<String, Int>() // 양식 : 1
+    private var recommendMenuTable = mutableMapOf<String, MutableList<String>>() // 태경 : ["피자","초밥"]
+    private var recommendFoodCateories = mutableMapOf<String, Int>() // 양식 : 1
 
     init {
         for (fc in FoodCategory.values()) {
