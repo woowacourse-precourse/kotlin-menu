@@ -19,12 +19,8 @@ class OutputView {
         recommendResult.forEach { it ->
             print(START_BLANK)
             print("${it.key} | ")
-            for ((index,fn) in it.value.withIndex()) {
-                if (index == 4) {
-                    print("${fn} ")
-                } else {
-                    print("${fn} | ")
-                }
+            for ((index,foodName) in it.value.withIndex()) {
+                printMenuName(index, foodName)
             }
             print(END_BLANK)
             println()
@@ -37,20 +33,37 @@ class OutputView {
         print(FOOD_CATEGORY)
         val foods = recommendResult.toList()[0].second
         val foodCategories = FoodCategory.values().toList()
-        for ((index,f) in foods.withIndex()) {
-            for ((categoryNum,fc) in foodCategories.withIndex()) {
-                if (fc.getFoodNames().contains(f)) {
-                    if (index == 4) {
-                        print("${getFoodCategory(categoryNum).getCategoryName()} ")
-                    } else {
-                        print("${getFoodCategory(categoryNum).getCategoryName()} | ")
-                    }
-                    break
-                }
-            }
+        for ((index,foodName) in foods.withIndex()) {
+            searchCategory(foodCategories, foodName, index)
         }
         print(END_BLANK)
         println()
+    }
+
+    private fun searchCategory(foodCategories: List<FoodCategory>, foodName: String, index: Int) {
+        for ((categoryNum, foodCategory) in foodCategories.withIndex()) {
+            if (printCategoryName(foodCategory, foodName, index, categoryNum)) break
+        }
+    }
+
+    private fun printCategoryName(foodCategory: FoodCategory, foodName: String, index: Int, categoryNum: Int): Boolean {
+        if (foodCategory.getFoodNames().contains(foodName)) {
+            if (index == DAYS_LAST_INDEX) {
+                print("${getFoodCategory(categoryNum).getCategoryName()} ")
+            } else {
+                print("${getFoodCategory(categoryNum).getCategoryName()} | ")
+            }
+            return true
+        }
+        return false
+    }
+
+    private fun printMenuName(index: Int, foodName: String) {
+        if (index == DAYS_LAST_INDEX) {
+            print("${foodName} ")
+        } else {
+            print("${foodName} | ")
+        }
     }
 
     private fun getFoodCategory(num: Int): FoodCategory{
@@ -71,6 +84,7 @@ class OutputView {
         const val FOOD_CATEGORY = "[ 카테고리 | "
         const val START_BLANK = "[ "
         const val END_BLANK = "]"
+        const val DAYS_LAST_INDEX = 4
     }
 
 
