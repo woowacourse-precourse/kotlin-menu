@@ -11,38 +11,20 @@ class OutputView {
     fun printResult(recommendResult: MutableMap<String, MutableList<String>>) {
         println(RECOMMEND_RESULT)
         println(DAYS)
-        print(FOOD_CATEGORY)
-        val foods = recommendResult.toList()[0].second
-        val foodCategories = FoodCategory.values().toList()
-        var printCategoryCount = 0
-        for (f in foods) {
-            var num = 0
-            for (fc in foodCategories) {
-                if (fc.getFoodNames().contains(f)) {
-                    if (printCategoryCount == 4) {
-                        print("${getFoodCategory(num).getCategoryName()} ")
-                    } else {
-                        print("${getFoodCategory(num).getCategoryName()} | ")
-                    }
-                    break
-                }
-                num += 1
-            }
-            printCategoryCount += 1
-        }
-        print(END_BLANK)
-        println()
-        recommendResult.forEach{ it ->
-            var printMenuCount = 0
+        printCategory(recommendResult)
+        printCoachMenus(recommendResult)
+    }
+
+    private fun printCoachMenus(recommendResult: MutableMap<String, MutableList<String>>) {
+        recommendResult.forEach { it ->
             print(START_BLANK)
             print("${it.key} | ")
-            for (fn in it.value) {
-                if (printMenuCount == 4) {
+            for ((index,fn) in it.value.withIndex()) {
+                if (index == 4) {
                     print("${fn} ")
                 } else {
                     print("${fn} | ")
                 }
-                printMenuCount += 1
             }
             print(END_BLANK)
             println()
@@ -51,7 +33,27 @@ class OutputView {
         println(RECOMMEND_FINISH)
     }
 
-    fun getFoodCategory(num: Int): FoodCategory{
+    private fun printCategory(recommendResult: MutableMap<String, MutableList<String>>) {
+        print(FOOD_CATEGORY)
+        val foods = recommendResult.toList()[0].second
+        val foodCategories = FoodCategory.values().toList()
+        for ((index,f) in foods.withIndex()) {
+            for ((categoryNum,fc) in foodCategories.withIndex()) {
+                if (fc.getFoodNames().contains(f)) {
+                    if (index == 4) {
+                        print("${getFoodCategory(categoryNum).getCategoryName()} ")
+                    } else {
+                        print("${getFoodCategory(categoryNum).getCategoryName()} | ")
+                    }
+                    break
+                }
+            }
+        }
+        print(END_BLANK)
+        println()
+    }
+
+    private fun getFoodCategory(num: Int): FoodCategory{
         return when (num) {
             0 -> FoodCategory.JAPANESE_FOOD
             1 -> FoodCategory.KOREAN_FOOD
