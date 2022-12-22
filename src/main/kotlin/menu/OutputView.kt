@@ -62,7 +62,7 @@ class OutputView {
     }
 
     companion object {
-        const val SERVICE_START = "서비스 시작 문구 출력"
+        const val SERVICE_START = "점심 메뉴 추천을 시작합니다."
         const val RECOMMEND_RESULT = "메뉴 추천 결과입니다."
         const val RECOMMEND_FINISH = "추천을 완료했습니다."
         const val DAYS = "[ 구분 | 월요일 | 화요일 | 수요일 | 목요일 | 금요일 ]"
