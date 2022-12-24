@@ -5,7 +5,7 @@ import menu.model.Week
 
 class OutputView {
 
-    fun printStart() = println("점심 메뉴 추천을 시작합니다")
+    fun printStart() = println("점심 메뉴 추천을 시작합니다.")
 
     fun printInputCoachNames() = println("코치의 이름을 입력해 주세요. (, 로 구분)")
 
@@ -17,7 +17,7 @@ class OutputView {
         println("[ 구분 | ${week.getDayOfWeek().joinToString(" | ")} ]")
         println("[ 카테고리 | ${week.getCategories().joinToString(" | ")} ]")
         coaches.forEach { coach ->
-            println("[ ${coach.getName()} | ${coach.getRecommendedMenus().joinToString { " | " }} ]")
+            println("[ ${coach.getName()} | ${coach.getRecommendedMenus().joinToString ( " | " )} ]")
         }
     }
 

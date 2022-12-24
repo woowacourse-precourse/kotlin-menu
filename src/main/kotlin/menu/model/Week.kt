@@ -6,7 +6,7 @@ class Week {
     private val categoriesName = mutableListOf<String>()
 
     fun addCategory(category: String) {
-        if(categoriesName.count { category -> category == category } <= 2) {
+        if(categoriesName.count { categoryName -> categoryName == category } <= 2) {
             categoriesName.add(category)
         }
     }

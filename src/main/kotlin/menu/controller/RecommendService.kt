@@ -16,7 +16,8 @@ class RecommendService {
             val excludedFoods = inputView.readExcludedFoods(coachName)
             Coach(coachName, excludedFoods)
         }
-        val week = RecommendMenuImpl(coaches).getWeek()
-        outputView.printRecommendResult(week, coaches)
+        val recommendMenu = RecommendMenuImpl(coaches)
+        outputView.printRecommendResult(recommendMenu.getWeek(), recommendMenu.getCoaches())
+        outputView.printEnd()
     }
 }

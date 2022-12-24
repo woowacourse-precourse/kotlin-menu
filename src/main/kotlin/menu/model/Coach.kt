@@ -14,9 +14,9 @@ class Coach(private val name: String,private val excludeMenus : List<String>) {
     fun getRecommendedMenus() = recommendedMenus
 
     fun addRecommendedMenus(menu: String) {
-        if(!containExcludeMenus(menu) && !recommendedMenus.contains(menu)) {
+//        if(!containExcludeMenus(menu) && !recommendedMenus.contains(menu)) {
             recommendedMenus.add(menu)
-        }
+      //  }
     }
 
 }
