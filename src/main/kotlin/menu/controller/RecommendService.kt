@@ -6,15 +6,17 @@ import menu.view.OutputView
 
 class RecommendService {
 
-        private val outputView = OutputView()
+    private val outputView = OutputView()
 
-        private val inputView = InputView()
-    fun execute(){
+    private val inputView = InputView()
+    fun execute() {
         outputView.printStart()
         val coachesName = inputView.readCoachesName()
-        val coaches = coachesName.map { coachName -> Coach(coachName) }
-        coaches.map { coach -> coach.addExcludeMenus(inputView.readExcludedFoods(coach.getName())) }
+        var coaches = coachesName.map { coachName ->
+            val excludedFoods = inputView.readExcludedFoods(coachName)
+            Coach(coachName, excludedFoods)
+        }
         val week = RecommendMenuImpl(coaches).getWeek()
-        outputView.printRecommendResult(week,coaches)
+        outputView.printRecommendResult(week, coaches)
     }
 }

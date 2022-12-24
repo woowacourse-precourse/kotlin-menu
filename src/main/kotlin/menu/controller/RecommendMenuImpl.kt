@@ -17,14 +17,14 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
         }
     }
 
-    override fun isDuplicateCategory(category: Category): Boolean {
-        return week.getCategories().count { category -> category == category } > 2
-    }
-
     override fun addRandomCategory(category: Category) {
-        if (!isDuplicateCategory(category)) {
+        val categoriesCount = week.getCategories().size
+        var categories = week.getCategories().size
+        while (categoriesCount == categories) {
             val categoriesName = Category.values().map { category -> category.getCategoryName() }
-            week.addCategory(categoriesName[randomNumberGenerator.generator()-1])
+            println("바보")
+            week.addCategory(categoriesName[randomNumberGenerator.generator() - 1])
+            categories = week.getCategories().size
         }
     }
 
@@ -32,14 +32,14 @@ class RecommendMenuImpl(coaches: List<Coach>) : RecommendMenu() {
         return coach.getRecommendedMenus().contains(menu)
     }
 
-    override fun hasExcludeMenu(coach: Coach, menu: String): Boolean {
-        return coach.getExcludeMenus().contains(menu)
-    }
-
     override fun recommendMenu(coachs: List<Coach>, category: Category, menu: Menu) {
-        val menu = Randoms.shuffle(menu.getCategoryMenu(category.getCategoryName()))[0]
-        coachs.forEach { coach ->
-            if (!isDuplicateMenu(coach, menu) && !hasExcludeMenu(coach, menu)) coach.addRecommendedMenus(menu)
+        coachs.map { coach ->
+            val coachMenusCount = coach.getRecommendedMenus().size
+            while (coachMenusCount == coach.getRecommendedMenus().size) {
+                println("멍청이")
+                val menu = Randoms.shuffle(menu.getCategoryMenu(category.getCategoryName()))[0]
+                coach.addRecommendedMenus(menu)
+            }
         }
     }
 

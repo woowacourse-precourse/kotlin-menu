@@ -12,12 +12,12 @@ class OutputView {
     fun printInputExcludedFood(name: String) = println("$name(이)가 못 먹는 메뉴를 입력해 주세요.")
 
 
-    fun printRecommendResult(week: Week, coaches:List<Coach>) {
+    fun printRecommendResult(week: Week, coaches: List<Coach>) {
         println("메뉴 추천 결과입니다.")
         println("[ 구분 | ${week.getDayOfWeek().joinToString(" | ")} ]")
-        println("[ 카테고리 | ${week.getCategories().joinToString( " | ")} ]")
-        coaches.forEach {coach ->
-            println("[ ${coach.getName()} | ${coach.getRecommendedMenus().joinToString {" | " }} ]")
+        println("[ 카테고리 | ${week.getCategories().joinToString(" | ")} ]")
+        coaches.forEach { coach ->
+            println("[ ${coach.getName()} | ${coach.getRecommendedMenus().joinToString { " | " }} ]")
         }
     }
 
